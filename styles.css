@@ -1471,8 +1471,8 @@ img {
   }
 
   .hero-title {
-    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
-    letter-spacing: 0.07em;
+    font-size: clamp(1.1rem, 3.8vw, 1.6rem);
+    letter-spacing: 0.02em;
   }
 
   .hero-logo {
@@ -1544,9 +1544,9 @@ img {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(0.95rem, 4.8vw, 1.3rem);
-    letter-spacing: 0.03em;
-    line-height: 1.5;
+    font-size: clamp(0.82rem, 4.2vw, 1.1rem);
+    letter-spacing: 0;
+    line-height: 1.55;
     margin-bottom: 20px;
   }
 
