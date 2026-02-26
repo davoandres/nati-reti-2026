@@ -1544,8 +1544,9 @@ img {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: clamp(1rem, 5.5vw, 1.4rem);
-    letter-spacing: 0.05em;
+    font-size: clamp(0.95rem, 4.8vw, 1.3rem);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
     margin-bottom: 20px;
   }
 
