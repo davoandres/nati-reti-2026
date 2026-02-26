@@ -1465,15 +1465,29 @@ img {
     z-index: 1000;
   }
 
+  .hero-section {
+    padding: 100px 20px 60px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+    letter-spacing: 0.07em;
+  }
+
+  .hero-logo {
+    height: 220px;
+  }
+
   .hero-meta {
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
   }
 
   .hero-meta-divider {
     width: 60px;
     height: 1px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(1,72,115,0.2);
   }
 
   .pillars-grid {
@@ -1530,10 +1544,70 @@ img {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 3.5rem;
+    font-size: clamp(0.85rem, 4.5vw, 1.1rem);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
   }
+
+  .hero-logo {
+    height: 180px;
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-meta-item {
+    padding: 12px 20px;
+  }
+
+  .hero-meta-value {
+    font-size: 0.82rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-meta-label {
+    font-size: 0.58rem;
+  }
+
+  .hero-meta-divider {
+    width: 40px;
+    height: 1px;
+  }
+
+  .hero-btn {
+    font-size: 0.8rem;
+    padding: 12px 24px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .partner-strip-card {
+    min-width: 240px;
+    padding: 24px 28px;
+  }
+
+  .partner-logo-ccc { height: 36px; }
+  .partner-logo-ncc { height: 60px; }
+  .partner-logo-wcc { height: 44px; }
 
   .theme-visual-block {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .pillar-card {
+    padding: 28px 20px;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-card {
+    padding: 32px 24px;
   }
 }
