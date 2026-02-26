@@ -877,6 +877,59 @@ img {
 }
 
 /* ── Pillars Section ──────────────────────────────────────── */
+/* ── Pedagogical Approach ─────────────────────────────────── */
+.pedagogy-section {
+  background: var(--off-white);
+}
+
+.pedagogy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.pedagogy-card {
+  background: var(--white);
+  padding: 44px 36px;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.pedagogy-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.pedagogy-card-accent {
+  width: 40px;
+  height: 3px;
+  margin: 0 auto 28px;
+  border-radius: 2px;
+}
+
+.pedagogy-accent--intellectual { background: var(--dark-blue); }
+.pedagogy-accent--spiritual     { background: var(--amber); }
+.pedagogy-accent--contextual    { background: var(--ccc-brand); }
+
+.pedagogy-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.pedagogy-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* ── Pillars ──────────────────────────────────────────────── */
 .pillars-section {
   background: var(--white);
 }
@@ -1414,6 +1467,13 @@ img {
 }
 
 @media (max-width: 900px) {
+  .pedagogy-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .pillars-grid {
     grid-template-columns: repeat(2, 1fr);
   }
