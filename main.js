@@ -209,6 +209,28 @@
     });
   }
 
+  /* ── Mobile Apply Bar: hide when footer is visible ───── */
+  function setupMobileApplyBar() {
+    const bar    = document.getElementById('mobileApplyBar');
+    const footer = document.querySelector('.footer');
+    if (!bar || !footer) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            bar.classList.add('hidden');
+          } else {
+            bar.classList.remove('hidden');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(footer);
+  }
+
   /* ── Init ─────────────────────────────────────────────── */
   function init() {
     addRevealClasses();
@@ -217,6 +239,7 @@
     setupPillarColors();
     setupCountdown();
     smoothScrollLinks();
+    setupMobileApplyBar();
   }
 
   if (document.readyState === 'loading') {
