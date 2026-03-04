@@ -224,6 +224,10 @@ img {
   color: var(--white);
 }
 
+.nav-links li a.nav-active {
+  color: var(--amber);
+}
+
 .nav-links li a.nav-cta {
   background: var(--ccc-red);
   color: var(--white);
