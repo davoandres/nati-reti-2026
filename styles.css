@@ -1278,6 +1278,25 @@ img {
   flex-wrap: wrap;
 }
 
+.cta-contact {
+  margin-top: 22px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.cta-contact a {
+  color: var(--ncc-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.cta-contact a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .btn {
   display: inline-block;
   font-family: var(--font-sans);
@@ -1356,6 +1375,21 @@ img {
   font-size: 0.78rem;
   color: rgba(255,255,255,0.4);
   letter-spacing: 0.06em;
+}
+
+.footer-contact-email {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--ncc-gold);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+}
+
+.footer-contact-email:hover {
+  color: #fff;
 }
 
 .footer-nav {
