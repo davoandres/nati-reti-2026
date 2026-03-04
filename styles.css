@@ -177,6 +177,8 @@ img {
   gap: 10px;
   flex-shrink: 0;
   white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-logo {
