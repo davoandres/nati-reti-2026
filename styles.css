@@ -211,42 +211,45 @@ img {
 /* ── Hero apply dates ─────────────────────────────────────── */
 .hero-apply-dates {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  gap: 20px;
-  margin: 0 auto 28px;
-  padding: 14px 24px;
-  border: 1px solid rgba(230,175,42,0.3);
+  margin: 0 auto 32px;
+  max-width: 540px;
+  width: 100%;
+  background: rgba(1,23,46,0.72);
+  border: 1px solid rgba(230,175,42,0.45);
   border-radius: 4px;
-  background: rgba(230,175,42,0.06);
-  max-width: 520px;
-  flex-wrap: wrap;
+  overflow: hidden;
 }
 .hero-apply-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  padding: 14px 18px;
 }
 .hero-apply-label {
   font-family: var(--font-sans, 'Inter', sans-serif);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--amber, #e6af2a);
-  opacity: 0.85;
 }
 .hero-apply-val {
   font-family: var(--font-sans, 'Inter', sans-serif);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.92);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
 }
 .hero-apply-sep {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.2);
-  align-self: center;
+  width: 1px;
+  background: rgba(230,175,42,0.35);
+  align-self: stretch;
+  flex-shrink: 0;
 }
 
 /* ── Navbar ───────────────────────────────────────────────── */
