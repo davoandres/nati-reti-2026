@@ -131,12 +131,36 @@
     }
     .fee-item-amount {
       font-family: var(--font-cinzel, 'Cinzel', Georgia, serif);
-      font-size: 1.7rem;
       font-weight: 700;
       color: var(--dark-blue, #014873);
-      min-width: 90px;
+      min-width: 110px;
       line-height: 1;
       padding-top: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .fee-amount-line {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+    }
+    .fee-amount-line + .fee-amount-line {
+      font-size: 1.25rem;
+      color: #4a7fa0;
+    }
+    .fee-currency {
+      font-size: 0.72em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+    }
+    .fee-amount-divider {
+      width: 28px;
+      height: 1px;
+      background: rgba(0,0,0,0.12);
+      margin: 0;
     }
     .fee-item-details {
       flex: 1;
@@ -306,8 +330,11 @@
         gap: 10px;
         padding: 20px 18px;
       }
-      .fee-item-amount {
-        font-size: 1.4rem;
+      .fee-amount-line {
+        font-size: 1.2rem;
+      }
+      .fee-amount-line + .fee-amount-line {
+        font-size: 1rem;
       }
     }
   </style>
@@ -365,7 +392,11 @@
         <div class="fee-items">
 
           <div class="fee-item">
-            <div class="fee-item-amount">$200</div>
+            <div class="fee-item-amount">
+                <div class="fee-amount-line"><span class="fee-currency">CA$</span> 200</div>
+                <hr class="fee-amount-divider" />
+                <div class="fee-amount-line"><span class="fee-currency">US$</span> 150</div>
+              </div>
             <div class="fee-item-details">
               <div class="fee-item-name">Registration Fee</div>
               <ul class="fee-item-notes">
@@ -376,7 +407,11 @@
           </div>
 
           <div class="fee-item">
-            <div class="fee-item-amount">$2,500</div>
+            <div class="fee-item-amount">
+                <div class="fee-amount-line"><span class="fee-currency">CA$</span> 2,500</div>
+                <hr class="fee-amount-divider" />
+                <div class="fee-amount-line"><span class="fee-currency">US$</span> 1,800</div>
+              </div>
             <div class="fee-item-details">
               <div class="fee-item-name">Program Fee</div>
               <ul class="fee-item-notes">
@@ -416,14 +451,14 @@
           <h2 class="fees-block-title">Financial Assistance</h2>
         </div>
         <p class="assist-intro">
-          We believe that financial constraints should not prevent qualified leaders from participating. Thanks to the generous support of our sponsoring denominations, need-based financial assistance is available to help cover the Program Fee ($2,500).
+          We believe that financial constraints should not prevent qualified leaders from participating. Thanks to the generous support of our sponsoring denominations, need-based financial assistance is available to help cover the Program Fee (CA$ 2,500 / US$ 1,800).
         </p>
         <ul class="assist-list">
           <li>
             <strong>Eligibility:</strong> Assistance is granted based on demonstrated financial need and denominational representation.
           </li>
           <li>
-            <strong>Personal Commitment:</strong> Please note that financial assistance generally does not cover the $200 Registration Fee or personal travel expenses to Detroit and from Toronto. Applicants are encouraged to seek additional sponsorship from their home churches or academic institutions to cover these costs.
+            <strong>Personal Commitment:</strong> Please note that financial assistance generally does not cover the Registration Fee (CA$ 200 / US$ 150) or personal travel expenses to Detroit and from Toronto. Applicants are encouraged to seek additional sponsorship from their home churches or academic institutions to cover these costs.
           </li>
           <li>
             <strong>How to Apply:</strong> You can indicate your request for financial support directly on the Application Form.
