@@ -234,18 +234,20 @@ img {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--amber, #e6af2a);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
 }
 .hero-apply-val {
   font-family: var(--font-sans, 'Inter', sans-serif);
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   white-space: nowrap;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
 }
 .hero-apply-sep {
   width: 1px;
   height: 36px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.3);
   flex-shrink: 0;
 }
 
