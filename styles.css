@@ -1068,9 +1068,8 @@ img {
 
 .pillar-icon {
   display: block;
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
+  width: 80px;
+  height: auto;
   margin-bottom: 20px;
 }
 
