@@ -1113,12 +1113,7 @@ img {
   transition: color var(--transition);
 }
 
-.pillar-card[data-index="01"]:hover .pillar-number { color: #a84e1a; }
-.pillar-card[data-index="02"]:hover .pillar-number { color: #427a40; }
-.pillar-card[data-index="03"]:hover .pillar-number { color: #436581; }
-.pillar-card[data-index="04"]:hover .pillar-number { color: #d2a545; }
-.pillar-card[data-index="05"]:hover .pillar-number { color: #6ec1d2; }
-.pillar-card[data-index="06"]:hover .pillar-number { color: #263e56; }
+.pillar-card:hover .pillar-number { color: var(--pillar-color, var(--ncc-gold)); }
 
 .pillar-title {
   font-family: var(--font-serif);
