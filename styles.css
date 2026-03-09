@@ -1066,13 +1066,6 @@ img {
   background: var(--light-gray);
 }
 
-.pillar-icon {
-  display: block;
-  width: 80px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
 .pillar-card {
   background: var(--white);
   padding: 44px 36px;
