@@ -23,7 +23,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 50; /* Changed from 1000 so it sits well with tailwind */
+      z-index: 50;
     }
     .admin-nav-brand {
       color: #fff;
@@ -40,7 +40,7 @@
     }
     
     body {
-      padding-top: 70px; /* Space for fixed navbar */
+      padding-top: 70px;
     }
   </style>
 </head>
@@ -54,7 +54,7 @@
     </a>
   </nav>
 
-  <!-- ===================== REACT APP REPLACEMENT ===================== -->
+  <!-- ===================== APP MOUNT ===================== -->
   <div id="tracker-root" class="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 p-6">
     <!-- Render loop targets this div -->
   </div>
@@ -62,6 +62,7 @@
   <script>
     // --- Application State --- //
     const appState = {
+      view: 'dashboard', // "dashboard" or "tracker"
       selectedPhase: 'all',
       selectedStatus: 'all',
       searchTerm: '',
@@ -224,222 +225,267 @@
     // --- Rendering Logic --- //
     const render = () => {
       const root = document.getElementById('tracker-root');
+      let html = '';
 
-      // Filter events
-      const filteredEvents = timelineEvents.filter(event => {
-        const phaseMatch = appState.selectedPhase === 'all' || event.phase === appState.selectedPhase;
-        const statusMatch = appState.selectedStatus === 'all' || getTaskStatus(event.id, event.date) === appState.selectedStatus;
-        const searchMatch = appState.searchTerm === '' || 
-          event.title.toLowerCase().includes(appState.searchTerm.toLowerCase()) ||
-          event.description.toLowerCase().includes(appState.searchTerm.toLowerCase());
-        return phaseMatch && statusMatch && searchMatch;
-      });
+      if (appState.view === 'dashboard') {
+        html = `
+          <div class="max-w-6xl mx-auto pt-10 pb-10">
+            <header class="mb-10 text-center">
+              <h1 class="text-4xl font-bold text-gray-900 mb-2">Staff & Organizers Area</h1>
+              <p class="text-lg text-gray-600">Select a module below to manage NATI-RETI 2026 logic and operations.</p>
+            </header>
 
-      // Progress calculation
-      const totalTasks = timelineEvents.length;
-      const completedTasks = Object.values(appState.taskStatus).filter(s => s === 'completed').length;
-      const overallPercentage = Math.round((completedTasks / totalTasks) * 100);
-
-      let html = `
-        <div class="max-w-7xl mx-auto pb-10">
-          <!-- Header -->
-          <header class="text-center mb-8 pt-4">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">NATI-RETI 2026 Project Tracker</h1>
-            <p class="text-lg text-gray-600 mb-4">Where Now for Visible Justice?</p>
-            <div class="flex justify-center items-center space-x-4 text-sm text-gray-700">
-              <span class="flex items-center">
-                <i data-lucide="calendar" class="h-4 w-4 mr-1 text-[#e2513c]"></i>
-                August 3-16, 2026
-              </span>
-              <span class="flex items-center">
-                <i data-lucide="users" class="h-4 w-4 mr-1 text-[#e2513c]"></i>
-                50 Participants + 6 Facilitators
-              </span>
-            </div>
-          </header>
-
-          <!-- Overall Progress Card -->
-          <div class="rounded-lg shadow-lg p-6 mb-8 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #fbb040 0%, #e2513c 50%, #518ecb 100%)">
-            <div class="flex justify-between items-center mb-4 relative z-10">
-              <div>
-                <h2 class="text-2xl font-bold">Overall Progress</h2>
-                <p class="text-orange-100">Track your journey to NATI-RETI 2026</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Tracker Card -->
+              <div data-action="setView" data-view="tracker" class="bg-white rounded-lg shadow-md p-6 cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-[#fbb040] group">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="p-3 bg-orange-50 rounded-lg group-hover:bg-orange-100 transition-colors">
+                    <i data-lucide="layout-dashboard" class="h-8 w-8 text-[#e2513c]"></i>
+                  </div>
+                  <i data-lucide="arrow-right" class="h-5 w-5 text-gray-300 group-hover:text-[#e2513c] transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Project Tracker</h3>
+                <p class="text-gray-600 text-sm">Manage over 20+ timeline milestones, working group responsibilities, and monitor preparation progress.</p>
               </div>
-              <div class="text-right">
-                <div class="text-4xl font-bold">${overallPercentage}%</div>
-                <div class="text-sm text-orange-100">${completedTasks} of ${totalTasks} tasks</div>
+
+              <!-- Placeholder Card 1 -->
+              <div class="bg-gray-100/50 rounded-lg p-6 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center opacity-70 cursor-not-allowed">
+                <i data-lucide="users" class="h-8 w-8 text-gray-400 mb-3"></i>
+                <h3 class="text-lg font-bold text-gray-500 mb-1">Participant Directory</h3>
+                <p class="text-gray-400 text-xs">Coming Soon.</p>
               </div>
-            </div>
-            <div class="w-full bg-white bg-opacity-30 rounded-full h-3 relative z-10">
-              <div class="bg-white rounded-full h-3 transition-all duration-500 shadow-lg" style="width: ${overallPercentage}%"></div>
+
+              <!-- Placeholder Card 2 -->
+              <div class="bg-gray-100/50 rounded-lg p-6 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-center opacity-70 cursor-not-allowed">
+                <i data-lucide="folder-open" class="h-8 w-8 text-gray-400 mb-3"></i>
+                <h3 class="text-lg font-bold text-gray-500 mb-1">Internal Documents</h3>
+                <p class="text-gray-400 text-xs">Coming Soon.</p>
+              </div>
             </div>
           </div>
+        `;
+      } 
+      else if (appState.view === 'tracker') {
+        const filteredEvents = timelineEvents.filter(event => {
+          const phaseMatch = appState.selectedPhase === 'all' || event.phase === appState.selectedPhase;
+          const statusMatch = appState.selectedStatus === 'all' || getTaskStatus(event.id, event.date) === appState.selectedStatus;
+          const searchMatch = appState.searchTerm === '' || 
+            event.title.toLowerCase().includes(appState.searchTerm.toLowerCase()) ||
+            event.description.toLowerCase().includes(appState.searchTerm.toLowerCase());
+          return phaseMatch && statusMatch && searchMatch;
+        });
 
-          <!-- Navigation Tabs -->
-          <div class="flex space-x-2 mb-6 border-b-2" style="border-color: #fbb040">
-            <button data-action="setTab" data-tab="timeline" class="px-6 py-3 font-semibold transition-colors ${appState.activeTab === 'timeline' ? 'border-b-2 text-gray-900' : 'text-gray-600 hover:text-gray-900'}" style="${appState.activeTab === 'timeline' ? 'border-color: #e2513c; color: #e2513c;' : ''}">
-              Timeline & Tasks
-            </button>
-            <button data-action="setTab" data-tab="workinggroups" class="px-6 py-3 font-semibold transition-colors ${appState.activeTab === 'workinggroups' ? 'border-b-2 text-gray-900' : 'text-gray-600 hover:text-gray-900'}" style="${appState.activeTab === 'workinggroups' ? 'border-color: #e2513c; color: #e2513c;' : ''}">
-              Working Groups
-            </button>
-          </div>
-      `;
+        const totalTasks = timelineEvents.length;
+        const completedTasks = Object.values(appState.taskStatus).filter(s => s === 'completed').length;
+        const overallPercentage = Math.round((completedTasks / totalTasks) * 100);
 
-      if (appState.activeTab === 'timeline') {
-        html += `
-          <!-- Filters -->
-          <div class="bg-white rounded-lg shadow-md p-6 mb-6 border-t-4" style="border-color: #fbb040">
-            <div class="flex items-center mb-4">
-              <i data-lucide="filter" class="h-5 w-5 text-gray-600 mr-2"></i>
-              <h3 class="text-lg font-semibold text-gray-900">Filters</h3>
+        html = `
+          <div class="max-w-7xl mx-auto pb-10">
+            <!-- Back to Dashboard -->
+            <button data-action="setView" data-view="dashboard" class="flex items-center text-gray-600 hover:text-[#e2513c] font-medium mb-6 mt-2 transition-colors">
+              <i data-lucide="arrow-left" class="h-4 w-4 mr-2"></i> Back to Dashboard
+            </button>
+
+            <!-- Header -->
+            <header class="text-center mb-8">
+              <h1 class="text-4xl font-bold text-gray-900 mb-2">NATI-RETI 2026 Project Tracker</h1>
+              <p class="text-lg text-gray-600 mb-4">Where Now for Visible Justice?</p>
+              <div class="flex justify-center items-center space-x-4 text-sm text-gray-700">
+                <span class="flex items-center">
+                  <i data-lucide="calendar" class="h-4 w-4 mr-1 text-[#e2513c]"></i>
+                  August 3-16, 2026
+                </span>
+                <span class="flex items-center">
+                  <i data-lucide="users" class="h-4 w-4 mr-1 text-[#e2513c]"></i>
+                  50 Participants + 6 Facilitators
+                </span>
+              </div>
+            </header>
+
+            <!-- Overall Progress Card -->
+            <div class="rounded-lg shadow-lg p-6 mb-8 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #fbb040 0%, #e2513c 50%, #518ecb 100%)">
+              <div class="flex justify-between items-center mb-4 relative z-10">
+                <div>
+                  <h2 class="text-2xl font-bold">Overall Progress</h2>
+                  <p class="text-orange-100">Track your journey to NATI-RETI 2026</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-4xl font-bold">${overallPercentage}%</div>
+                  <div class="text-sm text-orange-100">${completedTasks} of ${totalTasks} tasks</div>
+                </div>
+              </div>
+              <div class="w-full bg-white bg-opacity-30 rounded-full h-3 relative z-10">
+                <div class="bg-white rounded-full h-3 transition-all duration-500 shadow-lg" style="width: ${overallPercentage}%"></div>
+              </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Phase</label>
-                <select id="phase-filter" class="w-full border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74">
-                  <option value="all" ${appState.selectedPhase === 'all' ? 'selected' : ''}>All Phases</option>
-                  ${phases.map(p => `<option value="${p}" ${appState.selectedPhase === p ? 'selected' : ''}>${p}</option>`).join('')}
-                </select>
+
+            <!-- Navigation Tabs -->
+            <div class="flex space-x-2 mb-6 border-b-2" style="border-color: #fbb040">
+              <button data-action="setTab" data-tab="timeline" class="px-6 py-3 font-semibold transition-colors ${appState.activeTab === 'timeline' ? 'border-b-2 text-gray-900' : 'text-gray-600 hover:text-gray-900'}" style="${appState.activeTab === 'timeline' ? 'border-color: #e2513c; color: #e2513c;' : ''}">
+                Timeline & Tasks
+              </button>
+              <button data-action="setTab" data-tab="workinggroups" class="px-6 py-3 font-semibold transition-colors ${appState.activeTab === 'workinggroups' ? 'border-b-2 text-gray-900' : 'text-gray-600 hover:text-gray-900'}" style="${appState.activeTab === 'workinggroups' ? 'border-color: #e2513c; color: #e2513c;' : ''}">
+                Working Groups
+              </button>
+            </div>
+        `;
+
+        if (appState.activeTab === 'timeline') {
+          html += `
+            <!-- Filters -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6 border-t-4" style="border-color: #fbb040">
+              <div class="flex items-center mb-4">
+                <i data-lucide="filter" class="h-5 w-5 text-gray-600 mr-2"></i>
+                <h3 class="text-lg font-semibold text-gray-900">Filters</h3>
               </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                <select id="status-filter" class="w-full border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74">
-                  <option value="all" ${appState.selectedStatus === 'all' ? 'selected' : ''}>All Statuses</option>
-                  <option value="completed" ${appState.selectedStatus === 'completed' ? 'selected' : ''}>Completed</option>
-                  <option value="pending" ${appState.selectedStatus === 'pending' ? 'selected' : ''}>Pending</option>
-                  <option value="overdue" ${appState.selectedStatus === 'overdue' ? 'selected' : ''}>Overdue</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
-                <div class="relative">
-                  <i data-lucide="search" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400"></i>
-                  <input id="search-input" type="text" placeholder="Search tasks..." value="${appState.searchTerm}" class="w-full pl-10 border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74" />
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Phase</label>
+                  <select id="phase-filter" class="w-full border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74">
+                    <option value="all" ${appState.selectedPhase === 'all' ? 'selected' : ''}>All Phases</option>
+                    ${phases.map(p => `<option value="${p}" ${appState.selectedPhase === p ? 'selected' : ''}>${p}</option>`).join('')}
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                  <select id="status-filter" class="w-full border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74">
+                    <option value="all" ${appState.selectedStatus === 'all' ? 'selected' : ''}>All Statuses</option>
+                    <option value="completed" ${appState.selectedStatus === 'completed' ? 'selected' : ''}>Completed</option>
+                    <option value="pending" ${appState.selectedStatus === 'pending' ? 'selected' : ''}>Pending</option>
+                    <option value="overdue" ${appState.selectedStatus === 'overdue' ? 'selected' : ''}>Overdue</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                  <div class="relative">
+                    <i data-lucide="search" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400"></i>
+                    <input id="search-input" type="text" placeholder="Search tasks..." value="${appState.searchTerm}" class="w-full pl-10 border-2 rounded-md px-3 py-2 focus:outline-none focus:ring-2" style="border-color: #0e7c74" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Phase Progress Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            ${phases.slice(0, 3).map((phase, idx) => {
-              const phaseTasks = timelineEvents.filter(e => e.phase === phase);
-              const pCompleted = phaseTasks.filter(e => appState.taskStatus[e.id] === 'completed').length;
-              const pTotal = phaseTasks.length;
-              const pPercentage = Math.round((pCompleted / pTotal) * 100);
-              const colors = ['#518ecb', '#5fa845', '#a259a3'];
-              const bgColors = ['#e3f2fd', '#e8f5e9', '#f3e5f5'];
-              return `
-                <div class="bg-white rounded-lg shadow-md p-4 border-t-4" style="border-color: ${colors[idx]}">
-                  <h4 class="font-semibold text-gray-900 mb-2 text-sm">${phase}</h4>
-                  <div class="flex justify-between items-center mb-2">
-                    <span class="text-2xl font-bold" style="color: ${colors[idx]}">${pPercentage}%</span>
-                    <span class="text-xs text-gray-600">${pCompleted}/${pTotal}</span>
-                  </div>
-                  <div class="w-full rounded-full h-2" style="background-color: ${bgColors[idx]}">
-                    <div class="rounded-full h-2 transition-all duration-500" style="width: ${pPercentage}%; background-color: ${colors[idx]}"></div>
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-
-          <!-- Task List -->
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4" style="border-color: #fbb040">
-            <div class="p-4 border-b" style="background: linear-gradient(90deg, #fef3e4 0%, #fff 100%)">
-              <h3 class="text-lg font-semibold text-gray-900">Tasks & Milestones</h3>
-              <p class="text-sm text-gray-600">Click tasks to mark as complete</p>
-            </div>
-            <div class="divide-y divide-gray-200">
-              ${filteredEvents.map(event => {
-                const daysUntil = getDaysUntil(event.date);
-                const isCompleted = appState.taskStatus[event.id] === 'completed';
-                const status = getTaskStatus(event.id, event.date);
-                const wgColor = event.wg !== 'All' ? getWGColor(event.wg) : '#518ecb';
-                
-                let bColorClass = 'border-l-4 border-gray-300 bg-white';
-                if (status === 'completed') bColorClass = 'border-l-4 border-green-600 bg-green-50';
-                if (status === 'overdue') bColorClass = 'border-l-4 bg-red-50 border-[#e2513c]';
-                
-                let iconHtml = '<i data-lucide="circle" class="h-5 w-5 text-gray-400"></i>';
-                if (status === 'completed') iconHtml = '<i data-lucide="check-circle" class="h-5 w-5 text-green-600"></i>';
-                if (status === 'overdue') iconHtml = '<i data-lucide="alert-circle" class="h-5 w-5 text-[#e2513c]"></i>';
-
+            <!-- Phase Progress Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              ${phases.slice(0, 3).map((phase, idx) => {
+                const phaseTasks = timelineEvents.filter(e => e.phase === phase);
+                const pCompleted = phaseTasks.filter(e => appState.taskStatus[e.id] === 'completed').length;
+                const pTotal = phaseTasks.length;
+                const pPercentage = Math.round((pCompleted / pTotal) * 100);
+                const colors = ['#518ecb', '#5fa845', '#a259a3'];
+                const bgColors = ['#e3f2fd', '#e8f5e9', '#f3e5f5'];
                 return `
-                  <div data-action="toggleTask" data-id="${event.id}" class="p-4 hover:bg-gray-100 transition-colors cursor-pointer ${bColorClass}">
-                    <div class="flex items-start">
-                      <div class="flex-shrink-0 mt-1 pointer-events-none">${iconHtml}</div>
-                      <div class="ml-4 flex-1 pointer-events-none">
-                        <div class="flex items-start justify-between">
-                          <div class="flex-1">
-                            <h4 class="font-semibold ${isCompleted ? 'line-through text-gray-500' : 'text-gray-900'}">${event.title}</h4>
-                            <p class="text-sm text-gray-600 mt-1">${event.description}</p>
-                            <div class="flex items-center mt-2 space-x-4 text-xs text-gray-500">
-                              <span class="flex items-center">
-                                <i data-lucide="calendar" class="h-3 w-3 mr-1"></i>
-                                ${formatDate(event.date)} ${event.endDate ? ` - ${formatDate(event.endDate)}` : ''}
-                              </span>
-                              <span class="px-2 py-1 rounded-full text-white" style="background-color: #0e7c74">${event.phase}</span>
-                              <span class="px-2 py-1 rounded-full text-white" style="background-color: ${wgColor}">
-                                ${event.wg === 'All' ? 'All WGs' : workingGroups.find(w => w.id === event.wg)?.name.split(' ')[0] || event.wg}
-                              </span>
-                            </div>
-                          </div>
-                          ${!isCompleted && daysUntil >= 0 ? `
-                            <div class="ml-4 text-right">
-                              <div class="text-sm font-semibold tooltip" style="color: ${daysUntil <= 7 ? '#e2513c' : '#518ecb'}">
-                                ${daysUntil === 0 ? 'Today' : `${daysUntil} days`}
-                              </div>
-                              <div class="text-xs text-gray-500">until due</div>
-                            </div>
-                          ` : ''}
-                        </div>
-                      </div>
+                  <div class="bg-white rounded-lg shadow-md p-4 border-t-4" style="border-color: ${colors[idx]}">
+                    <h4 class="font-semibold text-gray-900 mb-2 text-sm">${phase}</h4>
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-2xl font-bold" style="color: ${colors[idx]}">${pPercentage}%</span>
+                      <span class="text-xs text-gray-600">${pCompleted}/${pTotal}</span>
+                    </div>
+                    <div class="w-full rounded-full h-2" style="background-color: ${bgColors[idx]}">
+                      <div class="rounded-full h-2 transition-all duration-500" style="width: ${pPercentage}%; background-color: ${colors[idx]}"></div>
                     </div>
                   </div>
                 `;
-              }).join('') || '<div class="p-6 text-center text-gray-500">No tasks found matching your criteria.</div>'}
+              }).join('')}
             </div>
-          </div>
-        `;
-      } else if (appState.activeTab === 'workinggroups') {
-        html += `
-          <div class="space-y-4">
-            ${workingGroups.map(wg => `
-              <div class="bg-white rounded-lg shadow-md overflow-hidden border-l-8" style="border-color: ${wg.color}">
-                <div data-action="toggleWG" data-id="${wg.id}" class="text-white p-4 cursor-pointer" style="background: linear-gradient(135deg, ${wg.color} 0%, ${wg.color}dd 100%)">
-                  <div class="flex items-center justify-between pointer-events-none">
-                    <div class="flex items-center">
-                      <i data-lucide="${appState.expandedWGs[wg.id] ? 'chevron-down' : 'chevron-right'}" class="h-5 w-5 mr-2"></i>
-                      <div>
-                        <h3 class="text-lg font-bold">${wg.name}</h3>
-                        <p class="text-sm opacity-90 mt-1">${wg.description}</p>
+
+            <!-- Task List -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4" style="border-color: #fbb040">
+              <div class="p-4 border-b" style="background: linear-gradient(90deg, #fef3e4 0%, #fff 100%)">
+                <h3 class="text-lg font-semibold text-gray-900">Tasks & Milestones</h3>
+                <p class="text-sm text-gray-600">Click tasks to mark as complete</p>
+              </div>
+              <div class="divide-y divide-gray-200">
+                ${filteredEvents.map(event => {
+                  const daysUntil = getDaysUntil(event.date);
+                  const isCompleted = appState.taskStatus[event.id] === 'completed';
+                  const status = getTaskStatus(event.id, event.date);
+                  const wgColor = event.wg !== 'All' ? getWGColor(event.wg) : '#518ecb';
+                  
+                  let bColorClass = 'border-l-4 border-gray-300 bg-white';
+                  if (status === 'completed') bColorClass = 'border-l-4 border-green-600 bg-green-50';
+                  if (status === 'overdue') bColorClass = 'border-l-4 bg-red-50 border-[#e2513c]';
+                  
+                  let iconHtml = '<i data-lucide="circle" class="h-5 w-5 text-gray-400"></i>';
+                  if (status === 'completed') iconHtml = '<i data-lucide="check-circle" class="h-5 w-5 text-green-600"></i>';
+                  if (status === 'overdue') iconHtml = '<i data-lucide="alert-circle" class="h-5 w-5 text-[#e2513c]"></i>';
+
+                  return `
+                    <div data-action="toggleTask" data-id="${event.id}" class="p-4 hover:bg-gray-100 transition-colors cursor-pointer ${bColorClass}">
+                      <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 pointer-events-none">${iconHtml}</div>
+                        <div class="ml-4 flex-1 pointer-events-none">
+                          <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                              <h4 class="font-semibold ${isCompleted ? 'line-through text-gray-500' : 'text-gray-900'}">${event.title}</h4>
+                              <p class="text-sm text-gray-600 mt-1">${event.description}</p>
+                              <div class="flex items-center mt-2 space-x-4 text-xs text-gray-500">
+                                <span class="flex items-center">
+                                  <i data-lucide="calendar" class="h-3 w-3 mr-1"></i>
+                                  ${formatDate(event.date)} ${event.endDate ? ` - ${formatDate(event.endDate)}` : ''}
+                                </span>
+                                <span class="px-2 py-1 rounded-full text-white" style="background-color: #0e7c74">${event.phase}</span>
+                                <span class="px-2 py-1 rounded-full text-white" style="background-color: ${wgColor}">
+                                  ${event.wg === 'All' ? 'All WGs' : workingGroups.find(w => w.id === event.wg)?.name.split(' ')[0] || event.wg}
+                                </span>
+                              </div>
+                            </div>
+                            ${!isCompleted && daysUntil >= 0 ? `
+                              <div class="ml-4 text-right">
+                                <div class="text-sm font-semibold tooltip" style="color: ${daysUntil <= 7 ? '#e2513c' : '#518ecb'}">
+                                  ${daysUntil === 0 ? 'Today' : `${daysUntil} days`}
+                                </div>
+                                <div class="text-xs text-gray-500">until due</div>
+                              </div>
+                            ` : ''}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <i data-lucide="book-open" class="h-6 w-6"></i>
-                  </div>
-                </div>
-                ${appState.expandedWGs[wg.id] ? `
-                  <div class="p-6">
-                    <h4 class="font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
-                    <ul class="space-y-2">
-                      ${wg.responsibilities.map(resp => `
-                        <li class="flex items-start">
-                          <span class="inline-block w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0" style="background-color: ${wg.color}"></span>
-                          <span class="text-gray-700">${resp}</span>
-                        </li>
-                      `).join('')}
-                    </ul>
-                  </div>
-                ` : ''}
+                  `;
+                }).join('') || '<div class="p-6 text-center text-gray-500">No tasks found matching your criteria.</div>'}
               </div>
-            `).join('')}
-          </div>
-        `;
+            </div>
+          `;
+        } else if (appState.activeTab === 'workinggroups') {
+          html += `
+            <div class="space-y-4">
+              ${workingGroups.map(wg => `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden border-l-8" style="border-color: ${wg.color}">
+                  <div data-action="toggleWG" data-id="${wg.id}" class="text-white p-4 cursor-pointer" style="background: linear-gradient(135deg, ${wg.color} 0%, ${wg.color}dd 100%)">
+                    <div class="flex items-center justify-between pointer-events-none">
+                      <div class="flex items-center">
+                        <i data-lucide="${appState.expandedWGs[wg.id] ? 'chevron-down' : 'chevron-right'}" class="h-5 w-5 mr-2"></i>
+                        <div>
+                          <h3 class="text-lg font-bold">${wg.name}</h3>
+                          <p class="text-sm opacity-90 mt-1">${wg.description}</p>
+                        </div>
+                      </div>
+                      <i data-lucide="book-open" class="h-6 w-6"></i>
+                    </div>
+                  </div>
+                  ${appState.expandedWGs[wg.id] ? `
+                    <div class="p-6">
+                      <h4 class="font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
+                      <ul class="space-y-2">
+                        ${wg.responsibilities.map(resp => `
+                          <li class="flex items-start">
+                            <span class="inline-block w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0" style="background-color: ${wg.color}"></span>
+                            <span class="text-gray-700">${resp}</span>
+                          </li>
+                        `).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+
+        html += `</div>`; // Close tracker container
       }
 
-      html += `</div>`; // Close root container
       root.innerHTML = html;
 
       // Ensure icons render correctly after replacing HTML
@@ -453,7 +499,10 @@
       
       const action = target.dataset.action;
       
-      if (action === 'setTab') {
+      if (action === 'setView') {
+        appState.view = target.dataset.view;
+        render();
+      } else if (action === 'setTab') {
         appState.activeTab = target.dataset.tab;
         render();
       } else if (action === 'toggleTask') {
@@ -476,7 +525,6 @@
         const newSearchInput = document.getElementById('search-input');
         if(newSearchInput) {
           newSearchInput.focus();
-          // Move cursor to end of text
           newSearchInput.setSelectionRange(newSearchInput.value.length, newSearchInput.value.length);
         }
       }
