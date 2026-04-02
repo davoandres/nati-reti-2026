@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — NATI-RETI 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VM7DKNVTS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0VM7DKNVTS');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <style>
+    /* ── Admin specific styles ── */
+    .admin-page {
+      background: #f7f5f1;
+      min-height: 80vh;
+      padding: 120px 24px 96px;
+    }
+    .admin-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border-top: 5px solid #014873;
+      padding: 50px 60px;
+    }
+    .admin-header {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+    }
+    .admin-title {
+      font-family: var(--font-display, 'Cinzel', serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #01172e;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .admin-subtitle {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      color: #4a5568;
+      font-size: 1rem;
+      margin: 0;
+    }
+    .admin-content {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      color: #333;
+      line-height: 1.6;
+    }
+    .admin-content h3 {
+      font-family: var(--font-serif, 'Cormorant Garamond', serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #01172e;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .admin-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      color: #014873;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 40px;
+      padding: 10px 18px;
+      border: 1px solid #014873;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .admin-back:hover {
+      background: #014873;
+      color: #fff;
+    }
+    
+    /* Simplified Navbar for Admin */
+    .admin-navbar {
+      background: #01172e;
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .admin-nav-brand {
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font-display, 'Cinzel', serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-nav-brand img {
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="admin-navbar">
+    <a href="../index.html" class="admin-nav-brand">
+      <img src="../Logos 3/NATI-RETI-transparent.png" alt="NATI-RETI Logo" />
+      NATI-RETI 2026 Admin
+    </a>
+  </nav>
+
+  <!-- ===================== ADMIN CONTENT ===================== -->
+  <div class="admin-page">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1 class="admin-title">Staff &amp; Organizers Area</h1>
+        <p class="admin-subtitle">Secure administrative dashboard.</p>
+      </div>
+      
+      <div class="admin-content">
+        <p>Welcome to the secure administration area. You can edit this page (<code>admin/index.html</code>) to include confidential information, staff resources, or organizer schedules.</p>
+        
+        <h3>Current Documents</h3>
+        <ul>
+          <li>Placeholder internal resource 1</li>
+          <li>Placeholder internal resource 2</li>
+          <li>Placeholder contact list</li>
+        </ul>
+        
+        <br>
+        <p><em>(Replace this content with whatever the staff team needs to access.)</em></p>
+      </div>
+      
+      <a href="../index.html" class="admin-back">&larr; Return to Main Site</a>
+    </div>
+  </div>
+
+</body>
+</html>
