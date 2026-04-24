@@ -2399,7 +2399,7 @@ const pageFlip = new St.PageFlip(bookEl, {
   drawShadow: true,
   flippingTime: 900,
   useMouseEvents: true,
-  swipeDistance: isMobile ? 99999 : 30
+  swipeDistance: 30
 });
 
 pageFlip.loadFromHTML(buildPages());
@@ -2412,7 +2412,9 @@ if(isMobile){
 function currentSpread(){
   return Math.floor(pageFlip.getCurrentPageIndex() / 2);
 }
+let _suppressNav = false;
 function updateNav(){
+  if(_suppressNav) return;
   const s = currentSpread();
   btnP.disabled     = (s<=0);
   btnN.disabled     = (s>=N-1);
@@ -2423,9 +2425,25 @@ function updateNav(){
 pageFlip.on('flip', updateNav);
 updateNav();
 
+const sceneEl = document.querySelector('.scene');
 function go(dir){
-  if(dir>0) pageFlip.flipNext();
-  else      pageFlip.flipPrev();
+  if(dir > 0){ pageFlip.flipNext(); return; }
+  if(!isMobile){ pageFlip.flipPrev(); return; }
+  /* Portrait-mode backward: flipPrev() folds the invisible spine (no visible
+     animation). Workaround: silently jump to (target-1), then flipNext() to
+     target — reusing the working forward-fold animation in reverse. */
+  const cur = pageFlip.getCurrentPageIndex();
+  const target = cur - 1;
+  if(target < 1) return;
+  const springboard = target - 1; // may be 0 (inside cover) — that's fine
+  _suppressNav = true;
+  sceneEl.style.visibility = 'hidden';
+  pageFlip.turnToPage(springboard);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    sceneEl.style.visibility = '';
+    _suppressNav = false;
+    pageFlip.flipNext();
+  }));
 }
 function goTo(spreadIdx){
   if(spreadIdx<0 || spreadIdx>=N) return;
@@ -2486,6 +2504,28 @@ if(isMobile){
     if(e.pointerType !== 'touch') return;
     activePointers.delete(e.pointerId);
     if(activePointers.size === 0) pinching = false;
+  }, {capture: true});
+
+  /* Portrait-mode backward corner drag: StPageFlip folds the invisible left
+     spine so there is no visible animation. Intercept any touch/click that
+     lands in the left 25 % of the book and route it through go(-1), which
+     uses the forward-fold trick to produce a real fold animation. */
+  let _cornerBackId = null;
+  bookEl.addEventListener('pointerdown', e => {
+    const rect = bookEl.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    if(x < rect.width * 0.25 && pageFlip.getCurrentPageIndex() > 1){
+      e.stopImmediatePropagation();
+      _cornerBackId = e.pointerId;
+    }
+  }, {capture: true});
+  document.addEventListener('pointerup', e => {
+    if(e.pointerId !== _cornerBackId) return;
+    _cornerBackId = null;
+    go(-1);
+  }, {capture: true});
+  document.addEventListener('pointercancel', e => {
+    if(e.pointerId === _cornerBackId) _cornerBackId = null;
   }, {capture: true});
 }
 </script>
