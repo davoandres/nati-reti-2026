@@ -2398,8 +2398,8 @@ const pageFlip = new St.PageFlip(bookEl, {
   mobileScrollSupport: true,
   drawShadow: true,
   flippingTime: 900,
-  useMouseEvents: !isMobile,
-  swipeDistance: 30
+  useMouseEvents: true,
+  swipeDistance: isMobile ? 99999 : 30
 });
 
 pageFlip.loadFromHTML(buildPages());
@@ -2450,6 +2450,44 @@ document.addEventListener('keydown', e=>{
   }, true);
 });
 
+/* On mobile, when a second finger goes down (pinch-zoom), release StPageFlip's
+   pointer capture so the browser fires pointercancel on it — cancelling any
+   in-progress flip — then block all pointer events until all fingers lift. */
+if(isMobile){
+  const activePointers = new Set();
+  let pinching = false;
+
+  document.addEventListener('pointerdown', e => {
+    if(e.pointerType !== 'touch') return;
+    activePointers.add(e.pointerId);
+    if(activePointers.size >= 2 && !pinching){
+      pinching = true;
+      for(const pid of activePointers){
+        try { bookEl.releasePointerCapture(pid); } catch(x){}
+      }
+    }
+    if(pinching) e.stopImmediatePropagation();
+  }, {capture: true});
+
+  document.addEventListener('pointermove', e => {
+    if(e.pointerType === 'touch' && pinching) e.stopImmediatePropagation();
+  }, {capture: true});
+
+  document.addEventListener('pointerup', e => {
+    if(e.pointerType !== 'touch') return;
+    activePointers.delete(e.pointerId);
+    if(pinching){
+      e.stopImmediatePropagation();
+      if(activePointers.size === 0) setTimeout(() => { pinching = false; }, 100);
+    }
+  }, {capture: true});
+
+  document.addEventListener('pointercancel', e => {
+    if(e.pointerType !== 'touch') return;
+    activePointers.delete(e.pointerId);
+    if(activePointers.size === 0) pinching = false;
+  }, {capture: true});
+}
 </script>
 </body>
 </html>
