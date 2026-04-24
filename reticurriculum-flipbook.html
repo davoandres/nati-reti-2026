@@ -614,6 +614,52 @@ html,body{
 .toc-row.go:hover .toc-t{color:var(--blue);}
 .toc-row.go:hover{background:rgba(27,59,111,.05);border-radius:3px;}
 
+/* ── ZOOM / READ MODE MODAL ── */
+.nb-zoom{font-size:18px;}
+.read-modal{
+  position:fixed;inset:0;
+  background:rgba(10,28,62,.97);
+  z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:62px 16px 32px;
+}
+.read-modal-close{
+  position:fixed;top:14px;right:14px;
+  width:44px;height:44px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.22);
+  color:#fff;
+  font-size:22px;line-height:1;
+  cursor:pointer;z-index:2;
+  font-family:'Inter',sans-serif;
+  display:flex;align-items:center;justify-content:center;
+}
+.read-modal-close:hover{background:rgba(255,255,255,.35);}
+.read-modal-hint{
+  position:fixed;top:22px;left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.8);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  pointer-events:none;
+  white-space:nowrap;
+  z-index:1;
+}
+.read-modal-frame{
+  box-shadow:0 12px 50px rgba(0,0,0,.55);
+  background:#fff;
+  flex-shrink:0;
+}
+.read-modal-inner{
+  width:var(--PW);height:var(--PH);
+  transform-origin:top left;
+}
+
 /* ── MOBILE BACKWARD-FLIP OVERLAY ── */
 .back-flip-wrap{
   position:absolute;inset:0;
@@ -668,6 +714,7 @@ html,body{
   <div class="ni" id="info">1 / 18</div>
   <button class="nb" id="btnN" onclick="go(1)">&#8594;</button>
   <button class="nb nb-skip" id="btnLast" onclick="event.stopPropagation();goTo(SPREADS.length-1)" title="Last page">&#187;</button>
+  <button class="nb nb-zoom" id="btnZoom" onclick="event.stopPropagation();openReadMode()" title="Leer a pantalla completa">&#9906;</button>
 </div>
 <div class="pillar-dots">
   <div class="pd" data-label="Pillar 1 · Climate Justice" onclick="event.stopPropagation();goTo(5)" style="background:#1B3B6F;"></div>
@@ -2566,6 +2613,57 @@ function goTo(spreadIdx){
 }
 window.go = go;
 window.goTo = goTo;
+
+/* Read Mode: fullscreen modal showing the current page only, so the
+   browser's native pinch-zoom works without StPageFlip interference. */
+function openReadMode(){
+  if(document.getElementById('readModal')) return;
+  const idx = pageFlip.getCurrentPageIndex();
+  const availW = window.innerWidth - 32;
+  const availH = window.innerHeight - 110;
+  const scale = Math.min(availW / 560, availH / 730, 1.1);
+
+  const modal = document.createElement('div');
+  modal.id = 'readModal';
+  modal.className = 'read-modal';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'read-modal-close';
+  closeBtn.setAttribute('aria-label', 'Cerrar');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.onclick = closeReadMode;
+
+  const hint = document.createElement('div');
+  hint.className = 'read-modal-hint';
+  hint.textContent = 'Pellizca para acercar';
+
+  const frame = document.createElement('div');
+  frame.className = 'read-modal-frame';
+  frame.style.width = (560 * scale) + 'px';
+  frame.style.height = (730 * scale) + 'px';
+
+  const inner = document.createElement('div');
+  inner.className = 'read-modal-inner';
+  inner.style.transform = `scale(${scale})`;
+  inner.innerHTML = `<div class="stf-page" style="width:var(--PW);height:var(--PH);">${pageHTMLs[idx] || ''}</div>`;
+
+  frame.appendChild(inner);
+  modal.appendChild(closeBtn);
+  modal.appendChild(hint);
+  modal.appendChild(frame);
+  document.body.appendChild(modal);
+
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReadMode(){
+  const modal = document.getElementById('readModal');
+  if(modal) modal.remove();
+  document.body.style.overflow = '';
+}
+
+window.openReadMode = openReadMode;
+window.closeReadMode = closeReadMode;
 
 document.addEventListener('keydown', e=>{
   if(e.key==='ArrowRight') go(1);
