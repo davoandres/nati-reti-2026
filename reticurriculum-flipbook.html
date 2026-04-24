@@ -190,6 +190,20 @@ html,body{
   justify-content:space-between;
   background:var(--off);
 }
+
+/* Subtle photo attribution, bottom-right of any photo container */
+.photo-credit{
+  position:absolute;
+  bottom:5px;right:8px;
+  font-family:'Inter',sans-serif;
+  font-size:7.5px;
+  font-weight:500;
+  letter-spacing:.1em;
+  color:rgba(255,255,255,.78);
+  text-shadow:0 1px 2px rgba(0,0,0,.55);
+  pointer-events:none;
+  z-index:5;
+}
 .p1-num{
   font-family:'Inter',sans-serif;font-size:8.5px;font-weight:700;
   letter-spacing:.26em;text-transform:uppercase;
@@ -581,19 +595,19 @@ html,body{
 </div>
 
 <div class="nav-bar">
-  <button class="nb nb-skip" id="btnFirst" onclick="goTo(0)" disabled title="First page">&#171;</button>
+  <button class="nb nb-skip" id="btnFirst" onclick="event.stopPropagation();goTo(0)" disabled title="First page">&#171;</button>
   <button class="nb" id="btnP" onclick="go(-1)" disabled>&#8592;</button>
   <div class="ni" id="info">1 / 18</div>
   <button class="nb" id="btnN" onclick="go(1)">&#8594;</button>
-  <button class="nb nb-skip" id="btnLast" onclick="goTo(SPREADS.length-1)" title="Last page">&#187;</button>
+  <button class="nb nb-skip" id="btnLast" onclick="event.stopPropagation();goTo(SPREADS.length-1)" title="Last page">&#187;</button>
 </div>
 <div class="pillar-dots">
-  <div class="pd" data-label="Pillar 1 · Climate Justice" onclick="goTo(5)" style="background:#1B3B6F;"></div>
-  <div class="pd" data-label="Pillar 2 · Secularism &amp; Laicity" onclick="goTo(9)" style="background:#1A5C5A;"></div>
-  <div class="pd" data-label="Pillar 3 · Racism &amp; Anti-Racism" onclick="goTo(13)" style="background:#6B2737;"></div>
-  <div class="pd" data-label="Pillar 4 · Interfaith Dialogue" onclick="goTo(17)" style="background:#7A5C1E;"></div>
-  <div class="pd" data-label="Pillar 5 · Indigenous Solidarity" onclick="goTo(21)" style="background:#2D5A3D;"></div>
-  <div class="pd" data-label="Pillar 6 · Wealth Disparity &amp; Poverty" onclick="goTo(25)" style="background:#4A2060;"></div>
+  <div class="pd" data-label="Pillar 1 · Climate Justice" onclick="event.stopPropagation();goTo(5)" style="background:#1B3B6F;"></div>
+  <div class="pd" data-label="Pillar 2 · Secularism &amp; Laicity" onclick="event.stopPropagation();goTo(9)" style="background:#1A5C5A;"></div>
+  <div class="pd" data-label="Pillar 3 · Racism &amp; Anti-Racism" onclick="event.stopPropagation();goTo(13)" style="background:#6B2737;"></div>
+  <div class="pd" data-label="Pillar 4 · Interfaith Dialogue" onclick="event.stopPropagation();goTo(17)" style="background:#7A5C1E;"></div>
+  <div class="pd" data-label="Pillar 5 · Indigenous Solidarity" onclick="event.stopPropagation();goTo(21)" style="background:#2D5A3D;"></div>
+  <div class="pd" data-label="Pillar 6 · Wealth Disparity &amp; Poverty" onclick="event.stopPropagation();goTo(25)" style="background:#4A2060;"></div>
 </div>
 <div class="kh">&#8592; &#8594; arrow keys &nbsp;&middot;&nbsp; click edges to turn &nbsp;&middot;&nbsp; dots jump to pillar</div>
 
@@ -673,21 +687,21 @@ function pgTOC(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
     <div class="sl">Contents</div>
     <div class="dh" style="font-size:26px;margin-bottom:22px;">Table of<br>Contents</div>
-    <div class="toc-row go" onclick="goTo(2)"><span class="toc-t" style="font-style:italic;color:var(--blue);font-size:12.5px;">Introduction</span><span class="toc-p"></span></div>
-    <div class="toc-row go" onclick="goTo(2)"><span class="toc-t" style="padding-left:10px;">Programme Overview</span><span class="toc-p">6</span></div>
-    <div class="toc-row go" onclick="goTo(3)"><span class="toc-t" style="padding-left:10px;">Overall Learning Objectives</span><span class="toc-p">7</span></div>
-    <div class="toc-row go" onclick="goTo(3)"><span class="toc-t" style="padding-left:10px;">Methodological Considerations</span><span class="toc-p">8</span></div>
-    <div class="toc-row go" onclick="goTo(4)"><span class="toc-t" style="padding-left:10px;">Innovative Learning Practices</span><span class="toc-p">9</span></div>
-    <div class="toc-row go" onclick="goTo(4)"><span class="toc-t" style="padding-left:10px;">Programme Structure: The Six Pillars</span><span class="toc-p">10</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(2)"><span class="toc-t" style="font-style:italic;color:var(--blue);font-size:12.5px;">Introduction</span><span class="toc-p"></span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(2)"><span class="toc-t" style="padding-left:10px;">Programme Overview</span><span class="toc-p">6</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(3)"><span class="toc-t" style="padding-left:10px;">Overall Learning Objectives</span><span class="toc-p">7</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(3)"><span class="toc-t" style="padding-left:10px;">Methodological Considerations</span><span class="toc-p">8</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(4)"><span class="toc-t" style="padding-left:10px;">Innovative Learning Practices</span><span class="toc-p">9</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(4)"><span class="toc-t" style="padding-left:10px;">Programme Structure: The Six Pillars</span><span class="toc-p">10</span></div>
     <div class="toc-gap"></div>
-    <div class="toc-row go" onclick="goTo(5)"><span class="toc-t pillar">Pillar 1 &mdash; Climate Justice</span><span class="toc-p">11</span></div>
-    <div class="toc-row go" onclick="goTo(9)"><span class="toc-t pillar">Pillar 2 &mdash; Secularism and Laicity</span><span class="toc-p">19</span></div>
-    <div class="toc-row go" onclick="goTo(13)"><span class="toc-t pillar">Pillar 3 &mdash; Racism and Anti-Racism</span><span class="toc-p">27</span></div>
-    <div class="toc-row go" onclick="goTo(17)"><span class="toc-t pillar">Pillar 4 &mdash; Interfaith Dialogue</span><span class="toc-p">35</span></div>
-    <div class="toc-row go" onclick="goTo(21)"><span class="toc-t pillar">Pillar 5 &mdash; Solidarity with Indigenous Communities</span><span class="toc-p">43</span></div>
-    <div class="toc-row go" onclick="goTo(25)"><span class="toc-t pillar">Pillar 6 &mdash; Wealth Disparity and Poverty</span><span class="toc-p">51</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(5)"><span class="toc-t pillar">Pillar 1 &mdash; Climate Justice</span><span class="toc-p">11</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(9)"><span class="toc-t pillar">Pillar 2 &mdash; Secularism and Laicity</span><span class="toc-p">19</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(13)"><span class="toc-t pillar">Pillar 3 &mdash; Racism and Anti-Racism</span><span class="toc-p">27</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(17)"><span class="toc-t pillar">Pillar 4 &mdash; Interfaith Dialogue</span><span class="toc-p">35</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(21)"><span class="toc-t pillar">Pillar 5 &mdash; Solidarity with Indigenous Communities</span><span class="toc-p">43</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(25)"><span class="toc-t pillar">Pillar 6 &mdash; Wealth Disparity and Poverty</span><span class="toc-p">51</span></div>
     <div class="toc-gap"></div>
-    <div class="toc-row go" onclick="goTo(29)"><span class="toc-t" style="font-style:italic;">Academic Credit and Assessment</span><span class="toc-p">59</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(29)"><span class="toc-t" style="font-style:italic;">Academic Credit and Assessment</span><span class="toc-p">59</span></div>
     <div style="flex:1;"></div>
     <div style="font-family:'Inter',sans-serif;font-size:8.5px;color:#bbb;font-style:italic;line-height:1.6;">
       Phase 1 covers the Introduction and Pillars 1&ndash;5.<br>Pillars 6 and Academic Credit follow in the final phase.
@@ -701,6 +715,7 @@ function pgIntroOpener(){
   return `<div class="pg pg-photo" style="width:var(--PW);height:var(--PH);">
     <div class="photo-fill">
       <img src="${P}2025_10_13_MSchneider_02_-11.jpg" alt="">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="photo-text">
       <div class="op-label">Section One</div>
@@ -792,6 +807,7 @@ function pgPractices(){
   return `<div class="pg pg-half" style="width:var(--PW);height:var(--PH);">
     <div class="half-photo" style="height:44%;">
       <img src="${P}2025_10_17_MSchneider_01_-35.jpg" alt="">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="half-body" style="display:flex;flex-direction:column;">
       <div class="sl" style="margin-bottom:6px;flex-shrink:0;">Introduction</div>
@@ -852,6 +868,7 @@ function pgPillar1Opener(){
   return `<div class="pg pg-pillar" style="width:var(--PW);height:var(--PH);">
     <div class="pillar-photo">
       <img src="${P}Photo By Albin Hillert_20180307_AH2_8255.jpg" alt="Climate Justice">
+      <div class="photo-credit">Picture by Albin Hillert</div>
     </div>
     <div class="pillar-text">
       <div>
@@ -1085,6 +1102,7 @@ function pgP2Opener(){
   return `<div class="pg pg-p2" style="width:var(--PW);height:var(--PH);">
     <div class="p2-photo">
       <img src="${P}2025_10_15_MSchneider_01_-13.jpg" alt="Secularism and Laicity">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="p2-text">
       <div>
@@ -1301,6 +1319,7 @@ function pgP3Opener(){
   return `<div class="pg pg-p3" style="width:var(--PW);height:var(--PH);">
     <div class="p3-photo">
       <img src="${P}2025_10_18_MSchneider_01_-81.jpg" alt="Racism and Anti-Racism">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="p3-text">
       <div>
@@ -1525,6 +1544,7 @@ function pgP4Opener(){
   return `<div class="pg pg-p4" style="width:var(--PW);height:var(--PH);">
     <div class="p4-photo">
       <img src="${P}Egypt-2025-Hillert-20251022_AH2_2906.jpg" alt="Interfaith Dialogue">
+      <div class="photo-credit">Picture by Albin Hillert</div>
     </div>
     <div class="p4-text">
       <div>
@@ -1738,6 +1758,7 @@ function pgP5Opener(){
   return `<div class="pg pg-p5" style="width:var(--PW);height:var(--PH);">
     <div class="p5-photo">
       <img src="${P}2025_10_14_MSchneider_01_-11.jpg" alt="Solidarity with Indigenous Communities">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="p5-text">
       <div>
@@ -1951,6 +1972,7 @@ function pgP6Opener(){
   return `<div class="pg pg-p6" style="width:var(--PW);height:var(--PH);">
     <div class="p6-photo">
       <img src="${P}Photo By Marcelo Schneider 201902109.jpg" alt="Wealth Disparity and Poverty">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
     </div>
     <div class="p6-text">
       <div>
@@ -2381,6 +2403,17 @@ window.goTo = goTo;
 document.addEventListener('keydown', e=>{
   if(e.key==='ArrowRight') go(1);
   if(e.key==='ArrowLeft')  go(-1);
+});
+
+/* Prevent StPageFlip from interpreting TOC clicks as page turns.
+   StPageFlip listens on pointerdown/mousedown, so we must stop
+   those events (not click) before they reach its handler. */
+['pointerdown','mousedown','touchstart'].forEach(evt=>{
+  document.addEventListener(evt, e=>{
+    if(e.target.closest('.toc-row.go')){
+      e.stopPropagation();
+    }
+  }, true);
 });
 </script>
 </body>
