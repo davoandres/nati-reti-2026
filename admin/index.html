@@ -291,10 +291,25 @@
                   </ul>
                 </div>
               </div>
+
+              <!-- Curriculum Flipbook Card -->
+              <a href="../reticurriculum-flipbook.html" target="_blank" rel="noopener noreferrer" class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#1F3F66] flex flex-col group hover:shadow-xl hover:-translate-y-1 transition-all no-underline">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+                    <i data-lucide="book-open" class="h-8 w-8 text-[#1F3F66]"></i>
+                  </div>
+                  <i data-lucide="external-link" class="h-5 w-5 text-gray-300 group-hover:text-[#1F3F66] transition-colors"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Curriculum Flipbook</h3>
+                <p class="text-gray-600 text-sm flex-grow">Interactive curriculum booklet for NATI-RETI 2026 — six pillars, methodology, and academic credit overview.</p>
+                <span class="mt-4 inline-flex items-center text-xs font-semibold text-[#1F3F66] bg-blue-50 rounded px-2 py-1 w-fit">
+                  <i data-lucide="lock" class="h-3 w-3 mr-1"></i> Private access
+                </span>
+              </a>
             </div>
           </div>
         `;
-      } 
+      }
       else if (appState.view === 'tracker') {
         const filteredEvents = timelineEvents.filter(event => {
           const phaseMatch = appState.selectedPhase === 'all' || event.phase === appState.selectedPhase;
