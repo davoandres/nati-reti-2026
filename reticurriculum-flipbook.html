@@ -530,8 +530,32 @@ html,body{
 }
 
 /* Responsive */
-@media(max-width:1200px){.scene{transform:scale(.84);transform-origin:center top;margin-bottom:-108px;}}
-@media(max-width:970px){.scene{transform:scale(.64);transform-origin:center top;margin-bottom:-248px;}}
+/* Desktop intermediate scaling (two-page spread) */
+@media(max-width:1200px) and (min-width:901px){.scene{transform:scale(.84);transform-origin:center top;margin-bottom:-108px;}}
+
+/* Mobile: single-page portrait mode — scale whole scene to fit viewport */
+@media(max-width:900px){
+  .scene{
+    width: var(--PW);
+    height: var(--PH);
+    max-width: none;
+    transform: scale(calc(min(92vw, 420px) / 560px));
+    transform-origin: top center;
+    margin-bottom: calc(var(--PH) * (min(92vw, 420px) / 560px - 1));
+  }
+  html,body{
+    justify-content:flex-start;
+    padding-top:12px;
+    gap:10px;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+  .nav-bar{gap:10px;padding:0 8px;}
+  .pillar-dots{gap:7px;padding:0 8px;flex-wrap:wrap;justify-content:center;}
+  .pd{width:11px;height:11px;}
+  .pd::after{font-size:10px;padding:4px 7px;}
+  .kh{display:none;}
+}
 
 /* ── PILLAR NAVIGATION DOTS ── */
 .pillar-dots{display:flex;gap:10px;align-items:center;justify-content:center;}
@@ -2355,6 +2379,8 @@ function buildPages(){
   return pages;
 }
 
+const isMobile = window.innerWidth < 900;
+
 const pageFlip = new St.PageFlip(bookEl, {
   width: 560,
   height: 730,
@@ -2365,8 +2391,8 @@ const pageFlip = new St.PageFlip(bookEl, {
   maxHeight: 1460,
   maxShadowOpacity: 0.5,
   showCover: false,
-  usePortrait: false,
-  mobileScrollSupport: false,
+  usePortrait: isMobile,
+  mobileScrollSupport: true,
   drawShadow: true,
   flippingTime: 900,
   useMouseEvents: true,
@@ -2374,6 +2400,11 @@ const pageFlip = new St.PageFlip(bookEl, {
 });
 
 pageFlip.loadFromHTML(buildPages());
+
+// On mobile (portrait mode), skip the dark-blue inside cover and start on the actual cover
+if(isMobile){
+  requestAnimationFrame(() => pageFlip.turnToPage(1));
+}
 
 function currentSpread(){
   return Math.floor(pageFlip.getCurrentPageIndex() / 2);
