@@ -2451,16 +2451,54 @@ document.addEventListener('keydown', e=>{
 });
 
 /* Let the browser handle pinch-zoom on mobile without StPageFlip
-   interpreting a two-finger gesture as a page flip. */
+   interpreting a two-finger gesture as a page flip. StPageFlip uses
+   pointer events, so we track active touch pointers and, on the
+   second one, dispatch pointercancel to abort any in-progress flip,
+   then stop subsequent pointer events until all fingers release. */
 if(isMobile){
-  const stopMultiTouch = e => {
-    if(e.touches && e.touches.length >= 2){
-      e.stopImmediatePropagation();
+  const pointerIds = new Set();
+  const pointerTargets = new Map();
+  let gestureIsMulti = false;
+
+  document.addEventListener('pointerdown', e => {
+    if(e.pointerType !== 'touch') return;
+    pointerIds.add(e.pointerId);
+    pointerTargets.set(e.pointerId, e.target);
+    if(pointerIds.size >= 2 && !gestureIsMulti){
+      gestureIsMulti = true;
+      [...pointerIds].slice(0, -1).forEach(id => {
+        const tgt = pointerTargets.get(id);
+        if(tgt && tgt.isConnected){
+          tgt.dispatchEvent(new PointerEvent('pointercancel', {
+            bubbles:true, cancelable:true,
+            pointerId:id, pointerType:'touch'
+          }));
+        }
+      });
     }
-  };
-  ['touchstart','touchmove','touchend'].forEach(evt=>{
-    document.addEventListener(evt, stopMultiTouch, {capture:true, passive:true});
-  });
+    if(gestureIsMulti) e.stopImmediatePropagation();
+  }, {capture:true});
+
+  document.addEventListener('pointermove', e => {
+    if(e.pointerType === 'touch' && gestureIsMulti) e.stopImmediatePropagation();
+  }, {capture:true});
+
+  document.addEventListener('pointerup', e => {
+    if(e.pointerType !== 'touch') return;
+    pointerIds.delete(e.pointerId);
+    pointerTargets.delete(e.pointerId);
+    if(gestureIsMulti){
+      e.stopImmediatePropagation();
+      if(pointerIds.size === 0) gestureIsMulti = false;
+    }
+  }, {capture:true});
+
+  document.addEventListener('pointercancel', e => {
+    if(e.pointerType !== 'touch') return;
+    pointerIds.delete(e.pointerId);
+    pointerTargets.delete(e.pointerId);
+    if(pointerIds.size === 0) gestureIsMulti = false;
+  }, {capture:true});
 }
 </script>
 </body>
