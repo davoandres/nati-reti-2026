@@ -548,7 +548,10 @@ html,body{
     padding-top:12px;
     gap:10px;
     overflow:auto;
-    touch-action:manipulation;
+  }
+  /* Let browser handle pinch-zoom; StPageFlip still gets horizontal swipe */
+  .scene,#book,.stf__parent,.stf__wrapper,.stf__block,.stf__item,.stf-page{
+    touch-action:pan-y pinch-zoom !important;
   }
   .nav-bar{gap:10px;padding:0 8px;}
   .pillar-dots{gap:7px;padding:0 8px;flex-wrap:wrap;justify-content:center;}
@@ -2446,6 +2449,19 @@ document.addEventListener('keydown', e=>{
     }
   }, true);
 });
+
+/* Let the browser handle pinch-zoom on mobile without StPageFlip
+   interpreting a two-finger gesture as a page flip. */
+if(isMobile){
+  const stopMultiTouch = e => {
+    if(e.touches && e.touches.length >= 2){
+      e.stopImmediatePropagation();
+    }
+  };
+  ['touchstart','touchmove','touchend'].forEach(evt=>{
+    document.addEventListener(evt, stopMultiTouch, {capture:true, passive:true});
+  });
+}
 </script>
 </body>
 </html>
