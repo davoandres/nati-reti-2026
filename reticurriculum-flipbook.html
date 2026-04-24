@@ -2399,7 +2399,9 @@ const pageFlip = new St.PageFlip(bookEl, {
   drawShadow: true,
   flippingTime: 900,
   useMouseEvents: true,
-  swipeDistance: 30
+  // On mobile, effectively disable swipe-to-flip so pinch-zoom works
+  // without StPageFlip hijacking the gesture. Nav buttons still work.
+  swipeDistance: isMobile ? 99999 : 30
 });
 
 pageFlip.loadFromHTML(buildPages());
