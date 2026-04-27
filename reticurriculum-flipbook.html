@@ -751,6 +751,7 @@ html,body{
 <a href="https://ploughshares.sharepoint.com/:b:/g/CCCDocuments/IQCmJ1VRWYj2SpOq6P04puduAXpR7EOODJP22av4F7VgHS4?e=AGFSPV" target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
   Download the PDF full Curriculum Methodology document
 </a>
+<audio id="flipSound" src="page-flip.wav" preload="auto"></audio>
 
 <script>
 /* ============================================================
@@ -2556,7 +2557,14 @@ function updateNav(){
   btnLast.disabled  = (s>=N-1);
   info.textContent  = (s+1)+' / '+N;
 }
-pageFlip.on('flip', updateNav);
+pageFlip.on('flip', function(e) {
+  updateNav();
+  const sound = document.getElementById('flipSound');
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play().catch(err => console.log('Audio play suppressed:', err));
+  }
+});
 updateNav();
 
 const sceneEl = document.querySelector('.scene');
