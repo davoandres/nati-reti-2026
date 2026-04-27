@@ -2863,6 +2863,14 @@ if(isMobile){
     }
   }, {capture: true});
 }
+
+window.addEventListener('load', () => {
+  if (window.location.hash === '#academic-credit') {
+    setTimeout(() => {
+      goTo(29);
+    }, 600);
+  }
+});
 </script>
 </body>
 </html>

@@ -1162,6 +1162,99 @@ img {
   display: none;
 }
 
+/* ── Accreditation ────────────────────────────────────────── */
+.accreditation-section {
+  background: var(--dark-navy, #01172e);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.accreditation-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(230,175,42,0.08) 0%, transparent 60%);
+}
+.accreditation-section .section-title {
+  color: #fff;
+}
+.accreditation-section .section-tag {
+  color: var(--amber, #e6af2a);
+}
+
+.accreditation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.accreditation-lead {
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--amber, #e6af2a);
+  margin-bottom: 24px;
+}
+.accreditation-intro p:not(.accreditation-lead) {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.accreditation-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.accreditation-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 24px 32px;
+  border-radius: 6px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.accreditation-card:hover {
+  background: rgba(255,255,255,0.07);
+  transform: translateX(5px);
+}
+
+.accreditation-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.accreditation-card-title {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+
+.accreditation-card-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .accreditation-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
 /* ── Participants Section ─────────────────────────────────── */
 .participants-section {
   background: var(--off-white);
