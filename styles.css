@@ -1227,9 +1227,11 @@ img {
 }
 
 .accreditation-icon {
-  font-size: 1.8rem;
-  line-height: 1;
+  color: var(--amber, #e6af2a);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .accreditation-card-title {
