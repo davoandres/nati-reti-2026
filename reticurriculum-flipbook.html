@@ -700,6 +700,29 @@ html,body{
   50%{opacity:.55;}
   100%{opacity:0;}
 }
+.pdf-download-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+  letter-spacing: 0.04em;
+  z-index: 200;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.pdf-download-btn:hover {
+  background: var(--blue);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
 </style>
 </head>
 <body>
@@ -725,6 +748,9 @@ html,body{
   <div class="pd" data-label="Pillar 6 · Wealth Disparity &amp; Poverty" onclick="event.stopPropagation();goTo(25)" style="background:#4A2060;"></div>
 </div>
 <div class="kh">&#8592; &#8594; arrow keys &nbsp;&middot;&nbsp; click edges to turn &nbsp;&middot;&nbsp; dots jump to pillar</div>
+<a href="https://ploughshares.sharepoint.com/:b:/g/CCCDocuments/IQCmJ1VRWYj2SpOq6P04puduAXpR7EOODJP22av4F7VgHS4?e=AGFSPV" target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
+  Descargue aquí el documento en PDF (en inglés) / Download the PDF full Curriculum Methodology document
+</a>
 
 <script>
 /* ============================================================
