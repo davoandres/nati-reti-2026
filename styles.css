@@ -1117,7 +1117,7 @@ img {
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--ncc-blue);
+  background: var(--pillar-color, var(--ncc-blue));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
@@ -1135,13 +1135,15 @@ img {
   font-family: var(--font-serif);
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--light-gray);
+  color: var(--pillar-color, var(--light-gray));
   line-height: 1;
   margin-bottom: 20px;
-  transition: color var(--transition);
+  transition: color var(--transition), transform var(--transition);
 }
 
-.pillar-card:hover .pillar-number { color: var(--pillar-color, var(--ncc-gold)); }
+.pillar-card:hover .pillar-number { 
+  transform: scale(1.05);
+}
 
 .pillar-title {
   font-family: var(--font-serif);
