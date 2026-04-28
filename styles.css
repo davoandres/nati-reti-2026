@@ -1135,13 +1135,14 @@ img {
   font-family: var(--font-serif);
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--pillar-color, var(--light-gray));
+  color: var(--light-gray);
   line-height: 1;
   margin-bottom: 20px;
   transition: color var(--transition), transform var(--transition);
 }
 
 .pillar-card:hover .pillar-number { 
+  color: var(--pillar-color, var(--ncc-gold));
   transform: scale(1.05);
 }
 
