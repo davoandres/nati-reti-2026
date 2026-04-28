@@ -423,33 +423,34 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(1, 72, 115, 0.05);
-  border: 1px solid rgba(1, 72, 115, 0.15);
-  padding: 6px 18px;
+  background: var(--amber, #e6af2a);
+  border: 1px solid var(--amber, #e6af2a);
+  padding: 8px 24px;
   border-radius: 30px;
   margin-bottom: 28px;
   font-family: var(--font-sans, 'Inter', sans-serif);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--dark-navy);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
+  box-shadow: 0 4px 14px rgba(230, 175, 42, 0.35);
   opacity: 0;
   animation: fadeUp 0.9s 0.05s ease forwards;
   transition: all 0.3s ease;
 }
 .hero-accreditation:hover {
-  background: rgba(1, 72, 115, 0.08);
-  border-color: rgba(1, 72, 115, 0.25);
-  transform: translateY(-1px);
+  background: var(--dark-navy);
+  border-color: var(--dark-navy);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(1, 72, 115, 0.3);
 }
 .hero-accreditation-icon {
-  color: var(--amber, #e6af2a);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 .hero-accreditation strong {
-  color: var(--dark-blue, #014873);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* Hero title — Cinzel, full program name */
