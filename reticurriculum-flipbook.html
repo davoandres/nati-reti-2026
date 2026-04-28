@@ -170,59 +170,16 @@ html,body{
   overflow:hidden;
 }
 
-/* ── PILLAR OPENER — light top, image in full color ── */
-.pg-pillar{
-  background:var(--off);
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.pillar-photo{
-  height:56%;flex-shrink:0;overflow:hidden;position:relative;
-}
-.pillar-photo img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center;
-  opacity:1; /* full color, no filters */
-}
-.pillar-text{
-  flex:1;
-  padding:22px 42px 28px;
-  display:flex;flex-direction:column;
-  justify-content:space-between;
-  background:var(--off);
-}
-
-/* Subtle photo attribution, bottom-right of any photo container */
-.photo-credit{
-  position:absolute;
-  bottom:5px;right:8px;
-  font-family:'Inter',sans-serif;
-  font-size:7.5px;
-  font-weight:500;
-  letter-spacing:.1em;
-  color:rgba(255,255,255,.78);
-  text-shadow:0 1px 2px rgba(0,0,0,.55);
-  pointer-events:none;
-  z-index:5;
-}
-.p1-num{
-  font-family:'Inter',sans-serif;font-size:8.5px;font-weight:700;
-  letter-spacing:.26em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:8px;
-}
-.p1-title{
-  font-family:'Playfair Display',serif;font-size:36px;font-weight:700;
-  line-height:1.1;color:var(--blue);margin-bottom:10px;
-}
-.p1-rule{width:34px;height:2px;background:var(--gold);margin-bottom:10px;}
-.p1-tagline{
-  font-family:'Lora',serif;font-size:11.5px;line-height:1.7;
-  color:var(--muted);max-width:370px;
-}
-.p1-pn{
-  font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
-  color:#999;padding-top:12px;border-top:1px solid var(--rule);
-  display:flex;justify-content:space-between;
-}
+/* ── PILLAR 1 — CLIMATE JUSTICE (#3D993D) ── */
+.pg-p1{ background:#F1F7F1; display:flex; flex-direction:column; overflow:hidden; }
+.p1-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
+.p1-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.p1-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F1F7F1; }
+.p1-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:#77B777; margin-bottom:8px; }
+.p1-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#3D993D; margin-bottom:10px; }
+.p1-rule{ width:34px; height:2px; background:#77B777; margin-bottom:10px; }
+.p1-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p1-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #CEE5CE; display:flex; justify-content:space-between; }
 
 /* ══════════════════════════════════════════
    INTERIOR TYPOGRAPHY SYSTEM
@@ -437,65 +394,69 @@ html,body{
 }
 
 /* ══════════════════════════════════════════
-   PILLAR 2 — TEAL (#1A5C5A)
+   PILLAR 2 — SECULARISM & LAICITY (#A3A3A3)
 ══════════════════════════════════════════ */
-.pg-p2{ background:#F0F7F6; display:flex; flex-direction:column; overflow:hidden; }
+.pg-p2{ background:#F8F8F8; display:flex; flex-direction:column; overflow:hidden; }
 .p2-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
 .p2-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
-.p2-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F0F7F6; }
-.p2-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#5BADA8; margin-bottom:8px; }
-.p2-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#1A5C5A; margin-bottom:10px; }
-.p2-rule{ width:34px; height:2px; background:#5BADA8; margin-bottom:10px; }
-.p2-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:#4A4A6A; max-width:370px; }
-.p2-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #C2DEDD; display:flex; justify-content:space-between; }
+.p2-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F8F8F8; }
+.p2-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#BEBEBE; margin-bottom:8px; }
+.p2-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#A3A3A3; margin-bottom:10px; }
+.p2-rule{ width:34px; height:2px; background:#BEBEBE; margin-bottom:10px; }
+.p2-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p2-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #E8E8E8; display:flex; justify-content:space-between; }
 
 /* ══════════════════════════════════════════
-   PILLAR 4 — AMBER GOLD (#7A5C1E)
+   PILLAR 3 — RACISM & ANTI-RACISM (#F43506)
 ══════════════════════════════════════════ */
-.pg-p4{ background:#F7F4EC; display:flex; flex-direction:column; overflow:hidden; }
+.pg-p3{ background:#FEF0ED; display:flex; flex-direction:column; overflow:hidden; }
+.p3-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
+.p3-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.p3-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#FEF0ED; }
+.p3-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#F77150; margin-bottom:8px; }
+.p3-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#F43506; margin-bottom:10px; }
+.p3-rule{ width:34px; height:2px; background:#F77150; margin-bottom:10px; }
+.p3-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p3-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #FCCCC0; display:flex; justify-content:space-between; }
+
+/* ══════════════════════════════════════════
+   PILLAR 4 — INTERFAITH DIALOGUE (#BB35EC)
+══════════════════════════════════════════ */
+.pg-p4{ background:#FAF0FD; display:flex; flex-direction:column; overflow:hidden; }
 .p4-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
-.p4-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
-.p4-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F7F4EC; }
-.p4-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#C4973A; margin-bottom:8px; }
-.p4-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#7A5C1E; margin-bottom:10px; }
-.p4-rule{ width:34px; height:2px; background:#C4973A; margin-bottom:10px; }
-.p4-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:#4A4A6A; max-width:370px; }
-.p4-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #E2D8BE; display:flex; justify-content:space-between; }
+.p4-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.p4-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#FAF0FD; }
+.p4-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#CF71F1; margin-bottom:8px; }
+.p4-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#BB35EC; margin-bottom:10px; }
+.p4-rule{ width:34px; height:2px; background:#CF71F1; margin-bottom:10px; }
+.p4-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p4-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #EECCFA; display:flex; justify-content:space-between; }
 
 /* ══════════════════════════════════════════
-   PILLAR 5 — FOREST GREEN (#2D5A3D)
+   PILLAR 5 — INDIGENOUS SOLIDARITY (#D35400)
 ══════════════════════════════════════════ */
-.pg-p5{ background:#EFF5F1; display:flex; flex-direction:column; overflow:hidden; }
+.pg-p5{ background:#FBF3ED; display:flex; flex-direction:column; overflow:hidden; }
 .p5-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
 .p5-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
-.p5-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#EFF5F1; }
-.p5-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#5A9E72; margin-bottom:8px; }
-.p5-title{ font-family:'Playfair Display',serif; font-size:34px; font-weight:700; line-height:1.1; color:#2D5A3D; margin-bottom:10px; }
-.p5-rule{ width:34px; height:2px; background:#5A9E72; margin-bottom:10px; }
-.p5-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:#4A4A6A; max-width:370px; }
-.p5-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #BDD9C8; display:flex; justify-content:space-between; }
-.pg-p6{ background:#F5F0FA; display:flex; flex-direction:column; overflow:hidden; }
-.p6-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
-.p6-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
-.p6-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F5F0FA; }
-.p6-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#9B6BC0; margin-bottom:8px; }
-.p6-title{ font-family:'Playfair Display',serif; font-size:34px; font-weight:700; line-height:1.1; color:#4A2060; margin-bottom:10px; }
-.p6-rule{ width:34px; height:2px; background:#9B6BC0; margin-bottom:10px; }
-.p6-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:#4A4A6A; max-width:370px; }
-.p6-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #D8C2F0; display:flex; justify-content:space-between; }
+.p5-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#FBF3ED; }
+.p5-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#E0874C; margin-bottom:8px; }
+.p5-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#D35400; margin-bottom:10px; }
+.p5-rule{ width:34px; height:2px; background:#E0874C; margin-bottom:10px; }
+.p5-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p5-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #F4D4BF; display:flex; justify-content:space-between; }
 
 /* ══════════════════════════════════════════
-   PILLAR 3 — BURGUNDY (#6B2737)
+   PILLAR 6 — WEALTH DISPARITY & POVERTY (#1F3F66)
 ══════════════════════════════════════════ */
-.pg-p3{ background:#F7F0F2; display:flex; flex-direction:column; overflow:hidden; }
-.p3-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
-.p3-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
-.p3-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#F7F0F2; }
-.p3-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#A84B5E; margin-bottom:8px; }
-.p3-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#6B2737; margin-bottom:10px; }
-.p3-rule{ width:34px; height:2px; background:#A84B5E; margin-bottom:10px; }
-.p3-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:#4A4A6A; max-width:370px; }
-.p3-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #E2C5CC; display:flex; justify-content:space-between; }
+.pg-p6{ background:#EFF1F4; display:flex; flex-direction:column; overflow:hidden; }
+.p6-photo{ height:56%; flex-shrink:0; overflow:hidden; position:relative; }
+.p6-photo img{ width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.p6-text{ flex:1; padding:22px 42px 28px; display:flex; flex-direction:column; justify-content:space-between; background:#EFF1F4; }
+.p6-num{ font-family:'Inter',sans-serif; font-size:8.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#627893; margin-bottom:8px; }
+.p6-title{ font-family:'Playfair Display',serif; font-size:36px; font-weight:700; line-height:1.1; color:#1F3F66; margin-bottom:10px; }
+.p6-rule{ width:34px; height:2px; background:#627893; margin-bottom:10px; }
+.p6-tagline{ font-family:'Lora',serif; font-size:11.5px; line-height:1.7; color:var(--muted); max-width:370px; }
+.p6-pn{ font-family:'Inter',sans-serif; font-size:8px; letter-spacing:.14em; color:#999; padding-top:12px; border-top:1px solid #C7CFD8; display:flex; justify-content:space-between; }
 
 /* ══════════════════════════════════════════
    NAV BAR
@@ -740,12 +701,12 @@ html,body{
   <button class="nb nb-zoom" id="btnZoom" onclick="event.stopPropagation();openReadMode()" title="Leer a pantalla completa">&#9906;</button>
 </div>
 <div class="pillar-dots">
-  <div class="pd" data-label="Pillar 1 · Climate Justice" onclick="event.stopPropagation();goTo(5)" style="background:#1B3B6F;"></div>
-  <div class="pd" data-label="Pillar 2 · Secularism &amp; Laicity" onclick="event.stopPropagation();goTo(9)" style="background:#1A5C5A;"></div>
-  <div class="pd" data-label="Pillar 3 · Racism &amp; Anti-Racism" onclick="event.stopPropagation();goTo(13)" style="background:#6B2737;"></div>
-  <div class="pd" data-label="Pillar 4 · Interfaith Dialogue" onclick="event.stopPropagation();goTo(17)" style="background:#7A5C1E;"></div>
-  <div class="pd" data-label="Pillar 5 · Indigenous Solidarity" onclick="event.stopPropagation();goTo(21)" style="background:#2D5A3D;"></div>
-  <div class="pd" data-label="Pillar 6 · Wealth Disparity &amp; Poverty" onclick="event.stopPropagation();goTo(25)" style="background:#4A2060;"></div>
+  <div class="pd" data-label="Pillar 1 · Climate Justice" onclick="event.stopPropagation();goTo(5)" style="background:#3D993D;"></div>
+  <div class="pd" data-label="Pillar 2 · Secularism &amp; Laicity" onclick="event.stopPropagation();goTo(9)" style="background:#A3A3A3;"></div>
+  <div class="pd" data-label="Pillar 3 · Racism &amp; Anti-Racism" onclick="event.stopPropagation();goTo(13)" style="background:#F43506;"></div>
+  <div class="pd" data-label="Pillar 4 · Interfaith Dialogue" onclick="event.stopPropagation();goTo(17)" style="background:#BB35EC;"></div>
+  <div class="pd" data-label="Pillar 5 · Indigenous Solidarity" onclick="event.stopPropagation();goTo(21)" style="background:#D35400;"></div>
+  <div class="pd" data-label="Pillar 6 · Wealth Disparity &amp; Poverty" onclick="event.stopPropagation();goTo(25)" style="background:#1F3F66;"></div>
 </div>
 <div class="kh">&#8592; &#8594; arrow keys &nbsp;&middot;&nbsp; click edges to turn &nbsp;&middot;&nbsp; dots jump to pillar</div>
 <a href="https://ploughshares.sharepoint.com/:b:/g/CCCDocuments/IQCmJ1VRWYj2SpOq6P04puduAXpR7EOODJP22av4F7VgHS4?e=AGFSPV" target="_blank" rel="noopener noreferrer" class="pdf-download-btn">
@@ -998,7 +959,7 @@ function pgStructure(){
       Six thematic pillars, each addressing a critical dimension of the central theme. Each pillar unfolds over approximately two days, with four hours per day in small groups.
     </div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 4px 4px;">
-      <img src="all pillars.png" alt="The Six Thematic Pillars"
+      <img src="all pillars 3.svg" alt="The Six Thematic Pillars"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
     <div class="pn"><span>NATI-RETI 2026</span><span>10</span></div>
@@ -1007,12 +968,12 @@ function pgStructure(){
 
 /* ── SPREAD 5 ── */
 function pgPillar1Opener(){
-  return `<div class="pg pg-pillar" style="width:var(--PW);height:var(--PH);">
-    <div class="pillar-photo">
+  return `<div class="pg pg-p1" style="width:var(--PW);height:var(--PH);">
+    <div class="p1-photo">
       <img src="${P}Photo By Albin Hillert_20180307_AH2_8255.jpg" alt="Climate Justice">
       <div class="photo-credit">Picture by Albin Hillert</div>
     </div>
-    <div class="pillar-text">
+    <div class="p1-text">
       <div>
         <div class="p1-num">Pillar One of Six</div>
         <div class="p1-title">Climate<br>Justice</div>
@@ -1043,7 +1004,7 @@ function pgP1Desc(){
       <img src="Pillar 1- Climate Justice.png" alt="Pillar 1 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;transform:scale(1.19);transform-origin:top center;">
     </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0" ><span>Pillar 1 &middot; Climate Justice</span><span>12</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE" ><span>Pillar 1 &middot; Climate Justice</span><span>12</span></div>
   </div>`;
 }
 
@@ -1067,7 +1028,7 @@ function pgP1Tier(){
       <div class="tier-body">Resources are derived from US and Canadian sources, in and outside the Church. As often as possible, Indigenous/First Nations voices are lifted up to guide the conversation and encourage a deeper connection to the land. Participants experience contexts on campus and off &mdash; in both countries.</div>
     </div>
         </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0"><span>Pillar 1 &middot; Climate Justice</span><span>13</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE"><span>Pillar 1 &middot; Climate Justice</span><span>13</span></div>
   </div>`;
 }
 
@@ -1099,15 +1060,15 @@ function pgP1Obj(){
       </div>
     </div>
         </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0" ><span>Pillar 1 &middot; Climate Justice</span><span>14</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE" ><span>Pillar 1 &middot; Climate Justice</span><span>14</span></div>
   </div>`;
 }
 
 /* ── SPREAD 7 ── */
 function pgP1Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1B3B6F;">Pillar 1 &middot; Climate Justice</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#1B3B6F;padding-bottom:12px;border-bottom:2px solid #C5CCE0;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#3D993D;">Pillar 1 &middot; Climate Justice</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#3D993D;padding-bottom:12px;border-bottom:2px solid #CEE5CE;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(27,59,111,.2);">1</div>
@@ -1138,7 +1099,7 @@ function pgP1Questions(){
       <div class="q-t">In what ways does a successful or failed approach at ecological crisis management impact humanity? The most vulnerable? Animals? The rest of creation?</div>
     </div>
         </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0"><span>Pillar 1 &middot; Climate Justice</span><span>15</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE"><span>Pillar 1 &middot; Climate Justice</span><span>15</span></div>
   </div>`;
 }
 
@@ -1174,38 +1135,38 @@ function pgP1Themes(){
       <div class="act-f">Small Group Work</div>
     </div>
         </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0"><span>Pillar 1 &middot; Climate Justice</span><span>16</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE"><span>Pillar 1 &middot; Climate Justice</span><span>16</span></div>
   </div>`;
 }
 
 /* ── SPREAD 8 ── */
 function pgP1Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1B3B6F;">Pillar 1 &middot; Climate Justice</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#1B3B6F;padding-bottom:12px;border-bottom:2px solid #C5CCE0;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#3D993D;">Pillar 1 &middot; Climate Justice</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#3D993D;padding-bottom:12px;border-bottom:2px solid #CEE5CE;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#1B3B6F;font-size:12px;">Colossians 1:15&ndash;17</div>
+          <div class="anch-ref" style="color:#3D993D;font-size:12px;">Colossians 1:15&ndash;17</div>
           <div class="anch-txt" style="font-size:10.5px;">Connects Christ to creation, both as creator and redeemer &mdash; grounding the Christian call to ecological stewardship in the cosmic lordship of Christ over all things visible and invisible.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#1B3B6F;font-size:12px;">Sirach 43</div>
+          <div class="anch-ref" style="color:#3D993D;font-size:12px;">Sirach 43</div>
           <div class="anch-txt" style="font-size:10.5px;">This wisdom text gives glory to God for the whole order of creation. The call to honor all of creation grounds ecological stewardship in the deepest currents of the Jewish and Christian wisdom traditions.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#1B3B6F;font-size:12px;">The Nicene-Constantinopolitan Creed</div>
+          <div class="anch-ref" style="color:#3D993D;font-size:12px;">The Nicene-Constantinopolitan Creed</div>
           <div class="anch-txt" style="font-size:10.5px;">&ldquo;Maker of heaven and earth, of all things visible and invisible.&rdquo; Care for creation flows from belief in God the Creator &mdash; our ecological responsibilities are rooted in the heart of Christian confession.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#1B3B6F;font-size:12px;">September 1st &mdash; Orthodox Feast of Creation (WCC)</div>
+          <div class="anch-ref" style="color:#3D993D;font-size:12px;">September 1st &mdash; Orthodox Feast of Creation (WCC)</div>
           <div class="anch-txt" style="font-size:10.5px;">Embraced ecumenically through the WCC, the Feast of Creation reframes the liturgical year as an occasion for celebrating and lamenting the state of the created order &mdash; a resource for ecological worship and advocacy.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0"><span>Pillar 1 &middot; Climate Justice</span><span>17</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE"><span>Pillar 1 &middot; Climate Justice</span><span>17</span></div>
   </div>`;
 }
 
@@ -1231,7 +1192,7 @@ function pgP1Readings(){
     <div class="rd">&ldquo;How Much Environmental Damage Is Israel&rsquo;s War on Gaza Causing?&rdquo; Al Jazeera / Inside Story. [Video]</div>
     <div class="rd">&ldquo;Canada&rsquo;s Inuit Communities and Their Interconnected Crises.&rdquo; [Video]</div>
     <div class="rd">&ldquo;Feast of Creation.&rdquo; World Council of Churches. [Video]</div>
-    <div class="pn" style="color:#1B3B6F;border-color:#C5CCE0"><span>Pillar 1 &middot; Climate Justice</span><span>18</span></div>
+    <div class="pn" style="color:#3D993D;border-color:#CEE5CE"><span>Pillar 1 &middot; Climate Justice</span><span>18</span></div>
   </div>`;
 }
 
@@ -1260,82 +1221,82 @@ function pgP2Opener(){
 
 function pgP2Desc(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
     <div class="dh">Pillar Description</div>
-    <div class="ra" style="background:#1A5C5A;"></div>
+    <div class="ra" style="background:#A3A3A3;"></div>
     <div class="bt">
       This module introduces participants to the conceptual, historical, and theological landscape of secularism and laicity in North American societies. It asks how Christian communities can speak and act faithfully in contexts where religious claims are no longer the default public language &mdash; and where the very meaning of the &ldquo;secular&rdquo; is contested.
     </div>
-    <div class="spq" style="border-color:#5BADA8;color:#1A5C5A;">Far from treating laicity as the mere absence of religion, this module invites reflection on laicity as a positive framework for plural coexistence &mdash; and on the ecumenical resources for reimagining faith&rsquo;s public role beyond both theocracy and irrelevance.</div>
+    <div class="spq" style="border-color:#BEBEBE;color:#A3A3A3;">Far from treating laicity as the mere absence of religion, this module invites reflection on laicity as a positive framework for plural coexistence &mdash; and on the ecumenical resources for reimagining faith&rsquo;s public role beyond both theocracy and irrelevance.</div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:4px 0 6px;">
       <img src="Pillar 2- Secularism and Laicity.png" alt="Pillar 2 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD" ><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>20</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8" ><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>20</span></div>
   </div>`;
 }
 
 /* ── SPREAD 10 ── */
 function pgP2Tier(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
     <div class="dh">Three-Tiered Methodology</div>
-    <div class="ra" style="background:#1A5C5A;"></div>
+    <div class="ra" style="background:#A3A3A3;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">I</span><span class="tw-rest">ntellectual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">I</span><span class="tw-rest">ntellectual</span></span>
       <div class="tier-body">While the relationship between the secular and the sacred used to be thought of as a firm line, it has come to be understood as much more permeable. Participants engage the history of this relationship and examine how it has changed over time, analyzing foundational texts and theoretical frameworks for understanding secularism and laicity in North American contexts.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">S</span><span class="tw-rest">piritual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">S</span><span class="tw-rest">piritual</span></span>
       <div class="tier-body">Different religious traditions understand the relationship between the sacred and the secular differently. Participants reflect on their own tradition&rsquo;s understanding of how the sacred and the secular interact, and discern how their faith communities navigate increasingly pluralistic and secular public spaces.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">C</span><span class="tw-rest">ontextual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">C</span><span class="tw-rest">ontextual</span></span>
       <div class="tier-body">The question of the sacred in the public space has always been contested. Participants explore how the relationship between the sacred and the secular has influenced politics over time, and analyze contemporary movements such as Christian Nationalism to unpack their understanding of this relationship and its impact on public policy in both Canada and the United States.</div>
     </div>
         </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>21</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>21</span></div>
   </div>`;
 }
 
 function pgP2Obj(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
     <div class="dh" style="font-size:18px;">Learning Objectives<br>&amp; Intended Outcomes</div>
-    <div class="ra" style="background:#1A5C5A;"></div>
+    <div class="ra" style="background:#A3A3A3;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">K</span><span class="tw-rest">nowledge</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">K</span><span class="tw-rest">nowledge</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Learn about secularism and laicity movements and their impacts on the church and wider society, engaging sociological, philosophical, and theological accounts of secularization.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants articulate a broad understanding of these movements and their impacts, distinguishing between different models of the secular and their implications for public religious expression.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">C</span><span class="tw-rest">ompetence</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">C</span><span class="tw-rest">ompetence</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Analyze ideas of secularism and laicity in contemporary political contexts, attending to the contested character of secular arrangements and their differential effects on religious communities across North America.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants articulate the impact of secularism on contemporary political and religious landscapes, and engage critically with movements such as Christian Nationalism.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#1A5C5A;">S</span><span class="tw-rest">kills</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#A3A3A3;">S</span><span class="tw-rest">kills</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Construct an understanding of the relationship between secularism and the sacred, drawing on theological, historical, and contextual resources to develop a grounded public theology.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants apply their understanding to contemporary situations in the church and public sphere, equipping them for faithful ministry in pluralistic and secular contexts.
       </div>
     </div>
         </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD" ><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>22</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8" ><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>22</span></div>
   </div>`;
 }
 
 /* ── SPREAD 11 ── */
 function pgP2Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#1A5C5A;padding-bottom:12px;border-bottom:2px solid #C2DEDD;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#A3A3A3;padding-bottom:12px;border-bottom:2px solid #E8E8E8;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(26,92,90,.22);">1</div>
@@ -1366,89 +1327,89 @@ function pgP2Questions(){
       <div class="q-t">What ecumenical resources are available for reimagining faith&rsquo;s public role beyond both theocracy and irrelevance?</div>
     </div>
         </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>23</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>23</span></div>
   </div>`;
 }
 
 function pgP2Themes(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
     <div class="dh" style="font-size:18px;">Key Themes &amp;<br>Learning Activities</div>
-    <div class="ra" style="background:#1A5C5A;"></div>
+    <div class="ra" style="background:#A3A3A3;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
-    <div class="sub-h" style="margin-top:0;color:#1A5C5A;">Key Themes and Topics</div>
-    <div class="theme-item" style="--dot:#5BADA8;">The relationship between the secular and the sacred: historical development and contemporary expressions</div>
+    <div class="sub-h" style="margin-top:0;color:#A3A3A3;">Key Themes and Topics</div>
+    <div class="theme-item" style="--dot:#BEBEBE;">The relationship between the secular and the sacred: historical development and contemporary expressions</div>
     <div class="theme-item">Religion in the public square and government policy in Canada and the United States</div>
     <div class="theme-item">Impacts of increasing secularization on ecclesial identity and mission</div>
     <div class="theme-item">Laicity as a framework for plural coexistence: possibilities and limitations</div>
     <div class="theme-item">Christian Nationalism and the contested boundaries of the secular in North American political life</div>
     <div class="theme-item">Colonial and Eurocentric genealogies of the secular: whose definitions shape the public square?</div>
-    <div class="sub-h" style="color:#1A5C5A;">Learning Activities</div>
+    <div class="sub-h" style="color:#A3A3A3;">Learning Activities</div>
     <div class="act-item">
       <div class="act-d">Analyze key texts for definitions and historical development of secularism and laicity, tracing its genealogy from Western modernity to current North American expressions.</div>
-      <div class="act-f" style="color:#1A5C5A;">Small Group Work</div>
+      <div class="act-f" style="color:#A3A3A3;">Small Group Work</div>
     </div>
     <div class="act-item">
       <div class="act-d">Exchange on the secular and the sacred in your churches: share contextual reflections on how religious identity and public life intersect in your denominational and civic contexts.</div>
-      <div class="act-f" style="color:#1A5C5A;">Small Group Work</div>
+      <div class="act-f" style="color:#A3A3A3;">Small Group Work</div>
     </div>
     <div class="act-item">
       <div class="act-d">Map commonalities and differences: gather data on the diversity of experiences with secularism and laicity across Canadian and U.S. contexts represented by participants.</div>
-      <div class="act-f" style="color:#1A5C5A;">Large Group</div>
+      <div class="act-f" style="color:#A3A3A3;">Large Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Bring contextual data into conversation with theological and ecumenical resources for constructing a faithful public theology in secular and pluralistic contexts.</div>
-      <div class="act-f" style="color:#1A5C5A;">Large Group</div>
+      <div class="act-f" style="color:#A3A3A3;">Large Group</div>
     </div>
         </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>24</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>24</span></div>
   </div>`;
 }
 
 /* ── SPREAD 12 ── */
 function pgP2Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#1A5C5A;padding-bottom:12px;border-bottom:2px solid #C2DEDD;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#A3A3A3;padding-bottom:12px;border-bottom:2px solid #E8E8E8;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#1A5C5A;font-size:12px;">Luke 4:18&ndash;19 / Isaiah 61:1&ndash;2</div>
+          <div class="anch-ref" style="color:#A3A3A3;font-size:12px;">Luke 4:18&ndash;19 / Isaiah 61:1&ndash;2</div>
           <div class="anch-txt" style="font-size:10.5px;">Jesus&rsquo;s inaugural sermon announces the Year of Jubilee as the animating vision of his ministry. This text challenges any reading of faith that confines it to the private sphere, offering a prophetic basis for the church&rsquo;s engagement in the public square.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#1A5C5A;font-size:12px;">Acts 5:29 / Romans 13:1&ndash;7</div>
+          <div class="anch-ref" style="color:#A3A3A3;font-size:12px;">Acts 5:29 / Romans 13:1&ndash;7</div>
           <div class="anch-txt" style="font-size:10.5px;">The tension between Peter&rsquo;s declaration &mdash; &ldquo;We must obey God rather than human beings&rdquo; &mdash; and Paul&rsquo;s call for deference to governing authorities opens the central question of this pillar: the legitimate boundaries of secular power and faithful public witness.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#1A5C5A;font-size:12px;">NCC &mdash; &ldquo;The Problem of Religious Nationalism&rdquo; (2024)</div>
+          <div class="anch-ref" style="color:#A3A3A3;font-size:12px;">NCC &mdash; &ldquo;The Problem of Religious Nationalism&rdquo; (2024)</div>
           <div class="anch-txt" style="font-size:10.5px;">This statement addresses the dangers of conflating religious authority with political power. It provides ecumenical grounding for the church&rsquo;s commitment to responsible engagement with secular democracy, distinguishing prophetic witness from theocratic ambition.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>25</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>25</span></div>
   </div>`;
 }
 
 function pgP2Readings(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#1A5C5A;">Pillar 2 &middot; Secularism &amp; Laicity</div>
+    <div class="sl" style="color:#A3A3A3;">Pillar 2 &middot; Secularism &amp; Laicity</div>
     <div class="dh">Readings and Resources</div>
-    <div class="ra" style="background:#1A5C5A;"></div>
-    <div class="sub-h" style="margin-top:0;color:#1A5C5A;">Required Readings</div>
-    <div class="rd"><span class="rn" style="color:#1A5C5A;">6. </span>Taylor, Charles. &ldquo;The Bulwarks of Belief.&rdquo; Ch. 1 in <em>A Secular Age</em>. New York: Belknap Press, 2007.</div>
-    <div class="rd"><span class="rn" style="color:#1A5C5A;">7. </span>Kato, Julius-Kai. &ldquo;Discerning Religion&rsquo;s Holistic Character and Ecumenical Capability in a Pluralistic Society.&rdquo; <em>Journal of Ecumenical Studies</em> 58, no. 4 (2022): 524&ndash;543.</div>
-    <div class="rd"><span class="rn" style="color:#1A5C5A;">8. </span>Akande, Rabiat. &ldquo;Neutralizing Secularism: Religious Antiliberalism and the Twentieth-Century Global Ecumenical Project.&rdquo; <em>Journal of Law and Religion</em> 37, no. 2 (2025): 268&ndash;318.</div>
-    <div class="rd"><span class="rn" style="color:#1A5C5A;">9. </span>National Council of Churches. &ldquo;The Problem of Religious Nationalism, in the US and Globally.&rdquo; Policy Statement, October 18, 2024.</div>
-    <div class="sub-h" style="color:#1A5C5A;">Further Readings</div>
+    <div class="ra" style="background:#A3A3A3;"></div>
+    <div class="sub-h" style="margin-top:0;color:#A3A3A3;">Required Readings</div>
+    <div class="rd"><span class="rn" style="color:#A3A3A3;">6. </span>Taylor, Charles. &ldquo;The Bulwarks of Belief.&rdquo; Ch. 1 in <em>A Secular Age</em>. New York: Belknap Press, 2007.</div>
+    <div class="rd"><span class="rn" style="color:#A3A3A3;">7. </span>Kato, Julius-Kai. &ldquo;Discerning Religion&rsquo;s Holistic Character and Ecumenical Capability in a Pluralistic Society.&rdquo; <em>Journal of Ecumenical Studies</em> 58, no. 4 (2022): 524&ndash;543.</div>
+    <div class="rd"><span class="rn" style="color:#A3A3A3;">8. </span>Akande, Rabiat. &ldquo;Neutralizing Secularism: Religious Antiliberalism and the Twentieth-Century Global Ecumenical Project.&rdquo; <em>Journal of Law and Religion</em> 37, no. 2 (2025): 268&ndash;318.</div>
+    <div class="rd"><span class="rn" style="color:#A3A3A3;">9. </span>National Council of Churches. &ldquo;The Problem of Religious Nationalism, in the US and Globally.&rdquo; Policy Statement, October 18, 2024.</div>
+    <div class="sub-h" style="color:#A3A3A3;">Further Readings</div>
     <div class="rd">Balibar, Etienne. <em>Secularism and Cosmopolitanism: Critical Hypotheses on Religion and Politics</em>. Columbia University Press, 2018.</div>
     <div class="rd">Fiala, Andrew. <em>Christian Nationalism and the Paradox of Secularism</em>. Brill, 2025.</div>
     <div class="rd">Gorski &amp; Perry. <em>The Flag and the Cross: White Christian Nationalism and the Threat to American Democracy</em>. Oxford University Press, 2022.</div>
     <div class="rd">Schmidt, Leigh Eric. <em>The Church of Saint Thomas Paine: A Religious History of American Secularism</em>. Princeton University Press, 2021.</div>
     <div class="rd">Shrubsole, Nicolas D. &ldquo;Secularization, Dispossession, Forced Deprivatization.&rdquo; <em>Studies in Religion</em> 45, no. 3 (2016): 335&ndash;359.</div>
-    <div class="pn" style="color:#1A5C5A;border-color:#C2DEDD"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>26</span></div>
+    <div class="pn" style="color:#A3A3A3;border-color:#E8E8E8"><span>Pillar 2 &middot; Secularism &amp; Laicity</span><span>26</span></div>
   </div>`;
 }
 
@@ -1477,82 +1438,82 @@ function pgP3Opener(){
 
 function pgP3Desc(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
     <div class="dh">Pillar Description</div>
-    <div class="ra" style="background:#6B2737;"></div>
+    <div class="ra" style="background:#F43506;"></div>
     <div class="bt">
       This pillar engages participants in a critical and contextual exploration of racism as a structural reality that continues to shape both society and the life of the church. Moving beyond individual understandings of prejudice, the pillar examines how historical forces produced racial hierarchies, how theologians justified them, and how institutions sustained them &mdash; including the legacies of settler colonialism, anti-Black racism, and Indigenous dispossession.
     </div>
-    <div class="spq" style="border-color:#A84B5E;color:#6B2737;">Anti-racism is integral to Christian discipleship and to the Church&rsquo;s vocation in the world &mdash; not an ethical addendum, but a matter of theological orthodoxy.</div>
+    <div class="spq" style="border-color:#F77150;color:#F43506;">Anti-racism is integral to Christian discipleship and to the Church&rsquo;s vocation in the world &mdash; not an ethical addendum, but a matter of theological orthodoxy.</div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:4px 0 6px;">
       <img src="Pillar 3- Racism and Anti-Racism.png" alt="Pillar 3 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC" ><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>28</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0" ><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>28</span></div>
   </div>`;
 }
 
 /* ── SPREAD 14 ── */
 function pgP3Tier(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
     <div class="dh">Three-Tiered Methodology</div>
-    <div class="ra" style="background:#6B2737;"></div>
+    <div class="ra" style="background:#F43506;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">I</span><span class="tw-rest">ntellectual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">I</span><span class="tw-rest">ntellectual</span></span>
       <div class="tier-body">Participants engage key theological, historical, and social frameworks for understanding racism as a systemic and structural reality. This includes examining how theological concepts, ecclesial histories, and cultural narratives contribute to the construction and maintenance of racial hierarchies. Attention is given to developing shared conceptual clarity across diverse contexts.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">S</span><span class="tw-rest">piritual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">S</span><span class="tw-rest">piritual</span></span>
       <div class="tier-body">The pillar incorporates practices of reflection, lament, and discernment as essential to engaging questions of injustice. Participants consider how spiritual practices can sustain processes of truth-telling, repentance, and transformation &mdash; both individually and communally. The emphasis is on cultivating deep postures of humility, attentiveness, and responsibility.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">C</span><span class="tw-rest">ontextual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">C</span><span class="tw-rest">ontextual</span></span>
       <div class="tier-body">Participants explore how racism and anti-racism is expressed within their own social and ecclesial contexts, with particular attention to the realities of North America/Turtle Island. Through contextual analysis and shared dialogue, they identify challenges, resources, and possibilities for transformation &mdash; connecting theological reflection with concrete practices of justice and reconciliation.</div>
     </div>
         </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>29</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>29</span></div>
   </div>`;
 }
 
 function pgP3Obj(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
     <div class="dh" style="font-size:18px;">Learning Objectives<br>&amp; Intended Outcomes</div>
-    <div class="ra" style="background:#6B2737;"></div>
+    <div class="ra" style="background:#F43506;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">K</span><span class="tw-rest">nowledge</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">K</span><span class="tw-rest">nowledge</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Introduce the historical, theological, and structural dimensions of racism, including the role of the church in shaping and responding to these realities. Key concepts: white supremacy, settler colonialism, and anti-racism within ecclesial and societal frameworks.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants deepen their theological analysis of racism as a structural reality and sharpen their capacity to name and challenge its ongoing expression within the church and society.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">C</span><span class="tw-rest">ompetence</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">C</span><span class="tw-rest">ompetence</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Expand capacity to analyze concrete contexts through theological and anti-racist lenses, attending to the ways in which power, history, and identity shape experiences of injustice.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants critically assess their own contexts, recognize patterns of systemic injustice, and articulate contextually grounded responses within ecclesial and social settings.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#6B2737;">S</span><span class="tw-rest">kills</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#F43506;">S</span><span class="tw-rest">kills</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Hone skills in theological reflection, critical engagement with texts and contexts, and dialogue across difference, with emphasis on engaging complex and contested issues with clarity and care.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants contribute constructively to conversations on race and justice, engage in practices that support anti-racist transformation, and participate in initiatives promoting more just and inclusive forms of community.
       </div>
     </div>
         </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC" ><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>30</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0" ><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>30</span></div>
   </div>`;
 }
 
 /* ── SPREAD 15 ── */
 function pgP3Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#6B2737;padding-bottom:12px;border-bottom:2px solid #E2C5CC;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#F43506;padding-bottom:12px;border-bottom:2px solid #FCCCC0;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(107,39,55,.22);">1</div>
@@ -1579,17 +1540,17 @@ function pgP3Questions(){
       <div class="q-t">What lived practices of faith and justice might contribute to more just and reconciled forms of shared social and religious life? How do justice and love intersect for you?</div>
     </div>
         </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>31</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>31</span></div>
   </div>`;
 }
 
 function pgP3Themes(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
     <div class="dh" style="font-size:18px;">Key Themes &amp;<br>Learning Activities</div>
-    <div class="ra" style="background:#6B2737;"></div>
+    <div class="ra" style="background:#F43506;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
-    <div class="sub-h" style="margin-top:0;color:#6B2737;">Key Themes and Topics</div>
+    <div class="sub-h" style="margin-top:0;color:#F43506;">Key Themes and Topics</div>
     <div class="theme-item">Theological constructions of race and critiques of white privilege and supremacy</div>
     <div class="theme-item">The church and the historical formation of racial hierarchies</div>
     <div class="theme-item">Anti-Black racism and its structural legacies; Indigenous dispossession and settler colonialism</div>
@@ -1597,83 +1558,83 @@ function pgP3Themes(){
     <div class="theme-item">Practices of lament, confession, and reparative justice</div>
     <div class="theme-item">Intersectional dimensions of injustice (race, gender, class, migration)</div>
     <div class="theme-item">Contemporary movements for racial justice and ecclesial witness</div>
-    <div class="sub-h" style="color:#6B2737;">Learning Activities</div>
+    <div class="sub-h" style="color:#F43506;">Learning Activities</div>
     <div class="act-item">
       <div class="act-d">Structured dialogue with rotating inner and outer circles, emphasizing attentive listening and mutual accountability across experience and context.</div>
-      <div class="act-f" style="color:#6B2737;">Circle Method</div>
+      <div class="act-f" style="color:#F43506;">Circle Method</div>
     </div>
     <div class="act-item">
       <div class="act-d">Examine a contextual case related to racism and the church; identify key issues and propose theologically grounded responses.</div>
-      <div class="act-f" style="color:#6B2737;">Case Study</div>
+      <div class="act-f" style="color:#F43506;">Case Study</div>
     </div>
     <div class="act-item">
       <div class="act-d">Work with selected biblical texts exploring themes of justice, liberation, and reconciliation, and reflect on their relevance for contemporary contexts.</div>
-      <div class="act-f" style="color:#6B2737;">Biblical-Theological</div>
+      <div class="act-f" style="color:#F43506;">Biblical-Theological</div>
     </div>
     <div class="act-item">
       <div class="act-d">In groups, develop a short prayer, litany, or creative expression responding to themes of injustice, lament, and hope.</div>
-      <div class="act-f" style="color:#6B2737;">Creative &amp; Liturgical</div>
+      <div class="act-f" style="color:#F43506;">Creative &amp; Liturgical</div>
     </div>
         </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>32</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>32</span></div>
   </div>`;
 }
 
 /* ── SPREAD 16 ── */
 function pgP3Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#6B2737;padding-bottom:12px;border-bottom:2px solid #E2C5CC;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#F43506;padding-bottom:12px;border-bottom:2px solid #FCCCC0;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#6B2737;font-size:12px;">Genesis 1:26&ndash;27</div>
+          <div class="anch-ref" style="color:#F43506;font-size:12px;">Genesis 1:26&ndash;27</div>
           <div class="anch-txt" style="font-size:10.5px;">The creation narrative establishes the basis for human dignity and racial justice. All of humankind bears the image of God &mdash; a direct challenge to any racial hierarchy, and a foundation for the church&rsquo;s multiracial vocation.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#6B2737;font-size:12px;">Luke 1:46&ndash;55; 4:16&ndash;29</div>
+          <div class="anch-ref" style="color:#F43506;font-size:12px;">Luke 1:46&ndash;55; 4:16&ndash;29</div>
           <div class="anch-txt" style="font-size:10.5px;">Connected to Esau McCauley&rsquo;s <em>Reading While Black</em>. The Magnificat and Jesus&rsquo;s inaugural sermon establish the preferential option for the poor and marginalized as central to the Gospel.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#6B2737;font-size:12px;">Ephesians 2:14&ndash;18</div>
+          <div class="anch-ref" style="color:#F43506;font-size:12px;">Ephesians 2:14&ndash;18</div>
           <div class="anch-txt" style="font-size:10.5px;">The good news of Jesus Christ has the power to break down racial and ethnic barriers, pointing to the reconciliation accomplished in Christ as a mandate for anti-racist witness in the church.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#6B2737;font-size:12px;">Belhar Confession (1982)</div>
+          <div class="anch-ref" style="color:#F43506;font-size:12px;">Belhar Confession (1982)</div>
           <div class="anch-txt" style="font-size:10.5px;">Written during the apartheid era, the Belhar Confession declares that unity, reconciliation, and justice are inseparable from true Christian community &mdash; making anti-racism a matter of theological orthodoxy, not merely ethical preference.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#6B2737;font-size:12px;">Confession of 1967 (Section 9.44)</div>
+          <div class="anch-ref" style="color:#F43506;font-size:12px;">Confession of 1967 (Section 9.44)</div>
           <div class="anch-txt" style="font-size:10.5px;">&ldquo;God has created the peoples of the earth to be one universal family&hellip; the church labors for the abolition of all racial discrimination.&rdquo; Racial justice is an ecclesial obligation arising from God&rsquo;s reconciling work in Christ.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>33</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>33</span></div>
   </div>`;
 }
 
 function pgP3Readings(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#6B2737;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
+    <div class="sl" style="color:#F43506;">Pillar 3 &middot; Racism &amp; Anti-Racism</div>
     <div class="dh">Readings and Resources</div>
-    <div class="ra" style="background:#6B2737;"></div>
-    <div class="sub-h" style="margin-top:0;color:#6B2737;">Required Readings</div>
-    <div class="rd"><span class="rn" style="color:#6B2737;">10. </span>Jennings, Willie James. <em>The Christian Imagination: Theology and the Origins of Race</em>. Yale University Press, 2010. [PRIMARY TEXT]</div>
-    <div class="rd"><span class="rn" style="color:#6B2737;">11. </span>McCaulley, Esau. <em>Reading While Black</em>. IVP Academic, 2020. Ch. 4, &ldquo;The Bible and the Pursuit of Justice,&rdquo; pp. 71&ndash;95.</div>
-    <div class="rd"><span class="rn" style="color:#6B2737;">12. </span>Riley, Cole Arthur. <em>This Here Flesh</em>. Convergent Books, 2022. Chapters 9&ndash;11 (&ldquo;Rage,&rdquo; &ldquo;Justice,&rdquo; &ldquo;Repair&rdquo;).</div>
-    <div class="rd"><span class="rn" style="color:#6B2737;">13. </span>Kwok Pui-lan. <em>Postcolonial Imagination and Feminist Theology</em>. Westminster John Knox Press, 2005. Introduction and Ch. 1.</div>
-    <div class="rd"><span class="rn" style="color:#6B2737;">14. </span>Belhar Confession. Reformed Church in America, 1982.</div>
-    <div class="sub-h" style="color:#6B2737;">Further Readings</div>
+    <div class="ra" style="background:#F43506;"></div>
+    <div class="sub-h" style="margin-top:0;color:#F43506;">Required Readings</div>
+    <div class="rd"><span class="rn" style="color:#F43506;">10. </span>Jennings, Willie James. <em>The Christian Imagination: Theology and the Origins of Race</em>. Yale University Press, 2010. [PRIMARY TEXT]</div>
+    <div class="rd"><span class="rn" style="color:#F43506;">11. </span>McCaulley, Esau. <em>Reading While Black</em>. IVP Academic, 2020. Ch. 4, &ldquo;The Bible and the Pursuit of Justice,&rdquo; pp. 71&ndash;95.</div>
+    <div class="rd"><span class="rn" style="color:#F43506;">12. </span>Riley, Cole Arthur. <em>This Here Flesh</em>. Convergent Books, 2022. Chapters 9&ndash;11 (&ldquo;Rage,&rdquo; &ldquo;Justice,&rdquo; &ldquo;Repair&rdquo;).</div>
+    <div class="rd"><span class="rn" style="color:#F43506;">13. </span>Kwok Pui-lan. <em>Postcolonial Imagination and Feminist Theology</em>. Westminster John Knox Press, 2005. Introduction and Ch. 1.</div>
+    <div class="rd"><span class="rn" style="color:#F43506;">14. </span>Belhar Confession. Reformed Church in America, 1982.</div>
+    <div class="sub-h" style="color:#F43506;">Further Readings</div>
     <div class="rd">Edwards, Dennis R. <em>Might from the Margins</em>. Herald Press, 2020. Ch. 7, pp. 125&ndash;138.</div>
     <div class="rd">Budde, Mariann Edgar. <em>How We Learn to Be Brave</em>. Avery, 2023.</div>
     <div class="rd">Confession of 1967. Presbyterian Church (USA).</div>
-    <div class="sub-h" style="color:#6B2737;">Audiovisual &amp; Digital</div>
+    <div class="sub-h" style="color:#F43506;">Audiovisual &amp; Digital</div>
     <div class="rd">YouTube interview with Willie James Jennings, <em>The Christian Imagination</em>. [Video]</div>
     <div class="rd">Bishop Mariann Budde&rsquo;s sermon preached on Inauguration Day, January 2025. [Video]</div>
     <div class="rd">National African American Reparations Commission &mdash; reparationscomm.org [Website]</div>
-    <div class="pn" style="color:#6B2737;border-color:#E2C5CC"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>34</span></div>
+    <div class="pn" style="color:#F43506;border-color:#FCCCC0"><span>Pillar 3 &middot; Racism &amp; Anti-Racism</span><span>34</span></div>
   </div>`;
 }
 
@@ -1702,82 +1663,82 @@ function pgP4Opener(){
 
 function pgP4Desc(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
     <div class="dh">Pillar Description</div>
-    <div class="ra" style="background:#7A5C1E;"></div>
+    <div class="ra" style="background:#BB35EC;"></div>
     <div class="bt">
       This pillar invites participants to develop competency in interreligious leadership by considering how and why they thoughtfully engage across lines of religious difference. Grounded in the remarkable encounter between Rabbi Zalman Schachter-Shalomi and the Rev. Howard Thurman &mdash; an American Christian mystic and mentor to Rev. Dr. Martin Luther King Jr. &mdash; the pillar explores intersectional identity as it relates to interfaith dialogue.
     </div>
-    <div class="spq" style="border-color:#C4973A;color:#7A5C1E;">Participants identify their spiritual anchor chains &mdash; the deep roots that ground them in their own tradition while enabling authentic encounter with others &mdash; and enter into the work of transformation through dialogue.</div>
+    <div class="spq" style="border-color:#CF71F1;color:#BB35EC;">Participants identify their spiritual anchor chains &mdash; the deep roots that ground them in their own tradition while enabling authentic encounter with others &mdash; and enter into the work of transformation through dialogue.</div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:4px 0 6px;">
       <img src="Pillar 4 Interfaith Dialgue.png" alt="Pillar 4 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE" ><span>Pillar 4 &middot; Interfaith Dialogue</span><span>36</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA" ><span>Pillar 4 &middot; Interfaith Dialogue</span><span>36</span></div>
   </div>`;
 }
 
 /* ── SPREAD 18 ── */
 function pgP4Tier(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
     <div class="dh">Three-Tiered Methodology</div>
-    <div class="ra" style="background:#7A5C1E;"></div>
+    <div class="ra" style="background:#BB35EC;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">I</span><span class="tw-rest">ntellectual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">I</span><span class="tw-rest">ntellectual</span></span>
       <div class="tier-body">This pillar engages a variety of sources in contemporary interreligious/interfaith studies literature, inviting participants to engage excerpts of larger works with the hope of opening the imagination to larger conversations about interreligious leadership. The required readings and activities are designed to invite participants to search for common ground, in the words of Howard Thurman.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">S</span><span class="tw-rest">piritual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">S</span><span class="tw-rest">piritual</span></span>
       <div class="tier-body">Participants are invited into practices of active contemplation and dialogue, with practical and intellectual scaffolding to support their practice. Engaging the dialogue of Howard Thurman and Zalman Schachter-Shalomi, participants reflect on their spiritual anchor chains: what grounds them in their own tradition while enabling them to interact and learn from others in different religious traditions.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">C</span><span class="tw-rest">ontextual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">C</span><span class="tw-rest">ontextual</span></span>
       <div class="tier-body">Participants engage conversations of religious diversity in Canadian and United States contexts through group activities, readings emerging from multiple cultural contexts, and audiovisual resources that represent geographic diversity. Participants develop their own strategies for generative and constructive conversation based upon their own strengths and the contours of their communities.</div>
     </div>
         </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>37</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>37</span></div>
   </div>`;
 }
 
 function pgP4Obj(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
     <div class="dh" style="font-size:18px;">Learning Objectives<br>&amp; Intended Outcomes</div>
-    <div class="ra" style="background:#7A5C1E;"></div>
+    <div class="ra" style="background:#BB35EC;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">K</span><span class="tw-rest">nowledge</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">K</span><span class="tw-rest">nowledge</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Learn about historical and contemporary approaches to interfaith dialogue and gain an appreciation for the breadth of literature in interreligious studies.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants select approaches to interfaith dialogue contextually appropriate to their home contexts and curate helpful materials in interreligious studies to support interfaith dialogue.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">C</span><span class="tw-rest">ompetence</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">C</span><span class="tw-rest">ompetence</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Critically engage with questions of motivation for interfaith dialogue and hone ability to articulate commitments to interreligious engagement.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants critically evaluate competing contextual commitments to interfaith dialogue and articulate their own theological grounds for interreligious engagement.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#7A5C1E;">S</span><span class="tw-rest">kills</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#BB35EC;">S</span><span class="tw-rest">kills</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Develop capacity to participate in and facilitate generative and constructive conversation and dialogue across religious difference.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants apply conversation and dialogue skills to their home ecclesial, community, and geographic contexts.
       </div>
     </div>
         </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE" ><span>Pillar 4 &middot; Interfaith Dialogue</span><span>38</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA" ><span>Pillar 4 &middot; Interfaith Dialogue</span><span>38</span></div>
   </div>`;
 }
 
 /* ── SPREAD 19 ── */
 function pgP4Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#7A5C1E;padding-bottom:12px;border-bottom:2px solid #E2D8BE;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#BB35EC;padding-bottom:12px;border-bottom:2px solid #EECCFA;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(122,92,30,.22);">1</div>
@@ -1804,90 +1765,90 @@ function pgP4Questions(){
       <div class="q-t">What scriptural texts ground your own commitments to interreligious engagement and neighbor love?</div>
     </div>
         </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>39</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>39</span></div>
   </div>`;
 }
 
 function pgP4Themes(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
     <div class="dh" style="font-size:18px;">Key Themes &amp;<br>Learning Activities</div>
-    <div class="ra" style="background:#7A5C1E;"></div>
+    <div class="ra" style="background:#BB35EC;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
-    <div class="sub-h" style="margin-top:0;color:#7A5C1E;">Key Themes and Topics</div>
+    <div class="sub-h" style="margin-top:0;color:#BB35EC;">Key Themes and Topics</div>
     <div class="theme-item">Intersectional identity and its implications for interfaith leadership</div>
     <div class="theme-item">Strategies for constructive conversation and dialogue across religious difference</div>
     <div class="theme-item">Theological groundings for interreligious allyship</div>
     <div class="theme-item">The breadth of interreligious studies literature as a resource for local engagement</div>
     <div class="theme-item">Spectrum of interfaith engagement: from dialogue to shared leadership</div>
-    <div class="sub-h" style="color:#7A5C1E;">Learning Activities</div>
+    <div class="sub-h" style="color:#BB35EC;">Learning Activities</div>
     <div class="act-item">
       <div class="act-d">&ldquo;The Christmas Tree Crisis at Sea-Tac Airport&rdquo;: wrestle with this case study in religious diversity and complex challenges in public institutions (Pierce, <em>Pluralism in Practice</em>).</div>
-      <div class="act-f" style="color:#7A5C1E;">Case Study</div>
+      <div class="act-f" style="color:#BB35EC;">Case Study</div>
     </div>
     <div class="act-item">
       <div class="act-d">Constructive Cycles of Conversation: structured interfaith dialogue using Essential Partners resources, practicing generative dialogue skills across difference.</div>
-      <div class="act-f" style="color:#7A5C1E;">Small Group</div>
+      <div class="act-f" style="color:#BB35EC;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Museum of Contemporary Religious Art: engage online exhibits from MOCRA at Saint Louis University and reflect on art as a medium for interfaith understanding.</div>
-      <div class="act-f" style="color:#7A5C1E;">Creative Reflection</div>
+      <div class="act-f" style="color:#BB35EC;">Creative Reflection</div>
     </div>
     <div class="act-item">
       <div class="act-d">The Islamic Mary: engage the podcast and discuss your tradition&rsquo;s conceptions of Mary, Mother of Jesus, as a model for interreligious encounter around shared figures.</div>
-      <div class="act-f" style="color:#7A5C1E;">Small Group</div>
+      <div class="act-f" style="color:#BB35EC;">Small Group</div>
     </div>
         </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>40</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>40</span></div>
   </div>`;
 }
 
 /* ── SPREAD 20 ── */
 function pgP4Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#7A5C1E;padding-bottom:12px;border-bottom:2px solid #E2D8BE;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#BB35EC;padding-bottom:12px;border-bottom:2px solid #EECCFA;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#7A5C1E;font-size:12px;">Matthew 22:36&ndash;39 &mdash; The Great Commandment</div>
+          <div class="anch-ref" style="color:#BB35EC;font-size:12px;">Matthew 22:36&ndash;39 &mdash; The Great Commandment</div>
           <div class="anch-txt" style="font-size:10.5px;">This text establishes the basis for Christian social concern &mdash; love for neighbor &mdash; grounding the imperative to engage respectfully and generously with those of other faiths in the foundational commandment of Jesus.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#7A5C1E;font-size:12px;">Mark 3:31&ndash;35 &mdash; The Family of God</div>
+          <div class="anch-ref" style="color:#BB35EC;font-size:12px;">Mark 3:31&ndash;35 &mdash; The Family of God</div>
           <div class="anch-txt" style="font-size:10.5px;">Jesus identifies all who do the will of God as siblings, expanding the boundaries of community beyond ethnic, national, and religious lines &mdash; a radical call to recognize kinship across religious difference.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#7A5C1E;font-size:12px;">WCC &mdash; &ldquo;Guidelines for Dialogue and Relations with People of Other Religions&rdquo;</div>
+          <div class="anch-ref" style="color:#BB35EC;font-size:12px;">WCC &mdash; &ldquo;Guidelines for Dialogue and Relations with People of Other Religions&rdquo;</div>
           <div class="anch-txt" style="font-size:10.5px;">These guidelines serve as the basis of interreligious dialogue sponsored by the WCC and many churches worldwide, providing a framework for engagement that honors both Christian identity and the integrity of other religious traditions.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>41</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>41</span></div>
   </div>`;
 }
 
 function pgP4Readings(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#7A5C1E;">Pillar 4 &middot; Interfaith Dialogue</div>
+    <div class="sl" style="color:#BB35EC;">Pillar 4 &middot; Interfaith Dialogue</div>
     <div class="dh">Readings and Resources</div>
-    <div class="ra" style="background:#7A5C1E;"></div>
-    <div class="sub-h" style="margin-top:0;color:#7A5C1E;">Required Readings</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">15. </span>Schachter-Shalomi, Zalman. &ldquo;What I Found in the Chapel.&rdquo; In <em>My Neighbor&rsquo;s Faith</em>, ed. Peace, Rose &amp; Mobley. Orbis Books, 2012.</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">16. </span>Rose, Or N. &ldquo;Howard Thurman&rsquo;s Mentorship of Zalman Schachter-Shalomi.&rdquo; In <em>Interreligious Studies: Dispatches from an Emerging Field</em>. Baylor University Press, 2020.</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">17. </span>Mikva, Rachel. &ldquo;Dialogue.&rdquo; In <em>Interreligious Studies: An Introduction</em>. Cambridge University Press, 2023.</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">18. </span>KAICIID. &ldquo;The Role of Interreligious Dialogue in Indigenous Communities Around the World.&rdquo; December 2021.</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">19. </span>Patel, Eboo. &ldquo;Introduction.&rdquo; In <em>Interfaith Leadership: A Primer</em>. Beacon Press, 2016.</div>
-    <div class="rd"><span class="rn" style="color:#7A5C1E;">20. </span>Cooper, Lynn A. &ldquo;Humility, Courage, and Allyship.&rdquo; In <em>Embracing Our Time: The Sacrament of Interfaith Friendship</em>. Fortress Press, 2025.</div>
-    <div class="sub-h" style="color:#7A5C1E;">Further Readings &amp; Audiovisual</div>
+    <div class="ra" style="background:#BB35EC;"></div>
+    <div class="sub-h" style="margin-top:0;color:#BB35EC;">Required Readings</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">15. </span>Schachter-Shalomi, Zalman. &ldquo;What I Found in the Chapel.&rdquo; In <em>My Neighbor&rsquo;s Faith</em>, ed. Peace, Rose &amp; Mobley. Orbis Books, 2012.</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">16. </span>Rose, Or N. &ldquo;Howard Thurman&rsquo;s Mentorship of Zalman Schachter-Shalomi.&rdquo; In <em>Interreligious Studies: Dispatches from an Emerging Field</em>. Baylor University Press, 2020.</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">17. </span>Mikva, Rachel. &ldquo;Dialogue.&rdquo; In <em>Interreligious Studies: An Introduction</em>. Cambridge University Press, 2023.</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">18. </span>KAICIID. &ldquo;The Role of Interreligious Dialogue in Indigenous Communities Around the World.&rdquo; December 2021.</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">19. </span>Patel, Eboo. &ldquo;Introduction.&rdquo; In <em>Interfaith Leadership: A Primer</em>. Beacon Press, 2016.</div>
+    <div class="rd"><span class="rn" style="color:#BB35EC;">20. </span>Cooper, Lynn A. &ldquo;Humility, Courage, and Allyship.&rdquo; In <em>Embracing Our Time: The Sacrament of Interfaith Friendship</em>. Fortress Press, 2025.</div>
+    <div class="sub-h" style="color:#BB35EC;">Further Readings &amp; Audiovisual</div>
     <div class="rd">Rose, Ziad &amp; Hessler, eds. <em>Words to Live By: Sacred Sources for Interreligious Engagement</em>. Orbis Books, 2018.</div>
     <div class="rd">Mosher, Pierce &amp; Rose. <em>With the Best of Intentions: Interreligious Missteps and Mistakes</em>. Orbis Books, 2023.</div>
     <div class="rd">Patel, Peace &amp; Silverman. <em>Interreligious/Interfaith Studies: Defining a New Field</em>. Beacon Press, 2018.</div>
     <div class="rd">&ldquo;Blessed be the Stranger: Islamic Ethics and the Anthropocene.&rdquo; <em>Inter/sections</em> Podcast, Episode 6. [Podcast]</div>
     <div class="rd"><em>Abraham&rsquo;s Bridge</em> &mdash; documentary about the Tri-Faith Initiative in Omaha, Nebraska. [Film]</div>
-    <div class="pn" style="color:#7A5C1E;border-color:#E2D8BE"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>42</span></div>
+    <div class="pn" style="color:#BB35EC;border-color:#EECCFA"><span>Pillar 4 &middot; Interfaith Dialogue</span><span>42</span></div>
   </div>`;
 }
 
@@ -1916,82 +1877,82 @@ function pgP5Opener(){
 
 function pgP5Desc(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
     <div class="dh">Pillar Description</div>
-    <div class="ra" style="background:#2D5A3D;"></div>
+    <div class="ra" style="background:#D35400;"></div>
     <div class="bt">
       This pillar examines colonial mechanisms and their lasting implications for communities across the continent now known as the Americas, or Turtle Island. Centering Indigenous and decolonial theoretical frameworks, the pillar traces the web-like structure of colonialism as a concrete mechanism that continues to organize the logic of contemporary societies &mdash; shaping economies, gender relations, racial hierarchies, sexual norms, and ecological relationships.
     </div>
-    <div class="spq" style="border-color:#5A9E72;color:#2D5A3D;">Participants work with recent theologies that decenter Western knowledge, drawing on Indigenous philosophies and epistemological possibilities that exceed the boundaries of colonial thought.</div>
+    <div class="spq" style="border-color:#E0874C;color:#D35400;">Participants work with recent theologies that decenter Western knowledge, drawing on Indigenous philosophies and epistemological possibilities that exceed the boundaries of colonial thought.</div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:4px 0 6px;">
       <img src="Pillar 5- solidarity with Indeigenous Communities.png" alt="Pillar 5 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>44</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>44</span></div>
   </div>`;
 }
 
 /* ── SPREAD 22 ── */
 function pgP5Tier(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
     <div class="dh">Three-Tiered Methodology</div>
-    <div class="ra" style="background:#2D5A3D;"></div>
+    <div class="ra" style="background:#D35400;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">I</span><span class="tw-rest">ntellectual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">I</span><span class="tw-rest">ntellectual</span></span>
       <div class="tier-body">Participants engage with Indigenous and decolonial theologies to explore the mechanisms of coloniality, developing conceptual tools to recognize interconnected themes of economy, gender, racism, sexuality, and ecological responsibility. Drawing on critical texts from North America and the Global South, participants examine how colonial logic has shaped understandings of the Sacred in Anglo-North American settings.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">S</span><span class="tw-rest">piritual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">S</span><span class="tw-rest">piritual</span></span>
       <div class="tier-body">Drawing from Indigenous and decolonial works, participants explore alternative pathways for engaging the Sacred. Relationships with the land, alongside Indigenous philosophies such as the Seven Grandfather Teachings, provide resources to reimagine spiritual engagements and expand theological imaginations beyond inherited colonial frameworks.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">C</span><span class="tw-rest">ontextual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">C</span><span class="tw-rest">ontextual</span></span>
       <div class="tier-body">Participants bring their own communal, ecclesial, and cultural contexts into conversation with the themes of coloniality explored in this pillar. Drawing on diverse social and religious locations across Turtle Island and the Global South, they investigate how colonial mechanisms continue to operate in their specific communities, naming both the wounds of coloniality and the decolonial possibilities already present in their lived traditions.</div>
     </div>
         </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>45</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>45</span></div>
   </div>`;
 }
 
 function pgP5Obj(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
     <div class="dh" style="font-size:18px;">Learning Objectives<br>&amp; Intended Outcomes</div>
-    <div class="ra" style="background:#2D5A3D;"></div>
+    <div class="ra" style="background:#D35400;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">K</span><span class="tw-rest">nowledge</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">K</span><span class="tw-rest">nowledge</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Learn key concepts of coloniality and settler-colonialism, examining dominant epistemological structures and their influence on theological articulations within Anglo-North American contexts, alongside Indigenous and decolonial theoretical frameworks.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants identify key elements of coloniality, explain colonial mechanisms within current contexts, and understand their profound influence on theological debates.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">C</span><span class="tw-rest">ompetence</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">C</span><span class="tw-rest">ompetence</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Critically analyze the web-like structures of coloniality across interconnected areas and develop skills to recognize colonial mechanisms within denominational traditions.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants apply decolonial and Indigenous frameworks within their own ecumenical and ecclesial contexts and develop concrete mechanisms for decolonial processes.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#2D5A3D;">S</span><span class="tw-rest">kills</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#D35400;">S</span><span class="tw-rest">kills</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Develop practical capacities for cross-cultural and ecumenical dialogue, including the ability to facilitate conversations about coloniality and Indigenous solidarity within communities.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants demonstrate facilitation skills supporting decolonial engagement, advocate for Indigenous solidarity, and contribute constructively to decolonial processes within ecclesial networks.
       </div>
     </div>
         </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>46</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>46</span></div>
   </div>`;
 }
 
 /* ── SPREAD 23 ── */
 function pgP5Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#2D5A3D;padding-bottom:12px;border-bottom:2px solid #BDD9C8;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#D35400;padding-bottom:12px;border-bottom:2px solid #F4D4BF;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(45,90,61,.22);">1</div>
@@ -2018,93 +1979,93 @@ function pgP5Questions(){
       <div class="q-t">What does Visible Justice look like on Turtle Island today, and what concrete steps can your community take toward meaningful and sustained solidarity?</div>
     </div>
         </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>47</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>47</span></div>
   </div>`;
 }
 
 function pgP5Themes(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
     <div class="dh" style="font-size:18px;">Key Themes &amp;<br>Learning Activities</div>
-    <div class="ra" style="background:#2D5A3D;"></div>
+    <div class="ra" style="background:#D35400;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
-    <div class="sub-h" style="margin-top:0;color:#2D5A3D;">Key Themes and Topics</div>
+    <div class="sub-h" style="margin-top:0;color:#D35400;">Key Themes and Topics</div>
     <div class="theme-item">Settler-colonialism on Turtle Island: colonial histories, ongoing structures, and ecclesial responsibilities</div>
     <div class="theme-item">Coloniality and Anglo-North American theology: dominant epistemologies and their theological influence</div>
     <div class="theme-item">Decolonial and Indigenous theologies: alternative frameworks and reimagined understandings of the Sacred</div>
     <div class="theme-item">Indigenous solidarity: theological grounding and ecumenical commitment</div>
     <div class="theme-item">Decolonial possibilities in ecclesial contexts: denominational traditions and ecumenical dialogue</div>
-    <div class="sub-h" style="color:#2D5A3D;">Learning Activities</div>
+    <div class="sub-h" style="color:#D35400;">Learning Activities</div>
     <div class="act-item">
       <div class="act-d">Biblical Text Analysis: engage a selected text first through traditional Western interpretation, then apply decolonial and Indigenous frameworks &mdash; produce a comparative reflection identifying how colonial assumptions have shaped classical readings.</div>
-      <div class="act-f" style="color:#2D5A3D;">Small Group</div>
+      <div class="act-f" style="color:#D35400;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Ethical Case Study: engage a concrete situation of coloniality in an ecclesial context on Turtle Island; analyze from different perspectives and produce shared theological responses grounded in Indigenous solidarity.</div>
-      <div class="act-f" style="color:#2D5A3D;">Small Group</div>
+      <div class="act-f" style="color:#D35400;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Denominational Statements Analysis: critically read official church statements regarding Indigenous communities, identify flaws and strengths, and explore possibilities for rewriting them to reflect genuine solidarity.</div>
-      <div class="act-f" style="color:#2D5A3D;">Small Group</div>
+      <div class="act-f" style="color:#D35400;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Seven Grandfather Teachings: facilitators introduce the Teachings with full group; small groups discuss how they challenge, enrich, or expand theological understandings and ecclesial traditions.</div>
-      <div class="act-f" style="color:#2D5A3D;">Full &amp; Small Group</div>
+      <div class="act-f" style="color:#D35400;">Full &amp; Small Group</div>
     </div>
         </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>48</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>48</span></div>
   </div>`;
 }
 
 /* ── SPREAD 24 ── */
 function pgP5Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#2D5A3D;padding-bottom:12px;border-bottom:2px solid #BDD9C8;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#D35400;padding-bottom:12px;border-bottom:2px solid #F4D4BF;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#2D5A3D;font-size:12px;">Mark 7:24&ndash;30 / Matt. 15:21&ndash;28 &mdash; The Syrophoenician Woman</div>
+          <div class="anch-ref" style="color:#D35400;font-size:12px;">Mark 7:24&ndash;30 / Matt. 15:21&ndash;28 &mdash; The Syrophoenician Woman</div>
           <div class="anch-txt" style="font-size:10.5px;">A colonized woman&rsquo;s direct confrontation reorganizes Jesus&rsquo;s own understanding of solidarity, dismantling colonial mechanisms of exclusion and offering a model for ecumenical dialogue initiated from the margins.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#2D5A3D;font-size:12px;">Micah 6:8 &mdash; Justice, Kindness, and Humility</div>
+          <div class="anch-ref" style="color:#D35400;font-size:12px;">Micah 6:8 &mdash; Justice, Kindness, and Humility</div>
           <div class="anch-txt" style="font-size:10.5px;">This prophetic call proposes a vision of the world grounded in justice, mercy, and humility as foundational pillars for dismantling colonial and capitalist logics &mdash; shared across Indigenous and ecumenical traditions.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#2D5A3D;font-size:12px;">Truth &amp; Reconciliation Commission of Canada &mdash; Calls to Action 48&ndash;49 (2015)</div>
+          <div class="anch-ref" style="color:#D35400;font-size:12px;">Truth &amp; Reconciliation Commission of Canada &mdash; Calls to Action 48&ndash;49 (2015)</div>
           <div class="anch-txt" style="font-size:10.5px;">These calls demand that Canadian churches repudiate the Doctrine of Discovery, framing ecclesial accountability to Indigenous peoples as a structural theological obligation rooted in histories of colonial harm.</div>
         </div>
         <div class="anch" style="">
-          <div class="anch-ref" style="color:#2D5A3D;font-size:12px;">WCC &mdash; &ldquo;Statement on the Doctrine of Discovery&rdquo; (2012)</div>
+          <div class="anch-ref" style="color:#D35400;font-size:12px;">WCC &mdash; &ldquo;Statement on the Doctrine of Discovery&rdquo; (2012)</div>
           <div class="anch-txt" style="font-size:10.5px;">This ecumenical declaration names the Doctrine of Discovery as a theological error, calling churches across traditions toward Indigenous solidarity as an act of faithful, prophetic witness.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>49</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF"><span>Pillar 5 &middot; Indigenous Solidarity</span><span>49</span></div>
   </div>`;
 }
 
 function pgP5Readings(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#2D5A3D;">Pillar 5 &middot; Indigenous Solidarity</div>
+    <div class="sl" style="color:#D35400;">Pillar 5 &middot; Indigenous Solidarity</div>
     <div class="dh">Readings and Resources</div>
-    <div class="ra" style="background:#2D5A3D;"></div>
-    <div class="sub-h" style="margin-top:0;color:#2D5A3D;">Required Readings</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">21. </span>Truth and Reconciliation Commission of Canada. <em>Calls to Action</em>. Winnipeg: TRC, 2015.</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">22. </span>World Council of Churches. &ldquo;Statement on the Doctrine of Discovery and Its Enduring Impact on Indigenous Peoples.&rdquo; February 2012.</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">23. </span>Medina, Nestor. &ldquo;A Decolonial Primer.&rdquo; <em>Toronto Journal of Theology</em> 33, no. 2 (2017): 279&ndash;287.</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">24. </span>Mendoza, Breny. &ldquo;Decolonial Theories in Comparison.&rdquo; <em>Journal of World Philosophies</em> 5, no. 1 (2020): 1&ndash;16.</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">25. </span>Quijano, Anibal. &ldquo;Coloniality and Modernity/Rationality.&rdquo; <em>Cultural Studies</em> 21, no. 2&ndash;3 (2007): 168&ndash;178.</div>
-    <div class="rd"><span class="rn" style="color:#2D5A3D;">26. </span>ONWA. &ldquo;Seven Sacred/Grandfather Teachings.&rdquo; Ontario Native Women&rsquo;s Association, 2024.</div>
-    <div class="sub-h" style="color:#2D5A3D;">Further Readings</div>
+    <div class="ra" style="background:#D35400;"></div>
+    <div class="sub-h" style="margin-top:0;color:#D35400;">Required Readings</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">21. </span>Truth and Reconciliation Commission of Canada. <em>Calls to Action</em>. Winnipeg: TRC, 2015.</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">22. </span>World Council of Churches. &ldquo;Statement on the Doctrine of Discovery and Its Enduring Impact on Indigenous Peoples.&rdquo; February 2012.</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">23. </span>Medina, Nestor. &ldquo;A Decolonial Primer.&rdquo; <em>Toronto Journal of Theology</em> 33, no. 2 (2017): 279&ndash;287.</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">24. </span>Mendoza, Breny. &ldquo;Decolonial Theories in Comparison.&rdquo; <em>Journal of World Philosophies</em> 5, no. 1 (2020): 1&ndash;16.</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">25. </span>Quijano, Anibal. &ldquo;Coloniality and Modernity/Rationality.&rdquo; <em>Cultural Studies</em> 21, no. 2&ndash;3 (2007): 168&ndash;178.</div>
+    <div class="rd"><span class="rn" style="color:#D35400;">26. </span>ONWA. &ldquo;Seven Sacred/Grandfather Teachings.&rdquo; Ontario Native Women&rsquo;s Association, 2024.</div>
+    <div class="sub-h" style="color:#D35400;">Further Readings</div>
     <div class="rd">Carvalhaes, Claudio. &ldquo;A Decolonial Prayer.&rdquo; In <em>Decolonial Christianities</em>. Palgrave Macmillan, 2019.</div>
     <div class="rd">Medina, Nestor. <em>On the Doctrine of Discovery</em>. Canadian Council of Churches, 2017.</div>
     <div class="rd">Smith, Andrea. &ldquo;Decolonizing Theology.&rdquo; <em>Union Seminary Quarterly Review</em> 59, no. 1&ndash;2 (2005): 63&ndash;78.</div>
     <div class="rd">Verbos &amp; Humphries. &ldquo;A Native American Relational Ethic.&rdquo; <em>Journal of Business Ethics</em> 123, no. 1 (2014): 1&ndash;9.</div>
-    <div class="pn" style="color:#2D5A3D;border-color:#BDD9C8" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>50</span></div>
+    <div class="pn" style="color:#D35400;border-color:#F4D4BF" ><span>Pillar 5 &middot; Indigenous Solidarity</span><span>50</span></div>
   </div>`;
 }
 
@@ -2130,82 +2091,82 @@ function pgP6Opener(){
 
 function pgP6Desc(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
     <div class="dh">Pillar Description</div>
-    <div class="ra" style="background:#4A2060;"></div>
+    <div class="ra" style="background:#1F3F66;"></div>
     <div class="bt">
       This pillar examines global structures of economic inequality through ecumenical, biblical, and liberation-theological lenses. Participants engage with the moral and theological dimensions of wealth disparity and poverty, developing critical tools to analyze how economic systems intersect with race, gender, ecology, and spirituality.
     </div>
-    <div class="spq" style="border-color:#9B6BC0;color:#4A2060;">Drawing on the prophetic traditions of Scripture and contemporary voices from the Global South, participants are invited to cultivate a spirituality of solidarity and to discern concrete practices of economic justice within their own ecclesial and communal contexts.</div>
+    <div class="spq" style="border-color:#627893;color:#1F3F66;">Drawing on the prophetic traditions of Scripture and contemporary voices from the Global South, participants are invited to cultivate a spirituality of solidarity and to discern concrete practices of economic justice within their own ecclesial and communal contexts.</div>
     <div style="flex:1;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:4px 0 6px;">
       <img src="Pillar 6- Wealth Disparity and Poverty.png" alt="Pillar 6 concept diagram"
            style="max-width:100%;max-height:100%;object-fit:contain;display:block;">
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>52</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>52</span></div>
   </div>`;
 }
 
 /* ── SPREAD 26 ── */
 function pgP6Tier(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
     <div class="dh">Three-Tiered Methodology</div>
-    <div class="ra" style="background:#4A2060;"></div>
+    <div class="ra" style="background:#1F3F66;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">I</span><span class="tw-rest">ntellectual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">I</span><span class="tw-rest">ntellectual</span></span>
       <div class="tier-body">Participants engage with liberation theology, economic ethics, and ecumenical social teaching to analyze the structural causes of poverty and wealth disparity. Drawing on texts from the Global South and classical prophetic traditions, they develop conceptual tools to recognize how economic systems intersect with race, gender, ecology, and spirituality.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">S</span><span class="tw-rest">piritual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">S</span><span class="tw-rest">piritual</span></span>
       <div class="tier-body">Rooted in Scripture&rsquo;s preferential option for the poor and the prophetic call to justice, participants cultivate a spirituality of solidarity that interrogates personal and communal attachments to wealth. Practices of contemplative discernment and communal prayer orient participants toward a life-giving relationship with those experiencing poverty.</div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">C</span><span class="tw-rest">ontextual</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">C</span><span class="tw-rest">ontextual</span></span>
       <div class="tier-body">Participants bring their own ecclesial, cultural, and socioeconomic contexts into critical dialogue with the themes of this pillar. Attending to both global structures and local manifestations of poverty, they identify concrete possibilities for prophetic witness and solidarity within their communities, denominations, and ecumenical networks.</div>
     </div>
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>53</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>53</span></div>
   </div>`;
 }
 
 function pgP6Obj(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
     <div class="dh" style="font-size:18px;">Learning Objectives<br>&amp; Intended Outcomes</div>
-    <div class="ra" style="background:#4A2060;"></div>
+    <div class="ra" style="background:#1F3F66;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">K</span><span class="tw-rest">nowledge</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">K</span><span class="tw-rest">nowledge</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Understand the structural, historical, and theological dimensions of global wealth disparity and poverty, drawing on liberation theology, ecumenical social teaching, and prophetic biblical traditions.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants articulate key mechanisms of economic inequality, identify their theological implications, and locate their ecclesial traditions within contemporary debates on poverty and justice.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">C</span><span class="tw-rest">ompetence</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">C</span><span class="tw-rest">ompetence</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Critically analyze the intersections of economic systems with race, gender, ecology, and spirituality, and evaluate ecclesial responses to poverty and wealth disparity from diverse theological standpoints.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants apply liberation-theological and prophetic frameworks to real-world economic situations and develop capacity for cross-contextual ecumenical dialogue on economic justice.
       </div>
     </div>
     <div class="tier-editorial">
-      <span class="tier-word"><span class="tw-cap" style="color:#4A2060;">S</span><span class="tw-rest">kills</span></span>
+      <span class="tier-word"><span class="tw-cap" style="color:#1F3F66;">S</span><span class="tw-rest">kills</span></span>
       <div class="tier-body">
         <strong style="color:var(--text);font-size:10.5px;">Objective:</strong> Develop practical capacities for prophetic witness, solidarity-building, and facilitation of conversations about economic inequality within communities and denominations.<br>
         <strong style="color:var(--muted);font-size:10.5px;">Outcome:</strong> Participants design and implement concrete actions of solidarity within their ecclesial contexts and demonstrate skills in facilitating justice-oriented economic dialogue.
       </div>
     </div>
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>54</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>54</span></div>
   </div>`;
 }
 
 /* ── SPREAD 27 ── */
 function pgP6Questions(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#4A2060;padding-bottom:12px;border-bottom:2px solid #D8C2F0;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:42px;line-height:1.05;color:#1F3F66;padding-bottom:12px;border-bottom:2px solid #C7CFD8;margin-bottom:16px;flex-shrink:0;">Guiding<br>Questions</div>
     <div style="flex:1;min-height:0;overflow:hidden;">
     <div class="q-block">
       <div class="q-n" style="color:rgba(74,32,96,.22);">1</div>
@@ -2236,95 +2197,95 @@ function pgP6Questions(){
       <div class="q-t">How can ecumenical and interfaith partnerships deepen the work of solidarity with those experiencing poverty, and what would genuine economic ecumenism look like in your context?</div>
     </div>
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>55</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>55</span></div>
   </div>`;
 }
 
 function pgP6Themes(){
   return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
     <div class="dh" style="font-size:18px;">Key Themes &amp;<br>Learning Activities</div>
-    <div class="ra" style="background:#4A2060;"></div>
+    <div class="ra" style="background:#1F3F66;"></div>
     <div style="flex:1;min-height:0;overflow:hidden;">
-    <div class="sub-h" style="margin-top:0;color:#4A2060;">Key Themes and Topics</div>
+    <div class="sub-h" style="margin-top:0;color:#1F3F66;">Key Themes and Topics</div>
     <div class="theme-item">Global wealth disparity: structural causes, historical roots, and contemporary expressions</div>
     <div class="theme-item">Liberation theology and the preferential option for the poor: biblical and theological grounding</div>
     <div class="theme-item">Prophetic traditions and economic justice: from Scripture to contemporary ecumenical social teaching</div>
     <div class="theme-item">Intersectionality of poverty with race, gender, ecology, and coloniality</div>
     <div class="theme-item">Ecclesial responses to poverty: solidarity, charity, and prophetic advocacy</div>
-    <div class="sub-h" style="color:#4A2060;">Learning Activities</div>
+    <div class="sub-h" style="color:#1F3F66;">Learning Activities</div>
     <div class="act-item">
       <div class="act-d">Prophetic Text Analysis: read a selected biblical text through both a classical and a liberation-theological lens &mdash; compare how each reading shapes concrete responses to poverty and wealth disparity in the church today.</div>
-      <div class="act-f" style="color:#4A2060;">Small Group</div>
+      <div class="act-f" style="color:#1F3F66;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Case Study &mdash; Ecclesial Response: analyze a documented church initiative addressing poverty; evaluate its theological assumptions, effectiveness, and alignment with prophetic and ecumenical social teaching.</div>
-      <div class="act-f" style="color:#4A2060;">Small Group</div>
+      <div class="act-f" style="color:#1F3F66;">Small Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Solidarity Action Design: working from your own community context, design a concrete action of solidarity with those experiencing poverty &mdash; grounded in the theological and methodological frameworks of this pillar.</div>
-      <div class="act-f" style="color:#4A2060;">Full Group</div>
+      <div class="act-f" style="color:#1F3F66;">Full Group</div>
     </div>
     <div class="act-item">
       <div class="act-d">Intersectionality Mapping: trace the connections between economic inequality and the other five pillars; identify how solidarity with those in poverty is inseparable from work on climate, racism, and Indigenous rights.</div>
-      <div class="act-f" style="color:#4A2060;">Small Group</div>
+      <div class="act-f" style="color:#1F3F66;">Small Group</div>
     </div>
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>56</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>56</span></div>
   </div>`;
 }
 
 /* ── SPREAD 28 ── */
 function pgP6Biblical(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
-    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#4A2060;padding-bottom:12px;border-bottom:2px solid #D8C2F0;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:38px;line-height:1.08;color:#1F3F66;padding-bottom:12px;border-bottom:2px solid #C7CFD8;margin-bottom:16px;flex-shrink:0;">Biblical &amp;<br>Theological Anchors</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 22px;flex:1;min-height:0;overflow:hidden;">
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#4A2060;font-size:12px;">Luke 4:18 &mdash; The Nazareth Manifesto</div>
+          <div class="anch-ref" style="color:#1F3F66;font-size:12px;">Luke 4:18 &mdash; The Nazareth Manifesto</div>
           <div class="anch-txt" style="font-size:10.5px;">Jesus&rsquo; inaugural declaration centres the liberation of the poor as the defining mission of the kingdom &mdash; grounding all Christian social engagement in a preferential solidarity with those on the economic margins.</div>
         </div>
         <div class="anch">
-          <div class="anch-ref" style="color:#4A2060;font-size:12px;">Amos 5:21&ndash;24 &mdash; Let Justice Roll</div>
+          <div class="anch-ref" style="color:#1F3F66;font-size:12px;">Amos 5:21&ndash;24 &mdash; Let Justice Roll</div>
           <div class="anch-txt" style="font-size:10.5px;">The prophetic rejection of hollow worship divorced from economic justice establishes that authentic liturgy demands structural accountability &mdash; a foundation for ecumenical social teaching on poverty.</div>
         </div>
         <div class="anch">
-          <div class="anch-ref" style="color:#4A2060;font-size:12px;">Matthew 25:31&ndash;46 &mdash; The Last Judgement</div>
+          <div class="anch-ref" style="color:#1F3F66;font-size:12px;">Matthew 25:31&ndash;46 &mdash; The Last Judgement</div>
           <div class="anch-txt" style="font-size:10.5px;">The identification of Christ with the hungry, the stranger, and the poor grounds Christian solidarity not as charity but as encounter &mdash; a christological imperative for the church&rsquo;s engagement with wealth disparity.</div>
         </div>
       </div>
       <div style="overflow:hidden;">
         <div class="anch" style="border-top:1px solid var(--rule);">
-          <div class="anch-ref" style="color:#4A2060;font-size:12px;">Gutierrez &mdash; <em>A Theology of Liberation</em> (1971)</div>
+          <div class="anch-ref" style="color:#1F3F66;font-size:12px;">Gutierrez &mdash; <em>A Theology of Liberation</em> (1971)</div>
           <div class="anch-txt" style="font-size:10.5px;">Gutierrez&rsquo;s foundational articulation of the preferential option for the poor challenges churches to read Scripture from below &mdash; reshaping the entire theological task as solidarity with those who suffer structural injustice.</div>
         </div>
         <div class="anch">
-          <div class="anch-ref" style="color:#4A2060;font-size:12px;">WCC &mdash; <em>Economy of Life</em> (2012)</div>
+          <div class="anch-ref" style="color:#1F3F66;font-size:12px;">WCC &mdash; <em>Economy of Life</em> (2012)</div>
           <div class="anch-txt" style="font-size:10.5px;">This ecumenical framework calls for an alternative economy grounded in the dignity of all life &mdash; offering churches a shared theological vision for addressing global wealth disparity through prophetic witness and institutional accountability.</div>
         </div>
       </div>
     </div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>57</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>57</span></div>
   </div>`;
 }
 
 function pgP6Readings(){
   return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
-    <div class="sl" style="color:#4A2060;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
+    <div class="sl" style="color:#1F3F66;">Pillar 6 &middot; Wealth Disparity &amp; Poverty</div>
     <div class="dh">Readings and Resources</div>
-    <div class="ra" style="background:#4A2060;"></div>
-    <div class="sub-h" style="margin-top:0;color:#4A2060;">Required Readings</div>
-    <div class="rd"><span class="rn" style="color:#4A2060;">27. </span>Gutiérrez, Gustavo. <em>A Theology of Liberation: History, Politics, and Salvation</em>. Maryknoll: Orbis Books, 1988. Selection.</div>
-    <div class="rd"><span class="rn" style="color:#4A2060;">28. </span>World Council of Churches. <em>Economy of Life: A Call to Action</em>. Geneva: WCC, 2012.</div>
-    <div class="rd"><span class="rn" style="color:#4A2060;">29. </span>Duchrow, Ulrich and Franz Hinkelammert. <em>Transcending Greedy Money</em>. New York: Palgrave Macmillan, 2012. Selection.</div>
-    <div class="rd"><span class="rn" style="color:#4A2060;">30. </span>Sung, Jung Mo. &ldquo;Desire, Market, and Religion.&rdquo; In <em>Reclaiming Liberation Theology</em>. London: SCM Press, 2007. Selection.</div>
-    <div class="rd"><span class="rn" style="color:#4A2060;">31. </span>Boff, Leonardo. <em>Cry of the Earth, Cry of the Poor</em>. Maryknoll: Orbis Books, 1997. Selection.</div>
-    <div class="sub-h" style="color:#4A2060;">Further Readings</div>
+    <div class="ra" style="background:#1F3F66;"></div>
+    <div class="sub-h" style="margin-top:0;color:#1F3F66;">Required Readings</div>
+    <div class="rd"><span class="rn" style="color:#1F3F66;">27. </span>Gutiérrez, Gustavo. <em>A Theology of Liberation: History, Politics, and Salvation</em>. Maryknoll: Orbis Books, 1988. Selection.</div>
+    <div class="rd"><span class="rn" style="color:#1F3F66;">28. </span>World Council of Churches. <em>Economy of Life: A Call to Action</em>. Geneva: WCC, 2012.</div>
+    <div class="rd"><span class="rn" style="color:#1F3F66;">29. </span>Duchrow, Ulrich and Franz Hinkelammert. <em>Transcending Greedy Money</em>. New York: Palgrave Macmillan, 2012. Selection.</div>
+    <div class="rd"><span class="rn" style="color:#1F3F66;">30. </span>Sung, Jung Mo. &ldquo;Desire, Market, and Religion.&rdquo; In <em>Reclaiming Liberation Theology</em>. London: SCM Press, 2007. Selection.</div>
+    <div class="rd"><span class="rn" style="color:#1F3F66;">31. </span>Boff, Leonardo. <em>Cry of the Earth, Cry of the Poor</em>. Maryknoll: Orbis Books, 1997. Selection.</div>
+    <div class="sub-h" style="color:#1F3F66;">Further Readings</div>
     <div class="rd">Sobrino, Jon. <em>No Salvation Outside the Poor</em>. Maryknoll: Orbis Books, 2008.</div>
     <div class="rd">Ellacuría, Ignacio. &ldquo;The Church of the Poor, Historical Sacrament of Liberation.&rdquo; In <em>Mysterium Liberationis</em>. Orbis, 1993.</div>
     <div class="rd">Pixley, Jorge and Clodovis Boff. <em>The Bible, the Church, and the Poor</em>. Maryknoll: Orbis Books, 1989.</div>
-    <div class="pn" style="color:#4A2060;border-color:#D8C2F0"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>58</span></div>
+    <div class="pn" style="color:#1F3F66;border-color:#C7CFD8"><span>Pillar 6 &middot; Wealth Disparity &amp; Poverty</span><span>58</span></div>
   </div>`;
 }
 
