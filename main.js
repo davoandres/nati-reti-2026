@@ -137,35 +137,7 @@
     });
   }
 
-  /* ── Pillar card hover accent colors ─────────────────── */
-  function setupPillarColors() {
-    const colors = [
-      '#014873', // Dark Blue
-      '#c33d1c', // Terracotta
-      '#036788', // Dark Teal
-      '#2baebf', // Teal
-      '#717918', // Olive
-      '#014873', // Dark Blue
-    ];
 
-    document.querySelectorAll('.pillar-card').forEach(function (card, i) {
-      const color = colors[i % colors.length];
-      card.addEventListener('mouseenter', function () {
-        card.style.setProperty('--pillar-accent', color);
-        const bar = card.querySelector('::before');
-      });
-    });
-
-    // Apply CSS variable overrides directly
-    const styleEl = document.createElement('style');
-    colors.forEach(function (color, i) {
-      styleEl.textContent +=
-        '.pillar-card:nth-child(' + (i + 1) + ')::before { background: ' + color + ' !important; }\n';
-      styleEl.textContent +=
-        '.pillar-card:nth-child(' + (i + 1) + '):hover .pillar-number { color: ' + color + ' !important; }\n';
-    });
-    document.head.appendChild(styleEl);
-  }
 
   /* ── Countdown Timer ──────────────────────────────────── */
   function setupCountdown() {
@@ -236,7 +208,6 @@
     addRevealClasses();
     observeReveal();
     setupActiveLinks();
-    setupPillarColors();
     setupCountdown();
     smoothScrollLinks();
     setupMobileApplyBar();
