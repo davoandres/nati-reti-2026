@@ -1095,6 +1095,35 @@ img {
   background: var(--white);
 }
 
+/* ── Booklet Launch Banner ─────────────────────────────── */
+.booklet-launch-section {
+  background: var(--off-white);
+  padding: 70px 0;
+}
+
+.booklet-launch-banner {
+  display: block;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.booklet-launch-banner:hover,
+.booklet-launch-banner:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+}
+
+.booklet-launch-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
