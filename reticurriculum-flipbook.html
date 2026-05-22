@@ -85,7 +85,7 @@ html,body{
 }
 .cover-footer{
   margin-top:28px;
-  font-family:'Inter',sans-serif;font-size:8.5px;
+  font-family:'Inter',sans-serif;font-size:7.5px;
   letter-spacing:.04em;color:rgba(255,255,255,.52);
   line-height:1.85;
 }
@@ -493,6 +493,27 @@ html,body{
 /* Responsive */
 /* Desktop intermediate scaling (two-page spread) */
 @media(max-width:1200px) and (min-width:901px){.scene{transform:scale(.84);transform-origin:center top;margin-bottom:-108px;}}
+
+/* Short desktop viewports (e.g. 13" MacBook Air) — scale book down so nav + buttons stay visible */
+@media(min-width:901px) and (max-height:920px){
+  html,body{
+    justify-content:flex-start;
+    padding:14px 0 22px;
+    gap:12px;
+    overflow:auto;
+  }
+  .scene{
+    transform:scale(.78);
+    transform-origin:top center;
+    margin-bottom:calc(var(--PH) * -0.22);
+  }
+}
+@media(min-width:901px) and (max-height:800px){
+  .scene{
+    transform:scale(.68);
+    margin-bottom:calc(var(--PH) * -0.32);
+  }
+}
 
 /* Mobile: single-page portrait mode — scale whole scene to fit viewport */
 @media(max-width:900px){
