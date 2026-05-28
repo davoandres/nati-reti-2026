@@ -1656,6 +1656,16 @@ img {
   transform: scale(1.04);
 }
 
+/* Variant: preserve original logo colors (e.g. multi-colored crests). */
+.supporter-logo--natural {
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 1;
+  height: 96px;
+  max-width: 440px;
+  margin-bottom: 0;
+}
+
 .supporter-caption {
   font-family: var(--font-serif);
   font-size: 0.82rem;
