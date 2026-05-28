@@ -2,3 +2,32 @@
 .claude/
 nati-reti-2026.html
 .vercel
+
+# Source asset libraries (live on disk, not in git history)
+Pictures/
+Logos 3/
+Logos juntos/
+Logos text Images/
+
+# Source documents
+*.docx
+*.pdf
+
+# Working scripts
+*.py
+*.code-workspace
+
+# Draft images and old assets at repo root
+book-navy.png
+book-navyfinal2.jpeg
+book-crop-navy3.png
+unnamed.png
+Methodology3.png
+Six pillars logos.png
+all pillars 2.png
+NATI-RETI 2026 – pillars.png
+Poster curriculum Methdolology.svg
+WCClogo_colour_ENG.jpg
+page-flip.ogg
+remixed-6f5b247e.tsx
+Academic Credit and Assessment.md
