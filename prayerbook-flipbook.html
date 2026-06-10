@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>NATI-RETI 2026 · Prayer Book</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#0A1C3E;
+  --blue:#1B3B6F;
+  --mid:#2E5FA3;
+  --gold:#C8A46A;
+  --cream:#F5F3EE;
+  --off:#FAFAF7;
+  --text:#18182E;
+  --muted:#4A4A6A;
+  --rule:#D8D8E8;
+  --PW:640px;
+  --PH:730px;
+}
+
+html,body{
+  width:100%;height:100%;
+  background:#F5F5F5;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;overflow:auto;
+  font-family:'Lora',Georgia,serif;
+}
+
+/* ══════════════════════════════════════════
+   BOOK (StPageFlip)
+══════════════════════════════════════════ */
+.scene{
+  width:calc(var(--PW)*2);
+  height:var(--PH);
+}
+#book{
+  width:100%;height:100%;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.25),
+    0 20px 60px rgba(0,0,0,.65),
+    0 50px 110px rgba(0,0,0,.45);
+}
+.stf__block{background:transparent;}
+.stf-page{width:100%;height:100%;}
+
+/* ══════════════════════════════════════════
+   PAGE BASES
+══════════════════════════════════════════ */
+.pg{width:var(--PW);height:var(--PH);position:relative;overflow:hidden;font-family:'Lora',serif;}
+
+/* ── COVER (full-bleed artwork) ── */
+.pg-art{
+  background:#0E2440;
+  position:relative;overflow:hidden;
+}
+.pg-art .art-blur{
+  position:absolute;inset:-30px;
+  background-size:cover;background-position:center;
+  filter:blur(26px) brightness(.82);
+}
+.pg-art .art-main{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.pg-art .art-main img{
+  max-width:100%;max-height:100%;
+  object-fit:contain;display:block;
+  box-shadow:0 4px 30px rgba(0,0,0,.35);
+}
+
+/* ── INSIDE COVER ── */
+.pg-inside{
+  background:linear-gradient(to right,#040D1A 0%,#0A1C3E 100%);
+}
+
+/* ── NAVY TITLE / CELEBRATION COVER ── */
+.pg-cover{
+  background:linear-gradient(155deg,#1B3B6F 0%,#0A1C3E 100%);
+  color:#fff;
+  display:flex;flex-direction:column;align-items:center;
+  padding:18px 48px 28px;text-align:center;
+}
+.cover-rule{width:44px;height:2px;background:var(--gold);margin:0 auto 20px;}
+
+/* ── INTERIOR BASE ── */
+.pg-int{
+  background:var(--off);color:var(--text);
+  padding:36px 42px 24px;
+  display:flex;flex-direction:column;
+}
+.pg-int.cream{background:var(--cream);}
+
+.pn{
+  font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;
+  color:#999;margin-top:auto;padding-top:12px;
+  border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-shrink:0;
+}
+
+/* ── FULL-PHOTO SECTION OPENER ── */
+.pg-photo{
+  position:relative;overflow:hidden;
+  background:#0A1C3E;
+}
+.photo-fill{position:absolute;inset:0;z-index:0;}
+.photo-fill img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+}
+.photo-fill::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(8,18,46,.96) 0%,
+    rgba(8,18,46,.72) 42%,
+    rgba(8,18,46,.28) 100%
+  );
+}
+.photo-credit{
+  position:absolute;top:10px;right:12px;
+  font-family:'Inter',sans-serif;font-size:6.5px;letter-spacing:.08em;
+  color:rgba(255,255,255,.55);z-index:2;text-transform:uppercase;
+}
+.photo-text{
+  position:absolute;bottom:0;left:0;right:0;
+  z-index:1;padding:40px 44px 44px;
+}
+.photo-text .op-label{
+  font-family:'Inter',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+}
+.photo-text .op-rule{width:36px;height:2px;background:var(--gold);margin-bottom:20px;}
+.photo-text .op-title{
+  font-family:'Playfair Display',serif;font-size:42px;font-weight:700;
+  line-height:1.08;color:#fff;margin-bottom:16px;
+}
+.photo-text .op-desc{
+  font-family:'Lora',serif;font-size:12px;line-height:1.74;
+  color:rgba(255,255,255,.62);max-width:390px;
+}
+
+/* ══════════════════════════════════════════
+   INTERIOR TYPOGRAPHY
+══════════════════════════════════════════ */
+.sl{
+  font-family:'Inter',sans-serif;font-size:8.5px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:8px;flex-shrink:0;
+}
+.dh{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;line-height:1.22;
+  color:var(--text);margin-bottom:14px;flex-shrink:0;
+}
+.ra{width:28px;height:2px;background:var(--mid);margin-bottom:12px;flex-shrink:0;}
+.bt{
+  font-family:'Lora',serif;font-size:11.5px;line-height:1.7;
+  color:var(--muted);
+}
+.bt+.bt{margin-top:9px;}
+.lpq{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:17px;line-height:1.52;color:var(--blue);
+  padding:18px 0 18px 22px;
+  border-left:3px solid var(--gold);
+  margin:16px 0;flex-shrink:0;
+}
+.sub-h{
+  font-family:'Inter',sans-serif;font-size:8.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--mid);
+  margin-top:10px;margin-bottom:4px;flex-shrink:0;
+}
+
+/* TOC */
+.toc-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:4.5px 0;border-bottom:1px solid var(--rule);
+}
+.toc-t{font-family:'Lora',serif;font-size:11px;color:var(--muted);}
+.toc-t .toc-th{font-style:italic;color:#8a8aa0;}
+.toc-t.pillar{font-weight:500;color:var(--blue);font-size:11.5px;}
+.toc-p{
+  font-family:'Inter',sans-serif;font-size:9px;
+  color:#bbb;padding-left:10px;flex-shrink:0;
+}
+.toc-gap{height:8px;}
+.toc-phase{
+  font-family:'Inter',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  margin:10px 0 2px;
+}
+.toc-row.go{cursor:pointer;}
+.toc-row.go:hover .toc-t{color:var(--blue);}
+.toc-row.go:hover{background:rgba(27,59,111,.05);border-radius:3px;}
+
+/* ══════════════════════════════════════════
+   LITURGY SYSTEM
+══════════════════════════════════════════ */
+.pg-lit{
+  background:var(--off);color:var(--text);
+  padding:30px 42px 22px;
+  display:flex;flex-direction:column;
+}
+.pg-lit.cream{background:var(--cream);}
+.lit-flow{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;}
+
+/* Day opener block (top of first page of each service) */
+.day-kick{
+  font-family:'Inter',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;
+  margin-bottom:7px;flex-shrink:0;
+}
+.day-title{
+  font-family:'Playfair Display',serif;font-size:30px;font-weight:700;
+  line-height:1.05;color:var(--text);margin-bottom:5px;flex-shrink:0;
+}
+.day-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:14.5px;line-height:1.3;margin-bottom:7px;flex-shrink:0;
+}
+.day-date{
+  font-family:'Inter',sans-serif;font-size:8.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#8a8aa0;
+  padding-bottom:10px;margin-bottom:10px;border-bottom:2px solid var(--rule);
+  flex-shrink:0;
+}
+
+/* Liturgy heading */
+.lh{
+  font-family:'Inter',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  margin:9px 0 4px;flex-shrink:0;
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+}
+.lh:first-child{margin-top:0;}
+.lh .ref{
+  font-family:'Lora',serif;font-style:italic;font-weight:400;
+  font-size:9.5px;letter-spacing:.02em;text-transform:none;color:#8a8aa0;
+  flex-shrink:0;
+}
+/* Liturgy subhead */
+.lsub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:12px;color:var(--blue);margin:0 0 4px;flex-shrink:0;
+}
+/* Rubric */
+.rub{
+  font-family:'Lora',serif;font-style:italic;font-size:9.5px;line-height:1.55;
+  color:#8a8aa0;margin:3px 0 5px;padding-left:10px;
+  border-left:2px solid var(--gold);flex-shrink:0;
+}
+/* Body */
+.lb{
+  font-family:'Lora',serif;font-size:10.5px;line-height:1.62;
+  color:var(--muted);margin:3px 0;flex-shrink:0;
+}
+/* Psalm / poetic block */
+.psm{
+  font-family:'Lora',serif;font-size:10.5px;line-height:1.62;
+  color:var(--muted);margin:3px 0;flex-shrink:0;
+}
+/* Dialogue row */
+.dlg{display:flex;gap:9px;margin:2.5px 0;flex-shrink:0;}
+.dlg .who{
+  font-family:'Inter',sans-serif;font-size:7.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  width:56px;flex-shrink:0;padding-top:2.5px;color:var(--mid);
+  text-align:right;
+}
+.dlg .say{
+  font-family:'Lora',serif;font-size:10.5px;line-height:1.55;color:var(--muted);
+  flex:1;
+}
+.dlg.all .say{font-weight:600;color:var(--text);}
+/* Attribution */
+.attr{
+  font-family:'Inter',sans-serif;font-size:7.5px;line-height:1.5;
+  color:#A8A8B8;letter-spacing:.02em;margin:5px 0 2px;flex-shrink:0;
+}
+/* Song sheet */
+.song{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;margin:6px 0;
+}
+.song img{
+  max-width:100%;max-height:100%;object-fit:contain;display:block;
+}
+.song-cap{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:13px;
+  color:var(--blue);text-align:center;margin:6px 0 2px;flex-shrink:0;
+}
+/* Spacer */
+.sp{height:6px;flex-shrink:0;}
+
+/* Interlude (placeholder days) */
+.pg-interlude{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:54px 56px;
+}
+.il-kick{
+  font-family:'Inter',sans-serif;font-size:8.5px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;margin-bottom:16px;
+}
+.il-title{
+  font-family:'Playfair Display',serif;font-size:30px;font-weight:700;
+  line-height:1.12;color:var(--text);margin-bottom:8px;
+}
+.il-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:16px;margin-bottom:18px;
+}
+.il-rule{width:36px;height:2px;margin:0 auto 18px;}
+.il-note{
+  font-family:'Lora',serif;font-size:11px;line-height:1.78;
+  color:var(--muted);max-width:360px;margin-bottom:22px;
+}
+.il-tag{
+  font-family:'Inter',sans-serif;font-size:8px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:7px 14px;border-radius:3px;
+}
+
+/* Schedule table */
+.sched{width:100%;border-collapse:collapse;font-family:'Lora',serif;}
+.sched td{
+  padding:5px 6px;border-bottom:1px solid var(--rule);
+  font-size:9.8px;line-height:1.4;color:var(--muted);vertical-align:top;
+}
+.sched .sd-day{font-family:'Inter',sans-serif;font-size:8.5px;font-weight:600;color:var(--text);white-space:nowrap;}
+.sched .sd-th{font-style:italic;}
+.sched-phase td{
+  font-family:'Inter',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding-top:12px;border-bottom:2px solid var(--rule);
+}
+
+/* ══════════════════════════════════════════
+   NAV BAR · DOTS · READ MODE  (shared)
+══════════════════════════════════════════ */
+.nav-bar{
+  display:flex;align-items:center;gap:18px;
+  position:relative;z-index:200;
+}
+.nb{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.13);
+  color:rgba(255,255,255,.75);
+  width:40px;height:40px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;font-size:14px;
+}
+.nb:hover:not(:disabled){
+  background:rgba(255,255,255,.14);
+  border-color:rgba(255,255,255,.26);color:#fff;
+}
+.nb:disabled{opacity:.2;cursor:default;}
+.nb-skip{font-size:16px;opacity:.55;}
+.nb-skip:not(:disabled):hover{opacity:1;}
+.ni{
+  font-family:'Inter',sans-serif;font-size:10px;
+  color:rgba(255,255,255,.32);letter-spacing:.08em;
+  min-width:74px;text-align:center;
+}
+.kh{
+  font-family:'Inter',sans-serif;font-size:9px;
+  color:rgba(255,255,255,.16);letter-spacing:.06em;
+}
+.nb, .ni { color:#555; border-color:rgba(0,0,0,.15); background:rgba(0,0,0,.04);}
+.nb:hover:not(:disabled){background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.3);color:#000;}
+.ni{color:#888;}
+.kh{color:#aaa;}
+
+/* Desktop: the spread is scaled fluidly by fitScene() in JS so the book,
+   nav, dots and bottom buttons always fit the window (13″/15″ laptops). */
+@media(max-width:900px){
+  .scene{
+    width: var(--PW);
+    height: var(--PH);
+    max-width: none;
+    transform: scale(calc(min(92vw, 420px) / 640px));
+    transform-origin: top center;
+    margin-bottom: calc(var(--PH) * (min(92vw, 420px) / 640px - 1));
+  }
+  html,body{justify-content:flex-start;padding-top:12px;gap:10px;overflow:auto;}
+  .scene,#book,.stf__parent,.stf__wrapper,.stf__block,.stf__item,.stf-page{
+    touch-action:pan-y pinch-zoom !important;
+  }
+  .nav-bar{gap:10px;padding:0 8px;}
+  .pillar-dots{gap:7px;padding:0 8px;flex-wrap:wrap;justify-content:center;}
+  .pd{width:11px;height:11px;}
+  .pd::after{font-size:10px;padding:4px 7px;}
+  .kh{display:none;}
+}
+
+.pillar-dots{display:flex;gap:10px;align-items:center;justify-content:center;}
+.pd{
+  width:14px;height:14px;border-radius:50%;
+  cursor:pointer;opacity:1;
+  transition:opacity .2s,transform .2s,box-shadow .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.25);
+  border:1.5px solid rgba(255,255,255,.4);
+  flex-shrink:0;
+  position:relative;
+}
+.pd:hover{opacity:1;transform:scale(1.28);}
+.pd::after{
+  content:attr(data-label);
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:rgba(10,28,62,.95);
+  color:#fff;
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:.04em;
+  padding:6px 10px;border-radius:4px;white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity .18s,transform .18s;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+.pd::before{
+  content:'';position:absolute;
+  bottom:calc(100% + 4px);left:50%;
+  transform:translateX(-50%) translateY(4px);
+  border:5px solid transparent;
+  border-top-color:rgba(10,28,62,.95);
+  opacity:0;pointer-events:none;
+  transition:opacity .18s,transform .18s;
+}
+.pd:hover::after,.pd:hover::before{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.nb-zoom{font-size:18px;}
+.read-modal{
+  position:fixed;inset:0;
+  background:rgba(10,28,62,.97);
+  z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:62px 16px 32px;
+}
+.read-modal-close{
+  position:fixed;top:14px;right:14px;
+  width:44px;height:44px;border-radius:50%;border:none;
+  background:rgba(255,255,255,.22);color:#fff;
+  font-size:22px;line-height:1;cursor:pointer;z-index:2;
+  font-family:'Inter',sans-serif;
+  display:flex;align-items:center;justify-content:center;
+}
+.read-modal-close:hover{background:rgba(255,255,255,.35);}
+.read-modal-hint{
+  position:fixed;top:22px;left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.8);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  pointer-events:none;white-space:nowrap;z-index:1;
+}
+.read-modal-frame{
+  box-shadow:0 12px 50px rgba(0,0,0,.55);
+  background:#fff;flex-shrink:0;
+}
+.read-modal-inner{
+  width:var(--PW);height:var(--PH);
+  transform-origin:top left;
+}
+
+/* ── MOBILE BACKWARD 3D FOLD ── */
+.bf3-wrap{
+  position:fixed;
+  perspective:2200px;
+  pointer-events:none;
+  z-index:99999;
+}
+.bf3-flip{
+  position:absolute;inset:0;
+  transform-origin:left center;
+  transform-style:preserve-3d;
+  transform:rotateY(-180deg);
+  transition-property:transform;
+  transition-timing-function:cubic-bezier(.38,0,.22,1);
+  will-change:transform;
+}
+.bf3-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(0,0,0,.38);
+  background:#fff;
+}
+.bf3-back{
+  transform:rotateY(180deg);
+  background:linear-gradient(to left,#F2F0EA 0%,#E3E1D8 78%,#CFCcc2 100%);
+}
+.bf3-back::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.16),rgba(0,0,0,0) 30%);
+}
+.back-flip-wrap{position:absolute;inset:0;perspective:2000px;pointer-events:none;z-index:50;}
+.back-flip-page{
+  position:absolute;inset:0;
+  transform-origin:right center;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  background:#fff;
+  box-shadow:0 6px 22px rgba(0,0,0,.35);
+  overflow:hidden;will-change:transform;
+}
+.back-flip-page.animate{animation:back-flip-rotate 900ms cubic-bezier(.35,0,.25,1) forwards;}
+@keyframes back-flip-rotate{from{transform:rotateY(0deg);}to{transform:rotateY(-180deg);}}
+.back-flip-page > .stf-page{width:100%;height:100%;}
+.back-flip-page .pg{width:100%;height:100%;}
+.back-flip-page::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to left,rgba(0,0,0,0),rgba(0,0,0,.35));
+  opacity:0;pointer-events:none;
+}
+.back-flip-page.animate::after{animation:back-flip-shade 900ms cubic-bezier(.35,0,.25,1) forwards;}
+@keyframes back-flip-shade{0%{opacity:0;}50%{opacity:.55;}100%{opacity:0;}}
+
+.pdf-download-btn {
+  display:inline-flex;align-items:center;
+  padding:10px 20px;
+  background:var(--navy);color:#fff;
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
+  text-decoration:none;border-radius:4px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:all 0.2s ease;letter-spacing:0.04em;
+  z-index:200;box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+.pdf-download-btn:hover{
+  background:var(--blue);border-color:var(--gold);
+  transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.2);
+}
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div id="book"></div>
+</div>
+
+<div class="nav-bar">
+  <button class="nb nb-skip" id="btnFirst" onclick="event.stopPropagation();goTo(0)" disabled title="First page">&#171;</button>
+  <button class="nb" id="btnP" onclick="go(-1)" disabled>&#8592;</button>
+  <div class="ni" id="info">1 / 36</div>
+  <button class="nb" id="btnN" onclick="go(1)">&#8594;</button>
+  <button class="nb nb-skip" id="btnLast" onclick="event.stopPropagation();goTo(SPREADS.length-1)" title="Last page">&#187;</button>
+  <button class="nb nb-zoom" id="btnZoom" onclick="event.stopPropagation();openReadMode()" title="Read fullscreen">&#9906;</button>
+</div>
+<div class="pillar-dots">
+  <div class="pd" data-label="Day 1 · Opening Celebration" onclick="event.stopPropagation();goTo(5)" style="background:#C8A46A;"></div>
+  <div class="pd" data-label="Days 2–3 · Climate Justice" onclick="event.stopPropagation();goTo(6)" style="background:#3D993D;"></div>
+  <div class="pd" data-label="Day 4 · Secularism &amp; Laicity" onclick="event.stopPropagation();goTo(12)" style="background:#A3A3A3;"></div>
+  <div class="pd" data-label="Days 5–6 · Racism &amp; Anti-Racism" onclick="event.stopPropagation();goTo(12)" style="background:#F43506;"></div>
+  <div class="pd" data-label="Day 9 · Interfaith Dialogue" onclick="event.stopPropagation();goTo(19)" style="background:#BB35EC;"></div>
+  <div class="pd" data-label="Day 10 · Indigenous Solidarity" onclick="event.stopPropagation();goTo(23)" style="background:#D35400;"></div>
+  <div class="pd" data-label="Days 12–13 · Wealth Disparity &amp; Poverty" onclick="event.stopPropagation();goTo(26)" style="background:#1F3F66;"></div>
+  <div class="pd" data-label="Day 14 · Closing Celebration" onclick="event.stopPropagation();goTo(27)" style="background:#0A1C3E;border-color:#C8A46A;"></div>
+</div>
+<div class="kh">&#8592; &#8594; arrow keys &nbsp;&middot;&nbsp; click edges to turn &nbsp;&middot;&nbsp; dots jump to each day</div>
+<div style="display: flex; gap: 16px; justify-content: center; margin-top: 15px;">
+  <a href="index.html" class="pdf-download-btn" style="background: #1f3f66;">
+    &larr; Back to Home Page
+  </a>
+</div>
+<audio id="flipSound" src="xpmonster-turning-page-in-a-book-419580.mp3" preload="auto"></audio>
+
+<script>
+/* ============================================================
+   LITURGY HELPERS
+============================================================ */
+const IMG = 'prayerbook-img/';
+const P = 'Pictures/';
+
+/* Pillar palettes */
+const PAL = {
+  gold:    {c:'#A07E42', rl:'#E5D6BC', soft:'#C8A46A'},
+  climate: {c:'#3D993D', rl:'#CEE5CE', soft:'#77B777'},
+  secular: {c:'#8C8C8C', rl:'#E2E2E2', soft:'#BEBEBE'},
+  racism:  {c:'#D93005', rl:'#FCCCC0', soft:'#F77150'},
+  inter:   {c:'#A52BD4', rl:'#EECCFA', soft:'#CF71F1'},
+  indig:   {c:'#D35400', rl:'#F4D4BF', soft:'#E0874C'},
+  wealth:  {c:'#1F3F66', rl:'#C7CFD8', soft:'#627893'},
+  navy:    {c:'#1B3B6F', rl:'#D8D8E8', soft:'#2E5FA3'},
+};
+
+/* Liturgy element builders */
+function LH(t, ref, pal){
+  return `<div class="lh" style="color:${pal.c};">${t}${ref?`<span class="ref">${ref}</span>`:''}</div>`;
+}
+function SH(t){ return `<div class="lsub">${t}</div>`; }
+function RU(t){ return `<div class="rub">${t}</div>`; }
+function B(t, extra){ return `<div class="lb"${extra?` style="${extra}"`:''}>${t}</div>`; }
+function PS(t){ return `<div class="psm">${t}</div>`; }
+function D(who, say, pal){
+  return `<div class="dlg"><div class="who" style="color:${pal.c};">${who}</div><div class="say">${say}</div></div>`;
+}
+function DA(who, say){
+  return `<div class="dlg all"><div class="who">${who}</div><div class="say">${say}</div></div>`;
+}
+function AT(t){ return `<div class="attr">${t}</div>`; }
+function SONG(src, alt){
+  return `<div class="song"><img src="${IMG}${src}" alt="${alt}"></div>`;
+}
+function SCAP(t){ return `<div class="song-cap">${t}</div>`; }
+function SP(h){ return `<div class="sp"${h?` style="height:${h}px"`:''}></div>`; }
+
+/* Page wrapper for liturgy pages.
+   o = {kick, pal, pn, label, cream, opener:{title, sub, date}} */
+function lit(o, inner){
+  const openerHTML = o.opener ? `
+    <div class="day-kick" style="color:${o.pal.c};">${o.kick}</div>
+    <div class="day-title">${o.opener.title}</div>
+    ${o.opener.sub?`<div class="day-sub" style="color:${o.pal.c};">${o.opener.sub}</div>`:''}
+    ${o.opener.date?`<div class="day-date" style="border-color:${o.pal.rl};">${o.opener.date}</div>`:''}` : '';
+  return `<div class="pg pg-lit${o.cream?' cream':''}" style="width:var(--PW);height:var(--PH);">
+    ${openerHTML}
+    <div class="lit-flow">${inner}</div>
+    <div class="pn" style="border-color:${o.pal.rl};"><span style="color:${o.pal.c};">${o.label}</span><span>${o.pn}</span></div>
+  </div>`;
+}
+
+/* ============================================================
+   FRONT MATTER
+============================================================ */
+function pgInsideCover(){
+  return `<div class="pg pg-inside" style="width:var(--PW);height:var(--PH);">
+    <div style="position:absolute;bottom:40px;left:44px;">
+      <img src="white NATI-RETI logo transparent.png" style="width:140px;" alt="">
+    </div>
+  </div>`;
+}
+
+function pgCover(){
+  return `<div class="pg pg-art" style="width:var(--PW);height:var(--PH);">
+    <div class="art-blur" style="background-image:url('${IMG}pb-cover.jpg');"></div>
+    <div class="art-main"><img src="${IMG}pb-cover.jpg" alt="NATI-RETI 2026 Prayer Book — Where Now for Visible Justice?"></div>
+  </div>`;
+}
+
+function pgHalfTitle(){
+  return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);align-items:center;justify-content:center;text-align:center;padding:48px 52px;">
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--blue);margin-bottom:10px;">&ldquo;Where Now for Visible Justice?&rdquo;</div>
+    <div style="font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text);line-height:1.9;margin-bottom:24px;">North America-Turtle Island Regional<br>Ecumenical Theological Institute</div>
+    <img src="${IMG}pb-logo.png" alt="NATI-RETI 2026" style="width:230px;margin-bottom:24px;">
+    <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--text);margin-bottom:10px;">Prayer Book</div>
+    <div style="font-family:'Lora',serif;font-style:italic;font-size:12px;color:var(--muted);margin-bottom:16px;">Edited by David Montealegre</div>
+    <div style="font-family:'Lora',serif;font-size:11px;letter-spacing:.5em;color:var(--gold);margin-bottom:16px;">&#9670;&nbsp;&#9670;&nbsp;&#9670;</div>
+    <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:2;">
+      Morning Prayer &middot; 3 &ndash; 16 August 2026<br>
+      Detroit, Michigan &middot; Toronto, Ontario
+    </div>
+  </div>`;
+}
+
+function pgTitlePage(){
+  return `<div class="pg pg-cover" style="width:var(--PW);height:var(--PH);justify-content:center;padding:40px 52px;">
+    <img src="white NATI-RETI logo transparent.png" alt="NATI-RETI 2026" style="width:330px;margin-bottom:22px;">
+    <div style="font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:18px;">North America-Turtle Island Regional<br>Ecumenical Theological Institute</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:6px;">2026</div>
+    <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:#fff;margin-bottom:12px;">Prayer Book</div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:rgba(255,255,255,.85);margin-bottom:16px;">&ldquo;Where Now for Visible Justice?&rdquo;</div>
+    <div style="font-family:'Lora',serif;font-size:11px;letter-spacing:.5em;color:var(--gold);margin-bottom:20px;">&#9670;&nbsp;&#9670;&nbsp;&#9670;</div>
+    <div style="font-family:'Lora',serif;font-size:11px;line-height:1.8;color:rgba(255,255,255,.75);max-width:360px;margin-bottom:16px;">
+      The Canadian Council of Churches, National Council of Churches USA, in accompaniment with the World Council of Churches
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);line-height:2;">
+      3 &ndash; 16 August 2026<br>
+      Detroit, Michigan &middot; Toronto, Ontario
+    </div>
+  </div>`;
+}
+
+function pgCredits(){
+  return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--blue);margin-bottom:4px;">&ldquo;Where Now for Visible Justice?&rdquo;</div>
+    <div class="dh" style="font-size:18px;margin-bottom:6px;">NATI-RETI 2026 Prayer Book</div>
+    <div class="ra"></div>
+    <div class="bt" style="margin-bottom:13px;">
+      Edited by <strong style="color:var(--text);">David Montealegre</strong>
+    </div>
+    <div class="bt" style="font-size:10px;margin-bottom:12px;line-height:1.6;">
+      Copyright &copy; 2026 The Canadian Council of Churches. All rights reserved. This publication may be reproduced in English with full acknowledgement of the source. No part of the publication may be translated without prior written permission from the publisher. Contact: info@councilofchurches.ca.
+    </div>
+    <div class="bt" style="font-size:10px;margin-bottom:12px;line-height:1.6;">
+      The Canadian Council of Churches (CCC) is a broad and inclusive ecumenical body, representing 26 member churches including Anglican; Eastern and Roman Catholic; Evangelical; Free Church; Eastern and Oriental Orthodox; and Historic Protestant traditions. This Prayer Book was prepared by the Spiritual Life Working Group of NATI-RETI 2026, a joint theological project of The Canadian Council of Churches and the National Council of Churches USA, in accompaniment with the World Council of Churches, for NATI-RETI 2026, 3&ndash;16 August 2026, in Detroit, Michigan and Toronto, Ontario.
+    </div>
+    <div class="bt" style="font-size:10px;margin-bottom:12px;line-height:1.6;">
+      Opinions expressed in this publication are those of the authors.
+    </div>
+    <div class="bt" style="font-size:10px;margin-bottom:12px;line-height:1.6;">
+      Scripture quotations are from the New Revised Standard Version, Updated Edition, &copy; 2021 National Council of the Churches of Christ in the USA. Used by permission. All rights reserved. Songs are reproduced as supplied artwork; copyright permissions are confirmed before printing. Composed prayers are attributed to their authors on the page.
+    </div>
+    <div class="bt" style="font-size:10px;margin-bottom:12px;line-height:1.7;color:#8a8aa0;">
+      ISBN:<br>
+      eBook ISBN:
+    </div>
+    <div class="bt" style="font-size:10px;line-height:1.7;">
+      <strong style="color:var(--text);">The Canadian Council of Churches</strong><br>
+      47 Queen&rsquo;s Park Crescent East, Toronto, Ontario M5S 2C3, Canada<br>
+      councilofchurches.ca
+    </div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>4</span></div>
+  </div>`;
+}
+
+function pgSLWG(){
+  return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
+    <div class="sl">Acknowledgements</div>
+    <div class="dh">Spiritual Life<br>Working Group</div>
+    <div class="ra"></div>
+    <div class="bt">
+      This Prayer Book was prepared by the <strong style="color:var(--text);">Spiritual Life Working Group (SLWG)</strong> of NATI-RETI 2026, a joint initiative of the Canadian Council of Churches and the National Council of Churches USA, with the accompaniment of the World Council of Churches.
+    </div>
+    <div class="bt">
+      The Prayer Book is adapted from the <em>GETI 2025 Prayer Book</em>, produced by the World Council of Churches. The SLWG gratefully acknowledges its foundational work.
+    </div>
+    <div class="sub-h" style="margin-top:14px;">Spiritual Life Working Group</div>
+    <div class="bt" style="font-size:10.5px;">
+      The following members of the Spiritual Life Working Group (SLWG) contributed to this Prayer Book (alphabetical order):
+    </div>
+    <div style="flex:1;min-height:60px;margin:10px 0;border:1px dashed var(--rule);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Inter',sans-serif;font-size:8px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#B8B8C8;">Member list to be added</span>
+    </div>
+    <div class="bt" style="font-size:10.5px;">
+      Production, book and logo design, and typesetting: <strong style="color:var(--text);">David Montealegre</strong>, NATI-RETI 2026 Co-director
+    </div>
+    <div class="bt" style="font-size:10.5px;margin-top:8px;">
+      Canadian Council of Churches
+    </div>
+    <div class="bt" style="font-size:10.5px;margin-top:2px;">
+      National Council of Churches USA
+    </div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>5</span></div>
+  </div>`;
+}
+
+function pgTOC(){
+  return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
+    <div class="sl">Contents</div>
+    <div class="dh" style="font-size:24px;margin-bottom:14px;">Table of<br>Contents</div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(3)"><span class="toc-t">About NATI-RETI 2026</span><span class="toc-p">7</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(4)"><span class="toc-t">Prayer Life as Formative Learning</span><span class="toc-p">8</span></div>
+    <div class="toc-phase">USA Phase &mdash; Detroit, Michigan</div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(5)"><span class="toc-t pillar">Day 1 &middot; Opening Celebration <span class="toc-th">&middot; Where Now for Visible Justice?</span></span><span class="toc-p">10</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(6)"><span class="toc-t pillar" style="color:#3D993D;">Day 2 &middot; Morning Prayer <span class="toc-th">&middot; Climate Justice</span></span><span class="toc-p">12</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(9)"><span class="toc-t pillar" style="color:#3D993D;">Day 3 &middot; Morning Prayer <span class="toc-th">&middot; Climate Justice</span></span><span class="toc-p">18</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(12)"><span class="toc-t pillar" style="color:#8C8C8C;">Day 4 &middot; Morning Prayer <span class="toc-th">&middot; Secularism and Laicity</span></span><span class="toc-p">24</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(12)"><span class="toc-t pillar" style="color:#D93005;">Day 5 &middot; Morning Prayer <span class="toc-th">&middot; Racism and Anti-Racism</span></span><span class="toc-p">25</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(16)"><span class="toc-t pillar" style="color:#D93005;">Day 6 &middot; Morning Prayer <span class="toc-th">&middot; Racism and Anti-Racism</span></span><span class="toc-p">32</span></div>
+    <div class="toc-phase">Canada Phase &mdash; Toronto, Ontario</div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(19)"><span class="toc-t pillar" style="color:#A52BD4;">Day 9 &middot; Morning Prayer <span class="toc-th">&middot; Interfaith Dialogue</span></span><span class="toc-p">38</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(23)"><span class="toc-t pillar" style="color:#D35400;">Day 10 &middot; Morning Prayer <span class="toc-th">&middot; Solidarity with Indigenous Communities</span></span><span class="toc-p">47</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(26)"><span class="toc-t pillar" style="color:#1F3F66;">Day 12 &middot; Morning Prayer <span class="toc-th">&middot; Wealth Disparity and Poverty</span></span><span class="toc-p">53</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(27)"><span class="toc-t pillar" style="color:#1F3F66;">Day 13 &middot; Morning Prayer <span class="toc-th">&middot; Wealth Disparity and Poverty</span></span><span class="toc-p">54</span></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(27)"><span class="toc-t pillar">Day 14 &middot; Closing Celebration <span class="toc-th">&middot; Sending Forth in Justice</span></span><span class="toc-p">55</span></div>
+    <div class="toc-gap"></div>
+    <div class="toc-row go" onclick="event.stopPropagation();goTo(34)"><span class="toc-t" style="font-style:italic;">Appendix &middot; Prayer Schedule</span><span class="toc-p">69</span></div>
+    <div style="flex:1;"></div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>6</span></div>
+  </div>`;
+}
+
+function pgAbout(){
+  return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
+    <div class="sl">Introduction</div>
+    <div class="dh">About NATI-RETI 2026</div>
+    <div class="ra"></div>
+    <div class="bt" style="font-style:italic;color:var(--blue);">
+      The North America-Turtle Island Regional Ecumenical Theological Institute &mdash; a regional expression of the global ecumenical movement, adapting the World Council of Churches&rsquo; Global Ecumenical Theological Institute (GETI) model to the context of North America&ndash;Turtle Island.
+    </div>
+    <div class="sub-h">A Milestone in Ecumenical Formation</div>
+    <div class="bt" style="font-size:11px;">
+      Convened by The Canadian Council of Churches and the National Council of Churches USA, with the accompaniment of the World Council of Churches, NATI-RETI marks a renewed chapter in cross-border collaboration &mdash; a shared platform for emerging Christian leaders from the United States and Canada to engage in deep theological reflection and spiritual fellowship.
+    </div>
+    <div class="sub-h">A Pilgrimage Across Borders</div>
+    <div class="bt" style="font-size:11px;">
+      NATI-RETI 2026 is a fully immersive residential program. By engaging the distinct religious and social landscapes of Detroit and Toronto, participants explore the intersections of faith and public life &mdash; nurturing the visible unity of the church, the relatedness of justice and mission to that unity, and the church&rsquo;s witness across confessional and national lines in a polarized world.
+    </div>
+    <div style="margin-top:14px;border-top:2px solid var(--rule);padding-top:10px;">
+      <div class="bt" style="font-size:10.5px;"><strong style="color:var(--text);">Dates</strong> &nbsp;3 &ndash; 16 August 2026</div>
+      <div class="bt" style="font-size:10.5px;margin-top:4px;"><strong style="color:var(--text);">Phases</strong> &nbsp;Detroit, Michigan (USA) &middot; Toronto, Ontario (Canada)</div>
+      <div class="bt" style="font-size:10.5px;margin-top:4px;"><strong style="color:var(--text);">Theme</strong> &nbsp;&ldquo;Where now for visible justice?&rdquo;</div>
+    </div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>7</span></div>
+  </div>`;
+}
+
+function pgPrayerLife(){
+  return `<div class="pg pg-int" style="width:var(--PW);height:var(--PH);">
+    <div class="sl">Introduction</div>
+    <div class="dh">Prayer Life as<br>Formative Learning</div>
+    <div class="ra"></div>
+    <div class="bt">
+      The spiritual life at NATI-RETI 2026 reflects a deep commitment to weaving together spirituality and theological reflection as mutually enriching dimensions of a holistic ecumenical formation. This institute is envisioned not simply as a time of academic engagement, but as a space for personal and communal transformation &mdash; spiritually, intellectually, and relationally.
+    </div>
+    <div class="bt">
+      This booklet supports the spiritual formation of all participants during the residential phase, nourishing the heart of the shared journey, grounding theological exploration in worship, and creating space to encounter the Spirit in our diversity.
+    </div>
+    <div class="lpq" style="font-size:15px;">
+      Across two weeks and two cities, the six thematic pillars of the institute find resonance in the arc of these prayers, as the common question &mdash; <em>Where now for visible justice?</em> &mdash; is carried from Detroit to Toronto and offered, each morning, to God.
+    </div>
+    <div class="bt" style="font-size:11px;">
+      Morning prayer is not a warm-up to the day&rsquo;s program; it is the first act of theological reflection.
+    </div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>8</span></div>
+  </div>`;
+}
+
+function pgUSAPhase(){
+  return `<div class="pg pg-photo" style="width:var(--PW);height:var(--PH);">
+    <div class="photo-fill">
+      <img src="${P}2025_10_15_MSchneider_01_-16.jpg" alt="">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
+    </div>
+    <div class="photo-text">
+      <div class="op-label">Week One &middot; 3 &ndash; 8 August 2026</div>
+      <div class="op-rule"></div>
+      <div class="op-title">USA Phase</div>
+      <div class="op-desc">Detroit, Michigan &mdash; on the ancestral lands of the Anishinaabe, the Three Fires Confederacy of Ojibwe, Odawa, and Potawatomi, and of the Wyandot. Here the question is first asked: <em>Where now for visible justice?</em></div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================
+   DAY 1 — OPENING CELEBRATION
+============================================================ */
+function pgD1a(){
+  const p = PAL.gold, L = 'Day 1 · Opening Celebration';
+  return lit({kick:'Day 1 · USA Phase · Detroit', pal:p, pn:10, label:L,
+    opener:{title:'Opening Celebration', sub:'Where Now for Visible Justice?', date:'Monday, 3 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Gathering &amp; Procession','',p)+
+    RU('Instrumental or sung music gathers the community as they arrive. Candle, water, scripture and symbols are carried forward from each tradition, with a greeting from the convening councils.')+
+    LH('Land Acknowledgment','',p)+
+    B('We gather on the ancestral lands of the Anishinaabe &mdash; the Three Fires Confederacy of Ojibwe, Odawa, and Potawatomi &mdash; and of the Wyandot. We name this land with gratitude and repentance.')+
+    LH('Invocation &amp; Opening Prayer','',p)+
+    D('Leader','We come with a question on our lips:',p)+
+    DA('All','<em>Where now for visible justice?</em>')+
+    D('Leader','Open us, O God, to the road ahead.',p)+
+    DA('All','Gather us, across many traditions, into one body.')+
+    LH('Scripture','Micah 6:8 &middot; Matthew 5:6',p)+
+    B('<em>He has told you, O mortal, what is good&hellip; to do justice, and to love kindness, and to walk humbly with your God. Blessed are those who hunger and thirst for righteousness.</em>')+
+    D('Leader','This is the word of God.',p)+
+    DA('All','Thanks be to God.')+
+    LH('Symbolic Inaugural Act','',p)+
+    B('Six candles &mdash; one for each thematic pillar &mdash; are lit, and waters from Detroit and Toronto are poured together into a single bowl.')+
+    RU('Materials: six candles &middot; two vessels of water &middot; one bowl')
+  );
+}
+
+function pgD1b(){
+  const p = PAL.gold, L = 'Day 1 · Opening Celebration';
+  return lit({kick:'Day 1 · Opening Celebration', pal:p, pn:11, label:L},
+    LH('Intercessions','',p)+
+    D('Leader','For this institute and all who gather here,',p)+
+    DA('All','hear our prayer.')+
+    D('Leader','For the cities of Detroit and Toronto,',p)+
+    DA('All','hear our prayer.')+
+    D('Leader','For a world longing for justice,',p)+
+    DA('All','hear our prayer.')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')+
+    LH('Blessing &amp; Sending','',p)+
+    B('May the God of justice go before us, the Christ of peace walk beside us, and the Spirit of life send us into the days ahead. Amen.')+
+    SP(14)+
+    `<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0;">
+       <img src="${IMG}pb-logo.png" alt="" style="max-width:200px;max-height:100%;object-fit:contain;opacity:.92;">
+     </div>`
+  );
+}
+
+/* ============================================================
+   DAY 2 — CLIMATE JUSTICE (Tue 4 Aug)
+============================================================ */
+function pgD2a(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · USA Phase · Detroit', pal:p, pn:12, label:L,
+    opener:{title:'Morning Prayer', sub:'Climate Justice', date:'Tuesday, 4 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Invocation','',p)+
+    B('Come, let us listen for the voice of God: in the rhythm of the lakes and streams, in the song of the living earth, in the quiet stirrings of the Spirit within us. Let us open our hearts to the One who goes before us, dwells among us, and renews all creation.')+
+    LH('Opening Prayer','',p)+
+    B('Let us pray.')+
+    B('Spirit of Life, you speak through the beauty and mystery of the world around us and through the deep places of our hearts. Gather us into your presence and awaken us to your renewing Spirit among us. When doubt looms large and the burdens of this world weigh us down, draw us up! Move us toward hope and trust. Open our ears to hear your voice, our minds to receive your wisdom, and our hands to join your work of justice and healing for the earth and all its people. Through your grace, make us a living song of praise. Amen.')+
+    LH('Psalmody','Psalm 29',p)+
+    SH('The Voice of God in a Great Storm &mdash; read responsively')+
+    D('High Voices','Ascribe to the Lord, O heavenly beings, ascribe to the Lord glory and strength.',p)+
+    DA('Low Voices','Ascribe to the Lord the glory of his name; worship the Lord in holy splendour.')+
+    D('High Voices','The voice of the Lord is over the waters; the God of glory thunders, the Lord, over mighty waters.',p)+
+    DA('Low Voices','The voice of the Lord is powerful; the voice of the Lord is full of majesty.')
+  );
+}
+
+function pgD2b(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · Climate Justice', pal:p, pn:13, label:L},
+    D('High Voices','The voice of the Lord breaks the cedars; the Lord breaks the cedars of Lebanon.',p)+
+    DA('Low Voices','The Lord makes Lebanon skip like a calf, and Sirion like a young wild ox.')+
+    D('High Voices','The voice of the Lord flashes forth flames of fire; the voice of the Lord shakes the wilderness.',p)+
+    DA('Low Voices','The voice of the Lord causes the oaks to whirl and strips the forest bare, and in his temple all say, &ldquo;Glory!&rdquo;')+
+    D('High Voices','The Lord sits enthroned over the flood; the Lord sits enthroned as king forever.',p)+
+    DA('All','May our God give strength to all people! May our God bless all people with peace!')+
+    AT('Psalm 29 (NRSVue)')+
+    LH('Song','',p)+
+    SONG('song-ihyv.jpg','I Hear Your Voice — sheet music')+
+    SCAP('I Hear Your Voice')+
+    AT('&ldquo;I Hear Your Voice&rdquo; &mdash; Words: Tammy Wiens, based on Psalm 29; Music: Sheldon W. Sorge. &copy; 2015 Sheldon W. Sorge. Used with permission.')
+  );
+}
+
+function pgD2c(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · Climate Justice', pal:p, pn:14, label:L},
+    LH('Scripture Reading','',p)+
+    SH('God&rsquo;s Artwork &mdash; a Medley of Scripture on Creation')+
+    D('Group 1','In the beginning, God saw everything that was made, and indeed, it was very good. <em>(Genesis 1:31)</em>',p)+
+    DA('Group 2','By wisdom the Lord founded the earth; by understanding the heavens were established. <em>(Proverbs 3:19)</em>')+
+    D('Group 1','In God&rsquo;s hand is the life of every living thing and the breath of every human being. <em>(Job 12:10)</em>',p)+
+    DA('Group 2','The land mourns, and all who live in it languish; even the creatures of the field and the birds of the air are perishing. <em>(Hosea 4:3)</em>')+
+    D('Group 1','The earth is the Lord&rsquo;s and all that is in it, the world and those who live in it. <em>(1 Corinthians 10:26)</em>',p)+
+    DA('Group 2','All things have been created through Christ and for Christ; in Christ all things hold together. <em>(Colossians 1:16&ndash;17)</em>')+
+    D('Group 1','This is the word of God.',p)+
+    DA('Group 2','Thanks be to God.')+
+    LH('Reflection','',p)+
+    RU('If possible, go outside for the Reflection and the remainder of the liturgy. Participants begin with their shoes on; partway through the meditation, they remove them. Guide the meditation slowly:')+
+    B('Feel your feet where they meet the ground. Notice the pressure in the soles of your feet, your heels, your toes &mdash; the balance, the steadiness. Beneath your feet is your foundation; beneath that, soil; and beneath that, the ancient rock of the earth.')+
+    B('<em>Feel the groaning of creation.</em>')
+  );
+}
+
+function pgD2d(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · Climate Justice', pal:p, pn:15, label:L},
+    B('Remove your shoes and touch the earth. Feel the grass and the soil beneath you. Breathe the air, smell the trees, and hold them close. Listen to the birds and tune in to the restlessness of the Great Lakes.')+
+    B('<em>Listen to the groaning of creation</em> &mdash; the sighing of the trees, the crying of the Great Lakes, the trembling air, the whisper of the grass, the songs of birds beneath the moving clouds. What are they telling you? What are they asking of you?')+
+    B('<em>Respond to the groaning creation.</em> How will you respond to the earth? To the waters that cover it? To the wind and sky? Creation is speaking. God is speaking. What does it mean for you to listen to the longing of God&rsquo;s creation?')+
+    LH('Symbolic Act','',p)+
+    SH('The Altar of Hope')+
+    B('At the centre of the gathering space, create the Altar of Hope &mdash; simple, open, and close to the earth. Participants are invited to come forward carrying their shoes, sandals, or boots: symbols of their journey through life and their walk upon groaning creation.')+
+    B('One by one, each person gently places their footwear to form the shape of a cross &mdash; a living symbol of humanity&rsquo;s shared pilgrimage with the groaning creation: the earth that cries, the lakes and oceans that rise, the forests that mourn, and the creatures that long for healing. As the cross takes shape, silence is kept.')+
+    B('When all the shoes have been placed, these words may be spoken:')+
+    PS('<em>We lay down the marks of our journey upon this Altar of Hope. May our steps no longer wound the earth, but walk gently with creation. May we hear the groaning of the soil, the lakes and oceans, the air, and all living beings. And may this cross of worn footsteps become a sign of hope, justice, and renewed life.</em>')+
+    RU('Participants may then stand barefoot for a moment, feeling the ground beneath them &mdash; remembering that all are connected to the earth and called to walk a path of care, compassion, justice, and hope.')
+  );
+}
+
+function pgD2e(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · Climate Justice', pal:p, pn:16, label:L},
+    LH('Intercessions','',p)+
+    SH('Responsive Petitions: A Call Rooted in Faith')+
+    D('One','The earth groans beneath the weight of human excess, and many communities bear burdens they did not create. Yet we trust that God&rsquo;s renewing Spirit is still at work among us and throughout creation.',p)+
+    DA('All','Open our hearts to hear your voice and follow your way.')+
+    D('One','We grieve the losses brought by rising lakes and oceans, fierce storms, drought, fire, and changing climates. We pray for all whose homes, livelihoods, and futures are at risk.',p)+
+    DA('All','Renew the earth, O God.')+
+    D('One','We lament the injustices that place the greatest burdens on those with the fewest resources and the least power.',p)+
+    DA('All','Teach us to seek justice, walk humbly, and care for one another.')+
+    D('One','By your Spirit, call your church to faithful witness and courageous action, that we may nurture the earth and protect the well-being of future generations.',p)+
+    DA('All','Teach us to be your faithful stewards.')+
+    D('One','This is our prayer and our calling: a journey of ecological metanoia &mdash; a turning of hearts, communities, and systems toward life.',p)+
+    DA('All','Amen and Amen.')+
+    LH('Closing Prayer','',p)+
+    B('May the mountains of God&rsquo;s grace and the oceans of God&rsquo;s love embrace us all and carry us forward through Jesus, the Living Water, and the breath of the Spirit. Safe in God&rsquo;s embrace, let us voyage with clarity of vision and courage. Your renewing Spirit gives us song.')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')
+  );
+}
+
+function pgD2f(){
+  const p = PAL.climate, L = 'Day 2 · Climate Justice';
+  return lit({kick:'Day 2 · Climate Justice', pal:p, pn:17, label:L},
+    LH('Benediction','',p)+
+    SONG('song-ihyv-refrain.jpg','I Hear Your Voice — refrain')+
+    SCAP('I Hear Your Voice &mdash; Refrain')+
+    AT('The chorus is sung in both French and English. Words: Tammy Wiens; Music: Sheldon W. Sorge. &copy; 2015. Used with permission.')
+  );
+}
+
+/* ============================================================
+   DAY 3 — CLIMATE JUSTICE (Wed 5 Aug)
+============================================================ */
+function pgD3a(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · USA Phase · Detroit', pal:p, pn:18, label:L,
+    opener:{title:'Morning Prayer', sub:'Climate Justice', date:'Wednesday, 5 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Invocation','',p)+
+    D('High Voices','Creator God, we thank you for gathering us in this place. This morning we pause to remember that all life comes from your generous hand and is sustained by your love.',p)+
+    DA('Low Voices','We thank you for the plants, animals, waters, and lands that nourish and sustain life.')+
+    D('High Voices','We thank you for the gifts of the earth that shelter us, clothe us, heal us, and connect us to one another.',p)+
+    DA('Low Voices','We thank you, O God, for the wisdom to receive these gifts with gratitude and care.')+
+    D('High Voices','Teach us to see ourselves not as owners of creation but as members of its community, entrusted with its well-being.',p)+
+    DA('Low Voices','May we honour the life of all you have made.')+
+    D('High Voices','Strengthen us to live simply, share generously, and walk gently upon the earth.',p)+
+    DA('Low Voices','May our worship reflect your love for creation and our care for one another. Fill us with your renewing Spirit and receive our praise.')+
+    AT('Adapted from Creation Justice Ministries, &ldquo;Environmental Justice with Indigenous Peoples.&rdquo;')
+  );
+}
+
+function pgD3b(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · Climate Justice', pal:p, pn:19, label:L},
+    LH('Opening Prayer','',p)+
+    SH('Prayer of Confession')+
+    D('One','Giver of Life, in the midst of your good creation, we recognize a plundered earth and we groan with creation:',p)+
+    DA('All','Have mercy on us.')+
+    D('One','In the midst of poisoned waters, we groan with creation:',p)+
+    DA('All','Have mercy on us.')+
+    D('One','In the midst of polluted air, we groan with creation:',p)+
+    DA('All','Have mercy on us.')+
+    D('One','In the midst of mountains of waste we groan with creation:',p)+
+    DA('All','Have mercy on us.')+
+    D('One','In the midst of the world at war, and because of the Church&rsquo;s sinful participation in the Doctrine of Discovery and Manifest Destiny, we groan with creation:',p)+
+    DA('All','Have mercy on us.')+
+    D('One','We who are made in the image of God have gone astray. Attitudes of conquest and greed harm us all. Creation groans with us.',p)+
+    DA('All','Have mercy on us.')+
+    SH('Assurance of Grace')+
+    D('One','Hear the good news. In Christ, God is reconciling all things &mdash; things in heaven and things on earth. Though we have sinned against one another and against creation, God&rsquo;s mercy is greater than our failures. Through Christ we are forgiven, and through the Spirit we are renewed for lives of justice, gratitude, and care.',p)+
+    DA('All','Thanks be to God. Amen.')
+  );
+}
+
+function pgD3c(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · Climate Justice', pal:p, pn:20, label:L},
+    LH('Psalmody','Psalms 96, 104, 148',p)+
+    SH('Responsive reading')+
+    D('One','Praise the Lord!',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    D('One','Praise the Lord from the heavens; praise the Lord, sun and moon, and all you shining stars!',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    D('One','Praise the Lord from the earth, all sea creatures and all waters, fire and hail, snow and frost, and stormy wind.',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    D('One','Praise the Lord, wild animals and all cattle, creeping things and flying birds! Mountains and all hills, fruit trees and all cedars!',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    D('One','Let heaven celebrate! Let the earth rejoice! Let the lakes and oceans and everything in them roar! Let the countryside and everything, everywhere, celebrate!',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    D('One','The Lord is coming to establish justice on earth! We wait for the Lord!',p)+
+    DA('All','While we have breath, we will sing; your renewing Spirit gives us song.')+
+    LH('Song','',p)+
+    SONG('song-ihyv-refrain.jpg','I Hear Your Voice — refrain')+
+    SCAP('I Hear Your Voice &mdash; Refrain')+
+    AT('Reprise: &ldquo;I Hear Your Voice&rdquo; &mdash; Refrain. Words: Tammy Wiens; Music: Sheldon W. Sorge. &copy; 2015. Used with permission.')
+  );
+}
+
+function pgD3d(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · Climate Justice', pal:p, pn:21, label:L},
+    LH('Scripture Reading','Colossians 1:15&ndash;20',p)+
+    B('Christ is the image of the invisible God, the firstborn of all creation, for in him all things in heaven and on earth were created, things visible and invisible, whether thrones or dominions or rulers or powers &mdash; all things have been created through him and for him. Christ is before all things, and in him all things hold together. Christ is the head of the body, the church; the beginning, the firstborn from the dead, so that Christ might come to have first place in everything. For in Christ all the fullness of God was pleased to dwell, and through him God was pleased to reconcile to himself all things, whether on earth or in heaven, by making peace through the blood of his cross.')+
+    D('Leader','This is the word of God.',p)+
+    DA('All','Thanks be to God.')+
+    LH('Reflection','',p)+
+    RU('From &ldquo;God&rsquo;s Sacred Earth: A Renewed Commitment,&rdquo; National Council of Churches (2024).')+
+    B('We believe that the created world is sacred &mdash; a revelation of God&rsquo;s power and gracious presence filling all things. As partner communions, we lament the shattering of the splendid gifts of this web of life, the ways we ignore our responsibility for the well-being of all life, and the destruction of species and their habitats at a rate never known in human history.')+
+    B('We acknowledge and lament that colonialism and racism have exacerbated the impacts of climate change and environmental injustice on minoritized people, and we recommit ourselves to working in solidarity against these systemic harms. Churches are called to exist as representatives of the One who creates, restores, and sustains &mdash; to worship God with all our being and actions, and to treat creation as sacred.')
+  );
+}
+
+function pgD3e(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · Climate Justice', pal:p, pn:22, label:L},
+    B('Therefore we urgently call all churches and all people of goodwill to join us in rediscovering the presence of God&rsquo;s creation in prayer and worship; educating on creation care and environmental justice; advocating for climate justice; seeking justice for communities that bear disproportionate environmental harm; and healing creation through restoration, biodiversity protection, and resilience.')+
+    RU('Guiding questions for silent meditation: Where have you encountered God&rsquo;s sacred presence in creation, and how is that experience calling you to greater care for the earth and its people? Which commitment feels most achievable in your setting, and what is one step you could take in the next six months?')+
+    LH('Symbolic Act','',p)+
+    SH('Web of Creation')+
+    RU('Materials: one large ball of green or natural-coloured yarn.')+
+    B('Invite participants to stand in a large circle: Today we have remembered God&rsquo;s gifts, confessed our failures, received God&rsquo;s grace, and recommitted ourselves to the care of creation. As we form this web, let us remember that all life is connected and that in Christ all things hold together.')+
+    B('The leader holds the end of the yarn, names a gift of creation, and tosses the ball across the circle. Each person who receives it holds a section, names something they are grateful for or committed to protecting, and tosses it onward &mdash; until a web forms.')+
+    D('Leader','Look around you. No strand stands alone. Every life touches another life. Every choice affects another part of creation. This is the sacred web of life entrusted to our care.',p)+
+    D('Leader','In Christ all things hold together. Repeat after me: <em>Renew us, O God, to care for the earth and one another.</em>',p)+
+    DA('All','Renew us, O God, to care for the earth and one another.')
+  );
+}
+
+function pgD3f(){
+  const p = PAL.climate, L = 'Day 3 · Climate Justice';
+  return lit({kick:'Day 3 · Climate Justice', pal:p, pn:23, label:L},
+    LH('Intercessions','',p)+
+    D('One','God of life, we pray for the earth and all living things. Renew forests and rivers, grasslands and oceans, and all the creatures with whom we share this common home.',p)+
+    DA('All','Renew us, O God, to care for the earth and one another.')+
+    D('One','We pray for communities affected by drought, fire, flood, rising seas, and environmental degradation. Sustain those who are vulnerable, strengthen those who serve, and inspire us to seek the common good.',p)+
+    DA('All','Renew us, O God, to care for the earth and one another.')+
+    D('One','We pray for communities harmed by poverty, racism, and environmental injustice. May those who bear the greatest burdens receive justice, protection, and hope.',p)+
+    DA('All','Renew us, O God, to care for the earth and one another.')+
+    D('One','We pray for those gathered in this room. Where we have been indifferent, awaken us; where we have grown weary, strengthen us; where we are uncertain, guide us in faithful action.',p)+
+    DA('All','Renew us, O God, to care for the earth and one another. Amen.')+
+    LH('Closing Prayer','',p)+
+    DA('All','All that God has created is behind us. All that God continues to create is before us. God&rsquo;s creation surrounds us and lives within us. We are the artwork of the One who created us in love. In Christ, all things hold together, and in Christ, all things are being reconciled, re-created, made new. All is held in beauty. All is held in beauty. Amen.')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')+
+    LH('Benediction','',p)+
+    B('Go now to keep God&rsquo;s garden with gladness and to act with urgency. While we have breath, we will sing; your renewing Spirit gives us song. Amen.')
+  );
+}
+/* ============================================================
+   DAY 4 — SECULARISM AND LAICITY (interlude)
+============================================================ */
+function pgD4(){
+  const p = PAL.secular;
+  return `<div class="pg pg-lit pg-interlude" style="width:var(--PW);height:var(--PH);background:#F8F8F8;">
+    <div class="il-kick" style="color:${p.c};">Day 4 · USA Phase · Detroit · Thursday, 6 August 2026</div>
+    <div class="il-title">Morning Prayer</div>
+    <div class="il-sub" style="color:${p.c};">Secularism and Laicity</div>
+    <div class="il-rule" style="background:${p.soft};"></div>
+    <div class="il-note">The order of morning prayer for this day is in preparation by the Spiritual Life Working Group. Scripture under consideration includes Luke 4:18&ndash;19 (Isaiah 61:1&ndash;2) and Acts 5:29 (Romans 13:1&ndash;7), holding the tension of faithful witness in the public square.</div>
+    <div class="il-tag" style="color:${p.c};border:1px solid ${p.soft};">Order of service in preparation</div>
+    <div class="pn" style="position:absolute;left:42px;right:42px;bottom:22px;border-color:${p.rl};"><span style="color:${p.c};">Day 4 · Secularism and Laicity</span><span>24</span></div>
+  </div>`;
+}
+
+/* ============================================================
+   DAY 5 — RACISM AND ANTI-RACISM (Fri 7 Aug)
+============================================================ */
+function pgD5a(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · USA Phase · Detroit', pal:p, pn:25, label:L,
+    opener:{title:'Morning Prayer', sub:'Racism and Anti-Racism', date:'Friday, 7 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Opening Song','',p)+
+    SH('&ldquo;Dios est&aacute; aqu&iacute;&rdquo;')+
+    RU('Led simply on guitar, with no spoken introduction. Begin by humming the melody twice, then alternate between Spanish and English, continuing until it comes to a natural conclusion. When the song concludes, hold ten to twenty seconds of silence.')+
+    AT('Spanish Text &amp; Music &copy; 1976 Javier Garc&iacute;as Mateo. English Translation &copy; 1999 C. Michael Hawn, Choristers Guild.')+
+    LH('Opening Prayer','',p)+
+    SH('A Guided Breath Prayer')+
+    RU('The leader invites the congregation to find a comfortable position, feet grounded and hands resting comfortably.')+
+    B('As we pray, we focus on our breathing in, and with each breath out we repeat the phrase, &ldquo;Lord Jesus Christ, Son of God, have mercy on me.&rdquo; Breathe slowly in&hellip; &ldquo;Lord Jesus Christ, Son of God, have mercy on me.&rdquo; Again, breathe slowly in&hellip; <em>(repeated four times)</em>.')+
+    D('Leader','In the book of Ephesians we hear that &ldquo;God, who is rich in mercy, out of the great love with which he loved us even when we were dead through our trespasses, made us alive together with Christ &mdash; by grace you have been saved.&rdquo; Let all God&rsquo;s people say:',p)+
+    DA('All','Amen.')+
+    AT('Traditional breath prayer &middot; Ephesians 2:4&ndash;5 (NRSVue).')+
+    LH('Psalmody','Luke 1:46&ndash;55',p)+
+    SH('The Magnificat &mdash; with &ldquo;Come Out!&rdquo; reprise')+
+    RU('Led as a call and response: one reader and one song leader, the congregation joining the &ldquo;Come Out!&rdquo; reprise.')
+  );
+}
+
+function pgD5b(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:26, label:L},
+    SONG('song-comeout.jpg','Come Out! — sheet music')+
+    SCAP('Come Out!')
+  );
+}
+
+function pgD5c(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:27, label:L},
+    D('Reader','My soul magnifies the Lord, and my spirit rejoices in God my Saviour, for he has looked with favour on the lowly state of his servant. Surely from now on all generations will call me blessed, for the Mighty One has done great things for me, and holy is his name.',p)+
+    DA('All','&ldquo;Come Out!&rdquo; &mdash; reprise')+
+    D('Reader','Indeed, his mercy is for those who fear him from generation to generation. He has shown strength with his arm; he has scattered the proud in the imagination of their hearts. He has brought down the powerful from their thrones and lifted up the lowly;',p)+
+    DA('All','&ldquo;Come Out!&rdquo; &mdash; reprise')+
+    D('Reader','he has filled the hungry with good things and sent the rich away empty. He has come to the aid of his child Israel, in remembrance of his mercy, according to the promise he made to our ancestors, to Abraham and to his descendants forever.',p)+
+    AT('Luke 1:46&ndash;55 (NRSVue). &ldquo;Come Out!&rdquo; &mdash; Text: Tanya Linn Bennett &amp; Mark A. Miller; Music: Mark A. Miller. &copy; 2015 Choristers Guild. Reprinted by permission.')+
+    LH('Scripture Reading','Ephesians 2:14&ndash;22',p)+
+    B('For Christ is our peace; in his flesh he has made both into one and has broken down the dividing wall, that is, the hostility between us, abolishing the law with its commandments and ordinances, that he might create in himself one new humanity in place of the two, thus making peace, and might reconcile both to God in one body through the cross, thus putting to death that hostility through it.')+
+    B('So he came and proclaimed peace to you who were far off and peace to those who were near, for through him both of us have access in one Spirit to the Father. So then, you are no longer strangers and aliens, but you are fellow citizens with the saints and also members of the household of God, built upon the foundation of the apostles and prophets, with Christ Jesus himself as the cornerstone; in him the whole structure is joined together and grows into a holy temple in the Lord, in whom you also are built together spiritually into a dwelling place for God.')+
+    D('Leader','The word of God for the people of God.',p)+
+    DA('All','Thanks be to God.')
+  );
+}
+
+function pgD5d(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:28, label:L},
+    LH('Reflection','',p)+
+    RU('The third section of the Belhar Confession is our reflection for this morning.')+
+    B('We believe that God has entrusted the church with the message of reconciliation in and through Jesus Christ; that the church is called to be the salt of the earth and the light of the world; that the church is called blessed because it is a peacemaker; that the church is witness both by word and by deed to the new heaven and the new earth in which righteousness dwells.')+
+    B('We believe that God&rsquo;s lifegiving Word and Spirit has conquered the powers of sin and death, and therefore also of irreconciliation and hatred, bitterness and enmity; that God&rsquo;s lifegiving Word and Spirit will enable the church to live in a new obedience which can open new possibilities of life for society and the world.')+
+    B('We believe that the credibility of this message is seriously affected when it is proclaimed in a land which professes to be Christian, but in which the enforced separation of people on a racial basis promotes and perpetuates alienation, hatred and enmity; and that any teaching which attempts to legitimate such forced separation by appeal to the gospel, and is not prepared to venture on the road of obedience and reconciliation, must be considered ideology and false doctrine.')+
+    B('Therefore, we reject any doctrine which, in such a situation, sanctions in the name of the gospel or of the will of God the forced separation of people on the grounds of race and colour, and thereby in advance obstructs and weakens the ministry and experience of reconciliation in Christ.')+
+    RU('Find one or two conversation partners and reflect together: When encountering professed Christians who hold or enact racist doctrines, how can we respond both as individuals and as the larger body of Christ?')+
+    AT('The Belhar Confession &middot; Reformed Church in America.')
+  );
+}
+
+function pgD5e(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:29, label:L},
+    LH('Intercessions','',p)+
+    SH('With the sung Kyrie')+
+    RU('A chime cues the Kyrie; the leader sings it once, then invites all to sing.')+
+    SONG('song-kyrie.jpg','Kyrie — sheet music')+
+    SCAP('Kyrie')+
+    AT('Kyrie: Music by Swee Hong Lim, &copy; 1990 GBGMusik. Used with permission.')
+  );
+}
+
+function pgD5f(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:30, label:L},
+    D('Leader','Let us pray to the Living God, offering your prayers silently in your hearts, or aloud, after I say &ldquo;We lift our voices to you, O God.&rdquo; For those suffering from the injustice of racism, colourism, and all other forms of discrimination, we lift our voices to you, O God&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For those doing the work of anti-racism, we lift our voices to you, O God&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For those who were taught to hate and discriminate, that they might find your love and that it might change their ways, we lift our voices to you, O God&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For our countries, cities, and all leaders who hold positions of power, that they might lead boldly to a new way, Your way, we lift our voices to you, O God&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','O God, hear our prayers. Move our hearts. We pray in the strong name of your Son, Jesus Christ, who beckons us into unity. And so we pray together the prayer he taught, each in the language of their heart:',p)+
+    AT('Prayers written by Brian Hehn.')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')+
+    LH('Benediction','',p)+
+    B('Let us go out as a singing people!')
+  );
+}
+
+function pgD5g(){
+  const p = PAL.racism, L = 'Day 5 · Racism and Anti-Racism';
+  return lit({kick:'Day 5 · Racism and Anti-Racism', pal:p, pn:31, label:L},
+    SONG('song-comeout-reprise.jpg','Come Out! — reprise sheet music')+
+    SCAP('Come Out! &mdash; reprise')+
+    AT('&ldquo;Come Out!&rdquo; Words: Tanya Linn Bennett &amp; Mark A. Miller; Music: Mark A. Miller. &copy; 2015 Choristers Guild.')
+  );
+}
+
+/* ============================================================
+   DAY 6 — RACISM AND ANTI-RACISM (Sat 8 Aug)
+============================================================ */
+function pgD6a(){
+  const p = PAL.racism, L = 'Day 6 · Racism and Anti-Racism';
+  return lit({kick:'Day 6 · USA Phase · Detroit', pal:p, pn:32, label:L,
+    opener:{title:'Morning Prayer', sub:'Racism and Anti-Racism', date:'Saturday, 8 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Opening Song','',p)+
+    SH('&ldquo;Thank You For This Day&rdquo;')+
+    RU('Sung a cappella and by rote, often as a call and response using four measures at a time. At the opening, a slower, more prayerful tempo is appropriate.')+
+    AT('Source: The Native American Church.')+
+    LH('Opening Prayer','',p)+
+    SH('A Guided Breath Prayer')+
+    RU('The leader invites the congregation to a comfortable position, feet grounded, hands resting.')+
+    B('As we pray, we focus on our breathing in, and with each breath out we repeat the phrase, &ldquo;Spirit of God, ignite my heart.&rdquo; Breathe slowly in&hellip; &ldquo;Spirit of God, ignite my heart.&rdquo; <em>(repeated four times)</em>.')+
+    D('Leader','When the disciples had come together, they asked him, &ldquo;Lord, is this the time when you will restore the kingdom to Israel?&rdquo; He replied, &ldquo;It is not for you to know the times or periods that the Father has set by his own authority. But you will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem, in all Judea and Samaria, and to the ends of the earth.&rdquo; Friends, the Spirit of the Lord is stirring within us and between us. Let all God&rsquo;s people say:',p)+
+    DA('All','Amen.')+
+    AT('Prayer crafted by Brian Hehn. Acts 1:6&ndash;8 (NRSVue).')
+  );
+}
+
+function pgD6b(){
+  const p = PAL.racism, L = 'Day 6 · Racism and Anti-Racism';
+  return lit({kick:'Day 6 · Racism and Anti-Racism', pal:p, pn:33, label:L},
+    LH('Psalmody','Psalm 139',p)+
+    RU('Normal type read by the leader; bold type read by the congregation.')+
+    PS('O Lord, you have searched me and known me. You know when I sit down and when I rise up; you discern my thoughts from far away. You search out my path and my lying down and are acquainted with all my ways.')+
+    DA('All','Such knowledge is too wonderful for me; it is so high that I cannot attain it.')+
+    PS('Where can I go from your spirit? Or where can I flee from your presence? If I ascend to heaven, you are there; if I make my bed in Sheol, you are there. If I take the wings of the morning and settle at the farthest limits of the sea, even there your hand shall lead me, and your right hand shall hold me fast.')+
+    DA('All','Even the darkness is not dark to you; the night is as bright as the day, for darkness is as light to you.')+
+    PS('For it was you who formed my inward parts; you knit me together in my mother&rsquo;s womb. I praise you, for I am fearfully and wonderfully made. Wonderful are your works; that I know very well.')+
+    DA('All','Search me, O God, and know my heart; test me and know my thoughts. See if there is any wicked way in me, and lead me in the way everlasting. Amen.')+
+    AT('Psalm 139 (NRSVue), abridged.')+
+    LH('Song','',p)+
+    SH('Reprise: &ldquo;Thank You For This Day&rdquo;')+
+    RU('A faster, more celebratory tempo may be taken; a hand drum may be added.')
+  );
+}
+
+function pgD6c(){
+  const p = PAL.racism, L = 'Day 6 · Racism and Anti-Racism';
+  return lit({kick:'Day 6 · Racism and Anti-Racism', pal:p, pn:34, label:L},
+    LH('Scripture Reading','Luke 4:16&ndash;29',p)+
+    B('When he came to Nazareth, where he had been brought up, he went to the synagogue on the Sabbath day, as was his custom. He stood up to read, and the scroll of the prophet Isaiah was given to him. He unrolled the scroll and found the place where it was written: &ldquo;The Spirit of the Lord is upon me, because he has anointed me to bring good news to the poor. He has sent me to proclaim release to the captives and recovery of sight to the blind, to set free those who are oppressed, to proclaim the year of the Lord&rsquo;s favour.&rdquo;')+
+    B('And he rolled up the scroll, gave it back to the attendant, and sat down. The eyes of all in the synagogue were fixed on him. Then he began to say to them, &ldquo;Today this scripture has been fulfilled in your hearing.&rdquo; All spoke well of him and were amazed at the gracious words that came from his mouth. They said, &ldquo;Is this not Joseph&rsquo;s son?&rdquo;')+
+    B('Then he said, &ldquo;Truly I tell you, no prophet is accepted in his hometown. There were many widows in Israel in the time of Elijah&hellip; yet Elijah was sent to none of them except to a widow at Zarephath in Sidon. There were also many with a skin disease in Israel in the time of Elisha, and none of them was cleansed except Naaman the Syrian.&rdquo; When they heard this, all in the synagogue were filled with rage. They got up, drove him out of the town, and led him to the brow of the hill, so that they might hurl him off the cliff.')+
+    D('Leader','This is the word of God.',p)+
+    DA('All','Thanks be to God.')+
+    AT('Luke 4:16&ndash;29 (NRSVue).')+
+    LH('Reflection','',p)+
+    RU('An excerpt from a letter written by M. Roger Holland II, dated 21 June 2021.')+
+    B('Read in silence and held for reflection: the church&rsquo;s call to face the rage that meets the prophet at home, and the slow, costly work of becoming a community in which the Spirit&rsquo;s anointing &mdash; good news to the poor, release to the captive, freedom for the oppressed &mdash; is made visible.')+
+    AT('From &ldquo;The Fire This Time: A Black Catholic Sourcebook,&rdquo; ed. Kim R. Harris, M. Roger Holland II, and Kate Williams, pp. 326&ndash;327.')
+  );
+}
+
+function pgD6d(){
+  const p = PAL.racism, L = 'Day 6 · Racism and Anti-Racism';
+  return lit({kick:'Day 6 · Racism and Anti-Racism', pal:p, pn:35, label:L},
+    LH('Intercessions','',p)+
+    SH('With the sung Kyrie')+
+    RU('A chime cues the Kyrie; the leader sings it once, then invites all to sing.')+
+    D('Leader','Let us pray to God, whose Spirit moves the world to reconciliation. We offer our prayers silently, or aloud, after I say &ldquo;Spirit of the Living God, hear our prayers.&rdquo; For those suffering from the injustice of racism, colourism, and all other forms of discrimination, Spirit of the Living God, hear our prayers&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For those doing the work of anti-racism, Spirit of the Living God, hear our prayers&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For those who were taught to hate and discriminate, that they might find your love and that it might change their ways, Spirit of the Living God, hear our prayers&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','For our countries, cities, and all leaders who hold positions of power, that they might lead boldly to a new way, Your way, Spirit of the Living God, hear our prayers&hellip;',p)+
+    DA('All','Kyrie &mdash; sung response')+
+    D('Leader','Holy Spirit, hear our prayers. Move our hearts. We pray in the strong name of your Son, Jesus Christ, who promised you would always be with us. And so we pray together the prayer he taught, each in the language of their heart:',p)+
+    AT('Prayers written by Brian Hehn.')
+  );
+}
+
+function pgD6e(){
+  const p = PAL.racism, L = 'Day 6 · Racism and Anti-Racism';
+  return lit({kick:'Day 6 · Racism and Anti-Racism', pal:p, pn:36, label:L},
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')+
+    LH('Benediction','',p)+
+    B('Again, we go out as a singing people!')+
+    AT('Reprise. Source: The Native American Church.')+
+    SP(14)+
+    `<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0;">
+       <img src="${IMG}pb-logo.png" alt="" style="max-width:190px;max-height:100%;object-fit:contain;opacity:.92;">
+     </div>`
+  );
+}
+
+/* ============================================================
+   CANADA PHASE OPENER
+============================================================ */
+function pgCanadaPhase(){
+  return `<div class="pg pg-photo" style="width:var(--PW);height:var(--PH);">
+    <div class="photo-fill">
+      <img src="${P}2025_10_14_MSchneider_01_-13.jpg" alt="">
+      <div class="photo-credit">Picture by Marcelo Schneider</div>
+    </div>
+    <div class="photo-text">
+      <div class="op-label">Week Two &middot; 10 &ndash; 16 August 2026</div>
+      <div class="op-rule"></div>
+      <div class="op-title">Canada Phase</div>
+      <div class="op-desc">Tkaronto&ndash;Toronto, Ontario &mdash; on the territory of the Haudenosaunee, the Anishinaabe, the Mississaugas of the Credit, the Chippewa and the Wendat peoples, bound together by the Dish With One Spoon covenant. The question is carried onward: <em>Where now for visible justice?</em></div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================
+   DAY 9 — INTERFAITH DIALOGUE (Tue 11 Aug)
+============================================================ */
+function pgD9a(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Canada Phase · Toronto', pal:p, pn:38, label:L,
+    opener:{title:'Morning Prayer', sub:'Interfaith Dialogue', date:'Tuesday, 11 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Invocation','',p)+
+    B('Holy God of all places and all peoples, you call us together as one human family &mdash; diverse in tongue and tradition yet bound by a common longing for you. Open our eyes to your divine image reflected in all of creation: in faces near and far, in wisdom ancient and new.')+
+    B('Open our ears and our spirits to the myriad and wondrous ways human beings name and know the sacred: Creator, Elohim, Sophia, Allah, Jesus, Bhagavan, Akal Purakh, and so many more&hellip;')+
+    RU('Pause &mdash; please say aloud your name for the sacred in the language of your heart.')+
+    B('Move us beyond tolerance into genuine encounter &mdash; where we embody truth-telling and reconciliation, where hope and healing take root, where justice and peace are the mortar of our shared life. We pray in the name of your strong and tender love. Amen.')+
+    AT('Adapted from an Emmanuel College (Toronto) prayer service in response to the Qu&eacute;bec Mosque massacre, 2017.')
+  );
+}
+
+function pgD9b(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:39, label:L},
+    LH('Opening Prayer','',p)+
+    B('Gathered here in Tkaronto&ndash;Toronto, we raise our hands in gratitude for those whose territory this is. We are grateful, O God, for the welcome that has made this possible &mdash; the welcome of the Haudenosaunee, the Anishinaabe, and the Mississaugas of the Credit, the Chippewa and the Wendat peoples, bound together by the Dish With One Spoon, the ancient covenant these peoples forged through hard-won peace to share this land and keep it whole.')+
+    B('In the face of the forces that tug and pull, that push and unsettle, we hear your voice calling us &mdash; not to the erasure of our histories and identities, but to the courage to be so deeply rooted in our history and future with you that we can reach beyond fear toward one another. Most High, deepen our roots and widen our reach.')+
+    B('Lead us to trust your Holy Spirit&rsquo;s already-ongoing work in the ones coming toward us, already present in the wisdom we have not yet heard, already at work in healing the wounds we have caused &mdash; wounds still open &mdash; when, instead of listening for you in one another, we have weaponized you against the very ones you love.')+
+    B('Receive us and guide us, Holy One &mdash; our questioning and our certainties, our wounds and wounding, our folly and our wisdom, our reaching and our rootedness. Bless us, we pray, that we may be a blessing, in our generation, here for such a time as this. We look to you. We wait for you. Amen.')+
+    AT('Maureen J. A. Okundi (May 2026, for NATI-RETI).')
+  );
+}
+
+function pgD9c(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:40, label:L},
+    LH('Psalmody','Psalm 139:1&ndash;18',p)+
+    RU('To be read antiphonally.')+
+    PS('O Lord, you have searched me and known me. You know when I sit down and when I rise up; you discern my thoughts from far away. You search out my path and my lying down and are acquainted with all my ways.')+
+    PS('Where can I go from your spirit? Or where can I flee from your presence? If I ascend to heaven, you are there; if I make my bed in Sheol, you are there. If I take the wings of the morning and settle at the farthest limits of the sea, even there your hand shall lead me, and your right hand shall hold me fast.')+
+    PS('For it was you who formed my inward parts; you knit me together in my mother&rsquo;s womb. I praise you, for I am fearfully and wonderfully made. Wonderful are your works; that I know very well.')+
+    PS('How weighty to me are your thoughts, O God! How vast is the sum of them! I try to count them &mdash; they are more than the sand; I come to the end &mdash; I am still with you.')+
+    LH('Song','',p)+
+    SONG('song-prism.jpg','Creation, Like a Prism — sheet music')+
+    SCAP('Creation, Like a Prism')+
+    AT('&ldquo;Creation, like a prism&rdquo; &mdash; sung in unison.')
+  );
+}
+
+function pgD9d(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:41, label:L},
+    LH('Scripture Reading','Luke 10:25&ndash;37 &middot; First Nations Version',p)+
+    B('A scroll keeper, skilled in his knowledge of tribal law, came to Creator Sets Free (Jesus) to test him. &ldquo;Wisdomkeeper,&rdquo; he said, &ldquo;what path must I walk to have the life of the world to come that never fades away, full of beauty and harmony?&rdquo; He answered, &ldquo;What is written in our tribal law? How do you see it?&rdquo; The scroll keeper said, &ldquo;You must love the Great Spirit from deep within, with the strength of your arms, the thoughts of your mind, and the courage of your heart, and you must love your fellow human beings the same way you love yourselves.&rdquo; &ldquo;You have answered well,&rdquo; Creator Sets Free said. &ldquo;If you walk this path you will live.&rdquo;')+
+    B('But the scroll keeper, wanting to look good, asked, &ldquo;Who are my fellow human beings?&rdquo; Creator Sets Free answered with a story. &ldquo;A man walking the road from Village of Peace to Moon Village was attacked by thieves, who beat him and left him bleeding. A holy man came down the road and went around him on the other side. Another man, also from the tribe holy men are chosen from, did the same. Then a man from High Place &mdash; not a tribal member, a mixed blood despised by the tribal people &mdash; saw the wounded man and felt pity. He poured good medicine on his wounds, wrapped them, put the man on his own animal, and took him to a lodging house to care for him.&rdquo;')+
+    B('Creator Sets Free then asked, &ldquo;Which of these three acted as a fellow human being to the man who was attacked?&rdquo; The scroll keeper answered, &ldquo;The one who had pity on him.&rdquo; &ldquo;Go,&rdquo; Creator Sets Free said, &ldquo;and walk in the same way.&rdquo;')+
+    AT('First Nations Version: An Indigenous Translation of the New Testament, IVP, 2021.')
+  );
+}
+
+function pgD9e(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:42, label:L},
+    LH('Reflection','',p)+
+    B('The First Nations Version meets us here and slows us down, making the familiar strange again, and strangely more true. <em>Creator Sets Free. The Great Spirit. Scroll Keeper.</em> These may not be words we grew up with &mdash; or perhaps they are, yet somewhere we were told they were not sacred enough. This translation is itself an act of what we are here to practise: visible justice &mdash; the willingness to hear what we thought we knew spoken in a voice we did not expect, and to find it more true, not less.')+
+    B('The answer comes not as doctrine but as embodiment. We are commanded to love with our whole being &mdash; the strength of our arms, the thoughts of our mind, the courage of our heart. The instruction that stands first is not a belief to hold but a life to live.')+
+    B('And then the harder question, the one each of us is still living: <em>Who are my fellow human beings?</em> The one who answered with his life was not the holy man, not the one from the right tribe or tradition. It was the one from High Place &mdash; the despised outsider. Three things he did: he saw the wounded man; he stopped what he was doing; he poured medicine on the wounds.')+
+    B('We gather from many traditions, many namings of the sacred. Some of us carry wounds from those whose God-talk was a weapon. Some of us have been the ones who did not stop. Most of us have been both. The text asks us only one question &mdash; <em>Who acted as a fellow human being?</em> &mdash; and then: <em>Go. Walk in the same way.</em>')
+  );
+}
+
+function pgD9f(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:43, label:L},
+    B('We are leaders. People are learning whether to see by watching whether we see; learning whether to stop by watching whether we stop. The medicine we pour &mdash; or withhold &mdash; teaches those in our care what love costs. We must be so anchored that we can reach, courageously and freely, beyond fear, toward our neighbour.')+
+    RU('Guiding questions for silent meditation: Who has been the one from High Place in our story &mdash; the one whose wisdom we almost missed because of where they came from, or how they named the sacred? Who in our community is watching to see whether we stop, and what are they learning from us?')+
+    AT('Maureen J. A. Okundi (May 2026, for NATI-RETI).')+
+    LH('Symbolic Act','',p)+
+    SH('Anchor of Hope')+
+    RU('A basket of heart-anchor pendants rests at the centre. A leader steps forward to bless them.')+
+    B('In his letter to the Hebrews, Paul reminds us that hope is an anchor for the soul, firm and secure. Jesus commands us to love our neighbours as ourselves and to love one another as he has loved us.')+
+    B('Loving and compassionate God, bless these anchors, in the name of the Creator, Redeemer, and Sustainer. May they remind us that we belong to God; may they remind us to trust God&rsquo;s love to hold us steady, and to strengthen us in turn to love our neighbours as ourselves. May we see God&rsquo;s image in one another and experience the spark of divinity in all people and all expressions of the sacred.')+
+    RU('Participants come forward and receive the anchors. They turn to a neighbour and place the pendant around each other&rsquo;s necks. The song &ldquo;Open My Heart&rdquo; may be sung during the ritual.')
+  );
+}
+
+function pgD9g(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:44, label:L},
+    SONG('song-openmyheart.jpg','Open My Heart — sheet music')+
+    SCAP('Open My Heart &middot; Ouvre mon c&oelig;ur &middot; Abre mi coraz&oacute;n')+
+    AT('&ldquo;Open My Heart&rdquo; &mdash; Words and music: Ana Hern&aacute;ndez. &copy; 2007. All rights reserved.')
+  );
+}
+
+function pgD9h(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:45, label:L},
+    LH('Intercessions','',p)+
+    RU('Let us pray to God, saying, &ldquo;Holy One, have mercy.&rdquo;')+
+    D('One','Let us ask God for a day of fulfilment and peace.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Let us ask God to teach us to love others as God has loved us.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Let us ask God to strengthen us for the holy work of interfaith dialogue, understanding, and solidarity.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Let us ask God for peace and justice in the world.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Let us ask God to strengthen and relieve those who are in need.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Holy One, we pray especially this day for&hellip; <em>(names of places or peoples who need prayer)</em>. May all those we name experience your holy love in acts of generosity, hope, and solidarity.',p)+
+    DA('All','Holy One, have mercy.')+
+    D('One','Let us ask for healing in the land and for all creation.',p)+
+    DA('All','Holy One, have mercy.')+
+    AT('Becca Whitla (May 2026, for NATI-RETI), based on Anglican morning prayer.')
+  );
+}
+
+function pgD9i(){
+  const p = PAL.inter, L = 'Day 9 · Interfaith Dialogue';
+  return lit({kick:'Day 9 · Interfaith Dialogue', pal:p, pn:46, label:L},
+    LH('Closing Prayer','',p)+
+    B('We have spoken what we could. We have named our wounding. We have heard the call. Now, Gracious God, go before us into the conversations this day will bring, into the encounters we cannot yet imagine, into the discomfort and the grace of real engagement with one another. What we have offered here, receive. What we have withheld, forgive. What we have not yet learned, teach us &mdash; in one another, through one another, for one another. Thank you for making us yours. Amen.')+
+    AT('Maureen J. A. Okundi (May 2026, for NATI-RETI).')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')+
+    LH('Benediction','',p)+
+    B('May the Creator God who dances in creation, who embraces us with human love, who shakes our lives like thunder, who lives, breathes, and works through humans of all cultures and religions, bless us and drive us out with power, to fill the world with her justice, compassion, and peace.')+
+    AT('Adapted from &ldquo;Celebrate God&rsquo;s Presence&rdquo; (United Church of Canada), p. 71.')+
+    SP(10)+
+    `<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0;">
+       <img src="${IMG}pb-logo.png" alt="" style="max-width:180px;max-height:100%;object-fit:contain;opacity:.92;">
+     </div>`
+  );
+}
+/* ============================================================
+   DAY 10 — SOLIDARITY WITH INDIGENOUS COMMUNITIES (Wed 12 Aug)
+============================================================ */
+function pgD10a(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Canada Phase · Toronto', pal:p, pn:47, label:L,
+    opener:{title:'Morning Prayer', sub:'Solidarity with Indigenous Communities', date:'Wednesday, 12 August 2026 &middot; 08:30 – 09:00'}},
+    LH('Invocation','',p)+
+    SH('The Sacred Circle')+
+    D('One','Today we have gathered, and when we look upon the faces around us, we see that the cycles of life continue. We have been given the duty to live in balance and harmony with each other and all living beings. So now, we bring our minds together as one as we give our greetings and our thanks to each other as People.',p)+
+    DA('All','Now our minds are one.')+
+    AT('From the Haudenosaunee Thanksgiving Address, &ldquo;Braiding Sweetgrass,&rdquo; Robin Wall Kimmerer.')+
+    LH('Opening Prayer','',p)+
+    SH('Prayer to the Four Directions')+
+    RU('The community turns to face each direction in turn.')+
+    B('<em>Facing North:</em> O spirits and angels of the North, where fierce storms come from, come to us and give us strength and courage. Teach us to be strong like the buffalo who turns and faces the fierce winds head on.')+
+    B('<em>Facing East:</em> O spirits and angels of the East, where the sun rises every day, bring light into our hearts and minds so we may also rise every morning, acknowledging new life, creativity, and renewed hope.')
+  );
+}
+
+function pgD10b(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Indigenous Solidarity', pal:p, pn:48, label:L},
+    B('<em>Facing South:</em> O spirits and angels of the South, where the sun shines the hottest, bring warmth into our hearts and friendships and all our relations.')+
+    B('<em>Facing West:</em> O spirits and angels of the West, where the sun sets every night, teach us to be at home in the dark and the silence of the night, to let go and to trust as we sink into the unknown and await the sun rising tomorrow.')+
+    B('<em>Looking up to Father Sky:</em> Come, spirits and angels from above. Teach us to fly high with the eagle, and so seek wisdom and perspective in life.')+
+    B('<em>Looking down:</em> Come, spirits and angels from below, where all plants find their roots in Mother Earth. Teach us to remain grounded and thankful for the Earth, our Mother, and to treat her with respect.')+
+    DA('All','Come, spirits and angels from all six directions, into our hearts. Gather in our hearts and make them full with blood that is red, full of energy and flowing with love, gratitude, and generosity. Ah Ho. Amen.')+
+    AT('Seneca elder, Sister Jos&eacute; Hobday.')+
+    LH('Psalmody','Psalm 78:1&ndash;8',p)+
+    PS('Give ear, O my people, to my teaching; incline your ears to the words of my mouth. I will open my mouth in a parable; I will utter dark sayings from of old, things that we have heard and known, that our ancestors have told us. We will not hide them from their children, but tell to the coming generation the glorious deeds of the Lord, and the wonders that he has done &mdash; that the next generation might set their hope in God, and not forget the works of God, but keep his commandments.')+
+    AT('Psalm 78:1&ndash;8 (inclusive paraphrase).')+
+    LH('Song','',p)+
+    SH('&ldquo;Draw the Circle Wide&rdquo;')+
+    RU('Sung in unison. Music and words: Mark Miller / Gordon Light. Voices Together #802 &middot; Worship &amp; Song #3154.')
+  );
+}
+
+function pgD10c(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Indigenous Solidarity', pal:p, pn:49, label:L},
+    LH('Scripture Reading','Matthew 5:1&ndash;11 &middot; First Nations Version',p)+
+    B('When Creator Sets Free (Jesus) saw the great crowd, he went up the mountainside and sat down to teach. His followers came to him, and he began to share his wisdom and teach them how to see Creator&rsquo;s good road.')+
+    B('&ldquo;Creator&rsquo;s blessing rests on the poor, the ones with broken spirits. The good road from above is theirs to walk. Creator&rsquo;s blessing rests on the ones who walk a trail of tears, for he will wipe the tears from their eyes and comfort them. Creator&rsquo;s blessing rests on the ones who walk softly and in a humble manner; the earth, land, and sky will welcome them and always be their home.')+
+    B('Creator&rsquo;s blessing rests on the ones who hunger and thirst for wrongs to be made right again; they will eat and drink until they are full. Creator&rsquo;s blessing rests on the ones who are merciful and kind to others; their kindness will find its way back to them &mdash; full circle. Creator&rsquo;s blessing rests on the pure of heart; they are the ones who will see the Great Spirit. Creator&rsquo;s blessing rests on the ones who make peace; it will be said of them, &lsquo;They are the children of the Great Spirit!&rsquo;')+
+    B('Creator&rsquo;s blessing rests on the ones who are hunted down and mistreated for doing what is right, for they are walking the good road from above. So let your hearts be glad and jump for joy, for you will be honoured in the spirit-world above.')+
+    AT('First Nations Version of the New Testament, Terry Wildman, IVP, 2021.')
+  );
+}
+
+function pgD10d(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Indigenous Solidarity', pal:p, pn:50, label:L},
+    LH('Reflection','',p)+
+    SH('The Circle')+
+    B('One model of understanding our relationship to everything is a simple symbol used among Native peoples: the circle. The harmony way of living is often referred to symbolically as a circle or a hoop. Among Native Americans, the harmony way is less like a philosophy and more like a whole way of being and doing life &mdash; a way that requires not just belief but actions that align with and participate in the local ecosystem and the whole universe.')+
+    B('A circle seems like the natural way to gather together, each person able to see the eyes of everyone else, each hand clasped to the person next to them, each body creating an impenetrable ring of protection. The circle has no beginning and no end, so one can enter at any place or stage.')+
+    B('Life is a sacred circle. When we gather in a circle, the praying has already begun. When we gather in a circle, we communicate with each other and with Great Mystery, even without a word being spoken.')+
+    AT('Randy Woodley, &ldquo;The Circle,&rdquo; in &ldquo;Becoming Rooted,&rdquo; Broadleaf Books, pp. 63&ndash;64.')+
+    LH('Symbolic Act','',p)+
+    SH('Mending the Circle')+
+    RU('All stand in a circle. One leader lights a small candle from the central Christ candle.')+
+    B('In turn around the circle, starting in the East, each person names a place of brokenness in the circle of life, a violation of the harmony way, ending with the words &ldquo;We have forgotten who we are.&rdquo;')+
+    DA('All','We have forgotten who we are.')+
+    B('Then the person offers a prayer or intention to repair the circle as they light their candle, ending with the words &ldquo;I join with the earth and with all beings.&rdquo;')+
+    DA('All','We join with the earth and with each other.')+
+    AT('Created by Kara Markell. Responses adapted from the UN Environmental Sabbath / Earth Rest Day, 1990.')
+  );
+}
+
+function pgD10e(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Indigenous Solidarity', pal:p, pn:51, label:L},
+    LH('Intercessions','',p)+
+    B('Creator, whose many names are spoken in many tongues: you made this world in beauty and balance, teaching us to live in harmony with the Earth and in right relationship with all creation. You placed the First Peoples on this land and gave them language, ceremony, kinship, and wisdom.')+
+    B('We come before you, recognizing the harm of settlers, colonizers, churches, and governments. We name the truth that Christian empire tried to erase Indigenous cultures; that your church participated in boarding schools, land theft, and forced assimilation. We grieve the trauma that still echoes through generations.')+
+    RU('Pause.')+
+    B('We repent of our complicity, past and present, things done and things left undone. We pray for the Indigenous peoples of this place &mdash; Anishinaabewaki, Anishinaabe, and Michif &mdash; who have held fast to language, ceremony, and culture. We give thanks for the wisdom they continue to share and for their witness of resilience, healing, and strength.')+
+    AT('Adapted from the Episcopal Office of Government Relations, Weekly Prayers, August 2025.')+
+    LH('Closing Prayer','',p)+
+    B('Creator, teach us to walk with humility. Help us to listen more than we speak, to follow more than we lead, and to repair what has been broken &mdash; not just with words, but with our lives. Teach us to be good relatives, allies in the work of justice, co-labourers in the work of healing, and faithful stewards of the land we all share. We ask this in the name of your child Jesus, who came not to dominate but to liberate. Amen.')+
+    AT('The Episcopal Church, Office of Indigenous Ministries, &ldquo;A Disciple&rsquo;s Prayer Book.&rdquo;')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')
+  );
+}
+
+function pgD10f(){
+  const p = PAL.indig, L = 'Day 10 · Indigenous Solidarity';
+  return lit({kick:'Day 10 · Indigenous Solidarity', pal:p, pn:52, label:L},
+    LH('Benediction','',p)+
+    SH('Chinook Blessing')+
+    D('One','We call upon the earth, our planet home, with its beautiful depths and soaring heights, its vitality and abundance of life, and together we ask that it',p)+
+    DA('All','teach us, and show us the Way.')+
+    D('One','We call upon the waters that rim the earth, that flow in our rivers and streams, that fall upon our gardens and fields, and we ask that they',p)+
+    DA('All','teach us, and show us the Way.')+
+    D('One','We call upon the forests, the great trees reaching strongly to the sky, the fir and the pine and the cedar, and we ask them to',p)+
+    DA('All','teach us, and show us the Way.')+
+    D('One','We call upon all those who have lived on this earth, our ancestors and our friends, who dreamed the best for future generations, and with thanksgiving we call upon them to',p)+
+    DA('All','teach us, and show us the Way.')+
+    D('One','And lastly, we call upon all that we hold most sacred, the presence and power of the Great Spirit of love and truth which flows through all the universe, to be with us, to',p)+
+    DA('All','teach us, and show us the Way.')+
+    AT('Dianne Neu, &ldquo;Return Blessings: Ecofeminist Liturgies Renewing the Earth,&rdquo; Pilgrim Press, 2002.')
+  );
+}
+
+/* ============================================================
+   DAYS 12 & 13 — WEALTH DISPARITY AND POVERTY (interludes)
+============================================================ */
+function pgD12(){
+  const p = PAL.wealth;
+  return `<div class="pg pg-lit pg-interlude" style="width:var(--PW);height:var(--PH);background:#EFF1F4;">
+    <div class="il-kick" style="color:${p.c};">Day 12 · Canada Phase · Toronto · Friday, 14 August 2026</div>
+    <div class="il-title">Morning Prayer</div>
+    <div class="il-sub" style="color:${p.c};">Wealth Disparity and Poverty</div>
+    <div class="il-rule" style="background:${p.soft};"></div>
+    <div class="il-note">The order of morning prayer for this day is in preparation by the Spiritual Life Working Group, gathered around the pillar of wealth disparity and poverty &mdash; the Gospel&rsquo;s call to fill the hungry with good things and to seek an economy of enough for all.</div>
+    <div class="il-tag" style="color:${p.c};border:1px solid ${p.soft};">Order of service in preparation</div>
+    <div class="pn" style="position:absolute;left:42px;right:42px;bottom:22px;border-color:${p.rl};"><span style="color:${p.c};">Day 12 · Wealth Disparity and Poverty</span><span>53</span></div>
+  </div>`;
+}
+
+function pgD13(){
+  const p = PAL.wealth;
+  return `<div class="pg pg-lit pg-interlude" style="width:var(--PW);height:var(--PH);background:#EFF1F4;">
+    <div class="il-kick" style="color:${p.c};">Day 13 · Canada Phase · Toronto · Saturday, 15 August 2026</div>
+    <div class="il-title">Morning Prayer</div>
+    <div class="il-sub" style="color:${p.c};">Wealth Disparity and Poverty</div>
+    <div class="il-rule" style="background:${p.soft};"></div>
+    <div class="il-note">The order of morning prayer for this day is in preparation by the Spiritual Life Working Group, continuing the reflection on wealth, poverty, and the common life to which the early church bore witness.</div>
+    <div class="il-tag" style="color:${p.c};border:1px solid ${p.soft};">Order of service in preparation</div>
+    <div class="pn" style="position:absolute;left:42px;right:42px;bottom:22px;border-color:${p.rl};"><span style="color:${p.c};">Day 13 · Wealth Disparity and Poverty</span><span>54</span></div>
+  </div>`;
+}
+
+/* ============================================================
+   DAY 14 — CLOSING CELEBRATION (Sun 16 Aug)
+============================================================ */
+function pgD14a(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Canada Phase · Toronto', pal:p, pn:55, label:L,
+    opener:{title:'Closing Celebration', sub:'Sending Forth in Justice', date:'Sunday, 16 August 2026 &middot; 09:30 – 10:30'}},
+    LH('Gathering Music / Prelude','',p)+
+    SONG('song-harc.png','Open My Heart — from Harc, sheet music')+
+    AT('&ldquo;Open My Heart&rdquo; from Harc by Ruth Cunningham &amp; Ana Hernandez. Released: 2004.')
+  );
+}
+
+function pgD14b(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:56, label:L},
+    LH('Procession and Greeting','',p)+
+    SONG('song-procession.png','Processional song — sheet music')+
+    AT('Words and music &copy; William S. Kervin, Arrangement &copy; Tom Reynolds, All rights reserved. One License P-650326')+
+    RU('A procession that gathers symbols collected across the two weeks (e.g., from each thematic pillar) and brings them forward.')
+  );
+}
+
+function pgD14c(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:57, label:L},
+    LH('Procession of the Six Pillars','',p)+
+    RU('A communal song accompanies the procession from entrance through the placement of the sixth fabric.')+
+    RU('<strong>Bearers:</strong> Twelve persons process in pairs, bearing the work of the two weeks.')+
+    B('<strong>Order of procession:</strong>')+
+    `<div style="display:flex;flex-wrap:wrap;gap:4px 14px;margin:2px 0 6px;flex-shrink:0;">
+      <div class="lb" style="margin:0;"><span style="color:#3D993D;font-weight:600;">1.</span> Climate Justice</div>
+      <div class="lb" style="margin:0;"><span style="color:#8C8C8C;font-weight:600;">2.</span> Secularism and Laicity</div>
+      <div class="lb" style="margin:0;"><span style="color:#D93005;font-weight:600;">3.</span> Racism and Anti-Racism</div>
+      <div class="lb" style="margin:0;"><span style="color:#A52BD4;font-weight:600;">4.</span> Interfaith Dialogue</div>
+      <div class="lb" style="margin:0;"><span style="color:#D35400;font-weight:600;">5.</span> Solidarity with Indigenous Communities</div>
+      <div class="lb" style="margin:0;"><span style="color:#1F3F66;font-weight:600;">6.</span> Wealth Disparity and Poverty</div>
+    </div>`+
+    RU('<strong>Movement:</strong> The twelve encircle the table. The singing stops. Each pair turns to face the assembly, and one of the bearers names the pillar aloud. The piece of fabric is then laid on the table:')+
+    B('&ldquo;We bring our commitment to climate justice.&rdquo;')+
+    B('&ldquo;We bring our commitment to a just and equitable society.&rdquo;')+
+    B('&ldquo;We bring our commitment to anti-racism.&rdquo;')+
+    B('&ldquo;We bring our commitment to interfaith dialogue.&rdquo;')+
+    B('&ldquo;We bring our commitment to relationship and reconciliation with Indigenous communities.&rdquo;')+
+    B('&ldquo;We bring our commitment to seek economic justice and love mercy.&rdquo;')
+  );
+}
+
+function pgD14d(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:58, label:L},
+    LH('Greeting','',p)+
+    D('Leader','We came asking, <em>Where now for visible justice?</em>',p)+
+    DA('All','We return bearing the question into our home contexts.')+
+    D('Leader','Grace to you and peace, from God who calls us, from Christ who accompanies us, and from the Spirit who sends us.',p)+
+    DA('All','And also with you.')+
+    LH('Opening Prayer','',p)+
+    SH('I. Thanksgiving')+
+    D('Leader','God of the journey, who gathered us from many places onto Turtle Island, who walked with us from Detroit to Toronto, from the first day to this last:',p)+
+    DA('All','We give you thanks.')+
+    D('Leader','For two weeks of learning and sharing, of lament and celebration, of song and silence, of breaking bread with strangers who became companions:',p)+
+    DA('All','We give you thanks.')+
+    D('Leader','For the six pillars we have named and the wounds they have opened, for the teachers who carried wisdom from their contexts, for the friendships that will outlast this place:',p)+
+    DA('All','We give you thanks.')
+  );
+}
+
+function pgD14e(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:59, label:L},
+    SH('II. Invocation')+
+    D('Leader','Holy One, you have called us, each from a different shore, into one hope.',p)+
+    DA('All','There is one body and one Spirit, one Lord, one faith, one baptism, one God of all.')+
+    D('Leader','Make us worthy of the calling to which we have been called: with all humility and gentleness, with patience, bearing with one another in love.',p)+
+    DA('All','Make every effort to maintain the unity of the Spirit in the bond of peace.')+
+    D('Leader','Send us back to our home contexts not as we came, but as members of this community &mdash; that the visible justice we have sought together may take root in the places we return to.',p)+
+    DA('All','One body. One Spirit. One hope of our calling. Amen.')+
+    AT('Adapted from Resources for the Week of Prayer for Christian Unity 2026 (Ephesians 4:1&ndash;6), jointly published by the Dicastery for Promoting Christian Unity and the World Council of Churches, &copy; 2025.')+
+    SP(8)+
+    `<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0;">
+       <img src="${IMG}pb-logo.png" alt="" style="max-width:170px;max-height:100%;object-fit:contain;opacity:.92;">
+     </div>`
+  );
+}
+
+function pgD14f(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:60, label:L},
+    LH('Communal Song','',p)+
+    SONG('song-communal.png','Communal song — sheet music')
+  );
+}
+
+function pgD14g(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:61, label:L},
+    LH('Scripture Readings','',p)+
+    RU('To be read by four or five readers, each introduced with &ldquo;A reading from&hellip;&rdquo;')+
+    SH('Proverbs 8:1&ndash;4, 10&ndash;11')+
+    B('Does not wisdom call and understanding raise her voice? On the heights, beside the way, at the crossroads she takes her stand; beside the gates in front of the town, at the entrance of the portals she cries out: &ldquo;To you, O people, I call, and my cry is to all who live. Take my instruction instead of silver and knowledge rather than choice gold, for wisdom is better than jewels, and all that you may desire cannot compare with her.&rdquo;')+
+    SH('Psalm 139:13&ndash;16')+
+    B('For it was you who formed my inward parts; you knit me together in my mother&rsquo;s womb. I praise you, for I am fearfully and wonderfully made. Wonderful are your works; that I know very well. My frame was not hidden from you, when I was being made in secret, intricately woven in the depths of the earth. Your eyes beheld my unformed substance. In your book were written all the days that were formed for me, when none of them as yet existed.')+
+    SH('Amos 5:24')+
+    B('But let justice roll on like a river, righteousness like a never-failing stream!')+
+    SH('Micah 6:8')+
+    B('God has told you, O mortal, what is good; and what does the Lord require of you but to do justice, and to love kindness, and to walk humbly with your God?')+
+    SH('Mark 12:28&ndash;31')+
+    B('&ldquo;Which commandment is the first of all?&rdquo; Jesus answered, &ldquo;&hellip;You shall love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength. The second is this, &lsquo;You shall love your neighbour as yourself.&rsquo; There is no other commandment greater than these.&rdquo;')
+  );
+}
+
+function pgD14h(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:62, label:L},
+    LH('Reflection / Address','',p)+
+    RU('A short reflection from a chaplain or co-convener (5&ndash;7 minutes), naming what has been received and what is now sent forward. To be offered by David.')+
+    LH('Symbolic Act of Sending','',p)+
+    B('Anyone who wishes is invited to come forward and sew the six pillar pieces together; four people lead the sewing with large needles and thread, and the logo is sewn on top.')+
+    D('Leader','God who weaves our lives on your loom, bless these sewing kits, that we may carry them forth to our communities to mend your world, knit together your body, and display your fabric of many hues for all to witness and celebrate. In the name of God the weaver, Jesus the mender, and the Holy Spirit, the thread of life. <em>(The kits are distributed and shared, one to another)</em>',p)+
+    B('Let us now weave together our learning and our lives, our commitments, and our communities. As we sing, please come forward and sew a few stitches, knitting these six panels into one fabric, a shared commitment to visible justice, borne out of love and learning.')+
+    RU('As the community sings, all are invited to come forward and sew a few stitches, knitting the six panels into one fabric &mdash; a shared commitment to visible justice, borne out of love and learning.')
+  );
+}
+
+function pgD14i(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:63, label:L},
+    `<div class="song" style="flex:3;"><img src="${IMG}song-sending1.png" alt="Sewing song — sheet music"></div>`+
+    SP(10)+
+    `<div class="song" style="flex:1;"><img src="${IMG}song-sending2.png" alt="Sewing song continuation — sheet music"></div>`
+  );
+}
+
+function pgD14j(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:64, label:L},
+    LH('Litany of Commissioning','',p)+
+    RU('A responsive litany sending the community forward into specific commitments, echoing the Opening Celebration&rsquo;s litany of commitment &mdash; completing the arc from question to commitment.')+
+    D('One','Let us renew our commitments.',p)+
+    D('One','Creator God, mother earth is hurting. We yearn for climate justice.',p)+
+    DA('All','We renew our commitment to love and care for the earth.')+
+    D('One','God of love and action, we continue to struggle to live and work together with respect and humility.',p)+
+    DA('All','We renew our commitment to building a just and equitable society.')+
+    D('One','God of the rainbow, your peoples suffer hatred and discrimination.',p)+
+    DA('All','We renew our commitment to work towards anti-racism.')+
+    D('One','God of many names, we witness global violence and murder in the name of religion.',p)+
+    DA('All','We renew our commitment to love God and neighbour.')+
+    D('One','God of the earth, we continue to squander Indigenous gifts of generosity and wisdom.',p)+
+    DA('All','We renew our commitment to relationship and reconciliation.')+
+    D('One','God who sides with the poor and marginalized even as wealth disparity and poverty worsen,',p)+
+    DA('All','We renew our commitment to seek justice, love mercy, and walk humbly with our God.')+
+    D('One','May our commitments be signs of visible justice and the inbreaking of your beloved community.',p)+
+    DA('All','Amen.')+
+    AT('Written by Becca Whitla and David Montealegre.')
+  );
+}
+
+function pgD14k(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:65, label:L},
+    LH('Intercessions','',p)+
+    RU('Responsive petitions for the participants returning to their contexts, for the host churches, for the wider ecumenical and interfaith movements, and for the world &mdash; led by two people.')+
+    D('One','We pray for all those who will be born today, and who, even in the womb, may fear the world&hellip; and for all those who will die today, who wonder who will hold them when human hands are left behind&hellip;',p)+
+    DA('All','God in your mercy, receive our prayer.')+
+    D('One','We pray for those who must make a decision today which may affect their lives or the lives of others&hellip; and for those who must leave today &mdash; leave home, leave work, leave a relationship, an addiction, or a hard place&hellip;',p)+
+    DA('All','God in your mercy, receive our prayer.')+
+    D('One','We pray for all who face discrimination or fear for their safety; for those who will not have enough food to eat or clean water to drink; for the people and places, known and unknown, where your people cry out for mercy and justice.',p)+
+    DA('All','God in your mercy, receive our prayer.')+
+    D('One','We pray for those who are sick, and for those who care for the sick; for all who are troubled and anxious, all who are fearful and in distress; and for all those who need our compassion, our prayers, and your presence&hellip;',p)+
+    RU('Silence')+
+    DA('All','God in your mercy, hear our prayer.')
+  );
+}
+
+function pgD14l(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:66, label:L},
+    D('One','We give thanks for all of the blessings we know and cherish, in families and friends, both near and far, in neighbours and leaders, and in teachers and students. Praise God.',p)+
+    DA('All','Alleluia.')+
+    D('One','We give thanks for our host churches and for our wider ecumenical and interfaith movements. Guide us in the ways of wisdom and compassion, that we may nourish each other as stewards of your creation and seekers of your justice. Praise God.',p)+
+    DA('All','Alleluia.')+
+    D('One','We give thanks for this community. May we carry forward the gifts and challenges of this time that we, in turn, may nourish and challenge our own communities with new ideas, old ideas made new, and with the creative energy of the Holy Spirit&rsquo;s stirrings in and through our ministries in acts of visible justice for the benefit of the whole world. Praise God.',p)+
+    DA('All','Alleluia.')+
+    AT('Intercessions adapted from the Iona Community by William S. Kervin and Becca Whitla; thanksgivings by Becca Whitla.')+
+    LH('The Lord&rsquo;s Prayer','',p)+
+    RU('Let us pray together, each in the language of their heart.')
+  );
+}
+
+function pgD14m(){
+  const p = PAL.navy, L = 'Day 14 · Closing Celebration';
+  const v = (n, t) => `<div style="break-inside:avoid;margin-bottom:7px;"><div class="psm" style="font-size:9.3px;line-height:1.5;margin:0;">${n}. ${t}</div></div>`;
+  return lit({kick:'Day 14 · Closing Celebration', pal:p, pn:67, label:L},
+    LH('Sending Hymn','',p)+
+    RU('A communal song that sends the assembly home, into the work of visible justice in their own contexts.')+
+    SH('Let Streams of Living Justice')+
+    `<div style="columns:2;column-gap:18px;margin-top:4px;flex-shrink:0;">`+
+    v(1,'Let streams of living justice flow down upon the earth; give freedom&rsquo;s light to captives, let all the poor have worth. The hungry&rsquo;s hands are pleading, the workers claim their rights, the mourners long for laughter, the blinded seek for sight. Make liberty a beacon, strike down the iron power, abolish ancient vengeance: proclaim your people&rsquo;s hour.')+
+    v(2,'The dreaded disappearance of family and friend; the torture and the silence &mdash; the fear that knows no end; the mother with her candle, the child who holds a gun, the old one nursing hatred &mdash; all seek release to come. Each candle burns for freedom; each lights a tyrant&rsquo;s fall; each flower placed for martyrs gives tongue to silenced call.')+
+    v(3,'You hallow our vocations, you call us to your way; you shape us for your service &mdash; you the Potter, we the clay. Share with us Creation&rsquo;s moulding; form our minds to your delight; Mighty Crafter of our vessels, fire our visions with your light &mdash; consecrate your priest and people; warm the steps your saints have trod: bless the bread of our endeavours, bless the wine of our resolve.')+
+    v(4,'For healing of the nations, for peace that will not end, for love that makes us lovers, God grant us grace to mend. Weave our varied gifts together; knit our lives as they are spun; on your loom of time enrol us till our thread of life is run. O great Weaver of our fabric, bind Church and world in one; dye our texture with your radiance, light our colours with your sun.')+
+    v(5,'Your city&rsquo;s built to music; we are the stones you seek; your harmony is language: we are the words you speak. Our faith we find in service, our hope in other&rsquo;s dreams, our love in hand of neighbour: our homeland brightly gleams. Inscribe our hearts with justice; your way &mdash; the path untried; your truth &mdash; the heart of stranger; your life &mdash; the Crucified.')+
+    `</div>`+
+    AT('Words: William Whitla; Tune: THAXTED. Alternatives: reprise of &ldquo;En La Lucha,&rdquo; or &ldquo;Set It Right&rdquo; (Ana Hern&aacute;ndez).')
+  );
+}
+
+function pgD14n(){
+  const p = PAL.navy;
+  return `<div class="pg pg-cover" style="width:var(--PW);height:var(--PH);justify-content:center;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+      <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);">Blessing and Sending</div>
+      <div class="cover-rule" style="margin:0;"></div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:19px;font-weight:400;color:rgba(255,255,255,.92);text-align:center;line-height:1.6;max-width:380px;">
+        A final blessing is offered by both convening councils, sending the participants into their contexts with the institute&rsquo;s commitments &mdash; to make justice visible, to walk humbly with God, and to carry the question home.
+      </div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:24px;font-weight:400;color:#fff;text-align:center;margin-top:8px;">
+        &ldquo;Where Now for Visible Justice?&rdquo;
+      </div>
+      <img src="white NATI-RETI logo transparent.png" style="width:290px;margin-top:14px;" alt="NATI-RETI 2026">
+    </div>
+    <div class="pn" style="border:none;width:100%;"><span style="color:rgba(255,255,255,.5);">Day 14 · Closing Celebration</span><span style="color:rgba(255,255,255,.5);">68</span></div>
+  </div>`;
+}
+
+/* ============================================================
+   APPENDIX — PRAYER SCHEDULE
+============================================================ */
+function pgAppendix(){
+  const row = (d, t, th, c) => `<tr><td class="sd-day">${d}</td><td>${t}</td><td class="sd-th"${c?` style="color:${c};font-style:normal;font-weight:500;"`:''}>${th}</td></tr>`;
+  return `<div class="pg pg-int cream" style="width:var(--PW);height:var(--PH);">
+    <div class="sl">Appendix</div>
+    <div class="dh">Prayer Schedule</div>
+    <div class="ra"></div>
+    <table class="sched">
+      <tr class="sched-phase"><td colspan="3">USA Phase &mdash; Detroit, Michigan</td></tr>
+      ${row('Day 1 &middot; Mon 3 Aug','Opening Celebration','Where Now for Visible Justice?','#A07E42')}
+      ${row('Day 2 &middot; Tue 4 Aug','Morning Prayer','Climate Justice','#3D993D')}
+      ${row('Day 3 &middot; Wed 5 Aug','Morning Prayer','Climate Justice','#3D993D')}
+      ${row('Day 4 &middot; Thu 6 Aug','Morning Prayer','Secularism and Laicity','#8C8C8C')}
+      ${row('Day 5 &middot; Fri 7 Aug','Morning Prayer','Racism and Anti-Racism','#D93005')}
+      ${row('Day 6 &middot; Sat 8 Aug','Morning Prayer','Racism and Anti-Racism','#D93005')}
+      ${row('Day 7 &middot; Sun 9 Aug','Transition &mdash; travel','Detroit to Toronto','')}
+      <tr class="sched-phase"><td colspan="3">Canada Phase &mdash; Toronto, Ontario</td></tr>
+      ${row('Day 8 &middot; Mon 10 Aug','Arrival &mdash; community prayer','Canada Phase begins','')}
+      ${row('Day 9 &middot; Tue 11 Aug','Morning Prayer','Interfaith Dialogue','#A52BD4')}
+      ${row('Day 10 &middot; Wed 12 Aug','Morning Prayer','Solidarity with Indigenous Communities','#D35400')}
+      ${row('Day 11 &middot; Thu 13 Aug','Contextual Immersion','Indigenous Solidarity','#D35400')}
+      ${row('Day 12 &middot; Fri 14 Aug','Morning Prayer','Wealth Disparity and Poverty','#1F3F66')}
+      ${row('Day 13 &middot; Sat 15 Aug','Morning Prayer','Wealth Disparity and Poverty','#1F3F66')}
+      ${row('Day 14 &middot; Sun 16 Aug','Closing Celebration','Sending Forth in Justice','#A07E42')}
+    </table>
+    <div class="bt" style="font-size:9.5px;margin-top:10px;font-style:italic;color:#8a8aa0;">
+      Morning Prayer 08:30 &ndash; 09:00 &middot; Evening Prayer led by participants from their own traditions.
+    </div>
+    <div class="pn"><span>NATI-RETI 2026 &middot; Prayer Book</span><span>69</span></div>
+  </div>`;
+}
+
+/* ============================================================
+   BACK MATTER
+============================================================ */
+function pgInsideBack(){
+  return `<div class="pg pg-inside" style="width:var(--PW);height:var(--PH);background:linear-gradient(to right,#0A1C3E,#040D1A);"></div>`;
+}
+
+function pgBackCover(){
+  return `<div class="pg pg-cover" style="width:var(--PW);height:var(--PH);justify-content:center;gap:0;">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;">
+      <img src="white NATI-RETI logo transparent.png" style="width:380px;display:block;" alt="NATI-RETI 2026">
+      <div class="cover-rule"></div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:20px;font-weight:700;color:rgba(255,255,255,.82);text-align:center;line-height:1.4;max-width:340px;">Prayer Book<br>Morning Prayer &middot; 3 &ndash; 16 August 2026</div>
+      <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center;line-height:2.2;">
+        The Canadian Council of Churches<br>
+        National Council of Churches USA<br>
+        In accompaniment with the World Council of Churches<br>
+        2026
+      </div>
+    </div>
+  </div>`;
+}
+
+function pgBlankEnd(){
+  return `<div class="pg pg-inside" style="width:var(--PW);height:var(--PH);background:linear-gradient(to left,#03080F,#081428);"></div>`;
+}
+
+/* ============================================================
+   SPREADS
+============================================================ */
+const SPREADS = [
+  [pgInsideCover,  pgCover],        // 0
+  [pgHalfTitle,    pgTitlePage],    // 1
+  [pgCredits,      pgSLWG],         // 2
+  [pgTOC,          pgAbout],        // 2
+  [pgPrayerLife,   pgUSAPhase],     // 3
+  [pgD1a,          pgD1b],          // 4
+  [pgD2a,          pgD2b],          // 5
+  [pgD2c,          pgD2d],          // 6
+  [pgD2e,          pgD2f],          // 7
+  [pgD3a,          pgD3b],          // 8
+  [pgD3c,          pgD3d],          // 9
+  [pgD3e,          pgD3f],          // 10
+  [pgD4,           pgD5a],          // 11
+  [pgD5b,          pgD5c],          // 12
+  [pgD5d,          pgD5e],          // 13
+  [pgD5f,          pgD5g],          // 14
+  [pgD6a,          pgD6b],          // 15
+  [pgD6c,          pgD6d],          // 16
+  [pgD6e,          pgCanadaPhase],  // 17
+  [pgD9a,          pgD9b],          // 18
+  [pgD9c,          pgD9d],          // 19
+  [pgD9e,          pgD9f],          // 20
+  [pgD9g,          pgD9h],          // 21
+  [pgD9i,          pgD10a],         // 22
+  [pgD10b,         pgD10c],         // 23
+  [pgD10d,         pgD10e],         // 24
+  [pgD10f,         pgD12],          // 25
+  [pgD13,          pgD14a],         // 26
+  [pgD14b,         pgD14c],         // 27
+  [pgD14d,         pgD14e],         // 28
+  [pgD14f,         pgD14g],         // 29
+  [pgD14h,         pgD14i],         // 30
+  [pgD14j,         pgD14k],         // 31
+  [pgD14l,         pgD14m],         // 32
+  [pgD14n,         pgAppendix],     // 33
+  [pgBackCover,    pgBlankEnd],     // 34
+];
+
+/* ============================================================
+   ENGINE — StPageFlip
+============================================================ */
+const bookEl   = document.getElementById('book');
+const btnP     = document.getElementById('btnP');
+const btnN     = document.getElementById('btnN');
+const btnFirst = document.getElementById('btnFirst');
+const btnLast  = document.getElementById('btnLast');
+const info     = document.getElementById('info');
+
+const N = SPREADS.length;
+const isMobile = window.innerWidth < 900;
+/* On mobile the dark inside-cover (first flat page) and dark end page (last)
+   are dropped: the book opens directly on the cover artwork. */
+const PAGE_OFF = isMobile ? 1 : 0;
+const TOTAL = N*2 - (isMobile ? 2 : 0);
+
+function flatPages(){
+  const out = [];
+  for(let s=0; s<N; s++){
+    const [L, R] = SPREADS[s];
+    out.push(L(), R());
+  }
+  return isMobile ? out.slice(1, out.length - 1) : out;
+}
+
+const pageHTMLs = flatPages();
+
+function buildPages(){
+  return pageHTMLs.map(html => {
+    const d = document.createElement('div');
+    d.className = 'stf-page';
+    d.innerHTML = html;
+    return d;
+  });
+}
+
+const pageFlip = new St.PageFlip(bookEl, {
+  width: 640,
+  height: 730,
+  size: 'fixed',
+  minWidth: 320,
+  maxWidth: 1280,
+  minHeight: 420,
+  maxHeight: 1460,
+  maxShadowOpacity: 0.5,
+  showCover: false,
+  usePortrait: isMobile,
+  mobileScrollSupport: true,
+  drawShadow: true,
+  flippingTime: 900,
+  useMouseEvents: true,
+  swipeDistance: 30
+});
+
+pageFlip.loadFromHTML(buildPages());
+
+function currentSpread(){
+  return Math.floor((pageFlip.getCurrentPageIndex() + PAGE_OFF) / 2);
+}
+let _suppressNav = false;
+function updateNav(){
+  if(_suppressNav) return;
+  const s = currentSpread();
+  btnP.disabled     = (s<=0);
+  btnN.disabled     = (s>=N-1);
+  btnFirst.disabled = (s<=0);
+  btnLast.disabled  = (s>=N-1);
+  info.textContent  = (s+1)+' / '+N;
+}
+pageFlip.on('flip', function(e) {
+  updateNav();
+  const sound = document.getElementById('flipSound');
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play().catch(err => console.log('Audio play suppressed:', err));
+  }
+});
+updateNav();
+
+const sceneEl = document.querySelector('.scene');
+let _animating = false;
+
+/* Fluid desktop fit: scale the 1280×730 spread so book + nav + dots +
+   bottom buttons always fit the window without clipping. */
+const CONTROLS_H = 235;
+function fitScene(){
+  if(isMobile) return;
+  const availW = window.innerWidth - 36;
+  const availH = Math.max(window.innerHeight - CONTROLS_H, 330);
+  const sc = Math.min(1, availW / 1280, availH / 730);
+  if(sc < 0.999){
+    sceneEl.style.transform = 'scale(' + sc + ')';
+    sceneEl.style.transformOrigin = 'top center';
+    sceneEl.style.marginBottom = Math.round(730 * (sc - 1)) + 'px';
+    document.body.style.justifyContent = 'flex-start';
+    document.body.style.paddingTop = '16px';
+    document.body.style.gap = '14px';
+  } else {
+    sceneEl.style.transform = '';
+    sceneEl.style.transformOrigin = '';
+    sceneEl.style.marginBottom = '';
+    document.body.style.justifyContent = '';
+    document.body.style.paddingTop = '';
+    document.body.style.gap = '';
+  }
+}
+window.addEventListener('resize', fitScene);
+fitScene();
+
+/* Symmetric 3D page fold (mobile).
+   dir = -1 (backward): the previous leaf swings in from the spine —
+     back-of-page first, then its face — covering the current page.
+   dir = +1 (forward): the current leaf lifts off and swings away over
+     the spine, revealing the next page beneath. */
+function playFoldAnim(dir, fromIdx, targetIdx){
+  if(_animating) return;
+  _animating = true;
+  _suppressNav = true;
+
+  const rect = bookEl.getBoundingClientRect();
+  const scale = rect.width / 640;
+  const duration = 950;
+
+  const faceIdx = dir > 0 ? fromIdx : targetIdx;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'bf3-wrap';
+  wrap.style.cssText = `left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;height:${rect.height}px;`;
+
+  const flip = document.createElement('div');
+  flip.className = 'bf3-flip';
+  flip.style.transitionDuration = duration + 'ms';
+  flip.style.transform = dir > 0 ? 'rotateY(0deg)' : 'rotateY(-180deg)';
+
+  const front = document.createElement('div');
+  front.className = 'bf3-face';
+  front.innerHTML = `<div style="width:640px;height:730px;transform-origin:top left;transform:scale(${scale});"><div class="stf-page" style="width:100%;height:100%;">${pageHTMLs[faceIdx] || ''}</div></div>`;
+
+  const back = document.createElement('div');
+  back.className = 'bf3-face bf3-back';
+
+  flip.appendChild(front);
+  flip.appendChild(back);
+  wrap.appendChild(flip);
+  document.body.appendChild(wrap);
+
+  if(dir > 0){
+    /* the book beneath jumps to the target now, hidden by the overlay */
+    pageFlip.turnToPage(targetIdx);
+  }
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    flip.style.transform = dir > 0 ? 'rotateY(-180deg)' : 'rotateY(0deg)';
+  }));
+
+  setTimeout(() => {
+    if(dir < 0) pageFlip.turnToPage(targetIdx);
+    setTimeout(() => {
+      wrap.remove();
+      _animating = false;
+      _suppressNav = false;
+      updateNav();
+    }, 70);
+  }, duration + 40);
+}
+
+function go(dir){
+  if(_animating) return;
+  if(!isMobile){
+    if(dir > 0) pageFlip.flipNext();
+    else pageFlip.flipPrev();
+    return;
+  }
+  const cur = pageFlip.getCurrentPageIndex();
+  const target = cur + dir;
+  if(target < 0 || target > TOTAL - 1) return;
+  playFoldAnim(dir, cur, target);
+}
+function goTo(spreadIdx){
+  if(spreadIdx<0 || spreadIdx>=N) return;
+  pageFlip.turnToPage(Math.max(0, spreadIdx * 2 - PAGE_OFF));
+}
+window.go = go;
+window.goTo = goTo;
+
+function openReadMode(){
+  if(document.getElementById('readModal')) return;
+  const idx = pageFlip.getCurrentPageIndex();
+  const availW = window.innerWidth - 32;
+  const availH = window.innerHeight - 110;
+  const scale = Math.min(availW / 640, availH / 730, 1.1);
+
+  const modal = document.createElement('div');
+  modal.id = 'readModal';
+  modal.className = 'read-modal';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'read-modal-close';
+  closeBtn.setAttribute('aria-label', 'Close');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.onclick = closeReadMode;
+
+  const hint = document.createElement('div');
+  hint.className = 'read-modal-hint';
+  hint.textContent = 'Pinch to zoom';
+
+  const frame = document.createElement('div');
+  frame.className = 'read-modal-frame';
+  frame.style.width = (640 * scale) + 'px';
+  frame.style.height = (730 * scale) + 'px';
+
+  const inner = document.createElement('div');
+  inner.className = 'read-modal-inner';
+  inner.style.transform = `scale(${scale})`;
+  inner.innerHTML = `<div class="stf-page" style="width:var(--PW);height:var(--PH);">${pageHTMLs[idx] || ''}</div>`;
+
+  frame.appendChild(inner);
+  modal.appendChild(closeBtn);
+  modal.appendChild(hint);
+  modal.appendChild(frame);
+  document.body.appendChild(modal);
+
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReadMode(){
+  const modal = document.getElementById('readModal');
+  if(modal) modal.remove();
+  document.body.style.overflow = '';
+}
+
+window.openReadMode = openReadMode;
+window.closeReadMode = closeReadMode;
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight') go(1);
+  if(e.key==='ArrowLeft')  go(-1);
+});
+
+['pointerdown','mousedown','touchstart'].forEach(evt=>{
+  document.addEventListener(evt, e=>{
+    if(e.target.closest('.toc-row.go')){
+      e.stopPropagation();
+    }
+  }, true);
+});
+
+let pinching = false;
+if(isMobile){
+  const touches = new Set();
+  let firstTouchPos = null;
+  let pageIdxBeforeTouch = null;
+
+  function abortStpfDrag(){
+    const p = firstTouchPos || {clientX: 0, clientY: 0};
+    try {
+      window.dispatchEvent(new MouseEvent('mouseup', {
+        bubbles: true, cancelable: true,
+        clientX: p.clientX, clientY: p.clientY
+      }));
+    } catch(e){}
+    try {
+      const ev = new TouchEvent('touchend', {
+        bubbles: true, cancelable: true,
+        touches: [], targetTouches: [], changedTouches: []
+      });
+      window.dispatchEvent(ev);
+    } catch(e){
+      try {
+        const ev = new Event('touchend', {bubbles: true, cancelable: true});
+        Object.defineProperty(ev, 'touches', {value: []});
+        Object.defineProperty(ev, 'targetTouches', {value: []});
+        Object.defineProperty(ev, 'changedTouches', {value: []});
+        window.dispatchEvent(ev);
+      } catch(e2){}
+    }
+    const before = pageIdxBeforeTouch;
+    if(before != null){
+      setTimeout(() => {
+        if(pageFlip.getCurrentPageIndex() !== before){
+          _suppressNav = true;
+          pageFlip.turnToPage(before);
+          _suppressNav = false;
+          updateNav();
+        }
+      }, 80);
+    }
+  }
+
+  document.addEventListener('touchstart', e => {
+    if(touches.size === 0){
+      const t = e.changedTouches[0];
+      firstTouchPos = {clientX: t.clientX, clientY: t.clientY};
+      pageIdxBeforeTouch = pageFlip.getCurrentPageIndex();
+    }
+    for(const t of e.changedTouches) touches.add(t.identifier);
+    if(touches.size >= 2 && !pinching){
+      pinching = true;
+      abortStpfDrag();
+    }
+    if(pinching) e.stopImmediatePropagation();
+  }, {capture: true});
+
+  document.addEventListener('touchmove', e => {
+    if(e.touches.length >= 2 && !pinching){
+      pinching = true;
+      abortStpfDrag();
+    }
+    if(pinching) e.stopImmediatePropagation();
+  }, {capture: true});
+
+  document.addEventListener('touchend', e => {
+    for(const t of e.changedTouches) touches.delete(t.identifier);
+    if(pinching){
+      e.stopImmediatePropagation();
+      if(touches.size === 0) setTimeout(() => { pinching = false; }, 150);
+    }
+  }, {capture: true});
+
+  document.addEventListener('touchcancel', e => {
+    for(const t of e.changedTouches) touches.delete(t.identifier);
+    if(touches.size === 0) pinching = false;
+  }, {capture: true});
+
+  let _cornerBackId = null;
+  let _cornerStart = null;
+
+  bookEl.addEventListener('pointerdown', e => {
+    if(e.pointerType !== 'touch') return;
+    if(_animating || pinching) return;
+    const rect = bookEl.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    if(x < rect.width * 0.25 && pageFlip.getCurrentPageIndex() > 0){
+      e.stopImmediatePropagation();
+      _cornerBackId = e.pointerId;
+      _cornerStart = {x: e.clientX, y: e.clientY};
+    }
+  }, {capture: true});
+
+  bookEl.addEventListener('touchstart', e => {
+    if(_animating || pinching){ e.stopImmediatePropagation(); return; }
+    if(_cornerBackId !== null) e.stopImmediatePropagation();
+  }, {capture: true});
+
+  document.addEventListener('pointermove', e => {
+    if(e.pointerId !== _cornerBackId || !_cornerStart) return;
+    const dx = Math.abs(e.clientX - _cornerStart.x);
+    const dy = Math.abs(e.clientY - _cornerStart.y);
+    if(dx > 20 || dy > 20){
+      _cornerBackId = null;
+      _cornerStart = null;
+    }
+  }, {capture: true});
+
+  document.addEventListener('pointerup', e => {
+    if(e.pointerId !== _cornerBackId) return;
+    _cornerBackId = null;
+    _cornerStart = null;
+    if(pinching) return;
+    go(-1);
+  }, {capture: true});
+
+  document.addEventListener('pointercancel', e => {
+    if(e.pointerId === _cornerBackId){
+      _cornerBackId = null;
+      _cornerStart = null;
+    }
+  }, {capture: true});
+}
+
+</script>
+</body>
+</html>

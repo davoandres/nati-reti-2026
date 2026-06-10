@@ -1,5 +1,5 @@
 export const config = {
-  matcher: '/admin(.*)',
+  matcher: ['/admin(.*)', '/prayerbook(.*)'],
 };
 
 export default function middleware(request) {

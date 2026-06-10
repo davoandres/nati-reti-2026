@@ -1,0 +1,11 @@
+# Working files and sources — never deploy
+.DS_Store
+**/.DS_Store
+.claude/
+prayerbook-src/
+*.py
+*.docx
+*.code-workspace
+nati-reti-2026.html
+Logos juntos/
+Logos text Images/
