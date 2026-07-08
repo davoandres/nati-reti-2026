@@ -5144,18 +5144,9 @@ function pgBlankInterior(){
 }
 
 function pgBackCover(){
-  return `<div class="pg pg-cover" style="width:var(--PW);height:var(--PH);justify-content:center;gap:0;">
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;">
-      <img src="white NATI-RETI logo transparent.png" style="width:380px;display:block;" alt="NATI-RETI 2026">
-      <div class="cover-rule"></div>
-      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:20px;font-weight:700;color:rgba(255,255,255,.82);text-align:center;line-height:1.4;max-width:340px;">Prayer Book<br>Morning Prayer &middot; 3 &ndash; 16 August 2026</div>
-      <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center;line-height:2.2;">
-        The Canadian Council of Churches<br>
-        National Council of Churches USA<br>
-        In accompaniment with the World Council of Churches<br>
-        2026
-      </div>
-    </div>
+  return `<div class="pg pg-art" style="width:var(--PW);height:var(--PH);">
+    <div class="art-blur" style="background-image:url('${IMG}pb-backcover.jpg');"></div>
+    <div class="art-main"><img src="${IMG}pb-backcover.jpg" alt="Back cover — But let justice roll down like waters, and righteousness like an ever-flowing stream. Amos 5:24"></div>
   </div>`;
 }
 
