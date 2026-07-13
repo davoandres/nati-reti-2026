@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical Information — NATI-RETI 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VM7DKNVTS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0VM7DKNVTS');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="favicon-512.png" />
+  <style>
+    /* ═══════════ Practicalities — interactive handbook ═══════════ */
+    .prac-hero {
+      background: var(--dark-navy, #01172e);
+      padding: 160px 0 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prac-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(1,72,115,0.55) 0%, rgba(1,23,46,0.85) 100%);
+    }
+    .prac-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .prac-hero-tag {
+      display: inline-block;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber, #e6af2a);
+      border: 1px solid rgba(230,175,42,0.4);
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .prac-hero-title {
+      font-family: var(--font-display, 'Cinzel', serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .prac-hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 26px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .prac-hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .prac-hero-meta svg { color: var(--amber, #e6af2a); }
+
+    .prac-page {
+      background: #f7f5f1;
+      min-height: 60vh;
+    }
+    .prac-container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+
+    .prac-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--dark-blue, #014873);
+      text-decoration: none;
+      margin-bottom: 34px;
+      letter-spacing: 0.04em;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .prac-back:hover { opacity: 1; }
+    .prac-back::before { content: '←'; font-size: 1em; }
+
+    /* ── Search ── */
+    .prac-search {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .prac-search svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9aa8b5;
+      pointer-events: none;
+    }
+    .prac-search input {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.92rem;
+      color: var(--text-dark, #012030);
+      background: #fff;
+      border: 1px solid rgba(1,72,115,0.15);
+      border-radius: 40px;
+      padding: 15px 48px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .prac-search input:focus {
+      border-color: rgba(1,72,115,0.45);
+      box-shadow: 0 2px 18px rgba(1,72,115,0.08);
+    }
+    .prac-search input::placeholder { color: #9aa8b5; }
+    .prac-search-clear {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(1,72,115,0.08);
+      color: var(--dark-blue, #014873);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.85rem;
+      line-height: 1;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .prac-search.has-query .prac-search-clear { display: inline-flex; }
+
+    /* ── Tabs ── */
+    .prac-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+    .prac-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-mid, #2a4a5c);
+      background: #fff;
+      border: 1px solid rgba(1,72,115,0.14);
+      border-radius: 30px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+    }
+    .prac-tab svg { color: #7d93a3; transition: color 0.22s; }
+    .prac-tab:hover {
+      border-color: rgba(1,72,115,0.4);
+      transform: translateY(-1px);
+    }
+    .prac-tab.active {
+      background: var(--dark-navy, #01172e);
+      border-color: var(--dark-navy, #01172e);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(1,23,46,0.22);
+    }
+    .prac-tab.active svg { color: var(--amber, #e6af2a); }
+    .prac-tab .tab-hits {
+      background: var(--amber, #e6af2a);
+      color: var(--dark-navy, #01172e);
+      font-size: 0.68rem;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 1px 7px;
+      display: none;
+    }
+    .prac-tab.has-hits .tab-hits { display: inline-block; }
+
+    /* ── Panels ── */
+    .prac-panel { display: none; }
+    .prac-panel.active {
+      display: block;
+      animation: pracFadeUp 0.4s ease both;
+    }
+    @keyframes pracFadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .prac-panel-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      border-bottom: 1px solid rgba(1,72,115,0.12);
+      padding-bottom: 18px;
+      margin-bottom: 34px;
+    }
+    .prac-panel-title {
+      font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      margin: 0;
+      line-height: 1.15;
+    }
+    .prac-panel-sub {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.8rem;
+      color: #8296a3;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .p-item { margin-bottom: 34px; }
+    .p-item:last-child { margin-bottom: 0; }
+    .p-item.search-hidden { display: none; }
+
+    .p-item-origin {
+      display: none;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a87b00;
+      margin-bottom: 8px;
+    }
+    .search-mode .p-item-origin { display: block; }
+
+    .p-h {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .p-h svg { color: var(--dark-teal, #036788); flex-shrink: 0; }
+
+    .p-text {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.92rem;
+      color: #45586a;
+      line-height: 1.8;
+      margin: 0 0 16px;
+    }
+    .p-text:last-child { margin-bottom: 0; }
+    .p-text strong { color: var(--dark-navy, #01172e); font-weight: 600; }
+    .p-text a, .p-list a {
+      color: var(--dark-blue, #014873);
+      text-decoration: underline;
+      text-decoration-color: rgba(1,72,115,0.3);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+    .p-text a:hover, .p-list a:hover { text-decoration-color: var(--dark-blue, #014873); }
+
+    .p-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .p-list li {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      color: #45586a;
+      line-height: 1.75;
+      padding-left: 22px;
+      position: relative;
+    }
+    .p-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #a87b00;
+      font-weight: 600;
+    }
+    .p-list li strong { color: var(--dark-navy, #01172e); font-weight: 600; }
+
+    /* ── Important strip ── */
+    .p-important {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border-left: 3px solid var(--amber, #e6af2a);
+      background: linear-gradient(90deg, rgba(230,175,42,0.1), rgba(230,175,42,0.02));
+      border-radius: 0 6px 6px 0;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      color: #45586a;
+      line-height: 1.7;
+    }
+    .p-important svg { color: #a87b00; flex-shrink: 0; margin-top: 2px; }
+    .p-important strong { color: #8a6500; }
+
+    /* ── Journey timeline ── */
+    .journey-line {
+      position: relative;
+      margin: 8px 0 10px;
+      padding-left: 34px;
+    }
+    .journey-line::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--dark-blue, #014873), var(--amber, #e6af2a), var(--ccc-red, #c33d1c));
+      opacity: 0.35;
+    }
+    .journey-stop {
+      position: relative;
+      padding: 0 0 34px;
+    }
+    .journey-stop:last-child { padding-bottom: 0; }
+    .journey-stop::before {
+      content: '';
+      position: absolute;
+      left: -31px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--dark-blue, #014873);
+    }
+    .journey-stop:nth-child(2)::before { border-color: #c99a1e; }
+    .journey-stop:nth-child(3)::before { border-color: var(--ccc-red, #c33d1c); }
+    .journey-stop-dates {
+      font-family: var(--font-cinzel, 'Cinzel', Georgia, serif);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--dark-blue, #014873);
+      margin-bottom: 4px;
+    }
+    .journey-stop-name {
+      font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      margin: 0 0 4px;
+    }
+    .journey-stop-place {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.88rem;
+      color: #45586a;
+      line-height: 1.65;
+    }
+    .journey-stop-address {
+      display: block;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--dark-teal, #036788);
+      margin-top: 3px;
+    }
+
+    /* ── Crossing timeline (dots) ── */
+    .crossing-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+    }
+    .crossing-list li {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      color: #45586a;
+      line-height: 1.7;
+      padding: 9px 0 9px 26px;
+      position: relative;
+      border-left: 2px solid rgba(1,72,115,0.15);
+      margin-left: 7px;
+    }
+    .crossing-list li::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--amber, #e6af2a);
+      border: 2px solid #f7f5f1;
+      box-shadow: 0 0 0 1px rgba(1,72,115,0.25);
+    }
+    .crossing-list li strong { color: var(--dark-navy, #01172e); font-weight: 600; }
+
+    /* ── Venues ── */
+    .venue {
+      padding: 4px 0 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(1,72,115,0.1);
+    }
+    .venue:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .venue-flag {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a87b00;
+      margin-bottom: 6px;
+    }
+    .venue-name {
+      font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      margin: 0 0 4px;
+    }
+    .venue-address {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--dark-teal, #036788);
+      margin-bottom: 16px;
+    }
+    .venue-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .venue-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--dark-blue, #014873);
+      background: #fff;
+      border: 1px solid rgba(1,72,115,0.18);
+      border-radius: 24px;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .venue-chip svg { color: #a87b00; }
+    .venue-chip:hover {
+      border-color: var(--dark-blue, #014873);
+      box-shadow: 0 4px 12px rgba(1,72,115,0.12);
+      transform: translateY(-1px);
+    }
+
+    /* ── Accordions ── */
+    .acc {
+      border-bottom: 1px solid rgba(1,72,115,0.1);
+    }
+    .acc:first-of-type { border-top: 1px solid rgba(1,72,115,0.1); }
+    .acc-head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      padding: 18px 4px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      transition: color 0.2s;
+    }
+    .acc-head:hover { color: var(--dark-blue, #014873); }
+    .acc-head svg.acc-icon { color: var(--dark-teal, #036788); flex-shrink: 0; }
+    .acc-head .acc-chevron {
+      margin-left: auto;
+      color: #9aa8b5;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .acc.open .acc-chevron { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s ease;
+    }
+    .acc-body-inner { padding: 2px 4px 22px 42px; }
+    .acc-body .p-text { font-size: 0.88rem; }
+
+    /* ── Packing checklist ── */
+    .pack-hint {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.8rem;
+      color: #8296a3;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .pack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 28px;
+      margin-bottom: 14px;
+    }
+    .pack-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.88rem;
+      color: #45586a;
+      line-height: 1.55;
+      padding: 9px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.18s;
+      user-select: none;
+    }
+    .pack-item:hover { background: rgba(1,72,115,0.05); }
+    .pack-box {
+      width: 19px;
+      height: 19px;
+      border-radius: 5px;
+      border: 1.5px solid rgba(1,72,115,0.35);
+      background: #fff;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .pack-box svg { opacity: 0; transform: scale(0.5); transition: all 0.2s; color: #fff; }
+    .pack-item.checked .pack-box {
+      background: var(--dark-teal, #036788);
+      border-color: var(--dark-teal, #036788);
+    }
+    .pack-item.checked .pack-box svg { opacity: 1; transform: scale(1); }
+    .pack-item.checked { color: #9aa8b5; text-decoration: line-through; text-decoration-color: rgba(1,72,115,0.25); }
+    .pack-progress {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.78rem;
+      color: var(--dark-teal, #036788);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Search empty state ── */
+    .prac-noresults {
+      display: none;
+      text-align: center;
+      padding: 40px 0 10px;
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.92rem;
+      color: #8296a3;
+    }
+
+    /* ── Closing ── */
+    .prac-closing {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(1,72,115,0.12);
+    }
+    .prac-closing-line1 {
+      font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dark-navy, #01172e);
+      margin-bottom: 6px;
+    }
+    .prac-closing-line2 {
+      font-family: var(--font-sans, 'Inter', sans-serif);
+      font-size: 0.82rem;
+      color: var(--ccc-red, #c33d1c);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .prac-tabs { gap: 8px; }
+      .prac-tab { padding: 9px 14px; font-size: 0.75rem; }
+      .pack-grid { grid-template-columns: 1fr; }
+      .acc-body-inner { padding-left: 4px; }
+      .prac-panel-title { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== ANNOUNCEMENT BAR ===================== -->
+  <div class="announce-bar">
+    <div class="announce-bar-inner">
+      <span class="announce-bar-text">
+        <strong>Applications open March 6 at 3:00 PM</strong>
+        <span class="announce-bar-sep">·</span>
+        Deadline: <strong>June 5, 2026</strong>
+      </span>
+    </div>
+  </div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="Logos 3/NATI-RETI-transparent.png" alt="NATI-RETI 2026 Logo" class="nav-logo" />
+        <span class="nav-brand-abbr">NATI-RETI</span>
+        <span class="nav-brand-year">2026</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#theme">Theme</a></li>
+        <li><a href="index.html#program">Program</a></li>
+        <li><a href="index.html#pillars">Pillars</a></li>
+        <li><a href="index.html#pedagogy">Methodology</a></li>
+        <li><a href="index.html#participants">Participants</a></li>
+        <li><a href="index.html#partners">Partners</a></li>
+        <li><a href="fees.html">Fees</a></li>
+        <li><a href="practicalities.html" class="nav-active">Practical Info</a></li>
+        <li><a href="admin/index.html">Administration</a></li>
+        <li><a href="https://form.jotform.com/260478602712052" target="_blank" rel="noopener" class="nav-cta">Apply Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <div class="prac-hero">
+    <div class="prac-hero-content">
+      <span class="prac-hero-tag">Getting Ready</span>
+      <h1 class="prac-hero-title">Practical Information</h1>
+      <div class="prac-hero-meta">
+        <span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Detroit, USA &nbsp;→&nbsp; Toronto, Canada
+        </span>
+        <span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          3 – 16 August 2026
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENT ===================== -->
+  <div class="prac-page">
+    <div class="prac-container">
+
+      <a href="index.html" class="prac-back">Back to main site</a>
+
+      <!-- Search -->
+      <div class="prac-search" id="pracSearch">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="pracSearchInput" placeholder="Search this page… (e.g., ‘passport’, ‘laundry’, ‘UP Express’)" autocomplete="off" />
+        <button class="prac-search-clear" id="pracSearchClear" aria-label="Clear search">✕</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="prac-tabs" id="pracTabs" role="tablist">
+        <button class="prac-tab active" data-panel="journey" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+          The Journey<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="documents" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 17c.5-1.5 1.5-2 3-2s2.5.5 3 2"/><line x1="15" y1="9" x2="19" y2="9"/><line x1="15" y1="13" x2="19" y2="13"/></svg>
+          Documents<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="arrival" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+          Arrival<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="crossing" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6 2 7"/><path d="M10 6h4"/><path d="m22 7-2-1"/><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M8 15h.01"/><path d="M16 15h.01"/><path d="m6 19-2 2"/><path d="m18 19 2 2"/></svg>
+          Border Day<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="departure" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1"/><path d="m9 15-1-1"/><path d="m15 15 1-1"/><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z"/><path d="m8 19-2 3"/><path d="m16 19 2 3"/></svg>
+          Departure<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="venues" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+          Venues<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="essentials" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+          Essentials<span class="tab-hits"></span>
+        </button>
+        <button class="prac-tab" data-panel="packing" role="tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h6"/><path d="M12 7v6"/><path d="M5 8a7 7 0 0 1 14 0v8a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5Z"/><path d="M8 21v1"/><path d="M16 21v1"/></svg>
+          Pack &amp; Health<span class="tab-hits"></span>
+        </button>
+      </div>
+
+      <div class="prac-noresults" id="pracNoResults">No results — try another word, or browse the sections above.</div>
+
+      <!-- ═══════════ PANEL: JOURNEY ═══════════ -->
+      <section class="prac-panel active" id="panel-journey" data-name="The Journey">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">The Journey at a Glance</h2>
+          <span class="prac-panel-sub">Two countries · Fourteen days</span>
+        </div>
+
+        <div class="p-item" data-tab="journey">
+          <div class="p-item-origin">The Journey</div>
+          <div class="journey-line">
+            <div class="journey-stop">
+              <div class="journey-stop-dates">MON 3 – SAT 8 AUGUST</div>
+              <h3 class="journey-stop-name">USA Phase — Detroit</h3>
+              <div class="journey-stop-place">
+                Capuchin Retreat Center
+                <span class="journey-stop-address">62460 Mt. Vernon Rd., Washington Township, MI 48094, USA</span>
+              </div>
+            </div>
+            <div class="journey-stop">
+              <div class="journey-stop-dates">SUN 9 AUGUST</div>
+              <h3 class="journey-stop-name">Transition Day — The Border Crossing</h3>
+              <div class="journey-stop-place">
+                By bus: Detroit → Windsor, Ontario → Toronto, tracing Underground Railroad history
+              </div>
+            </div>
+            <div class="journey-stop">
+              <div class="journey-stop-dates">MON 10 – SUN 16 AUGUST</div>
+              <h3 class="journey-stop-name">Canada Phase — Toronto</h3>
+              <div class="journey-stop-place">
+                Victoria University in the University of Toronto
+                <span class="journey-stop-address">73 Queen’s Park Crescent East, Toronto, ON M5S 1K7, Canada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-item" data-tab="journey">
+          <div class="p-item-origin">The Journey</div>
+          <h3 class="p-h">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            Climate &amp; Time Zone
+          </h3>
+          <p class="p-text">
+            August is high summer in the Great Lakes region. In both Detroit and Toronto expect warm, often humid days (around <strong>25–30&nbsp;°C / 77–86&nbsp;°F</strong>) and mild nights. Summer thunderstorms are possible — a light rain jacket or small umbrella is a good idea. Both venues are air-conditioned, so bring a layer for cooler indoor spaces.
+          </p>
+          <p class="p-text">
+            Detroit and Toronto are both on <strong>Eastern Daylight Time (EDT, UTC-4)</strong> — there is no time change during the program.
+          </p>
+        </div>
+
+        <div class="p-item" data-tab="journey">
+          <div class="p-item-origin">The Journey</div>
+          <h3 class="p-h">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            The Lands We Gather On
+          </h3>
+          <p class="p-text">
+            NATI-RETI 2026 takes place on Turtle Island. The Detroit area is situated on the traditional lands of the Anishinaabe peoples — the Three Fires Confederacy of Ojibwe, Odawa, and Potawatomi nations. Toronto is in the traditional territory of many nations, including the Mississaugas of the Credit, the Anishinaabeg, the Chippewa, the Haudenosaunee, and the Wendat peoples, and is covered by Treaty 13 and the Dish With One Spoon Wampum Belt Covenant. Our program invites us to learn and walk respectfully on these lands.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: DOCUMENTS ═══════════ -->
+      <section class="prac-panel" id="panel-documents" data-name="Documents">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Travel Documents</h2>
+          <span class="prac-panel-sub">Passports · No visas needed</span>
+        </div>
+
+        <div class="p-item" data-tab="documents">
+          <div class="p-item-origin">Documents</div>
+          <div class="p-important">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span><strong>IMPORTANT:</strong> Bring a valid passport with more than six (6) months of validity remaining beyond the end of the program. You will need it to cross the border from the USA into Canada on Sunday 9 August.</span>
+          </div>
+          <p class="p-text">All NATI-RETI 2026 participants are citizens of the United States, permanent residents of the United States, or citizens of Canada, so no visa is required for the border crossing:</p>
+          <ul class="p-list">
+            <li><strong>U.S. citizens</strong> do not need a visa to enter Canada; a valid passport is sufficient.</li>
+            <li><strong>U.S. permanent residents</strong> must carry BOTH their valid passport (from their country of citizenship) and their valid Green Card (Permanent Resident Card).</li>
+            <li><strong>Canadian citizens</strong> do not need a visa to enter the United States; a valid passport is sufficient.</li>
+          </ul>
+          <p class="p-text">Keep your passport and documents with you in your <strong>hand luggage</strong> at all times on travel days — never packed in luggage stored under the bus.</p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: ARRIVAL ═══════════ -->
+      <section class="prac-panel" id="panel-arrival" data-name="Arrival">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Getting to Detroit</h2>
+          <span class="prac-panel-sub">Monday 3 August</span>
+        </div>
+
+        <div class="p-item" data-tab="arrival">
+          <div class="p-item-origin">Arrival</div>
+          <p class="p-text">Each participant arranges and pays for their own travel to Detroit at the start of the program and from Toronto at the end of the program.</p>
+          <ul class="p-list">
+            <li><strong>By air:</strong> Please fly into Detroit Metropolitan Wayne County Airport (DTW). Transportation from DTW to the Capuchin Retreat Center will be arranged according to the arrival information you provided in the transportation form.</li>
+            <li><strong>By other means:</strong> If you are not arriving through DTW, please make your own way directly to the Capuchin Retreat Center, 62460 Mt. Vernon Rd., Washington Township, MI 48094.</li>
+          </ul>
+          <p class="p-text">
+            Arrivals are expected between <strong>07:30 and 13:00</strong> on Monday 3 August, followed by the orientation session at 13:00 and the opening celebration. If your travel is delayed or interrupted, please inform the organizing team as soon as possible so we can adjust your pick-up.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: BORDER CROSSING ═══════════ -->
+      <section class="prac-panel" id="panel-crossing" data-name="Border Day">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Border Crossing Day</h2>
+          <span class="prac-panel-sub">Sunday 9 August · Detroit → Windsor → Toronto</span>
+        </div>
+
+        <div class="p-item" data-tab="crossing">
+          <div class="p-item-origin">Border Day</div>
+          <p class="p-text">
+            On Sunday 9 August we travel together by bus from Detroit to Toronto, crossing the border into Windsor, Ontario, early in the morning. Have your passport (and Green Card, if applicable) ready at hand for the border inspection. Your luggage travels with us on the bus for the whole day.
+          </p>
+          <p class="p-text">The day is itself a pilgrimage through Underground Railroad history:</p>
+          <ul class="crossing-list">
+            <li><strong>Gateway to Freedom Monument</strong> (Detroit) and border crossing to Windsor</li>
+            <li><strong>Ecumenical prayers</strong> with the Windsor community at All Saints’ Anglican Church</li>
+            <li><strong>Walk from City Hall Square</strong> to the Tower of Freedom Monument, travelling through the McDougall Corridor</li>
+            <li><strong>Lecture and lunch</strong> at Tanner-Price AME Church</li>
+            <li><strong>Sandwich First Baptist Church</strong> — a historic Underground Railroad site</li>
+          </ul>
+          <p class="p-text">
+            In the afternoon we continue by bus to Toronto (approximately 4 hours), where we check in at Victoria University and share dinner together.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: DEPARTURE ═══════════ -->
+      <section class="prac-panel" id="panel-departure" data-name="Departure">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Departure from Toronto</h2>
+          <span class="prac-panel-sub">Sunday 16 August</span>
+        </div>
+
+        <div class="p-item" data-tab="departure">
+          <div class="p-item-origin">Departure</div>
+          <p class="p-text">
+            The program closes on Sunday 16 August with breakfast and the closing celebration in the morning. Check-out from the residence is at <strong>11:00</strong>; a luggage storage space will be indicated on site for those departing later in the day.
+          </p>
+          <p class="p-text">Each participant arranges their own onward travel from Toronto. Convenient options from downtown Toronto include:</p>
+          <ul class="p-list">
+            <li><strong>UP Express:</strong> a direct train from Union Station to Toronto Pearson International Airport (YYZ), departing every 15 minutes with a travel time of about 25 minutes. <a href="https://www.upexpress.com/" target="_blank" rel="noopener">upexpress.com</a></li>
+            <li><strong>Union Station Bus Terminal:</strong> intercity coach services to other Ontario cities, Montreal, and U.S. destinations.</li>
+            <li><strong>VIA Rail:</strong> intercity trains from Union Station to destinations across Canada. <a href="https://www.viarail.ca/" target="_blank" rel="noopener">viarail.ca</a></li>
+          </ul>
+          <p class="p-text">
+            Union Station is about a 25–30 minute walk, a short subway ride (Museum Station to Union on Line 1), or a 10-minute taxi/rideshare from Victoria University.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: VENUES ═══════════ -->
+      <section class="prac-panel" id="panel-venues" data-name="Venues">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Where We Stay</h2>
+          <span class="prac-panel-sub">Two homes · Two cities</span>
+        </div>
+
+        <div class="p-item venue" data-tab="venues">
+          <div class="p-item-origin">Venues</div>
+          <div class="venue-flag">USA Phase · 3–8 August</div>
+          <h3 class="venue-name">Capuchin Retreat Center</h3>
+          <div class="venue-address">62460 Mt. Vernon Rd., Washington Township, MI 48094 — about 45 minutes north of downtown Detroit</div>
+          <p class="p-text">
+            A center of Franciscan spirituality set on 95 wooded acres, run by the Capuchin friars of the Province of St. Joseph, who warmly welcome guests of all traditions. Each participant will have a <strong>private room with a private full bathroom</strong>. Linens, towels, and soap are provided; rooms are climate-controlled and Wi-Fi is available. Breakfast, lunch, and dinner are served on site.
+          </p>
+          <p class="p-text">
+            The retreat center is a Franciscan house of prayer: please maintain a respectful, calm atmosphere, wear casual and modest clothing, and note that alcohol is not consumed on the grounds. The woods, walking paths, and outdoor spaces are open to you for reflection and rest.
+          </p>
+          <div class="venue-links">
+            <a class="venue-chip" href="https://www.capretreat.org/" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              capretreat.org
+            </a>
+            <a class="venue-chip" href="https://www.youtube.com/@capuchinretreatcenter" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              YouTube channel
+            </a>
+          </div>
+        </div>
+
+        <div class="p-item venue" data-tab="venues">
+          <div class="p-item-origin">Venues</div>
+          <div class="venue-flag">Canada Phase · 10–16 August</div>
+          <h3 class="venue-name">Victoria University in the University of Toronto</h3>
+          <div class="venue-address">73 Queen’s Park Crescent East, Toronto, ON M5S 1K7 — in the heart of downtown Toronto, next to Queen’s Park</div>
+          <p class="p-text">
+            Accommodation is in the <strong>Margaret Addison Hall</strong> and <strong>Burwash Hall</strong> residences, in shared rooms with shared washrooms. Linens and towels are provided; the residences have Wi-Fi and common rooms. Breakfast, lunch, and dinner are served in the <strong>Burwash Dining Hall</strong>, and sessions take place at <strong>Emmanuel College</strong> (75 Queen’s Park Crescent East), a few minutes’ walk away.
+          </p>
+          <p class="p-text">Take a look at the residences and dining hall before you arrive:</p>
+          <div class="venue-links">
+            <a class="venue-chip" href="https://www.vicu.utoronto.ca/assets/PDFs/Margaret-Addison-Hall.pdf" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Margaret Addison Hall
+            </a>
+            <a class="venue-chip" href="https://www.youtube.com/watch?v=garVsFicfzw" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Margaret Addison tour
+            </a>
+            <a class="venue-chip" href="https://www.vicu.utoronto.ca/assets/PDFs/UBH.pdf" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Upper Burwash
+            </a>
+            <a class="venue-chip" href="https://www.youtube.com/watch?v=Z5wO036hGEA" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Upper Burwash tour
+            </a>
+            <a class="venue-chip" href="https://www.vicu.utoronto.ca/assets/PDFs/LBH.pdf" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Lower Burwash
+            </a>
+            <a class="venue-chip" href="https://www.youtube.com/watch?v=ichePpWXS34" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Lower Burwash tour
+            </a>
+            <a class="venue-chip" href="https://www.vicu.utoronto.ca/hospitality-services/student-meal-plans-and-dining-hall-menus/burwash-dining-hall-and-neds-cafe" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+              Burwash Dining Hall
+            </a>
+            <a class="venue-chip" href="https://www.youtube.com/watch?v=RrNhcshryWc" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              Dining Hall video
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: ESSENTIALS ═══════════ -->
+      <section class="prac-panel" id="panel-essentials" data-name="Essentials">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">The Essentials</h2>
+          <span class="prac-panel-sub">Day-to-day practical matters</span>
+        </div>
+
+        <div class="p-item" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <h3 class="p-h">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            What Is Covered
+          </h3>
+          <p class="p-text">
+            The NATI-RETI 2026 program fee covers accommodation in Detroit and Toronto, all meals during the program, study materials, and program transportation — including the bus from Detroit to Toronto on 9 August and all scheduled study visits and local excursions. Participants are responsible for their travel to Detroit and from Toronto, and for personal expenses. Full details on the <a href="fees.html">Investment &amp; Financial Support</a> page.
+          </p>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M17 6V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2"/><rect x="4" y="6" width="16" height="16" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M12 18v.01"/></svg>
+            Laundry
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">Card-operated laundry machines are available in the Toronto residences at a small cost (details on arrival). No laundry service is planned during the Detroit phase — pack enough clothing for the first week.</p>
+          </div></div>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            Media, Photography &amp; Consent
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">Communications teams will photograph and record video throughout the program for documentation and promotion. By participating, you consent to being photographed or filmed. If you prefer not to appear, let the communications team know at the start of the program.</p>
+          </div></div>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            Phone &amp; Internet
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">Wi-Fi is available at both venues. The USA and Canada share the country code +1, but they are separate countries for mobile roaming — check that your plan covers both sides of the border, or consider adding a cross-border/roaming option before you travel.</p>
+          </div></div>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Electricity
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">The USA and Canada use the same plugs (Type A/B, 120&nbsp;V, 60&nbsp;Hz) — no adapters needed between the two countries.</p>
+          </div></div>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+            Currency &amp; Money
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">You will use U.S. Dollars in Detroit and Canadian Dollars in Windsor and Toronto. Credit and debit cards (including contactless) are widely accepted in both countries; a small amount of cash in each currency is enough for incidentals. ATMs are easy to find in both cities.</p>
+            <p class="p-text">Tipping is customary in restaurants and cafés in both countries (usually 15–18%), but never needed for organized NATI-RETI 2026 services — buses, study visits, or meals at the venues.</p>
+          </div></div>
+        </div>
+
+        <div class="p-item acc" data-tab="essentials">
+          <div class="p-item-origin">Essentials</div>
+          <button class="acc-head" type="button">
+            <svg class="acc-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Emergencies
+            <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="acc-body"><div class="acc-body-inner">
+            <p class="p-text">In both the United States and Canada, dial <strong>911</strong> for police, ambulance, or fire. Contact details for the on-site organizing team will be shared at the beginning of the program.</p>
+          </div></div>
+        </div>
+      </section>
+
+      <!-- ═══════════ PANEL: PACK & HEALTH ═══════════ -->
+      <section class="prac-panel" id="panel-packing" data-name="Pack &amp; Health">
+        <div class="prac-panel-head">
+          <h2 class="prac-panel-title">Health, Safety &amp; What to Pack</h2>
+          <span class="prac-panel-sub">Come prepared</span>
+        </div>
+
+        <div class="p-item" data-tab="packing">
+          <div class="p-item-origin">Pack &amp; Health</div>
+          <h3 class="p-h">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            Health &amp; Safety
+          </h3>
+          <p class="p-text">
+            Detroit and Toronto are welcoming host cities with no significant safety risks associated with the program — as in any urban area, keep an eye on your belongings in airports, stations, and busy public spaces. Tap water is safe to drink in both countries. Several program elements take place outdoors (study visits, walking tours, learning on the land), so come prepared for summer sun and mosquitoes. Bring an adequate supply of any regular medication for the full duration, in your hand luggage.
+          </p>
+        </div>
+
+        <div class="p-item" data-tab="packing">
+          <div class="p-item-origin">Pack &amp; Health</div>
+          <h3 class="p-h">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h6"/><path d="M12 7v6"/><path d="M5 8a7 7 0 0 1 14 0v8a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5Z"/><path d="M8 21v1"/><path d="M16 21v1"/></svg>
+            Packing Checklist
+          </h3>
+          <p class="pack-hint">Tap each item to check it off — your list is saved on this device.</p>
+          <div class="pack-grid" id="packGrid">
+            <div class="pack-item" data-pack="passport"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Passport (valid 6+ months) — plus Green Card if a U.S. permanent resident</div>
+            <div class="pack-item" data-pack="bible"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Your Bible</div>
+            <div class="pack-item" data-pack="clothing"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Casual, modest clothing and layers</div>
+            <div class="pack-item" data-pack="rain"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Light rain jacket or small umbrella</div>
+            <div class="pack-item" data-pack="shoes"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Supportive walking shoes</div>
+            <div class="pack-item" data-pack="sun"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sunscreen and a hat</div>
+            <div class="pack-item" data-pack="repellent"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Mosquito repellent</div>
+            <div class="pack-item" data-pack="meds"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Any regular medication (in hand luggage)</div>
+            <div class="pack-item" data-pack="bottle"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Reusable water bottle</div>
+            <div class="pack-item" data-pack="chargers"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Chargers and cables for your devices</div>
+            <div class="pack-item" data-pack="cash"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>A small amount of cash in USD and CAD</div>
+            <div class="pack-item" data-pack="journal"><span class="pack-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>A journal or notebook for reflection</div>
+          </div>
+          <span class="pack-progress" id="packProgress"></span>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <div class="prac-closing">
+        <p class="prac-closing-line1">We look forward to welcoming you in Detroit and Toronto.</p>
+        <p class="prac-closing-line2">Have a safe trip!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-name">NATI-RETI 2026</div>
+          <p class="footer-brand-tagline">&ldquo;Where Now for Visible Justice?&rdquo;</p>
+          <p class="footer-brand-dates">August 3 &ndash; 16, 2026 &nbsp;|&nbsp; Detroit &amp; Toronto</p>
+          <a href="mailto:contact@nati-reti.org" class="footer-contact-email">contact@nati-reti.org</a>
+        </div>
+        <nav class="footer-nav">
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-heading">Navigate</h4>
+            <ul>
+              <li><a href="index.html#about">About NATI-RETI</a></li>
+              <li><a href="index.html#theme">Central Theme</a></li>
+              <li><a href="index.html#program">Program</a></li>
+              <li><a href="index.html#pillars">Thematic Pillars</a></li>
+              <li><a href="index.html#pedagogy">Methodology</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="footer-nav-heading">More</h4>
+            <ul>
+              <li><a href="index.html#participants">Participants</a></li>
+              <li><a href="index.html#partners">Partners</a></li>
+              <li><a href="fees.html">Fees &amp; Support</a></li>
+              <li><a href="practicalities.html">Practical Information</a></li>
+              <li><a href="admin/index.html">Administration</a></li>
+              <li><a href="https://form.jotform.com/260478602712052" target="_blank" rel="noopener">Apply</a></li>
+              <li><a href="mailto:contact@nati-reti.org">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-legal">
+          &copy; 2026 NATI-RETI. A Joint Initiative of the Canadian Council of Churches and the National Council of Churches of Christ of the USA, with accompaniment of the World Council of Churches.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.prac-tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.prac-panel'));
+      var items = Array.prototype.slice.call(document.querySelectorAll('.p-item'));
+      var searchWrap = document.getElementById('pracSearch');
+      var searchInput = document.getElementById('pracSearchInput');
+      var searchClear = document.getElementById('pracSearchClear');
+      var noResults = document.getElementById('pracNoResults');
+      var container = document.querySelector('.prac-container');
+      var activePanel = 'journey';
+
+      /* ── Tabs ── */
+      function showPanel(name) {
+        activePanel = name;
+        tabs.forEach(function (t) { t.classList.toggle('active', t.dataset.panel === name); });
+        panels.forEach(function (p) { p.classList.toggle('active', p.id === 'panel-' + name); });
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          if (container.classList.contains('search-mode')) exitSearch();
+          showPanel(t.dataset.panel);
+        });
+      });
+
+      /* ── Accordions ── */
+      Array.prototype.slice.call(document.querySelectorAll('.acc-head')).forEach(function (head) {
+        head.addEventListener('click', function () {
+          var acc = head.parentElement;
+          var body = acc.querySelector('.acc-body');
+          var isOpen = acc.classList.contains('open');
+          if (isOpen) {
+            body.style.maxHeight = '0px';
+            acc.classList.remove('open');
+          } else {
+            body.style.maxHeight = body.scrollHeight + 'px';
+            acc.classList.add('open');
+          }
+        });
+      });
+
+      /* ── Search ── */
+      function normalize(s) { return (s || '').toLowerCase(); }
+
+      function enterSearch(q) {
+        container.classList.add('search-mode');
+        var query = normalize(q);
+        var anyHit = false;
+        var hitsPerTab = {};
+
+        panels.forEach(function (p) { p.classList.add('active'); });
+        items.forEach(function (item) {
+          var text = normalize(item.textContent);
+          var hit = text.indexOf(query) !== -1;
+          item.classList.toggle('search-hidden', !hit);
+          if (hit) {
+            anyHit = true;
+            var tab = item.dataset.tab;
+            hitsPerTab[tab] = (hitsPerTab[tab] || 0) + 1;
+            /* open accordions that match */
+            if (item.classList.contains('acc') && !item.classList.contains('open')) {
+              var body = item.querySelector('.acc-body');
+              body.style.maxHeight = body.scrollHeight + 'px';
+              item.classList.add('open');
+            }
+          }
+        });
+        /* hide panel headers of panels with no visible items */
+        panels.forEach(function (p) {
+          var visible = p.querySelectorAll('.p-item:not(.search-hidden)').length;
+          p.style.display = visible ? 'block' : 'none';
+        });
+        tabs.forEach(function (t) {
+          var n = hitsPerTab[t.dataset.panel] || 0;
+          t.classList.toggle('has-hits', n > 0);
+          var badge = t.querySelector('.tab-hits');
+          if (badge) badge.textContent = n;
+        });
+        noResults.style.display = anyHit ? 'none' : 'block';
+      }
+
+      function exitSearch() {
+        container.classList.remove('search-mode');
+        noResults.style.display = 'none';
+        items.forEach(function (item) { item.classList.remove('search-hidden'); });
+        panels.forEach(function (p) { p.style.display = ''; });
+        tabs.forEach(function (t) { t.classList.remove('has-hits'); });
+        showPanel(activePanel);
+      }
+
+      var debounce;
+      searchInput.addEventListener('input', function () {
+        clearTimeout(debounce);
+        var q = searchInput.value.trim();
+        searchWrap.classList.toggle('has-query', q.length > 0);
+        debounce = setTimeout(function () {
+          if (q.length >= 2) enterSearch(q);
+          else exitSearch();
+        }, 160);
+      });
+      searchClear.addEventListener('click', function () {
+        searchInput.value = '';
+        searchWrap.classList.remove('has-query');
+        exitSearch();
+        searchInput.focus();
+      });
+
+      /* ── Packing checklist (localStorage) ── */
+      var KEY = 'natireti2026-packlist';
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+      var packItems = Array.prototype.slice.call(document.querySelectorAll('.pack-item'));
+      var progress = document.getElementById('packProgress');
+
+      function updateProgress() {
+        var done = packItems.filter(function (i) { return i.classList.contains('checked'); }).length;
+        progress.textContent = done === 0 ? '' :
+          (done === packItems.length ? 'All packed — see you in Detroit!' : done + ' of ' + packItems.length + ' packed');
+      }
+      packItems.forEach(function (item) {
+        if (saved[item.dataset.pack]) item.classList.add('checked');
+        item.addEventListener('click', function () {
+          item.classList.toggle('checked');
+          saved[item.dataset.pack] = item.classList.contains('checked');
+          try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+          updateProgress();
+        });
+      });
+      updateProgress();
+    })();
+  </script>
+</body>
+</html>
