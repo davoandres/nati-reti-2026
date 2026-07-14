@@ -2336,3 +2336,42 @@ img {
   .publications-grid { grid-template-columns: 1fr; gap: 56px; }
   .publication-cover-wrap { height: 360px; }
 }
+
+/* ===================== PROGRAM SCHEDULE CTA ===================== */
+.program-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 60px;
+}
+.program-cta-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.program-schedule-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 34px;
+  background: var(--dark-navy);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: transform var(--transition), background var(--transition);
+}
+.program-schedule-cta:hover,
+.program-schedule-cta:focus-visible {
+  background: var(--mid-navy);
+  transform: translateY(-2px);
+  outline: none;
+}
+.program-schedule-cta span { font-size: 1.05rem; line-height: 1; }
