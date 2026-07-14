@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Schedule — NATI-RETI 2026</title>
+<link rel="icon" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Concept 3A (desktop · warm cream) — switches to 3B (mobile · cool mist) below 700px */
+  :root{
+    --bg:#FBF8F2;
+    --bar-bg:rgba(251,248,242,0.97);
+    --panel:#FFFEFA;
+    --line:#E8E0CF;
+    --line-soft:#EFE9DB;
+    --chip-bd:#DCD3BF;
+    --chip-dash:#C4BBA6;
+    --ink:#1F3B5B;
+    --muted:#66758A;
+    --faint:#9AA5B4;
+    --hour:#A9B2BF;
+    --accent:#C6532F;
+    --gold:#E2A93B;
+    --chip-on-fg:#FBF8F2;
+  }
+  @media (max-width:700px){
+    :root{
+      --bg:#F3F6F7;
+      --bar-bg:rgba(243,246,247,0.97);
+      --panel:#FFFFFF;
+      --line:#DEE6E9;
+      --line-soft:#E7EDF0;
+      --chip-bd:#D2DCE1;
+      --chip-dash:#B7C4CB;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:'Public Sans',sans-serif;color:var(--ink);min-height:100vh;}
+  a{color:var(--accent);} a:hover{color:var(--ink);}
+  button{font-family:'Public Sans',sans-serif;}
+  button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px;}
+
+  .backlink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;text-decoration:none;margin-top:14px;}
+
+  header.page{padding:14px 0;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;}
+  .eyebrow{font-size:12px;letter-spacing:2.5px;font-weight:700;color:var(--accent);}
+  h1{font-family:'Lora',serif;font-size:clamp(28px,4vw,40px);font-weight:600;margin:8px 0 0;}
+  .deck{font-size:14px;line-height:1.55;color:var(--muted);margin:8px 0 0;max-width:620px;}
+  .legend{display:flex;gap:6px 14px;flex-wrap:wrap;}
+  .legend span.item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+  .legend .sw{width:10px;height:10px;border-radius:3px;flex:none;}
+
+  .bar{position:sticky;top:0;z-index:30;background:var(--bar-bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .bar-inner{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;flex-direction:column;gap:8px;}
+  .row{display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
+  .row-split{display:flex;gap:5px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+  .lbl{font-size:10px;letter-spacing:1.5px;font-weight:700;color:var(--faint);margin-right:2px;}
+  .chip{cursor:pointer;border:1px solid var(--chip-bd);background:transparent;color:var(--muted);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:600;min-height:32px;}
+  .chip.cat{display:flex;align-items:center;gap:6px;padding:5px 10px;}
+  .chip .dot{width:9px;height:9px;border-radius:3px;flex:none;}
+  .chip.all{border-style:dashed;border-color:var(--chip-dash);padding:5px 11px;}
+  .chip.detail{border-color:var(--gold);color:#A8761B;font-weight:700;padding:5px 12px;}
+  .chip.detail.on{background:var(--gold);color:var(--ink);}
+
+  main{max-width:1240px;margin:0 auto;padding:20px 20px 70px;}
+  .grid-shell{overflow-x:auto;border-radius:14px;border:1px solid var(--line);background:var(--panel);}
+  .grid-flex{display:flex;min-width:min-content;}
+  .rail{width:52px;flex-shrink:0;border-right:1px solid var(--line-soft);position:sticky;left:0;background:var(--panel);z-index:5;}
+  .rail-head{border-bottom:1px solid var(--line-soft);}
+  .rail-body{position:relative;}
+  .hour{position:absolute;right:8px;font-size:10px;font-variant-numeric:tabular-nums;color:var(--hour);transform:translateY(-50%);}
+  .col{flex:1;border-right:1px solid var(--line-soft);}
+  .col-head{border-bottom:1px solid var(--line-soft);padding:9px 10px 7px;}
+  .col-head .top{display:flex;align-items:center;gap:8px;}
+  .col-head .num{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--ink);}
+  .col-head .date{font-size:12px;font-weight:700;}
+  .col-head .phase{font-size:10px;font-weight:700;letter-spacing:0.5px;}
+  .col-head .theme{font-size:10.5px;font-style:italic;font-family:'Lora',serif;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .col-body{position:relative;}
+  .hline{position:absolute;left:0;right:0;border-top:1px dashed rgba(31,59,91,0.07);}
+  .ev{position:absolute;left:5px;right:5px;border-radius:6px;padding:0 7px;overflow:hidden;border-left:3px solid;}
+  .ev .name{font-weight:600;color:#28405E;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;}
+  .ev .meta{font-size:9.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .tip{font-size:12px;color:var(--faint);margin:12px 4px 0;}
+  footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;font-size:11px;color:var(--faint);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="./index.html">← Admin Dashboard</a>
+  <header class="page">
+    <div>
+      <div class="eyebrow">NATI-RETI 2026 · 03–16 AUGUST</div>
+      <h1>The Journey · Daily Schedule</h1>
+      <p class="deck">Follow the institute day by day along one continuous path. Choose days to compare, filter by activity or time of day, and switch between a simple and a detailed view.</p>
+    </div>
+    <div class="legend" id="legend"></div>
+  </header>
+</div>
+
+<div class="bar">
+  <div class="bar-inner">
+    <div class="row" id="dayRow"></div>
+    <div class="row-split">
+      <div class="row" id="catRow"></div>
+      <div class="row" id="segRow"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="grid-shell">
+    <div class="grid-flex" id="grid"></div>
+  </div>
+  <p class="tip">Tip: hover any block for full details. Filtered-out activities fade instead of disappearing, so the shape of the day stays visible.</p>
+</main>
+
+<footer>NATI-RETI 2026 Organizing Team · internal draft — schedule subject to change.</footer>
+
+<script src="./schedule-data.js"></script>
+<script>
+(function(){
+"use strict";
+const { CATS, PHASES, DAYS, segOf } = window.SCHEDULE;
+const P = Object.fromEntries(PHASES.map(p=>[p.id,p]));
+const C = Object.fromEntries(CATS.map(c=>[c.id,c]));
+
+const state = { cats:[], seg:'all', sel:[1,2,3], detail:true };
+const PXH = 52, T0 = 7.5*60, T1 = 21*60;
+const $ = id => document.getElementById(id);
+const isMobile = () => window.matchMedia('(max-width:700px)').matches;
+
+function toggle(key,id){
+  const a = state[key];
+  state[key] = a.includes(id) ? a.filter(x=>x!==id) : a.concat(id);
+  render();
+}
+
+function chipStyle(el,on,color){
+  el.style.background = on ? color : 'transparent';
+  el.style.borderColor = on ? color : '';
+  el.style.color = on ? 'var(--chip-on-fg)' : '';
+}
+
+function renderLegend(){
+  $('legend').innerHTML = CATS.map(c=>
+    `<span class="item"><span class="sw" style="background:${c.color}"></span>${c.label}</span>`).join('');
+}
+
+function renderBar(){
+  const dayRow = $('dayRow');
+  dayRow.innerHTML = `<span class="lbl">DAYS</span>` +
+    DAYS.map(d=>`<button class="chip" data-day="${d.n}">${String(d.n).padStart(2,'0')}</button>`).join('') +
+    `<button class="chip all" id="allBtn">${state.sel.length?'All 14 days':'Showing all'}</button>`;
+  dayRow.querySelectorAll('[data-day]').forEach(el=>{
+    const n = +el.dataset.day, on = state.sel.includes(n);
+    chipStyle(el,on,P[DAYS[n-1].phase].color);
+    el.addEventListener('click',()=>toggle('sel',n));
+  });
+  $('allBtn').addEventListener('click',()=>{ state.sel=[]; render(); });
+
+  const catRow = $('catRow');
+  catRow.innerHTML = `<span class="lbl">FILTER</span>` +
+    CATS.map(c=>`<button class="chip cat" data-cat="${c.id}"><span class="dot" style="background:${c.color}"></span>${c.label.split(' ')[0]}</button>`).join('');
+  catRow.querySelectorAll('[data-cat]').forEach(el=>{
+    const on = state.cats.includes(el.dataset.cat);
+    chipStyle(el,on,'#1F3B5B');
+    el.addEventListener('click',()=>toggle('cats',el.dataset.cat));
+  });
+
+  const segRow = $('segRow');
+  segRow.innerHTML = [['all','All'],['morning','AM'],['afternoon','PM'],['evening','Eve']]
+    .map(([id,label])=>`<button class="chip" data-seg="${id}">${label}</button>`).join('') +
+    `<button class="chip detail${state.detail?' on':''}" id="detailBtn">${state.detail?'Detailed':'Simple'}</button>`;
+  segRow.querySelectorAll('[data-seg]').forEach(el=>{
+    chipStyle(el,state.seg===el.dataset.seg,'#C6532F');
+    el.addEventListener('click',()=>{ state.seg=el.dataset.seg; render(); });
+  });
+  $('detailBtn').addEventListener('click',()=>{ state.detail=!state.detail; render(); });
+}
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
+function renderGrid(){
+  const headH = state.detail?60:46;
+  const bodyH = (T1-T0)/60*PXH;
+  let colMin = state.sel.length===0 ? 150 : (state.sel.length===1 ? 420 : 230);
+  if(isMobile() && state.sel.length===1) colMin = Math.max(240, window.innerWidth-92);
+
+  let hours='';
+  for(let t=8*60;t<T1;t+=60){
+    hours += `<div class="hour" style="top:${(t-T0)/60*PXH}px">${String(t/60).padStart(2,'0')}:00</div>`;
+  }
+  let hlines='';
+  for(let t=8*60;t<T1;t+=60){
+    hlines += `<div class="hline" style="top:${(t-T0)/60*PXH}px"></div>`;
+  }
+
+  const days = state.sel.length ? DAYS.filter(d=>state.sel.includes(d.n)) : DAYS;
+  let html = `<div class="rail"><div class="rail-head" style="height:${headH}px"></div><div class="rail-body" style="height:${bodyH}px">${hours}</div></div>`;
+
+  for(const d of days){
+    const ph = P[d.phase];
+    let evs='';
+    for(const ev of d.events){
+      const match = (!state.cats.length || state.cats.includes(ev.cat)) && (state.seg==='all' || segOf(ev.s)===state.seg);
+      const durPx = (ev.e-ev.s)/60*PXH;
+      const h = Math.max(durPx-3, Math.min(14, durPx-2));
+      const c = C[ev.cat].color;
+      const meta = [ev.loc,ev.who].filter(Boolean).join(' · ');
+      const showMeta = state.detail && h>=34;
+      const clamp = h>=48?2:1;
+      const fs = h<14?8.5:11;
+      const pv = h<14?0:3;
+      const tipText = `${ev.start}–${ev.end}  ${ev.title}${ev.loc?' · '+ev.loc:''}${ev.who?' · '+ev.who:''}`;
+      evs += `<div class="ev" title="${esc(tipText)}" style="top:${(ev.s-T0)/60*PXH+1}px;height:${h}px;border-left-color:${c};background:color-mix(in oklab, ${c} 13%, var(--panel));padding-top:${pv}px;padding-bottom:${pv}px;opacity:${match?1:0.18};">
+        <div class="name" style="font-size:${fs}px;-webkit-line-clamp:${clamp};">${esc(state.detail?ev.title:ev.short)}</div>
+        ${showMeta?`<div class="meta">${esc(ev.start)}–${esc(ev.end)}${meta?' · '+esc(meta):''}</div>`:''}
+      </div>`;
+    }
+    html += `<div class="col" style="min-width:${colMin}px">
+      <div class="col-head" style="height:${headH}px">
+        <div class="top">
+          <span class="num">${d.n}</span>
+          <div style="min-width:0">
+            <div class="date">${esc(d.date)}</div>
+            <div class="phase" style="color:${ph.color}">${esc(ph.label)}</div>
+          </div>
+        </div>
+        ${state.detail?`<div class="theme">${esc(d.theme)}</div>`:''}
+      </div>
+      <div class="col-body" style="height:${bodyH}px">${hlines}${evs}</div>
+    </div>`;
+  }
+  $('grid').innerHTML = html;
+}
+
+function render(){ renderBar(); renderGrid(); }
+
+let rt;
+window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(renderGrid,150); });
+
+renderLegend();
+render();
+})();
+</script>
+</body>
+</html>
