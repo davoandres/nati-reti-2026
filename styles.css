@@ -926,8 +926,8 @@ img {
 
 .phase-week-badge {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 18px;
+  right: 20px;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -939,24 +939,24 @@ img {
 }
 
 .phase-card-body {
-  padding: 52px 40px 44px;
+  padding: 26px 30px 28px;
 }
 
 .phase-title {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .phase-dates {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ncc-blue);
-  margin-bottom: 32px;
+  margin-bottom: 14px;
 }
 
 .phase-card--canada .phase-dates {
@@ -967,8 +967,8 @@ img {
   display: flex;
   flex-direction: column;
   background: var(--off-white);
-  padding: 20px 24px;
-  margin-bottom: 28px;
+  padding: 12px 16px;
+  margin-bottom: 0;
   border-left: 3px solid var(--ncc-blue);
 }
 
@@ -987,7 +987,7 @@ img {
 
 .phase-location-name {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 2px;
@@ -2356,12 +2356,12 @@ img {
 .program-schedule-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 15px 34px;
-  background: var(--dark-navy);
+  gap: 9px;
+  padding: 18px 42px;
+  background: var(--terracotta);
   color: var(--white);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2370,8 +2370,9 @@ img {
 }
 .program-schedule-cta:hover,
 .program-schedule-cta:focus-visible {
-  background: var(--mid-navy);
+  background: #a5311a;
   transform: translateY(-2px);
   outline: none;
 }
-.program-schedule-cta span { font-size: 1.05rem; line-height: 1; }
+.program-schedule-cta { box-shadow: 0 12px 26px rgba(195,61,28,0.30); }
+.program-schedule-cta span { font-size: 1.1rem; line-height: 1; }
