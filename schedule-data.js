@@ -22,7 +22,7 @@ const E = (start, end, title, short, cat, who, loc, cat2) => {
   return { start, end, s: min(start), e: min(end), title, short: short || title, cat, cat2: cat2 || '', who: who || '', loc: loc || '' };
 };
 const DAYS = [
- { n: 1, weekday: 'Monday', dnum: '03', phase: 'usa', theme: 'Introductory Day - Pillar Overview', city: 'Detroit, MI', date: 'Mon 03 Aug', events: [
+ { n: 1, weekday: 'Monday', dnum: '03', phase: 'usa', theme: 'Introductory Day - Pillar Overview', city: 'Detroit, MI', date: 'Monday, August 3', events: [
    E('07:30','13:00','Arrivals','','travel'),
    E('13:00','14:00','Orientation Session','','travel'),
    E('14:00','15:00','Opening Celebration','','prayer'),
@@ -34,7 +34,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 2, weekday: 'Tuesday', dnum: '04', phase: 'usa', theme: 'Climate Justice', city: 'Detroit, MI', date: 'Tue 04 Aug', events: [
+ { n: 2, weekday: 'Tuesday', dnum: '04', phase: 'usa', theme: 'Climate Justice', city: 'Detroit, MI', date: 'Tuesday, August 4', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Plenary: Dr. James Perkinson (ETS)','Plenary','plenary','Dr. James Perkinson'),
@@ -49,7 +49,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 3, weekday: 'Wednesday', dnum: '05', phase: 'usa', theme: 'Climate Justice', city: 'Detroit, MI', date: 'Wed 05 Aug', events: [
+ { n: 3, weekday: 'Wednesday', dnum: '05', phase: 'usa', theme: 'Climate Justice', city: 'Detroit, MI', date: 'Wednesday, August 5', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','12:30','Travel to Study Visit','','visit'),
@@ -60,7 +60,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 4, weekday: 'Thursday', dnum: '06', phase: 'usa', theme: 'Secularism and Laicity', city: 'Detroit, MI', date: 'Thu 06 Aug', events: [
+ { n: 4, weekday: 'Thursday', dnum: '06', phase: 'usa', theme: 'Secularism and Laicity', city: 'Detroit, MI', date: 'Thursday, August 6', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Plenary: Amanda Tyler','Plenary','plenary','Amanda Tyler'),
@@ -75,7 +75,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 5, weekday: 'Friday', dnum: '07', phase: 'usa', theme: 'Racism and Anti-Racism', city: 'Detroit, MI', date: 'Fri 07 Aug', events: [
+ { n: 5, weekday: 'Friday', dnum: '07', phase: 'usa', theme: 'Racism and Anti-Racism', city: 'Detroit, MI', date: 'Friday, August 7', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','14:30','Study Visit to 2nd Baptist Church (Underground Railroad)','Study Visit to 2nd Baptist Church','visit','','2nd Baptist Church, Detroit'),
@@ -86,7 +86,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 6, weekday: 'Saturday', dnum: '08', phase: 'usa', theme: 'Racism and Anti-Racism', city: 'Detroit, MI', date: 'Sat 08 Aug', events: [
+ { n: 6, weekday: 'Saturday', dnum: '08', phase: 'usa', theme: 'Racism and Anti-Racism', city: 'Detroit, MI', date: 'Saturday, August 8', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Plenary','','plenary'),
@@ -101,7 +101,7 @@ const DAYS = [
    E('18:30','19:30','Dinner','','meals'),
    E('19:30','20:30','Free','','free')
  ]},
- { n: 7, weekday: 'Sunday', dnum: '09', phase: 'transition', theme: 'Travel from Detroit to Toronto', city: 'Detroit → Toronto', date: 'Sun 09 Aug', events: [
+ { n: 7, weekday: 'Sunday', dnum: '09', phase: 'transition', theme: 'Travel from Detroit to Toronto', city: 'Detroit → Toronto', date: 'Sunday, August 9', events: [
    E('08:00','09:30','Gateway to Freedom Monument Stop and border crossing to Windsor, Canada.','Gateway to Freedom Monument Stop','visit','','Windsor, ON'),
    E('09:30','10:15',"Ecumenical Prayers with the Windsor Community @ All Saints' Anglican Church","Ecumenical Prayers with the Windsor Community",'prayer','',"All Saints' Anglican Church, Windsor"),
    E('10:15','11:00','Walk City Hall Square to Tower of Freedom Monument (Windsor, ON)','Walk City Hall Square','visit','','Windsor, ON'),
@@ -110,7 +110,7 @@ const DAYS = [
    E('12:15','13:00','Sandwich Baptist Church - Underground Railroad Site Visit','Sandwich Baptist Church','visit','','Sandwich Baptist Church'),
    E('13:00','14:00','Departure for Toronto','','travel','','Toronto, ON')
  ]},
- { n: 8, weekday: 'Monday', dnum: '10', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Mon 10 Aug', events: [
+ { n: 8, weekday: 'Monday', dnum: '10', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Monday, August 10', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Land Acknowledgment in Indigenous Garden','','prayer','','Indigenous Garden'),
    E('09:20','10:30',"Plenary - End of Life Panel - Bahai'i Centre",'Plenary','plenary','',"Bahá'í Centre",'visit'),
@@ -125,7 +125,7 @@ const DAYS = [
    E('18:00','19:00','Dinner: Burwash','Dinner','meals','','Burwash Hall'),
    E('19:00','20:30','Free','','free')
  ]},
- { n: 9, weekday: 'Tuesday', dnum: '11', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Tue 11 Aug', events: [
+ { n: 9, weekday: 'Tuesday', dnum: '11', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Tuesday, August 11', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Morning Prayer - Supported Becca in Liturgy.','Morning Prayer','prayer','Becca'),
    E('09:20','10:30','Plenary - Interfaith Panel','Plenary','plenary'),
@@ -141,7 +141,7 @@ const DAYS = [
    E('19:00','20:00','Check-in Session - CCC Invitation','Check-in Session','travel'),
    E('20:00','20:30','Free','','free')
  ]},
- { n: 10, weekday: 'Wednesday', dnum: '12', phase: 'canada', theme: 'Solidarity with Indigenous Communities', city: 'Toronto, ON', date: 'Wed 12 Aug', events: [
+ { n: 10, weekday: 'Wednesday', dnum: '12', phase: 'canada', theme: 'Solidarity with Indigenous Communities', city: 'Toronto, ON', date: 'Wednesday, August 12', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Study Session','','study'),
@@ -154,7 +154,7 @@ const DAYS = [
    E('18:00','19:00','Dinner: Burwash','Dinner','meals','','Burwash Hall'),
    E('19:00','20:30','Free','','free')
  ]},
- { n: 11, weekday: 'Thursday', dnum: '13', phase: 'canada', theme: 'Solidarity with Indigenous Communities', city: 'Toronto, ON', date: 'Thu 13 Aug', events: [
+ { n: 11, weekday: 'Thursday', dnum: '13', phase: 'canada', theme: 'Solidarity with Indigenous Communities', city: 'Toronto, ON', date: 'Thursday, August 13', events: [
    E('07:30','08:45','Bagged Breakfast','','meals'),
    E('08:45','09:20','Bus Travel','','travel'),
    E('09:20','12:30','Study Visit - Tour of the Former Mohawk Institute Residential School. At the Woodland Cultural Centre.','Study Visit','visit','','Woodland Cultural Centre'),
@@ -164,7 +164,7 @@ const DAYS = [
    E('18:00','19:00','Dinner: Burwash','Dinner','meals','','Burwash Hall'),
    E('19:00','20:30','Free','','free')
  ]},
- { n: 12, weekday: 'Friday', dnum: '14', phase: 'canada', theme: 'Wealth Disparity and Poverty', city: 'Toronto, ON', date: 'Fri 14 Aug', events: [
+ { n: 12, weekday: 'Friday', dnum: '14', phase: 'canada', theme: 'Wealth Disparity and Poverty', city: 'Toronto, ON', date: 'Friday, August 14', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Plenary - Deivit M, Dean Dettloff, Maggie Helwig','Plenary','plenary','Deivit M, Dean Dettloff, Maggie Helwig'),
@@ -180,7 +180,7 @@ const DAYS = [
    E('19:00','20:00',"Facilitator's Meeting",'','travel'),
    E('20:00','20:30','Free','','free')
  ]},
- { n: 13, weekday: 'Saturday', dnum: '15', phase: 'canada', theme: 'Wealth Disparity and Poverty', city: 'Toronto, ON', date: 'Sat 15 Aug', events: [
+ { n: 13, weekday: 'Saturday', dnum: '15', phase: 'canada', theme: 'Wealth Disparity and Poverty', city: 'Toronto, ON', date: 'Saturday, August 15', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:30','Plenary - Rev. Jeffrey Dale','Plenary','plenary','Rev. Jeffrey Dale'),
@@ -195,7 +195,7 @@ const DAYS = [
    E('18:00','19:00','Dinner: Burwash','Dinner','meals','','Burwash Hall'),
    E('19:00','20:30','Free','','free')
  ]},
- { n: 14, weekday: 'Sunday', dnum: '16', phase: 'canada', theme: 'Closing Celebration - Check out Day 11:00', city: 'Toronto, ON', date: 'Sun 16 Aug', events: [
+ { n: 14, weekday: 'Sunday', dnum: '16', phase: 'canada', theme: 'Closing Celebration - Check out Day 11:00', city: 'Toronto, ON', date: 'Sunday, August 16', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','10:30','Closing Celebration -Supported Becca in Liturgy.','Closing Celebration','prayer','Becca'),
    E('10:30','20:30','Departures','','travel')

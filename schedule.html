@@ -51,9 +51,6 @@
   .eyebrow{font-size:12px;letter-spacing:2.5px;font-weight:700;color:var(--accent);}
   h1{font-family:'Lora',serif;font-size:clamp(28px,4vw,40px);font-weight:600;margin:8px 0 0;}
   .deck{font-size:14px;line-height:1.55;color:var(--muted);margin:8px 0 0;max-width:620px;}
-  .legend{display:flex;gap:6px 14px;flex-wrap:wrap;}
-  .legend span.item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
-  .legend .sw{width:10px;height:10px;border-radius:3px;flex:none;}
 
   .bar{position:sticky;top:0;z-index:30;background:var(--bar-bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .bar-inner{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;flex-direction:column;gap:8px;}
@@ -77,8 +74,8 @@
   .col{flex:1;border-right:1px solid var(--line-soft);}
   .col-head{border-bottom:1px solid var(--line-soft);padding:9px 10px 7px;}
   .col-head .top{display:flex;align-items:center;gap:8px;}
-  .col-head .num{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--ink);}
-  .col-head .date{font-size:12px;font-weight:700;}
+  .col-head .num{font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--ink);flex:none;}
+  .col-head .date{font-size:12px;font-weight:700;line-height:1.25;}
   .col-head .phase{font-size:10px;font-weight:700;letter-spacing:0.5px;}
   .col-head .theme{font-size:10.5px;font-style:italic;font-family:'Lora',serif;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .col-body{position:relative;}
@@ -100,7 +97,6 @@
       <h1>The Journey · Daily Schedule</h1>
       <p class="deck">Follow the institute day by day along one continuous path. Choose days to compare, filter by activity or time of day, and switch between a simple and a detailed view.</p>
     </div>
-    <div class="legend" id="legend"></div>
   </header>
 </div>
 
@@ -148,11 +144,6 @@ function chipStyle(el,on,color){
   el.style.color = on ? 'var(--chip-on-fg)' : '';
 }
 
-function renderLegend(){
-  $('legend').innerHTML = CATS.map(c=>
-    `<span class="item"><span class="sw" style="background:${c.color}"></span>${c.label}</span>`).join('');
-}
-
 function renderBar(){
   const dayRow = $('dayRow');
   dayRow.innerHTML = `<span class="lbl">DAYS</span>` +
@@ -188,7 +179,7 @@ function renderBar(){
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 
 function renderGrid(){
-  const headH = state.detail?60:46;
+  const headH = state.detail?74:56;
   const bodyH = (T1-T0)/60*PXH;
   let colMin = state.sel.length===0 ? 150 : (state.sel.length===1 ? 420 : 230);
   if(isMobile() && state.sel.length===1) colMin = Math.max(240, window.innerWidth-92);
@@ -252,7 +243,6 @@ function render(){ renderBar(); renderGrid(); }
 let rt;
 window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(renderGrid,150); });
 
-renderLegend();
 render();
 })();
 </script>
