@@ -1,5 +1,5 @@
 export const config = {
-  matcher: ['/admin(.*)', '/practicalities(.*)'],
+  matcher: ['/admin(.*)'],
 };
 
 export default function middleware(request) {
