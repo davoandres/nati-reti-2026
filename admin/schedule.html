@@ -209,10 +209,12 @@ function renderGrid(){
     const ph = P[d.phase];
     let evs='';
     for(const ev of d.events){
-      const match = (!state.cats.length || state.cats.includes(ev.cat)) && (state.seg==='all' || segOf(ev.s)===state.seg);
+      const evCats = [ev.cat, ev.cat2].filter(Boolean);
+      const match = (!state.cats.length || evCats.some(k=>state.cats.includes(k))) && (state.seg==='all' || segOf(ev.s)===state.seg);
       const durPx = (ev.e-ev.s)/60*PXH;
       const h = Math.max(durPx-3, Math.min(14, durPx-2));
       const c = C[ev.cat].color;
+      const c2 = ev.cat2 ? C[ev.cat2].color : '';
       const meta = [ev.loc,ev.who].filter(Boolean).join(' · ');
       const showMeta = state.detail && h>=34;
       const clamp = h>=48?2:1;
@@ -220,7 +222,10 @@ function renderGrid(){
       const pv = h<14?0:3;
       const tipText = `${ev.start}–${ev.end}  ${ev.title}${ev.loc?' · '+ev.loc:''}${ev.who?' · '+ev.who:''}`;
       const inlineTime = state.detail && !showMeta ? ` <span class="tin">· ${esc(ev.start)}–${esc(ev.end)}</span>` : '';
-      evs += `<div class="ev" title="${esc(tipText)}" style="top:${(ev.s-T0)/60*PXH+1}px;height:${h}px;border-left-color:${c};background:color-mix(in oklab, ${c} 13%, var(--panel));padding-top:${pv}px;padding-bottom:${pv}px;opacity:${match?1:0.18};">
+      const edge = c2
+        ? `border-left:0;padding-left:10px;background:linear-gradient(to bottom, ${c} 0 50%, ${c2} 50% 100%) left/3px 100% no-repeat, color-mix(in oklab, ${c} 13%, var(--panel));`
+        : `border-left-color:${c};background:color-mix(in oklab, ${c} 13%, var(--panel));`;
+      evs += `<div class="ev" title="${esc(tipText)}" style="top:${(ev.s-T0)/60*PXH+1}px;height:${h}px;${edge}padding-top:${pv}px;padding-bottom:${pv}px;opacity:${match?1:0.18};">
         <div class="name" style="font-size:${fs}px;-webkit-line-clamp:${clamp};">${esc(state.detail?ev.title:ev.short)}${inlineTime}</div>
         ${showMeta?`<div class="meta">${esc(ev.start)}–${esc(ev.end)}${meta?' · '+esc(meta):''}</div>`:''}
       </div>`;

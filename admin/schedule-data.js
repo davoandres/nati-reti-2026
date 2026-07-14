@@ -15,10 +15,11 @@ const PHASES = [
  { id: 'transition', label: 'Transition', city: 'Detroit → Toronto', color: '#E2A93B' },
  { id: 'canada', label: 'Canada Phase', city: 'Toronto, ON', color: '#3E6FA3' }
 ];
-// e: [start, end, title, short, cat, who, loc]
-const E = (start, end, title, short, cat, who, loc) => {
+// e: [start, end, title, short, cat, who, loc, cat2]
+// cat2: optional secondary category — e.g. plenaries held during a study visit
+const E = (start, end, title, short, cat, who, loc, cat2) => {
   const min = t => +t.slice(0, 2) * 60 + +t.slice(3);
-  return { start, end, s: min(start), e: min(end), title, short: short || title, cat, who: who || '', loc: loc || '' };
+  return { start, end, s: min(start), e: min(end), title, short: short || title, cat, cat2: cat2 || '', who: who || '', loc: loc || '' };
 };
 const DAYS = [
  { n: 1, weekday: 'Monday', dnum: '03', phase: 'usa', theme: 'Introductory Day - Pillar Overview', city: 'Detroit, MI', date: 'Mon 03 Aug', events: [
@@ -112,9 +113,9 @@ const DAYS = [
  { n: 8, weekday: 'Monday', dnum: '10', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Mon 10 Aug', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','09:20','Land Acknowledgment in Indigenous Garden','','prayer','','Indigenous Garden'),
-   E('09:20','10:30',"Plenary - End of Life Panel - Bahai'i Centre",'Plenary','plenary','',"Bahá'í Centre"),
+   E('09:20','10:30',"Plenary - End of Life Panel - Bahai'i Centre",'Plenary','plenary','',"Bahá'í Centre",'visit'),
    E('10:30','11:00','Break','','meals'),
-   E('11:00','13:00',"Plenary - Bahai'i Centre",'Plenary','plenary','',"Bahá'í Centre"),
+   E('11:00','13:00',"Plenary - Bahai'i Centre",'Plenary','plenary','',"Bahá'í Centre",'visit'),
    E('13:00','14:30','Lunch: Burwash','Lunch','meals','','Burwash Hall'),
    E('14:30','16:00',"Study Session - at Bahai'i Centre",'Study Session','study','',"Bahá'í Centre"),
    E('16:00','16:15','Break','','meals'),
