@@ -167,7 +167,7 @@ function renderBar(){
 
   const catRow = $('catRow');
   catRow.innerHTML = `<span class="lbl">FILTER</span>` +
-    CATS.map(c=>`<button class="chip cat" data-cat="${c.id}"><span class="dot" style="background:${c.color}"></span>${c.label.split(' ')[0]}</button>`).join('');
+    CATS.map(c=>`<button class="chip cat" data-cat="${c.id}"><span class="dot" style="background:${c.color}"></span>${c.chip || c.label.split(' ')[0]}</button>`).join('');
   catRow.querySelectorAll('[data-cat]').forEach(el=>{
     const on = state.cats.includes(el.dataset.cat);
     chipStyle(el,on,'#1F3B5B');

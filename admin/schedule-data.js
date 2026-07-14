@@ -2,13 +2,13 @@
 // Source: Claude Design project "Horario interactivo NATI-RETI 2026" — Schedule Concepts 3A/3B
 window.SCHEDULE = (function () {
 const CATS = [
- { id: 'prayer', label: 'Prayer & Worship', color: '#3E6FA3' },
- { id: 'plenary', label: 'Plenaries & Speakers', color: '#C6532F' },
- { id: 'study', label: 'Study Sessions', color: '#5E8C3A' },
- { id: 'visit', label: 'Study Visits & Tours', color: '#2E9BB5' },
- { id: 'meals', label: 'Meals & Breaks', color: '#E2A93B' },
- { id: 'free', label: 'Free Time', color: '#9A9288' },
- { id: 'travel', label: 'Travel & Logistics', color: '#1F3B5B' }
+ { id: 'prayer', label: 'Prayer & Worship', chip: 'Prayer', color: '#3E6FA3' },
+ { id: 'plenary', label: 'Plenaries & Speakers', chip: 'Plenaries', color: '#C6532F' },
+ { id: 'study', label: 'Study Sessions', chip: 'Study Session', color: '#5E8C3A' },
+ { id: 'visit', label: 'Study Visits & Tours', chip: 'Study Visit', color: '#2E9BB5' },
+ { id: 'meals', label: 'Meals & Breaks', chip: 'Meals', color: '#E2A93B' },
+ { id: 'free', label: 'Free Time', chip: 'Free', color: '#9A9288' },
+ { id: 'travel', label: 'Travel & Logistics', chip: 'Travel', color: '#1F3B5B' }
 ];
 const PHASES = [
  { id: 'usa', label: 'USA Phase', city: 'Detroit, MI', color: '#C6532F' },
