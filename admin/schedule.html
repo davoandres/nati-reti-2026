@@ -85,7 +85,8 @@
   .hline{position:absolute;left:0;right:0;border-top:1px dashed rgba(31,59,91,0.07);}
   .ev{position:absolute;left:5px;right:5px;border-radius:6px;padding:0 7px;overflow:hidden;border-left:3px solid;}
   .ev .name{font-weight:600;color:#28405E;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;}
-  .ev .meta{font-size:9.5px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .ev .name .tin{font-weight:400;color:var(--muted);font-size:9.5px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .ev .meta{font-size:9.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .tip{font-size:12px;color:var(--faint);margin:12px 4px 0;}
   footer{max-width:1240px;margin:0 auto;padding:0 20px 40px;font-size:11px;color:var(--faint);}
 </style>
@@ -218,8 +219,9 @@ function renderGrid(){
       const fs = h<14?8.5:11;
       const pv = h<14?0:3;
       const tipText = `${ev.start}–${ev.end}  ${ev.title}${ev.loc?' · '+ev.loc:''}${ev.who?' · '+ev.who:''}`;
+      const inlineTime = state.detail && !showMeta ? ` <span class="tin">· ${esc(ev.start)}–${esc(ev.end)}</span>` : '';
       evs += `<div class="ev" title="${esc(tipText)}" style="top:${(ev.s-T0)/60*PXH+1}px;height:${h}px;border-left-color:${c};background:color-mix(in oklab, ${c} 13%, var(--panel));padding-top:${pv}px;padding-bottom:${pv}px;opacity:${match?1:0.18};">
-        <div class="name" style="font-size:${fs}px;-webkit-line-clamp:${clamp};">${esc(state.detail?ev.title:ev.short)}</div>
+        <div class="name" style="font-size:${fs}px;-webkit-line-clamp:${clamp};">${esc(state.detail?ev.title:ev.short)}${inlineTime}</div>
         ${showMeta?`<div class="meta">${esc(ev.start)}–${esc(ev.end)}${meta?' · '+esc(meta):''}</div>`:''}
       </div>`;
     }
