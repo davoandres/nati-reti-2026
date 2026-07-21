@@ -53,7 +53,7 @@ const DAYS = [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','12:30','Travel to Study Visit','','visit'),
-   E('12:30','16:15','Study Visit: Trip to Freedom Dreams EcoVillage','Study Visit','visit','','Freedom Dreams EcoVillage'),
+   E('12:30','16:15','Study Visit: Trip to Freedom Dreams EcoVillage','Study Visit','visit','Hands-on work day: pathway building, gardening, weed clearing, and light supervised deconstruction (tools & PPE provided). Wear clothes that can get dirty; bring hat, sunglasses, and water bottle — gloves and safety goggles provided','Freedom Dreams EcoVillage'),
    E('16:15','17:00','Study Session','','study'),
    E('17:00','18:00','Free Time','','free'),
    E('18:00','18:30','Evening Prayer (Plenary Hall)','Evening Prayer','prayer','','Plenary Hall'),
