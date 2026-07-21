@@ -1990,8 +1990,14 @@ img {
   }
 }
 
+/* ── Compact nav: 12 links need tighter spacing on narrow desktops ── */
+@media (min-width: 1260px) and (max-width: 1560px) {
+  .nav-links { gap: 12px; }
+  .nav-links li a { font-size: 0.72rem; letter-spacing: 0.02em; }
+}
+
 /* ── Navbar-only breakpoint ──────────────────────────────── */
-@media (max-width: 1200px) {
+@media (max-width: 1259px) {
   .nav-links {
     display: none;
     position: fixed;
@@ -2387,4 +2393,128 @@ img {
 .program-schedule-cta--outline:hover {
   background: var(--terracotta);
   color: var(--white);
+}
+
+/* ===================== QUICK ACCESS BAND ===================== */
+.quick-access-section {
+  background: var(--off-white);
+  padding: 48px 0 52px;
+  border-bottom: 1px solid var(--light-gray);
+}
+.quick-access-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ===================== RESOURCE CARDS (Schedule / Practicalities) ===================== */
+.resource-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1120px;
+  margin-top: 10px;
+}
+.resource-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 28px 24px 24px;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.resource-card:hover,
+.resource-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+  outline: none;
+}
+.resource-card:hover::before,
+.resource-card:focus-visible::before { transform: scaleX(1); }
+
+.resource-card--schedule   { --accent: var(--terracotta); --accent-soft: rgba(195, 61, 28, 0.08); }
+.resource-card--practical  { --accent: var(--dark-teal);  --accent-soft: rgba(3, 103, 136, 0.08); }
+.resource-card--curriculum { --accent: var(--olive);      --accent-soft: rgba(113, 121, 24, 0.10); }
+.resource-card--prayer     { --accent: var(--dark-blue);  --accent-soft: rgba(1, 72, 115, 0.08); }
+
+/* Icon */
+.resource-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  transition: background var(--transition), transform var(--transition);
+}
+.resource-card:hover .resource-card-icon { transform: scale(1.06); }
+.resource-card-icon svg { width: 34px; height: 34px; display: block; }
+.resource-card-icon .rc-body,
+.resource-card-icon .rc-ring,
+.resource-card-icon .rc-strap,
+.resource-card-icon .rc-clasp {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.resource-card-icon .rc-strap { stroke-width: 2; opacity: 0.45; }
+.resource-card-icon .rc-band { fill: var(--accent); stroke: none; }
+.resource-card-icon .rc-dates {
+  font-family: var(--font-sans); font-size: 18px; font-weight: 700;
+  letter-spacing: 0.02em; fill: var(--accent);
+}
+
+/* Text */
+.resource-card-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  line-height: 1.2;
+  color: var(--dark-navy);
+  margin: 0;
+}
+.resource-card-link {
+  margin-top: auto;
+  padding-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.resource-card-link span { font-size: 1.05rem; line-height: 1; transition: transform var(--transition); }
+.resource-card:hover .resource-card-link span { transform: translateX(4px); }
+
+@media (max-width: 1080px) {
+  .resource-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; }
+}
+@media (max-width: 560px) {
+  .resource-cards { grid-template-columns: 1fr; gap: 16px; max-width: 420px; }
+  .resource-card { padding: 26px 24px 22px; }
 }
