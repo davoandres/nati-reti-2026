@@ -338,6 +338,7 @@ img {
   font-weight: 500;
   letter-spacing: 0.035em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: rgba(255,255,255,0.8);
   transition: color var(--transition);
 }
@@ -1996,6 +1997,33 @@ img {
   .nav-links li a { font-size: 0.72rem; letter-spacing: 0.02em; }
 }
 
+/* ── Wide screens: give the 12-link nav room so no label wraps ── */
+@media (min-width: 1561px) {
+  .nav-container { max-width: 1560px; }
+}
+
+/* ── Large monitors (24″+): scale nav up proportionally ── */
+@media (min-width: 1920px) {
+  .nav-container { max-width: 1800px; padding: 0 48px; }
+  .nav-links { gap: 24px; }
+  .nav-links li a { font-size: 0.9rem; }
+  .nav-links li a.nav-cta { padding: 10px 24px; }
+  .nav-logo { height: 42px; }
+  .nav-brand-abbr { font-size: 1.6rem; }
+  .nav-brand-year { font-size: 0.95rem; }
+}
+
+/* ── Very large monitors (32″–40″+): scale nav up further ── */
+@media (min-width: 2400px) {
+  .nav-container { max-width: 2080px; }
+  .nav-links { gap: 30px; }
+  .nav-links li a { font-size: 1rem; }
+  .nav-links li a.nav-cta { padding: 12px 28px; }
+  .nav-logo { height: 48px; }
+  .nav-brand-abbr { font-size: 1.8rem; }
+  .nav-brand-year { font-size: 1.05rem; }
+}
+
 /* ── Navbar-only breakpoint ──────────────────────────────── */
 @media (max-width: 1259px) {
   .nav-links {
@@ -2007,11 +2035,18 @@ img {
     bottom: 0;
     background: var(--dark-navy);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 32px;
+    gap: clamp(14px, 3.6vh, 32px);
     z-index: 999;
+    overflow-y: auto;
+    padding: 72px 0 32px;
   }
+
+  /* Auto margins center the links when they fit, and keep the first/last
+     reachable by scrolling on short screens (unlike justify-content:center) */
+  .nav-links li:first-child { margin-top: auto; }
+  .nav-links li:last-child { margin-bottom: auto; }
 
   .nav-links.open {
     display: flex;

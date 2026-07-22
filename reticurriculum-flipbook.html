@@ -27,9 +27,14 @@ html,body{
   width:100%;height:100%;
   background:#F5F5F5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:18px;overflow:hidden;
+  gap:18px;
   font-family:'Lora',Georgia,serif;
 }
+html{overflow:hidden;}
+/* clip (not hidden): the body can never scroll sideways, not even from
+   scripts — the unscaled page box is wider than small viewports and flip
+   animations used to nudge the body 40px+ off-centre. */
+body{overflow:clip;}
 
 /* ══════════════════════════════════════════
    BOOK (StPageFlip)
@@ -500,8 +505,9 @@ html,body{
     justify-content:flex-start;
     padding:14px 0 22px;
     gap:12px;
-    overflow:auto;
   }
+  html{overflow-y:auto;overflow-x:hidden;}
+  body{overflow:clip;height:auto;min-height:100%;flex-shrink:0;}
   .scene{
     transform:scale(.78);
     transform-origin:top center;
@@ -529,8 +535,9 @@ html,body{
     justify-content:flex-start;
     padding-top:12px;
     gap:10px;
-    overflow:auto;
   }
+  html{overflow-y:auto;overflow-x:hidden;}
+  body{overflow:clip;height:auto;min-height:100%;flex-shrink:0;}
   /* Let browser handle pinch-zoom; StPageFlip still gets horizontal swipe */
   .scene,#book,.stf__parent,.stf__wrapper,.stf__block,.stf__item,.stf-page{
     touch-action:pan-y pinch-zoom !important;
@@ -540,6 +547,15 @@ html,body{
   .pd{width:11px;height:11px;}
   .pd::after{font-size:10px;padding:4px 7px;}
   .kh{display:none;}
+}
+
+/* Very narrow phones: shrink the nav row so all buttons stay on screen */
+@media(max-width:360px){
+  .nav-bar{gap:6px;padding:0 4px;}
+  .nb{width:34px;height:34px;font-size:12px;}
+  .nb-skip{font-size:14px;}
+  .nb-zoom{font-size:15px;}
+  .ni{min-width:56px;font-size:9px;}
 }
 
 /* ── PILLAR NAVIGATION DOTS ── */
@@ -2580,6 +2596,13 @@ pageFlip.on('flip', function(e) {
   }
 });
 updateNav();
+
+/* The unscaled 560px page box overflows narrow viewports, so flip
+   animations can programmatically scroll the body sideways (CSS
+   overflow-x:hidden doesn't block script scrolls). Pin it back. */
+document.body.addEventListener('scroll', () => {
+  if (document.body.scrollLeft !== 0) document.body.scrollLeft = 0;
+}, {passive: true});
 
 const sceneEl = document.querySelector('.scene');
 let _animating = false;
