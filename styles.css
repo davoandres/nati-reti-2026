@@ -849,7 +849,7 @@ img {
 
 .theme-visual-block {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   gap: 20px;
 }
 
@@ -1663,7 +1663,7 @@ img {
   mix-blend-mode: normal;
   opacity: 1;
   height: 96px;
-  max-width: 440px;
+  max-width: min(440px, 100%);
   margin-bottom: 0;
 }
 
@@ -2124,7 +2124,7 @@ img {
   .partner-logo-wcc { height: 60px; }
 
   .theme-visual-block {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0,1fr));
   }
 
   .about-details-card {
@@ -2204,7 +2204,7 @@ img {
   .partner-logo-wcc { height: 44px; }
 
   .theme-visual-block {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   }
 
   .pillar-card {
@@ -2562,4 +2562,9 @@ img {
 @media (max-width: 560px) {
   .resource-cards { grid-template-columns: 1fr; gap: 16px; max-width: 420px; }
   .resource-card { padding: 26px 24px 22px; }
+}
+
+/* Very small phones: stack theme stat cards in one column */
+@media (max-width: 420px) {
+  .theme-visual-block { grid-template-columns: minmax(0,1fr); }
 }
