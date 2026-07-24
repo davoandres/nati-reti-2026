@@ -53,7 +53,8 @@ const DAYS = [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
    E('09:20','10:00','Travel to Study Visit','','visit'),
-   E('10:00','16:15','Study Visit: Trip to Freedom Dreams EcoVillage','Study Visit','visit','Hands-on work day: pathway building, gardening, weed clearing, and light supervised deconstruction (tools & PPE provided). Wear clothes that can get dirty; bring hat, sunglasses, and water bottle — gloves and safety goggles provided','Freedom Dreams EcoVillage'),
+   E('10:00','15:00','Study Visit: Trip to Freedom Dreams EcoVillage','Study Visit','visit','Hands-on work day: pathway building, gardening, weed clearing, and light supervised deconstruction (tools & PPE provided). Wear clothes that can get dirty; bring hat, sunglasses, and water bottle — gloves and safety goggles provided','Freedom Dreams EcoVillage'),
+   E('15:00','16:15','Travel back from Study Visit','','visit'),
    E('16:15','17:00','Study Session','','study'),
    E('17:00','18:00','Free Time','','free'),
    E('18:00','18:30','Evening Prayer (Plenary Hall)','Evening Prayer','prayer','','Plenary Hall'),
@@ -78,8 +79,9 @@ const DAYS = [
  { n: 5, weekday: 'Friday', dnum: '07', phase: 'usa', theme: 'Racism and Anti-Racism', city: 'Detroit, MI', date: 'Friday, August 7', events: [
    E('07:30','08:45','Breakfast','','meals'),
    E('08:45','09:20','Morning Prayer','','prayer'),
-   E('09:20','14:30','Study Visit to 2nd Baptist Church (Underground Railroad)','Study Visit to 2nd Baptist Church','visit','','2nd Baptist Church, Detroit'),
-   E('14:30','16:15','Walking Tour of Detroit','','visit','','Detroit, MI'),
+   E('10:00','14:00','Study Visit to 2nd Baptist Church (Underground Railroad)','Study Visit to 2nd Baptist Church','visit','','2nd Baptist Church, Detroit'),
+   E('14:00','15:00','Walking Tour of Detroit','','visit','','Detroit, MI'),
+   E('15:00','16:15','Travel back from Study Visit','','visit'),
    E('16:15','17:00','Study Session','','study'),
    E('17:00','18:00','Free Time','','free'),
    E('18:00','18:30','Evening Prayer','','prayer'),
@@ -102,7 +104,7 @@ const DAYS = [
    E('19:30','20:30','Free','','free')
  ]},
  { n: 7, weekday: 'Sunday', dnum: '09', phase: 'transition', theme: 'Travel from Detroit to Toronto', city: 'Detroit → Toronto', date: 'Sunday, August 9', events: [
-   E('08:00','09:30','Gateway to Freedom Monument Stop and border crossing to Windsor, Canada.','Gateway to Freedom Monument Stop','visit','','Windsor, ON'),
+   E('08:00','09:30','Travel and border crossing to Windsor, Canada.','Border crossing to Windsor','travel','','Windsor, ON'),
    E('09:30','10:15',"Ecumenical Prayers with the Windsor Community @ All Saints' Anglican Church","Ecumenical Prayers with the Windsor Community",'prayer','',"All Saints' Anglican Church, Windsor"),
    E('10:15','11:00','Walk City Hall Square to Tower of Freedom Monument (Windsor, ON)','Walk City Hall Square','visit','','Windsor, ON'),
    E('11:00','12:00','Lecture & Lunch at Tanner-Price AME Church','Lecture & Lunch','plenary','','Tanner-Price AME Church'),
