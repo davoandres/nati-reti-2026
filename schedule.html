@@ -64,6 +64,14 @@
   .chip.detail{border-color:var(--gold);color:#A8761B;font-weight:700;padding:5px 12px;}
   .chip.detail.on{background:var(--gold);color:var(--ink);}
 
+  /* Day cards — same look as the NATI-RETI app day rail */
+  .dayrow-scroll{display:flex;gap:6px;align-items:stretch;overflow-x:auto;flex:1 1 auto;min-width:0;padding:2px 2px 3px;}
+  .daycard{flex:none;width:50px;cursor:pointer;border-radius:12px;padding:6px 0 5px;display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid #E7DFCE;background:#FFFFFF;}
+  .daycard .wk{font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#A6AEBB;}
+  .daycard .dn{font-family:'Lora',serif;font-size:21px;font-weight:700;line-height:1;color:#01265C;}
+  .daycard .dl{margin-top:1px;font-size:8px;font-weight:700;letter-spacing:0.02em;}
+  .day-gap{flex:none;width:1px;align-self:stretch;background:#E7DFCE;margin:2px 3px;}
+
   main{max-width:1240px;margin:0 auto;padding:20px 20px 70px;}
   .grid-shell{overflow-x:auto;border-radius:14px;border:1px solid var(--line);background:var(--panel);}
   .grid-flex{display:flex;min-width:min-content;}
@@ -146,13 +154,21 @@ function chipStyle(el,on,color){
 
 function renderBar(){
   const dayRow = $('dayRow');
-  dayRow.innerHTML = `<span class="lbl">DAYS</span>` +
-    DAYS.map(d=>`<button class="chip" data-day="${d.n}">${String(d.n).padStart(2,'0')}</button>`).join('') +
+  const dayCards = DAYS.map((d,i)=>{
+    const col = d.phase==='canada' ? '#0E78AE' : P[d.phase].color;
+    const on = state.sel.includes(d.n);
+    const gap = i>0 && DAYS[i-1].phase!==d.phase ? `<div class="day-gap"></div>` : '';
+    const sel = on ? `background:${col};border-color:${col};box-shadow:0 4px 12px ${col}55;` : '';
+    return gap+`<button class="daycard" data-day="${d.n}" style="${sel}">
+      <span class="wk"${on?' style="color:rgba(255,255,255,0.85)"':''}>${d.weekday.slice(0,3)}</span>
+      <span class="dn"${on?' style="color:#FFFFFF"':''}>${d.dnum}</span>
+      <span class="dl" style="color:${on?'rgba(255,255,255,0.85)':col}">Day ${d.n}</span>
+    </button>`;
+  }).join('');
+  dayRow.innerHTML = `<span class="lbl">DAYS</span><div class="dayrow-scroll">${dayCards}</div>` +
     `<button class="chip all" id="allBtn">${state.sel.length?'All 14 days':'Showing all'}</button>`;
   dayRow.querySelectorAll('[data-day]').forEach(el=>{
-    const n = +el.dataset.day, on = state.sel.includes(n);
-    chipStyle(el,on,P[DAYS[n-1].phase].color);
-    el.addEventListener('click',()=>toggle('sel',n));
+    el.addEventListener('click',()=>toggle('sel',+el.dataset.day));
   });
   $('allBtn').addEventListener('click',()=>{ state.sel=[]; render(); });
 
