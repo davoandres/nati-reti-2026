@@ -2456,8 +2456,8 @@ img {
 /* ===================== RESOURCE CARDS (Schedule / Practicalities) ===================== */
 .resource-cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
   width: 100%;
   max-width: 1120px;
   margin-top: 10px;
@@ -2468,7 +2468,7 @@ img {
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
-  padding: 28px 24px 24px;
+  padding: 26px 20px 22px;
   background: var(--white);
   border: 1px solid var(--light-gray);
   border-radius: var(--radius);
@@ -2501,6 +2501,8 @@ img {
 .resource-card--practical  { --accent: var(--dark-teal);  --accent-soft: rgba(3, 103, 136, 0.08); }
 .resource-card--curriculum { --accent: var(--olive);      --accent-soft: rgba(113, 121, 24, 0.10); }
 .resource-card--prayer     { --accent: var(--dark-blue);  --accent-soft: rgba(1, 72, 115, 0.08); }
+/* Reader: the amber of the brand palette, darkened so the uppercase link stays legible on white */
+.resource-card--reader     { --accent: #8f6d0f;           --accent-soft: rgba(230, 175, 42, 0.14); }
 
 /* Icon */
 .resource-card-icon {
