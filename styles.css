@@ -559,28 +559,6 @@ img {
   align-self: stretch;
 }
 
-.hero-btn {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--dark-blue);
-  border: 2px solid var(--dark-blue);
-  padding: 15px 40px;
-  border-radius: var(--radius);
-  transition: background var(--transition), border-color var(--transition), transform var(--transition);
-  opacity: 0;
-  animation: fadeUp 0.9s 0.9s ease forwards;
-}
-
-.hero-btn:hover {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  transform: translateY(-2px);
-}
-
 .hero-scroll-indicator {
   position: absolute;
   bottom: 32px;
@@ -875,6 +853,19 @@ img {
   color: var(--ncc-gold);
   line-height: 1;
   margin-bottom: 8px;
+}
+
+/* "Max" qualifier: kept small so the numeral still reads at the same weight
+   as the 14 and the 6 beside it. */
+.theme-stat-qual {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  /* Inline, so the numeral keeps the same baseline as the 14 and the 6. */
+  vertical-align: 0.75em;
+  margin-right: 0.18em;
 }
 
 .theme-stat-label {
@@ -2185,11 +2176,6 @@ img {
     height: 1px;
   }
 
-  .hero-btn {
-    font-size: 0.8rem;
-    padding: 12px 24px;
-  }
-
   .section-title {
     font-size: clamp(1.4rem, 6vw, 2rem);
   }
@@ -2588,19 +2574,6 @@ img {
   background: var(--dark-navy);
 }
 
-.facilitators-title {
-  font-family: var(--font-cinzel);
-  font-size: clamp(1.4rem, 3vw, 1.875rem);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-
-.facilitators-subtitle {
-  color: rgba(255, 255, 255, 0.72);
-}
-
 /* ── Group labels ─────────────────────────────────────────── */
 .facilitator-group-label {
   display: flex;
@@ -2646,15 +2619,24 @@ img {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
   padding: 0;
   border: 0;
-  overflow: hidden;
-  background: var(--text-dark);
+  background: none;
   color: inherit;
   font: inherit;
   text-align: left;
   cursor: pointer;
+}
+
+/* The photo carries the 4:5 ratio rather than the button, so the selection
+   outline and the click cue stay pinned to the image even where the caption
+   sits outside it (phones). */
+.facilitator-tile-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--text-dark);
 }
 
 .facilitator-tile img {
@@ -2673,7 +2655,7 @@ img {
   transform: scale(1.03);
 }
 
-.facilitator-tile::after {
+.facilitator-tile-photo::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -2683,13 +2665,43 @@ img {
   pointer-events: none;
 }
 
-.facilitator-tile:hover::after,
-.facilitator-tile:focus-visible::after,
-.facilitator-tile.is-active::after {
+.facilitator-tile:hover .facilitator-tile-photo::after,
+.facilitator-tile:focus-visible .facilitator-tile-photo::after,
+.facilitator-tile.is-active .facilitator-tile-photo::after {
   outline-color: var(--ncc-gold);
 }
 
 .facilitator-tile:focus { outline: none; }
+
+/* Click cue: the only affordance now that the "select a portrait" line is
+   gone, so it sits above the caption gradient rather than under it. */
+.facilitator-tile-cue {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(1, 30, 51, 0.78);
+  color: var(--ncc-gold);
+  transition: background var(--transition), color var(--transition);
+}
+
+.facilitator-tile-cue svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+.facilitator-tile:hover .facilitator-tile-cue,
+.facilitator-tile:focus-visible .facilitator-tile-cue,
+.facilitator-tile.is-active .facilitator-tile-cue {
+  background: var(--ncc-gold);
+  color: var(--dark-navy);
+}
 
 .facilitator-tile-caption {
   position: absolute;
@@ -2882,27 +2894,21 @@ img {
 
   .facilitator-grid--four { margin-bottom: 44px; }
 
-  .facilitator-tile {
-    aspect-ratio: auto;
-    background: none;
-  }
+  .facilitator-tile img { opacity: 1; }
 
-  .facilitator-tile img {
-    aspect-ratio: 4 / 5;
-    height: auto;
-    opacity: 1;
-    background: var(--text-dark);
-  }
-
-  /* No hover on touch, and the scale would ride over the caption below. */
+  /* No hover on touch, and at this size the zoom only blurs the portrait. */
   .facilitator-tile:hover img,
   .facilitator-tile:focus-visible img,
   .facilitator-tile.is-active img { transform: none; }
 
-  /* Keep the selection outline on the portrait, not the caption. */
-  .facilitator-tile::after {
-    bottom: auto;
-    aspect-ratio: 4 / 5;
+  .facilitator-tile-cue {
+    width: 30px;
+    height: 30px;
+  }
+
+  .facilitator-tile-cue svg {
+    width: 13px;
+    height: 13px;
   }
 
   .facilitator-tile-caption {

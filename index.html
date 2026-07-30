@@ -82,7 +82,6 @@
           <span class="hero-meta-value">Toronto, Ontario</span>
         </div>
       </div>
-      <a href="#about" class="hero-btn">Discover the Institute</a>
     </div>
     <div class="hero-scroll-indicator">
       <span>Scroll</span>
@@ -230,7 +229,7 @@
           <div class="detail-divider"></div>
           <div class="detail-block">
             <span class="detail-label">Participants</span>
-            <span class="detail-value">50 Emerging Theologians</span>
+            <span class="detail-value">Max 50 Emerging Theologians</span>
           </div>
           <div class="detail-divider"></div>
           <div class="detail-block">
@@ -269,7 +268,7 @@
           <span class="theme-stat-label">Thematic Pillars</span>
         </div>
         <div class="theme-stat-card">
-          <span class="theme-stat-number">50</span>
+          <span class="theme-stat-number"><span class="theme-stat-qual">Max</span>50</span><!-- "Max" is inline so the numeral baseline matches the sibling cards -->
           <span class="theme-stat-label">Participants</span>
         </div>
       </div>
@@ -582,7 +581,7 @@
           <div class="participant-block-header">
             <div class="participant-block-icon">&#9670;</div>
             <h3 class="participant-block-title">Student Participants</h3>
-            <div class="participant-block-count">50 Emerging Theologians</div>
+            <div class="participant-block-count">Max 50 Emerging Theologians</div>
           </div>
           <div class="participant-block-body">
             <div class="participant-split">
@@ -638,8 +637,7 @@
     <div class="container">
       <div class="section-header section-header--light">
         <span class="section-tag light">Who Guides Us</span>
-        <h2 class="section-title light facilitators-title">Facilitators &amp; Staff</h2>
-        <p class="section-subtitle facilitators-subtitle">Select a portrait to read the full biography.</p>
+        <h2 class="section-title light">Facilitators &amp; Staff</h2>
       </div>
 
       <div class="facilitator-detail" id="facilitatorDetail" hidden>
@@ -666,7 +664,10 @@
       <div class="facilitator-grid facilitator-grid--four">
 
         <button type="button" class="facilitator-tile" data-person="martell" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-loida-martell.jpg" alt="" width="768" height="960" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-loida-martell.jpg" alt="" width="768" height="960" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">United States</span>
             <span class="facilitator-tile-name">Rev. Dr. Loida I. Martell</span>
@@ -675,7 +676,10 @@
         </button>
 
         <button type="button" class="facilitator-tile" data-person="hessler" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-soren-hessler.jpg" alt="" width="674" height="842" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-soren-hessler.jpg" alt="" width="674" height="842" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">United States</span>
             <span class="facilitator-tile-name">Rev. Dr. Soren M. Hessler</span>
@@ -684,7 +688,10 @@
         </button>
 
         <button type="button" class="facilitator-tile" data-person="ruben" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-ruben-david.jpg" alt="" width="384" height="480" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-ruben-david.jpg" alt="" width="384" height="480" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">Canada</span>
             <span class="facilitator-tile-name">Rub&eacute;n David</span>
@@ -693,7 +700,10 @@
         </button>
 
         <button type="button" class="facilitator-tile" data-person="leath" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-jennifer-leath.jpg" alt="" width="880" height="1100" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-jennifer-leath.jpg" alt="" width="880" height="1100" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">Canada</span>
             <span class="facilitator-tile-name">Rev. Dr. Jennifer S. Leath</span>
@@ -710,7 +720,10 @@
       <div class="facilitator-grid facilitator-grid--two">
 
         <button type="button" class="facilitator-tile" data-person="deivit" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-deivit-montealegre.jpg" alt="" width="413" height="516" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-deivit-montealegre.jpg" alt="" width="413" height="516" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">Canada</span>
             <span class="facilitator-tile-name">Deivit Montealegre</span>
@@ -719,7 +732,10 @@
         </button>
 
         <button type="button" class="facilitator-tile" data-person="thea" aria-controls="facilitatorDetail" aria-expanded="false">
-          <img src="Pictures/facilitators/photo-thea-sheridan-jonah.jpg" alt="" width="566" height="708" loading="lazy" />
+          <span class="facilitator-tile-photo">
+            <img src="Pictures/facilitators/photo-thea-sheridan-jonah.jpg" alt="" width="566" height="708" loading="lazy" />
+            <span class="facilitator-tile-cue" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          </span>
           <span class="facilitator-tile-caption">
             <span class="facilitator-tile-country">Canada</span>
             <span class="facilitator-tile-name">Thea Sheridan-Jonah</span>
