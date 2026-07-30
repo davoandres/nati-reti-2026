@@ -2577,3 +2577,299 @@ img {
 @media (max-width: 420px) {
   .theme-visual-block { grid-template-columns: minmax(0,1fr); }
 }
+
+/* ══════════════════════════════════════════════════════════
+   FACILITATORS & STAFF
+   Dark navy band; portraits sit in a 2px-gap grid like the
+   pillars wall. Clicking a portrait opens one shared detail
+   panel above the grids.
+   ══════════════════════════════════════════════════════════ */
+.facilitators-section {
+  background: var(--dark-navy);
+}
+
+.facilitators-title {
+  font-family: var(--font-cinzel);
+  font-size: clamp(1.4rem, 3vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.facilitators-subtitle {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Group labels ─────────────────────────────────────────── */
+.facilitator-group-label {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0 0 20px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ncc-gold);
+}
+
+.facilitator-group-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ── Portrait wall ────────────────────────────────────────── */
+/* Tracks are fractional with a capped grid width, so the portraits hold the
+   design's 274px on a full-width container and shrink — rather than overflow —
+   on anything narrower. */
+.facilitator-grid {
+  display: grid;
+  gap: 2px;
+  margin-inline: auto;
+}
+
+.facilitator-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1102px;
+  margin-bottom: 52px;
+}
+
+.facilitator-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 550px;
+}
+
+.facilitator-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--text-dark);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.facilitator-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.88;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.facilitator-tile:hover img,
+.facilitator-tile:focus-visible img,
+.facilitator-tile.is-active img {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.facilitator-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  transition: outline-color var(--transition);
+  pointer-events: none;
+}
+
+.facilitator-tile:hover::after,
+.facilitator-tile:focus-visible::after,
+.facilitator-tile.is-active::after {
+  outline-color: var(--ncc-gold);
+}
+
+.facilitator-tile:focus { outline: none; }
+
+.facilitator-tile-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 22px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(1, 30, 51, 0.94) 0%,
+    rgba(1, 30, 51, 0.72) 55%,
+    rgba(1, 30, 51, 0) 100%
+  );
+}
+
+.facilitator-tile-country,
+.facilitator-tile-name,
+.facilitator-tile-role { display: block; }
+
+.facilitator-tile-country {
+  font-family: var(--font-sans);
+  font-size: 0.656rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ncc-gold);
+  margin-bottom: 6px;
+}
+
+.facilitator-tile-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.facilitator-tile-role {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Detail panel ─────────────────────────────────────────── */
+.facilitator-detail {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  align-items: start;
+  background: var(--white);
+  padding: 40px;
+  margin-bottom: 2px;
+}
+
+.facilitator-detail[hidden] { display: none; }
+
+.facilitator-detail-portrait {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+
+.facilitator-detail-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.facilitator-detail-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.facilitator-detail-country {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.facilitator-detail-name {
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin: 0 0 6px;
+}
+
+.facilitator-detail-role {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ncc-blue);
+}
+
+.facilitator-close {
+  flex: none;
+  background: none;
+  border: 1px solid rgba(1, 72, 115, 0.3);
+  border-radius: 2px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.688rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ncc-blue);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.facilitator-close:hover,
+.facilitator-close:focus-visible {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.facilitator-detail-bio p {
+  font-family: var(--font-sans);
+  font-size: 0.938rem;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.facilitator-detail-bio p + p { margin-top: 1em; }
+
+.facilitators-note {
+  font-family: var(--font-sans);
+  font-size: 0.844rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 24px 0 0;
+  text-align: center;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .facilitator-grid--four {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 826px;
+  }
+}
+
+@media (max-width: 760px) {
+  .facilitator-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 550px;
+  }
+  .facilitator-detail {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding: 28px 24px;
+  }
+  .facilitator-detail-portrait { width: 160px; }
+  .facilitator-detail-head { flex-wrap: wrap; }
+  /* Touch target: the desktop button is 29px tall, below the 44px minimum. */
+  .facilitator-close { padding: 15px 20px; }
+}
+
+@media (max-width: 440px) {
+  .facilitator-grid--four,
+  .facilitator-grid--two {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 274px;
+  }
+  .facilitator-tile-caption { padding: 18px 16px; }
+}

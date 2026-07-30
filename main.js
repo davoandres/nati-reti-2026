@@ -61,6 +61,7 @@
       '.phase-card',
       '.pillar-card',
       '.participant-block',
+      '.facilitator-tile',
       '.partner-card',
       '.theme-stat-card',
       '.cta-content',
@@ -139,6 +140,87 @@
 
 
 
+  /* ── Facilitators & Staff: portrait wall ──────────────── */
+  function setupFacilitators() {
+    const section = document.getElementById('facilitators');
+    const panel   = document.getElementById('facilitatorDetail');
+    const bios    = document.getElementById('facilitatorBios');
+    if (!section || !panel || !bios) return;
+
+    const tiles    = Array.from(section.querySelectorAll('.facilitator-tile'));
+    const photoEl  = document.getElementById('facDetailPhoto');
+    const nameEl   = document.getElementById('facDetailName');
+    const roleEl   = document.getElementById('facDetailRole');
+    const countryEl= document.getElementById('facDetailCountry');
+    const bioEl    = document.getElementById('facDetailBio');
+    const closeBtn = document.getElementById('facDetailClose');
+    if (!tiles.length || !photoEl || !nameEl || !roleEl || !countryEl || !bioEl || !closeBtn) return;
+
+    let openTile = null;
+
+    function text(tile, cls) {
+      const el = tile.querySelector('.' + cls);
+      return el ? el.textContent.trim() : '';
+    }
+
+    function close(returnFocus) {
+      panel.hidden = true;
+      tiles.forEach(function (t) {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-expanded', 'false');
+      });
+      if (returnFocus && openTile) openTile.focus();
+      openTile = null;
+    }
+
+    function open(tile) {
+      const person = tile.getAttribute('data-person');
+      const source = bios.querySelector('[data-person="' + person + '"]');
+      const img    = tile.querySelector('img');
+      const name   = text(tile, 'facilitator-tile-name');
+
+      countryEl.textContent = text(tile, 'facilitator-tile-country');
+      nameEl.textContent    = name;
+      roleEl.textContent    = text(tile, 'facilitator-tile-role');
+      photoEl.src = img ? img.getAttribute('src') : '';
+      photoEl.alt = name;
+      bioEl.innerHTML = source ? source.innerHTML : '';
+
+      tiles.forEach(function (t) {
+        const active = t === tile;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-expanded', active ? 'true' : 'false');
+      });
+
+      panel.hidden = false;
+      openTile = tile;
+
+      // The panel sits above the grids, so it can open off-screen when a
+      // portrait low in the wall is picked. Pull it into view under the navbar.
+      const navH = navbar ? navbar.offsetHeight : 0;
+      const top  = panel.getBoundingClientRect().top;
+      if (top < navH + 16 || top > window.innerHeight - 120) {
+        window.scrollTo({
+          top: panel.getBoundingClientRect().top + window.scrollY - navH - 24,
+          behavior: 'smooth',
+        });
+      }
+    }
+
+    tiles.forEach(function (tile) {
+      tile.addEventListener('click', function () {
+        if (tile === openTile) close(false);
+        else open(tile);
+      });
+    });
+
+    closeBtn.addEventListener('click', function () { close(true); });
+
+    section.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) close(true);
+    });
+  }
+
   /* ── Countdown Timer ──────────────────────────────────── */
   function setupCountdown() {
     // NATI-RETI starts August 3, 2026
@@ -208,6 +290,7 @@
     addRevealClasses();
     observeReveal();
     setupActiveLinks();
+    setupFacilitators();
     setupCountdown();
     smoothScrollLinks();
     setupMobileApplyBar();

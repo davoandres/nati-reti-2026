@@ -43,6 +43,7 @@
         <li><a href="#pedagogy">Methodology</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="#participants">Participants</a></li>
+        <li><a href="#facilitators">Facilitators</a></li>
         <li><a href="#partners">Partners</a></li>
         <li><a href="fees.html">Fees</a></li>
         <li><a href="practicalities.html">Practical Info</a></li>
@@ -632,6 +633,138 @@
     </div>
   </section>
 
+  <!-- ===================== FACILITATORS & STAFF ===================== -->
+  <section class="section facilitators-section" id="facilitators">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <span class="section-tag light">Who Guides Us</span>
+        <h2 class="section-title light facilitators-title">Facilitators &amp; Staff</h2>
+        <p class="section-subtitle facilitators-subtitle">Select a portrait to read the full biography.</p>
+      </div>
+
+      <div class="facilitator-detail" id="facilitatorDetail" hidden>
+        <div class="facilitator-detail-portrait">
+          <img id="facDetailPhoto" src="" alt="" />
+        </div>
+        <div class="facilitator-detail-body">
+          <div class="facilitator-detail-head">
+            <div>
+              <div class="facilitator-detail-country" id="facDetailCountry"></div>
+              <h3 class="facilitator-detail-name" id="facDetailName"></h3>
+              <div class="facilitator-detail-role" id="facDetailRole"></div>
+            </div>
+            <button type="button" class="facilitator-close" id="facDetailClose">Close</button>
+          </div>
+          <div class="facilitator-detail-bio" id="facDetailBio"></div>
+        </div>
+      </div>
+
+      <div class="facilitator-group-label">
+        <span>Facilitation Team</span>
+        <span class="facilitator-group-rule"></span>
+      </div>
+      <div class="facilitator-grid facilitator-grid--four">
+
+        <button type="button" class="facilitator-tile" data-person="martell" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-loida-martell.jpg" alt="" width="768" height="960" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">United States</span>
+            <span class="facilitator-tile-name">Rev. Dr. Loida I. Martell</span>
+            <span class="facilitator-tile-role">Program Facilitator</span>
+          </span>
+        </button>
+
+        <button type="button" class="facilitator-tile" data-person="hessler" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-soren-hessler.jpg" alt="" width="674" height="842" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">United States</span>
+            <span class="facilitator-tile-name">Rev. Dr. Soren M. Hessler</span>
+            <span class="facilitator-tile-role">Program Facilitator</span>
+          </span>
+        </button>
+
+        <button type="button" class="facilitator-tile" data-person="ruben" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-ruben-david.jpg" alt="" width="384" height="480" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">Canada</span>
+            <span class="facilitator-tile-name">Rub&eacute;n David</span>
+            <span class="facilitator-tile-role">Program Facilitator</span>
+          </span>
+        </button>
+
+        <button type="button" class="facilitator-tile" data-person="leath" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-jennifer-leath.jpg" alt="" width="880" height="1100" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">Canada</span>
+            <span class="facilitator-tile-name">Rev. Dr. Jennifer S. Leath</span>
+            <span class="facilitator-tile-role">Chaplain &amp; Program Facilitator</span>
+          </span>
+        </button>
+
+      </div>
+
+      <div class="facilitator-group-label">
+        <span>Program Staff</span>
+        <span class="facilitator-group-rule"></span>
+      </div>
+      <div class="facilitator-grid facilitator-grid--two">
+
+        <button type="button" class="facilitator-tile" data-person="deivit" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-deivit-montealegre.jpg" alt="" width="413" height="516" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">Canada</span>
+            <span class="facilitator-tile-name">Deivit Montealegre</span>
+            <span class="facilitator-tile-role">Canadian Co-Director</span>
+          </span>
+        </button>
+
+        <button type="button" class="facilitator-tile" data-person="thea" aria-controls="facilitatorDetail" aria-expanded="false">
+          <img src="Pictures/facilitators/photo-thea-sheridan-jonah.jpg" alt="" width="566" height="708" loading="lazy" />
+          <span class="facilitator-tile-caption">
+            <span class="facilitator-tile-country">Canada</span>
+            <span class="facilitator-tile-name">Thea Sheridan-Jonah</span>
+            <span class="facilitator-tile-role">Research and Program Assistant</span>
+          </span>
+        </button>
+
+      </div>
+
+      <p class="facilitators-note">Facilitation Team &amp; Program Staff &middot; NATI-RETI 2026</p>
+
+      <!-- Biographies: kept in the markup so they are indexable; main.js lifts the
+           selected one into the detail panel above. -->
+      <div class="facilitator-bios" id="facilitatorBios" hidden>
+
+        <div data-person="martell">
+          <p>The Rev. Dr. Loida I. Martell is Vice President of Academic Affairs and Dean Emerita, and Professor of Constructive Theology Emerita of Lexington Theological Seminary. Dr. Martell served as the 18th VPAA/Dean of Lexington Theological Seminary and joined its faculty in August of 2017, and retired in August of 2025. She is a Doctor in Veterinary Medicine and ordained in the American Baptist Churches/USA. Dr. Martell is co-editor of <em>Teolog&iacute;a en Conjunto: A Collaborative Hispanic Protestant Theology</em> (WJK), and co-author of <em>Latina Evang&eacute;licas: A Theological Survey from the Margins</em> (Cascade Books). She is a co-convener for the National Council of Churches Table of Theological Dialogue and Matters of Faith and Order. Dr. Martell was the Distinguished Fellow for the Baptist Scholars International Roundtable for 2024. She was awarded the Lifetime Achievement Award by La Comunidad of Hispanic Scholars of Religion (of AAR/SBL) in 2022. The American Baptist Home Missions Societies awarded Dr. Martell the 2015 Richard Hoiland Christian Education Award, its highest recognition for &ldquo;faithful and effective leadership in Christian education,&rdquo; for her long-standing work in nurturing culturally and racially diverse classrooms and for exceptional leadership.</p>
+        </div>
+
+        <div data-person="hessler">
+          <p>Soren M. Hessler is Assistant Professor in the Practice of Leadership and Administration, Director of the Master of Arts in Religion and Leadership Program, and Co-Director of the Atlanta Rabbinic Leadership Lab at Candler School of Theology, Emory University. Hessler earned his Ph.D. in practical theology at Boston University. His research emerges at the intersections of higher education administration, ecumenical and interreligious studies, and leadership theory. He serves as treasurer of the Association for Interreligious/Interfaith Studies and as treasurer for Interreligious Studies Media, the parent organization of the <em>Journal of Interreligious Studies</em>. He is also co-general editor of <em>Methodist Review</em>. Hessler is an elder in full connection in the West Ohio Annual Conference of the United Methodist Church and serves as co-convenor of the Christian Education, Faith Formation, and Leadership Development Convening Table of the National Council of Churches of the Churches in Christ in the USA.</p>
+        </div>
+
+        <div data-person="ruben">
+          <p>Rub&eacute;n David is a Ph.D. candidate at Emmanuel College of Victoria University in the University of Toronto. He is a Visiting Professor at Lexington Theological Seminary and the Seminario Evang&eacute;lico de Puerto Rico, a Seasonal Lecturer at Emmanuel College, and the Chief Editor of the <em>Baptist Peacemaker</em>, the church journal of the Baptist Peace Fellowship of North America. He has also worked as a Research Fellow, collaborating on archival research related to the processes of colonization and conquest in Latin America and the Caribbean.</p>
+          <p>Rooted in his Puerto Rican identity and history, Rub&eacute;n David&rsquo;s scholarship explores the intersections of colonial processes in Latin America and the Caribbean. His research interests include decolonial thinking and theology, Latin American liberation theology, studies on imagination and dreams, identity theories, and gender and sexuality studies, with a special emphasis on masculinities. His doctoral research investigates the colonial influences on contemporary understandings of what it means to &ldquo;be a man&rdquo; in Latin America and the Caribbean. Rub&eacute;n David publishes peer-reviewed articles, book chapters, and book reviews, and serves as a translator for academic articles and conferences in Anglo-North America. He was awarded the Forum for Theological Exploration Doctoral Fellowship in both 2024 and 2025, as well as the 2024 Honorary Dissertation Fellowship from the Louisville Institute. He lives in Toronto with his wife Leslie and their two daughters, Beatriz and Julieta.</p>
+        </div>
+
+        <div data-person="leath">
+          <p>Rev. Jennifer Susanne Leath, Ph.D. is the Queen&rsquo;s National Scholar and Associate Professor in Black Religions at Queen&rsquo;s University (Kingston, Ontario, Canada); she is also the pastor of Tanner-Price AME Church (Windsor, Ontario, Canada). Prior to Queen&rsquo;s, Dr. leath served on the faculty of Iliff School of Theology (Denver, CO) as the Assistant Professor of Religion and Social Justice and Director of the Master of Arts in Social Justice and Ethics degree program after completing her A.B. at Harvard University, her M.Div. at Union Theological Seminary in the City of New York, and her Ph.D. at Yale University. Dr. leath also helped establish the Center on African American Religion, Sexual Politics, and Social Justice (CARSS) at Columbia University, serving as its first Director of Research. Dr. leath was a fellow in the Women&rsquo;s Studies in Religion Program at Harvard Divinity School (2014-2015).</p>
+          <p>Rev. leath is an Itinerant Elder in the African Methodist Episcopal (AME) Church and, prior to Tanner-Price, she pastored Campbell AME Church (Media, PA), Allen AME Church (White Plains, NY), Campbell Chapel AME Church (Denver, CO). Pastor leath expresses her love for all people through her passion for justice and dismantling all forms of oppression. She especially demonstrates her unequivocal commitments to equity, diversity, inclusion, and indigeneity through her sexual justice work within the AME Church and Black religious traditions more broadly as well as through her research and writing. Beyond her numerous articles, Dr. leath&rsquo;s first monograph, <em>Black, Quare, and Then to Where: Theories of Justice and Black Sexual Ethics</em>, was published in Fall 2023 (Duke University Press). Through this book, leath introduces and develops &ldquo;quare&rdquo; possibilities for flourishing Black futures. Also passionate about the ways diverse Christian traditions can pursue and promote justice together through ecumenical engagement, Dr. leath serves as a Co-Moderator of the Joint Consultative Group between the World Council of Churches (WCC) and Pentecostal Churches and a member of the Central Committee of the WCC.</p>
+        </div>
+
+        <div data-person="deivit">
+          <p>Deivit is a passionate advocate for intercultural leadership, a path he&rsquo;s walked personally and professionally. Currently serving as Associate Secretary for Intercultural Leadership at the Council, he brings three years of experience as Teaching, Research, and Program Coordinator from the Forum for Intercultural Leadership and Learning (FILL). Deivit is a Ph.D. candidate at the University of Toronto, where his research explores the profound intersections between economics, theology, decolonial thinking, and ethics. This academic pursuit complements his diverse practical background, which includes roles as an Educational Consultant for the World Council of Churches&rsquo; Global Ecumenical Theological Institute (GETI) and as the Latin American Program Director for the NGO Globethics. These experiences have solidified Deivit&rsquo;s conviction that intercultural understanding is a catalyst for transformative change. He envisions interculturality as a bridge, connecting faith with social action to create a more just and equitable world for all.</p>
+        </div>
+
+        <div data-person="thea">
+          <p>Thea lives on unceded Musqueam, Squamish, and Tsleil-Waututh territories as a white settler. Thea grew up in the United Church of Canada, where she has worked as a coordinator and mentor for various youth and social justice programs. She is also a member of the General Council executive, and is the President-Elect for the Pacific Mountain Regional Council. Thea recently completed her undergraduate degree at the University of British Columbia where she majored in Political Science and minored in First Nations and Indigenous Studies. She is passionate about community and justice, which is encompassed in her work for decolonization, harm reduction, and intercultural learning. She is also on the board of the Pivot Legal Society and chair of Canadian Students for Sensible Drug Policy. Thea is excited to be working for the Forum for Intercultural Leadership and Learning for the Canadian Council of Churches and the opportunities for learning that come with it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== PARTNERS ===================== -->
   <section class="partners-section" id="partners">
     <div class="container">
@@ -737,6 +870,7 @@
             <h4 class="footer-nav-heading">More</h4>
             <ul>
               <li><a href="#participants">Participants</a></li>
+              <li><a href="#facilitators">Facilitators &amp; Staff</a></li>
               <li><a href="#partners">Partners</a></li>
               <li><a href="fees.html">Fees &amp; Support</a></li>
               <li><a href="practicalities.html">Practical Information</a></li>
