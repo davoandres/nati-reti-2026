@@ -2865,11 +2865,66 @@ img {
   .facilitator-close { padding: 15px 20px; }
 }
 
-@media (max-width: 440px) {
+/* Phones: two portraits per row, with the name set below the image instead of
+   over it. At this width the caption gradient swallowed most of the portrait,
+   and one-per-row stretched the section to roughly six screens. */
+@media (max-width: 600px) {
   .facilitator-grid--four,
   .facilitator-grid--two {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 274px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    row-gap: 26px;
+    max-width: 420px;
+    /* Without this the cell stretches to the tallest name in the row and a
+       button centres its own content, so the portraits drift out of line. */
+    align-items: start;
   }
-  .facilitator-tile-caption { padding: 18px 16px; }
+
+  .facilitator-grid--four { margin-bottom: 44px; }
+
+  .facilitator-tile {
+    aspect-ratio: auto;
+    background: none;
+  }
+
+  .facilitator-tile img {
+    aspect-ratio: 4 / 5;
+    height: auto;
+    opacity: 1;
+    background: var(--text-dark);
+  }
+
+  /* No hover on touch, and the scale would ride over the caption below. */
+  .facilitator-tile:hover img,
+  .facilitator-tile:focus-visible img,
+  .facilitator-tile.is-active img { transform: none; }
+
+  /* Keep the selection outline on the portrait, not the caption. */
+  .facilitator-tile::after {
+    bottom: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .facilitator-tile-caption {
+    position: static;
+    padding: 12px 0 0;
+    background: none;
+  }
+
+  .facilitator-tile-country {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 5px;
+  }
+
+  .facilitator-tile-name {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  .facilitator-tile-role {
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
 }
