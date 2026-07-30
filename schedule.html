@@ -227,7 +227,8 @@ function renderGrid(){
       const clamp = h>=48?2:1;
       const fs = h<14?8.5:11;
       const pv = h<14?0:3;
-      const tipText = `${ev.start}–${ev.end}  ${ev.title}${ev.loc?' · '+ev.loc:''}${ev.who?' · '+ev.who:''}`;
+      const notes = (ev.notes||[]).map(n=>`\n  • ${n}`).join('');
+      const tipText = `${ev.start}–${ev.end}  ${ev.title}${ev.loc?' · '+ev.loc:''}${ev.who?' · '+ev.who:''}${notes}`;
       const inlineTime = !showMeta ? ` <span class="tin">· ${esc(ev.start)}–${esc(ev.end)}</span>` : '';
       const edge = c2
         ? `border-left:0;padding-left:10px;background:linear-gradient(to bottom, ${c} 0 50%, ${c2} 50% 100%) left/3px 100% no-repeat, color-mix(in oklab, ${c} 13%, var(--panel));`

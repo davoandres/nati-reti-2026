@@ -15,11 +15,12 @@ const PHASES = [
  { id: 'transition', label: 'Transition', city: 'Detroit → Toronto', color: '#E2A93B' },
  { id: 'canada', label: 'Canada Phase', city: 'Toronto, ON', color: '#3E6FA3' }
 ];
-// e: [start, end, title, short, cat, who, loc, cat2]
+// e: [start, end, title, short, cat, who, loc, cat2, notes]
 // cat2: optional secondary category — e.g. plenaries held during a study visit
-const E = (start, end, title, short, cat, who, loc, cat2) => {
+// notes: optional sub-items shown in the hover tooltip
+const E = (start, end, title, short, cat, who, loc, cat2, notes) => {
   const min = t => +t.slice(0, 2) * 60 + +t.slice(3);
-  return { start, end, s: min(start), e: min(end), title, short: short || title, cat, cat2: cat2 || '', who: who || '', loc: loc || '' };
+  return { start, end, s: min(start), e: min(end), title, short: short || title, cat, cat2: cat2 || '', who: who || '', loc: loc || '', notes: notes || [] };
 };
 const DAYS = [
  { n: 1, weekday: 'Monday', dnum: '03', phase: 'usa', theme: 'Introductory Day - Pillar Overview', city: 'Detroit, MI', date: 'Monday, August 3', events: [
@@ -105,12 +106,10 @@ const DAYS = [
  ]},
  { n: 7, weekday: 'Sunday', dnum: '09', phase: 'transition', theme: 'Travel from Detroit to Toronto', city: 'Detroit → Toronto', date: 'Sunday, August 9', events: [
    E('08:00','09:30','Travel and border crossing to Windsor, Canada.','Border crossing to Windsor','travel','','Windsor, ON'),
-   E('09:30','10:15',"Ecumenical Prayers with the Windsor Community @ All Saints' Anglican Church","Ecumenical Prayers with the Windsor Community",'prayer','',"All Saints' Anglican Church, Windsor"),
-   E('10:15','11:00','Walk City Hall Square to Tower of Freedom Monument (Windsor, ON)','Walk City Hall Square','visit','','Windsor, ON'),
-   E('11:00','12:00','Lecture & Lunch at Tanner-Price AME Church','Lecture & Lunch','plenary','','Tanner-Price AME Church'),
-   E('12:00','12:15','Departure for Sandwich Baptist Church','','travel','','Sandwich Baptist Church'),
-   E('12:15','13:00','Sandwich Baptist Church - Underground Railroad Site Visit','Sandwich Baptist Church','visit','','Sandwich Baptist Church'),
-   E('13:00','14:00','Departure for Toronto','','travel','','Toronto, ON')
+   E('09:30','11:00','Ecumenical Prayers with the Windsor Community at the Tower of Freedom Monument','Ecumenical Prayers · Tower of Freedom','prayer','','Windsor, ON','visit',['Group photo','Walk through McDougall Corridor']),
+   E('11:00','12:15','Lecture & Lunch at Tanner-Price AME Church','Lecture & Lunch','plenary','','Tanner-Price AME Church'),
+   E('12:15','13:30','Sandwich Baptist Church - Underground Railroad Site Visit','Sandwich Baptist Church','visit','','Sandwich Baptist Church'),
+   E('13:30','18:30','Departure for Toronto, UofT','Departure for Toronto','travel','','University of Toronto')
  ]},
  { n: 8, weekday: 'Monday', dnum: '10', phase: 'canada', theme: 'Interfaith Dialogue', city: 'Toronto, ON', date: 'Monday, August 10', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
