@@ -1478,6 +1478,28 @@ img {
   background: var(--light-gray);
 }
 
+/* Country strip (no counts) */
+.split-country {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ncc-blue);
+  line-height: 1.25;
+}
+
+.participant-block--facilitators .split-country {
+  color: var(--ccc-red);
+}
+
+.participant-split--countries {
+  padding: 18px 0;
+}
+
+.participant-split--countries .participant-split-divider {
+  height: 34px;
+}
+
 .participant-profile-list {
   list-style: none;
 }
