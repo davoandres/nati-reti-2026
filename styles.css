@@ -2610,6 +2610,12 @@ img {
   color: var(--ncc-gold);
 }
 
+/* Every label after the first opens a new band, so the gap between groups
+   lives here rather than on each grid's bottom margin. */
+.facilitator-grid + .facilitator-group-label {
+  margin-top: 52px;
+}
+
 .facilitator-group-rule {
   flex: 1;
   height: 1px;
@@ -2629,12 +2635,22 @@ img {
 .facilitator-grid--four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 1102px;
-  margin-bottom: 52px;
+}
+
+.facilitator-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 826px;
 }
 
 .facilitator-grid--two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   max-width: 550px;
+}
+
+/* Two grids under one label read as a single wall — a short centred row above a
+   full one — so they sit on the grid's own 2px gap, not the between-group gap. */
+.facilitator-grid + .facilitator-grid {
+  margin-top: 2px;
 }
 
 .facilitator-tile {
@@ -2884,7 +2900,8 @@ img {
 }
 
 @media (max-width: 760px) {
-  .facilitator-grid--four {
+  .facilitator-grid--four,
+  .facilitator-grid--three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 550px;
   }
@@ -2904,6 +2921,7 @@ img {
    and one-per-row stretched the section to roughly six screens. */
 @media (max-width: 600px) {
   .facilitator-grid--four,
+  .facilitator-grid--three,
   .facilitator-grid--two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 14px;
@@ -2914,7 +2932,8 @@ img {
     align-items: start;
   }
 
-  .facilitator-grid--four { margin-bottom: 44px; }
+  .facilitator-grid + .facilitator-group-label { margin-top: 44px; }
+  .facilitator-grid + .facilitator-grid { margin-top: 26px; }
 
   .facilitator-tile img { opacity: 1; }
 
