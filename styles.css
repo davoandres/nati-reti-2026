@@ -2331,13 +2331,16 @@ img {
 
 /* ===================== PUBLICATIONS ===================== */
 .publications-section { background: var(--off-white); padding: 100px 0; }
+/* Cards stretch to the tallest in the row and the body copy absorbs the
+   difference, so the three call-to-action buttons sit on one line whatever
+   the blurb runs to. */
 .publications-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 48px;
   max-width: 1240px;
   margin: 0 auto;
-  align-items: start;
+  align-items: stretch;
 }
 .publication-card {
   display: flex; flex-direction: column; align-items: center;
@@ -2355,7 +2358,7 @@ img {
   transform: translateY(-6px); box-shadow: 0 40px 90px rgba(1,30,51,0.40); outline: none;
 }
 .publication-cover img { display: block; height: 100%; width: auto; }
-.publication-text { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.publication-text { display: flex; flex-direction: column; align-items: center; gap: 16px; flex-grow: 1; }
 .publication-eyebrow {
   font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber);
@@ -2367,7 +2370,7 @@ img {
 .publication-rule { width: 56px; height: 2px; background: var(--amber); }
 .publication-body {
   font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.65;
-  color: var(--text-mid); margin: 0; max-width: 400px;
+  color: var(--text-mid); margin: 0; max-width: 400px; flex-grow: 1;
 }
 .publication-cta {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 6px;
