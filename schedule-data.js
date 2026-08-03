@@ -196,7 +196,7 @@ const DAYS = [
    E('18:00','19:00','Dinner: Burwash','Dinner','meals','','Burwash Hall'),
    E('19:00','20:30','Free','','free')
  ]},
- { n: 14, weekday: 'Sunday', dnum: '16', phase: 'canada', theme: 'Closing Celebration - Check out Day 11:00', city: 'Toronto, ON', date: 'Sunday, August 16', events: [
+ { n: 14, weekday: 'Sunday', dnum: '16', phase: 'canada', theme: 'Closing Celebration - Check out Day 11:00 am', city: 'Toronto, ON', date: 'Sunday, August 16', events: [
    E('07:30','08:45','Breakfast: Burwash','Breakfast','meals','','Burwash Hall'),
    E('08:45','10:30','Closing Celebration -Supported Becca in Liturgy.','Closing Celebration','prayer','Becca'),
    E('10:30','20:30','Departures','','travel')
